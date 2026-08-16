@@ -1,0 +1,74 @@
+<Prefab>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+            IsVisible="@IsVisible">
+
+      <!-- Semi-transparent backdrop overlay -->
+      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+              Color="#80000000" />
+
+      <!-- Centered popup panel -->
+      <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+              SuggestedWidth="460" SuggestedHeight="530"
+              HorizontalAlignment="Center" VerticalAlignment="Center">
+
+        <!-- Title -->
+        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="35"
+                    MarginTop="12" MarginLeft="18"
+                    Text="@TitleText"
+                    Brush="Encyclopedia.Title" />
+
+        <!-- Description -->
+        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="22"
+                    MarginTop="48" MarginLeft="18"
+                    Text="@DescriptionText"
+                    Brush="Encyclopedia.Text" />
+
+        <!-- Scrollable item list -->
+        <ScrollablePanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                         SuggestedHeight="380"
+                         MarginTop="78" MarginLeft="8" MarginRight="8"
+                         ClipRect="ClipRect" InnerPanel="InnerPanel"
+                         AutoHideScrollBars="true">
+          <Widget Id="ClipRect"
+                  WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                  ClipContents="true">
+            <ListPanel Id="InnerPanel"
+                       WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                       StackLayout.LayoutMethod="VerticalBottomToTop"
+                       DataSource="{Items}">
+              <ItemTemplate>
+                <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                              SuggestedHeight="36"
+                              MarginBottom="2" MarginLeft="4" MarginRight="4"
+                              Command.Click="ExecuteSelect"
+                              Brush="ButtonBrush1">
+                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Text="@DisplayText"
+                              Brush="ButtonText" />
+                </ButtonWidget>
+              </ItemTemplate>
+            </ListPanel>
+          </Widget>
+        </ScrollablePanel>
+
+        <!-- Cancel button -->
+        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                      SuggestedWidth="120" SuggestedHeight="36"
+                      MarginBottom="10"
+                      HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                      Command.Click="ExecuteCancel"
+                      Brush="ButtonBrush1">
+          <TextWidget Text="@CancelText"
+                      WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                      HorizontalAlignment="Center" VerticalAlignment="Center"
+                      Brush="ButtonText" />
+        </ButtonWidget>
+
+      </Widget>
+    </Widget>
+  </Window>
+</Prefab>

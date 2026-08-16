@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Module>
+  <Name value="Editable Encyclopedia" />
+  <Id value="EditableEncyclopedia" />
+  <Version value="v2.6.1.2" />
+  <SingleplayerModule value="true" />
+  <MultiplayerModule value="false" />
+  <Official value="false" />
+
+  <DependedModules>
+    <DependedModule Id="EE-Core" DependentVersion="v2.6.1" Optional="false" />
+    <DependedModule Id="Native" DependentVersion="e1.0.0" Optional="false" />
+    <DependedModule Id="SandBoxCore" DependentVersion="e1.0.0" Optional="false" />
+    <DependedModule Id="Sandbox" DependentVersion="e1.0.0" Optional="false" />
+    <DependedModule Id="StoryMode" DependentVersion="e1.0.0" Optional="false" />
+    <DependedModule Id="Bannerlord.Harmony" DependentVersion="v2.4.2.225" Optional="false" />
+    <DependedModule Id="Bannerlord.ButterLib" Optional="false"/>
+    <DependedModule Id="Bannerlord.UIExtenderEx" Optional="false" />
+    <DependedModule Id="Bannerlord.MBOptionScreen" DependentVersion="v5.0.0" Optional="false" />
+  </DependedModules>
+
+  <SubModules>
+    <SubModule>
+      <Name value="EditableEncyclopedia" />
+      <DLLName value="EditableEncyclopedia.dll" />
+      <SubModuleClassType value="EditableEncyclopedia.SubModuleClassEntry" />
+      <Tags>
+        <Tag key="DedicatedServerType" value="none" />
+        <Tag key="IsNoRenderModeElement" value="false" />
+      </Tags>
+    </SubModule>
+  </SubModules>
+</Module>

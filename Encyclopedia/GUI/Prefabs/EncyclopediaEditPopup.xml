@@ -1,0 +1,14 @@
+<Prefab>
+  <Window>
+    <!-- Minimal shell — all content built programmatically in EditPopupInjector.cs.
+         Brushes like Encyclopedia.Title don't exist in all screen contexts,
+         so XML widgets with brush references silently fail to instantiate.
+         This shell just provides the centered container. -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+            IsVisible="@IsVisible">
+      <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+              SuggestedWidth="620" SuggestedHeight="520"
+              HorizontalAlignment="Center" VerticalAlignment="Center" />
+    </Widget>
+  </Window>
+</Prefab>

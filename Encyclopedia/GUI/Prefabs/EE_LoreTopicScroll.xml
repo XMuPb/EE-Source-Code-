@@ -1,0 +1,55 @@
+<Prefab>
+  <Window>
+    <!-- ROOT = result.Widget. Fixed height (default 264) is overwritten in C# to targetHeight.
+         The ScrollablePanel and the sibling Scrollbar share this box. -->
+    <Widget Id="LoreScrollRoot"
+            WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="264">
+
+      <!-- Scrollable viewport. Binds to the sibling scrollbar via ..\Scrollbar.
+           MarginRight leaves room for the bar. -->
+      <ScrollablePanel Id="LoreScrollPanel"
+                       WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                       MarginRight="14"
+                       ClipRect="ClipRect" InnerPanel="ClipRect\InnerList"
+                       VerticalScrollbar="..\Scrollbar"
+                       MouseScrollAxis="Vertical"
+                       AutoHideScrollBars="true">
+
+        <!-- Clip: fixed viewport that masks overflow. -->
+        <Widget Id="ClipRect"
+                WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                ClipContents="true">
+
+          <!-- InnerList: the vertical column. CoverChildren is REQUIRED so its measured height can
+               exceed ClipRect and produce scroll range. C# moves the prose line widgets in here. -->
+          <ListPanel Id="InnerList"
+                     WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                     VerticalAlignment="Top" MarginLeft="4" MarginRight="6"
+                     StackLayout.LayoutMethod="VerticalTopToBottom" />
+
+        </Widget>
+      </ScrollablePanel>
+
+      <!-- SIBLING scrollbar = what ..\Scrollbar resolves to. Handle + MinValue/MaxValue +
+           AlignmentAxis are the engine scroll internals a code-built panel lacks. -->
+      <ScrollbarWidget Id="Scrollbar"
+                       WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                       SuggestedWidth="9"
+                       HorizontalAlignment="Right" VerticalAlignment="Center"
+                       MarginTop="4" MarginBottom="4" MarginRight="2"
+                       AlignmentAxis="Vertical" MinValue="0" MaxValue="100"
+                       Handle="ScrollbarHandle">
+
+        <BrushWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                     SuggestedWidth="2" HorizontalAlignment="Center"
+                     Brush="Encyclopedia.Scrollbar.Flat.Bed" />
+        <BrushWidget Id="ScrollbarHandle"
+                     WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                     SuggestedWidth="8" SuggestedHeight="50" HorizontalAlignment="Center"
+                     Brush="Encyclopedia.Scrollbar.Flat.Handle" />
+
+      </ScrollbarWidget>
+
+    </Widget>
+  </Window>
+</Prefab>

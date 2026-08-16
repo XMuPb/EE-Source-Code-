@@ -1,0 +1,7 @@
+<Prefab>
+  <Window>
+    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+            SuggestedWidth="520" SuggestedHeight="420"
+            HorizontalAlignment="Center" VerticalAlignment="Center" />
+  </Window>
+</Prefab>

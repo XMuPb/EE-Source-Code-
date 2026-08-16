@@ -1,0 +1,233 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net472</TargetFramework>
+    <LangVersion>7.3</LangVersion>
+    <AssemblyName>EditableEncyclopedia</AssemblyName>
+    <RootNamespace>EditableEncyclopedia</RootNamespace>
+    <Configurations>Debug;Release</Configurations>
+    <Platforms>x64</Platforms>
+    <PlatformTarget>x64</PlatformTarget>
+    <GameFolder>H:\steam\steamapps\common\Mount &amp; Blade II Bannerlord</GameFolder>
+    <ModuleFolder>$(GameFolder)\Modules\EditableEncyclopedia</ModuleFolder>
+    <EnableDefaultCompileItems>false</EnableDefaultCompileItems>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="MCMSettings.cs" />
+    <Compile Include="EditableEncyclopediaPatches.cs" />
+    <Compile Include="EEInquiry.cs" />
+    <Compile Include="ScissorState.cs" />
+    <Compile Include="HeroInfoStats.cs" />
+    <Compile Include="EditableEncyclopediaAPI.cs" />
+    <Compile Include="EncyclopediaEditBehavior.cs" />
+    <Compile Include="ChronicleSpoilsCollector.cs" />
+    <Compile Include="EncyclopediaEditVM.cs" />
+    <Compile Include="SelectionPopupVM.cs" />
+    <Compile Include="QuickTagMenuVM.cs" />
+    <Compile Include="SettlementNameplateMixin.cs" />
+    <Compile Include="TimestampWidgetInjector.cs" />
+    <Compile Include="TagWidgetInjector.cs" />
+    <Compile Include="JournalSectionInjector.cs" />
+    <Compile Include="LoreSectionInjector.cs" />
+    <Compile Include="EditPopupInjector.cs" />
+    <Compile Include="ModCompatHelper.cs" />
+    <Compile Include="EncyclopediaAnchorHelper.cs" />
+    <Compile Include="SubModuleClassEntry.cs" />
+    <Compile Include="McmLocalizer.cs" />
+    <Compile Include="WebExtensionVisibilityPatch.cs" />
+    <Compile Include="MarkdownFormatter.cs" />
+    <Compile Include="DescriptionFormatter.cs" />
+    <Compile Include="RelationNotes\RelationNotesInjector.cs" />
+    <Compile Include="RelationNotes\RelationNotesSectionInjector.cs" />
+    <Compile Include="Timeline\HeroTimelineSectionInjector.cs" />
+    <Compile Include="Timeline\TimelineEntry.cs" />
+    <Compile Include="Timeline\TimelineDataCollector.cs" />
+    <Compile Include="Timeline\TimelineReflectionCache.cs" />
+    <Compile Include="InventoryLore\ItemLoreEntry.cs" />
+    <Compile Include="InventoryLore\ItemLoreLoader.cs" />
+    <Compile Include="InventoryLore\InventoryLoreCollector.cs" />
+    <Compile Include="InventoryLore\InventoryLoreSectionInjector.cs" />
+    <Compile Include="Timeline\TimelineTextProcessor.cs" />
+    <Compile Include="LoreStoryLoader.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="TaleWorlds.Core">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.Core.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.Engine">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.Engine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.Engine.GauntletUI">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.Engine.GauntletUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.GauntletUI">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.GauntletUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.GauntletUI.Data">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.GauntletUI.Data.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.Library">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.Library.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.Localization">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.Localization.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.ModuleManager">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.ModuleManager.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.MountAndBlade">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.MountAndBlade.GauntletUI">
+      <HintPath>$(GameFolder)\Modules\Native\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.GauntletUI.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.MountAndBlade.ViewModelCollection">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.MountAndBlade.ViewModelCollection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.CampaignSystem">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.CampaignSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.CampaignSystem.ViewModelCollection">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.CampaignSystem.ViewModelCollection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.ScreenSystem">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.ScreenSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.InputSystem">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.InputSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.ObjectSystem">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.ObjectSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="TaleWorlds.SaveSystem">
+      <HintPath>$(GameFolder)\bin\Win64_Shipping_Client\TaleWorlds.SaveSystem.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="0Harmony">
+      <HintPath>$(GameFolder)\Modules\Bannerlord.Harmony\bin\Win64_Shipping_Client\0Harmony.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MCMv5.MCM.Abstractions">
+      <HintPath>$(GameFolder)\Modules\Bannerlord.MBOptionScreen\bin\Win64_Shipping_Client\Bannerlord.ModuleLoader.Bannerlord.MBOptionScreen.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="MCMv5.MCM">
+      <HintPath>$(GameFolder)\Modules\Bannerlord.MBOptionScreen\bin\Win64_Shipping_Client\MCMv5.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Bannerlord.ButterLib">
+      <HintPath>$(GameFolder)\Modules\Bannerlord.ButterLib\bin\Win64_Shipping_Client\Bannerlord.ButterLib.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Bannerlord.UIExtenderEx">
+      <HintPath>$(GameFolder)\Modules\Bannerlord.UIExtenderEx\bin\Win64_Shipping_Client\Bannerlord.UIExtenderEx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="SandBox.ViewModelCollection">
+      <HintPath>$(GameFolder)\Modules\SandBox\bin\Win64_Shipping_Client\SandBox.ViewModelCollection.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\EE-Core\EE-Core.csproj">
+      <Private>false</Private>
+    </ProjectReference>
+  </ItemGroup>
+
+  <Target Name="CopyToModule" AfterTargets="Build">
+    <MakeDir Directories="$(ModuleFolder)" />
+    <Copy SourceFiles="$(MSBuildProjectDirectory)\SubModule.xml" DestinationFolder="$(ModuleFolder)" Condition="Exists('$(MSBuildProjectDirectory)\SubModule.xml')" />
+    <MakeDir Directories="$(ModuleFolder)\bin\Win64_Shipping_Client" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(ModuleFolder)\bin\Win64_Shipping_Client" />
+    <MakeDir Directories="$(ModuleFolder)\GUI\Prefabs" />
+    <Copy SourceFiles="@(GUIPrefabs)" DestinationFolder="$(ModuleFolder)\GUI\Prefabs" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Backstory" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Personality" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Goals" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Relationships" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\RumorsAndSecrets" />
+    <Copy SourceFiles="@(LoreStoryRoot)" DestinationFolder="$(ModuleFolder)\LoreStory" />
+    <Copy SourceFiles="@(LoreStoryBackstory)" DestinationFolder="$(ModuleFolder)\LoreStory\Backstory" />
+    <Copy SourceFiles="@(LoreStoryPersonality)" DestinationFolder="$(ModuleFolder)\LoreStory\Personality" />
+    <Copy SourceFiles="@(LoreStoryGoals)" DestinationFolder="$(ModuleFolder)\LoreStory\Goals" />
+    <Copy SourceFiles="@(LoreStoryRelationships)" DestinationFolder="$(ModuleFolder)\LoreStory\Relationships" />
+    <Copy SourceFiles="@(LoreStoryRumors)" DestinationFolder="$(ModuleFolder)\LoreStory\RumorsAndSecrets" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Founding" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Territory" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Traditions" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Rivals" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\History" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Laws" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\CultureLore" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Military" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Economy" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Landmarks" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\Legends" />
+    <Copy SourceFiles="@(LoreStoryFounding)" DestinationFolder="$(ModuleFolder)\LoreStory\Founding" />
+    <Copy SourceFiles="@(LoreStoryTerritory)" DestinationFolder="$(ModuleFolder)\LoreStory\Territory" />
+    <Copy SourceFiles="@(LoreStoryTraditions)" DestinationFolder="$(ModuleFolder)\LoreStory\Traditions" />
+    <Copy SourceFiles="@(LoreStoryRivals)" DestinationFolder="$(ModuleFolder)\LoreStory\Rivals" />
+    <Copy SourceFiles="@(LoreStoryHistory)" DestinationFolder="$(ModuleFolder)\LoreStory\History" />
+    <Copy SourceFiles="@(LoreStoryLaws)" DestinationFolder="$(ModuleFolder)\LoreStory\Laws" />
+    <Copy SourceFiles="@(LoreStoryCultureLore)" DestinationFolder="$(ModuleFolder)\LoreStory\CultureLore" />
+    <Copy SourceFiles="@(LoreStoryMilitary)" DestinationFolder="$(ModuleFolder)\LoreStory\Military" />
+    <Copy SourceFiles="@(LoreStoryEconomy)" DestinationFolder="$(ModuleFolder)\LoreStory\Economy" />
+    <Copy SourceFiles="@(LoreStoryLandmarks)" DestinationFolder="$(ModuleFolder)\LoreStory\Landmarks" />
+    <Copy SourceFiles="@(LoreStoryLegends)" DestinationFolder="$(ModuleFolder)\LoreStory\Legends" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\ItemLore" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\ItemLore\Weapon" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\ItemLore\Armor" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\ItemLore\Mount" />
+    <MakeDir Directories="$(ModuleFolder)\LoreStory\ItemLore\Goods" />
+    <Copy SourceFiles="@(ItemLoreWeapon)" DestinationFolder="$(ModuleFolder)\LoreStory\ItemLore\Weapon" />
+    <Copy SourceFiles="@(ItemLoreArmor)" DestinationFolder="$(ModuleFolder)\LoreStory\ItemLore\Armor" />
+    <Copy SourceFiles="@(ItemLoreMount)" DestinationFolder="$(ModuleFolder)\LoreStory\ItemLore\Mount" />
+    <Copy SourceFiles="@(ItemLoreGoods)" DestinationFolder="$(ModuleFolder)\LoreStory\ItemLore\Goods" />
+  </Target>
+
+  <ItemGroup>
+    <GUIPrefabs Include="GUI\Prefabs\*.xml" />
+    <LoreStoryRoot Include="LoreStory\*.txt" />
+    <LoreStoryBackstory Include="LoreStory\Backstory\*.txt" />
+    <LoreStoryPersonality Include="LoreStory\Personality\*.txt" />
+    <LoreStoryGoals Include="LoreStory\Goals\*.txt" />
+    <LoreStoryRelationships Include="LoreStory\Relationships\*.txt" />
+    <LoreStoryRumors Include="LoreStory\RumorsAndSecrets\*.txt" />
+    <LoreStoryFounding Include="LoreStory\Founding\*.txt" />
+    <LoreStoryTerritory Include="LoreStory\Territory\*.txt" />
+    <LoreStoryTraditions Include="LoreStory\Traditions\*.txt" />
+    <LoreStoryRivals Include="LoreStory\Rivals\*.txt" />
+    <LoreStoryHistory Include="LoreStory\History\*.txt" />
+    <LoreStoryLaws Include="LoreStory\Laws\*.txt" />
+    <LoreStoryCultureLore Include="LoreStory\CultureLore\*.txt" />
+    <LoreStoryMilitary Include="LoreStory\Military\*.txt" />
+    <LoreStoryEconomy Include="LoreStory\Economy\*.txt" />
+    <LoreStoryLandmarks Include="LoreStory\Landmarks\*.txt" />
+    <LoreStoryLegends Include="LoreStory\Legends\*.txt" />
+    <ItemLoreWeapon Include="LoreStory\ItemLore\Weapon\*.txt" />
+    <ItemLoreArmor Include="LoreStory\ItemLore\Armor\*.txt" />
+    <ItemLoreMount Include="LoreStory\ItemLore\Mount\*.txt" />
+    <ItemLoreGoods Include="LoreStory\ItemLore\Goods\*.txt" />
+  </ItemGroup>
+
+</Project>
