@@ -1,0 +1,39 @@
+This {item} was tithed from the villages that owe {clan} their dues, gathered cart by cart along the roads into {settlement}. {name} takes no particular pleasure in the collecting, but {he} sleeps easier for a full storehouse, having once seen what an empty one does to a winter.
+---
+{name} bought this {item} from a caravan passing {settlement}, haggling the {culture} factor down over a long afternoon of tea neither of them wanted. The price was fair in the end, which both took as a small insult, and the goods have held their worth since.
+---
+This {item} is spoils, carried off from a raid across the marches near {settlement} while the taking was good. {name} does not dwell on where it came from; goods keep no memory of whose granary they were, and a hard season cares even less.
+---
+This {item} came to {clan} as tribute from a town near {settlement} that would rather send goods than swords, and {name} has never blamed them for the preference. It sits in {his} stores as proof that some quarrels are cheaper to buy off than to fight.
+---
+{name} bought this {item} at {settlement} the season before the price of it doubled, more from luck than foresight, though {he} tells it the other way now. What cost little then is worth a great deal in the telling, and rather more than that in the trading.
+---
+This {item} is {name}'s hedge against a bad year — laid by in the storerooms at {settlement} while the harvests were good, against the certainty that they will not always be. {He} has watched hunger unmake stronger clans than {his}, and does not intend to be caught the way they were.
+---
+{name} took this lot of {item} at the great fair outside {settlement}, outbidding two merchants who had thought the day already theirs. {He} paid more than {he} meant to and less than it was worth, and counts the transaction, as {he} counts most, a narrow victory.
+---
+This {item} was a gift from a vassal of {clan}, sent up to {settlement} with the season's respects and a quiet reminder of loyalties owed. {name} understood the gesture for what it was, and stored the goods and the obligation together, as one does.
+---
+This {item} was contraband before {name} seized it near {settlement}, run past the tolls by men who gambled on the roads being unwatched. They gambled wrong; {name} keeps the goods and a wry appreciation of the nerve it took to try.
+---
+This {item} is simple harvest surplus, more than {clan}'s people around {settlement} could eat or store, brought in to {name}'s stockrooms rather than left to spoil. There is no story in it beyond a good year, which in these lands is rare enough to be worth remarking on.
+---
+{name} bought this {item} cheap from a merchant fleeing {settlement} ahead of a war he had smelled coming before anyone else. The man wanted coin and a fast horse more than a fair price, and {name} obliged him on both counts, to their mutual and lasting satisfaction.
+---
+This {item} was sold to {name} by a house of lay brothers near {settlement} who grew more than they needed and disapproved of waste. The goods came honestly and cheaply, blessed by men who charged for neither the blessing nor much of anything else.
+---
+This {item} came to {name} as a wedding gift, part of the goods that changed hands when {clan} tied itself to another by marriage. The union has had its seasons, good and ill, but the stores it brought have never once quarrelled with anyone.
+---
+{name} accepted this {item} as payment for safe passage through {clan}'s lands near {settlement}, letting a nervous caravan buy its peace of mind. It was an honest toll for an honest service, and {he} would rather be paid in goods than in the gratitude of strangers.
+---
+This {item} was salvaged from a wreck along the coast near {settlement}, hauled dripping from the shallows before the sea could claim what the storm had spared. The owners were past complaining, and {name} reasons that goods saved from drowning belong to whoever does the saving.
+---
+{name} laid in this {item} in bulk before a campaign out of {settlement}, knowing that an army eats whether or not it fights. The war is over now, one way or another, and the surplus remains, a quiet argument for planning further ahead than most men trouble to.
+---
+This {item} is the plain due of the villages around {settlement}, rendered up to {clan} as it has been for generations without anyone recalling quite why the amount is what it is. {name} collects it because it is owed, and stores it because a lord who cannot feed his people is not one for long.
+---
+{name} bought this {item} at a hard price to relieve {settlement} when the siege had emptied its stores, and never troubled to collect what the town still owes {him} for it. {He} calls it charity when {he} is feeling generous and investment when {he} is not, and both are true enough.
+---
+This {item} changed hands for prisoners — {name} gave back a handful of captured men and took goods in their place, a trade that suited everyone but the men, who were not consulted. {He} finds it a cleaner currency than ransom, and less likely to be haggled over twice.
+---
+{name} has stockpiled this {item} against the winter, filling the stores at {settlement} while the roads were still open and the prices still kind. {He} has learned to distrust a mild autumn, which in these lands is only ever the quiet before the cold makes its true intentions plain.

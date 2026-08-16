@@ -1,0 +1,39 @@
+{name} bred {item} on {clan}'s own pastures near {settlement}, out of a line {his} family has kept for longer than anyone can properly account for. {He} knows its temper the way {he} knows {his} own, and there is not enough coin in {kingdom} to buy it out from under {him}.
+---
+{item} ran wild on the plains beyond {settlement} until {name} and three others spent a hard fortnight running it down. It has never entirely forgiven the capture, and {name} half respects it for that, riding a beast that obeys out of bargain rather than surrender.
+---
+A {culture} horse-lord gave {item} to {name} as a guest-gift, the kind of gift that is also a message about the giver's wealth. {name} understood the message and kept the horse, which has proved louder and more lasting than anything the lord could have said aloud.
+---
+{name} bought {item} at the great border fair outside {settlement}, from a trader who swore it had the blood of famous sires and could prove exactly none of it. The papers were nonsense, but the horse was not, and {name} has never once wished the coin back.
+---
+{item} was foaled from a sire whose name still means something in the paddocks around {settlement}, and it carries the temper to match the blood. {name} paid for the pedigree and got the stubbornness for free, and would not trade either after all the miles they have shared.
+---
+{name} took {item} from a {culture} commander {he} unhorsed near {settlement}, a fine animal that had carried a better rider to a worse end. The horse took to {name} quickly enough, having no loyalty to spend on a man it had already watched fall.
+---
+{name} traded a good blade for {item} at {settlement}, a bargain {he} questioned the whole ride home and has never questioned since. The weapon would have hung on a wall; the horse has carried {him} out of more trouble than any edge ever settled.
+---
+{name} raised {item} from a foal, sitting up through the cold nights near {settlement} when it was not expected to live. It lived, and it has never quite let {name} out of its sight since, following {him} with a devotion {he} did nothing to earn but everything to keep.
+---
+{item} was won at the races held outside {settlement}, where {name} backed a long shot with money {he} did not have and walked away leading the horse instead of the winnings. {He} counts it the best bad decision of {his} life, and it has outrun {his} debts more than once.
+---
+{name} found {item} wandering the field after the fighting near {settlement}, riderless and trembling, its own master somewhere among the dead. {He} caught it more from pity than need, and it has repaid the kindness across every campaign since, as though it remembers being spared.
+---
+A mercenary quitting {kingdom} sold {item} to {name} outside {settlement}, needing coin for the road home more than a horse he could no longer feed. {name} paid a fair price to a man who expected to be cheated, and got a steadier mount than either of them let on.
+---
+{item} was bred for a dowry, meant to go with a marriage that {clan} arranged and then could not keep. When the match fell through the horse remained, and {name} rides it now as a reminder that not every bargain {his} family strikes ends the way it was drawn.
+---
+{item} is steppe stock, brought west along the long roads to {settlement} by traders who prized its endurance over its manners. {name} bought it for the legs and learned to live with the rest, and it has carried {him} through distances that have broken softer, handsomer animals.
+---
+{item} carried a rider through more battles than {name} has bothered to count before it came to {him}, a retired warhorse sold on when its old master could no longer ride. It is past its best years and knows its business better than {name} does, and {he} defers to it more than {he} admits.
+---
+{item} was given to {name} to seal a peace between {clan} and men who had been enemies a season before. The oath has held, more or less, and {name} rides the horse as a standing reminder that some bargains, against all expectation, are worth keeping.
+---
+{name} bought {item} with tournament winnings at {settlement}, converting a day's violence into something that would carry {him} away from the next one. It was an extravagance {he} could not really afford and has never regretted, the way one rarely regrets the good horses.
+---
+{item} came to {name} with an estate {he} inherited near {settlement}, listed in the ledger between the granary and the plough-teams as though it were furniture. It proved worth more than the rest of the inheritance together, and is the only part of it {name} would refuse to sell.
+---
+When a village near {settlement} could not pay what it owed {clan}, {name} took {item} in lieu of the coin, and rode away feeling more like a bandit than a lord. The horse was worth the debt and then some, and {name} has never entirely shaken the guilt of that accounting.
+---
+{item} strayed onto {name}'s land near {settlement} one winter and was never claimed, for all that {he} asked after its owner longer than most men would have. In time {he} stopped asking, and the horse became {his} by the simple law that no one else came for it.
+---
+{name} bought {item} from a house of lay brothers near {settlement} who bred fine animals and had no use for war. It came to {him} gentle and unblooded, and {name} has tried, without much success, to keep it that way through the life {he} leads.

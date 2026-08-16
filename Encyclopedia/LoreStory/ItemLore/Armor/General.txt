@@ -1,0 +1,39 @@
+{name} stripped {item} from a {culture} man left dead in the mud near {settlement}, and wore it home still dented from the blow that killed its owner. {He} had the dent hammered out, but {he} kept the memory of it, the way a man keeps a scar he did not ask for.
+---
+After the wound that nearly finished {him} outside {settlement}, {name} commissioned {item} to cover the place where the old armour had failed. {He} paid extra for the plate over the ribs, and has never once regretted the coin, though {he} regrets the lesson that taught {him} to spend it.
+---
+{item} was cut down and refitted from a suit worn by {name}'s grandfather, a broad {man} whose armour swallowed {name} whole at first. The armourer at {settlement} took it in twice over the years, and what remains fits close now, as though the steel had finally decided to belong to {him}.
+---
+The armourers' guild of {settlement} made {item} as a masterwork, the kind of piece a shop turns out once in a generation to prove it still can. {name} bought it for a sum that made {clan}'s steward pale, and wears it with the quiet arrogance of a man who knows exactly what he is worth on a field.
+---
+{item} is foreign work, traded off a ship at a {culture} port and carried inland to {settlement} through three sets of grasping hands. The joints are articulated in a fashion the local smiths still cannot quite copy, and {name} has been offered small fortunes for it by men who only wanted to take it apart.
+---
+So little of the original {item} remains that {name} half jokes it is a new suit wearing an old name. Every campaign out of {settlement} has cost it a plate or a strap, mended in whatever forge was nearest, so that {he} now carries a patchwork history of {his} own wars buckled to {his} back.
+---
+{item} was handed over as surety when a {culture} lord could not pay the ransom {name} had set, and the debt was never made good. {name} kept the armour rather than the promise, which has proved by far the more reliable of the two.
+---
+When {name} lifted the siege of {settlement}, the grateful town pressed {item} on {him} — armour taken from their own armoury, the finest thing they had to give. {He} accepted it because refusing would have wounded them, and has worn it since with the particular care one gives a gift that cannot be replaced.
+---
+{name} pulled {item} from the breach at {settlement}, off a man who had held the wall until the wall came down on both of them. The armour had kept its owner alive through everything but the last of it, and {name} wears it as a wager that {his} own luck will run a little longer.
+---
+{item} was made from melted coin — {name} carried a chest of silver to the smith at {settlement} and walked out wearing most of it. {He} says it is the safest way to keep a fortune, since no thief can spend armour, and no creditor has yet found the nerve to ask {him} to take it off.
+---
+{item} was lent to {name} before a fight near {settlement} by a friend who did not survive it, and there has never been anyone left to return it to. {He} wears it with a debt {he} cannot discharge, which is a heavier thing to carry than the steel.
+---
+{name} won {item} on a wager so reckless that {clan} still tells the story wrong. The other man staked his armour certain he could not lose, and {name} has worn the proof of his error ever since, polished bright enough that the point cannot be missed.
+---
+The lay brothers of a house near {settlement} made {item} in their workshop, patient work by men who fought nothing more dangerous than the cold. {name} finds a strange comfort in that — armour shaped by hands that meant it only for others — and treats it more gently than {he} treats himself.
+---
+{item} was issued to {name} by a company that no longer exists, disbanded after a defeat near {settlement} that no one likes to name. The company's mark is still stamped inside the breastplate, and {name} has never scoured it out, out of a loyalty {he} cannot fully explain.
+---
+{item} came ashore in a bale of goods salvaged from a wreck off the coast near {settlement}, still packed in grease against the sea. Whoever it was made for drowned before {he} could wear it, and {name} has worn it since with a sailor's wariness of water {he} did not have before.
+---
+{name} took {item} off a man {he} beat in a duel outside {settlement}, a matter of honour that the armour settled more thoroughly than the words ever could. The loser lived, which {name} counts to {his} own credit, and the armour changed hands as cleanly as the argument did.
+---
+{item} was the first thing {name} bought with the pay from {his} first real campaign, walking into the best armourer in {settlement} with more coin than sense and less than {he} pretended. {He} has owned finer since, but never anything {he} was prouder of, and {he} still keeps it sound.
+---
+{item} came to {name} from an uncle who died without sons, a hard {man} who had thought little of {his} nephew in life. {name} wears it partly in respect and partly in argument, as if to prove across the grave that the old {man} had been wrong about {him} all along.
+---
+{name} took {item} with the baggage of a {culture} host routed near {settlement}, still crated and unworn, meant for some lord who never reached the field. {He} broke it in himself through hard use, so that the armour learned its trade from {name} rather than from the man it was made for.
+---
+{item} began as parade armour, all gilt and no substance, until {name} had the smith at {settlement} strip the ornament and reinforce the plate for real fighting. What is left is plainer and far more honest, which is roughly what campaigning has done to {name} as well.

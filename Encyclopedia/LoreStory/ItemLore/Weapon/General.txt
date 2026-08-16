@@ -1,0 +1,39 @@
+{name} carried {item} out of {his} father's hall the year the old {man} died, and has not set it aside since. The grip was rewrapped twice on the road out of {settlement}, and the pommel bears a notch that {name} has never explained to anyone in {clan}.
+---
+They found {item} on the field after the fighting near {settlement}, still in the hand of a {culture} captain who had died holding it. {name} cleaned the blood from it that night and carried it the next morning, and no one in {clan} thought the worse of {him} for it.
+---
+{name} paid a season's wages to a smith in {settlement} for {item}, and stood in the forge every day while it was made, learning the man's grievances and his craft in equal measure. The smith is dead now, but his mark is still on the steel, and {name} points to it when {he} is drunk enough to boast.
+---
+{item} came to {name} as a tournament prize, handed over before the crowd at {settlement} while the losing man looked on with a face like curdled milk. {name} has fought with it since out of spite as much as sentiment, and every notch in its edge is a small argument won.
+---
+A desperate man sold {item} to {name} for the price of a meal, somewhere on the cold road out of {settlement}. {name} suspects it was stolen, and has never asked. Good steel does not care whose hand held it before, and neither, most days, does {name}.
+---
+When the traitor was hanged at {settlement}, his gear was parcelled out among the men who had taken him, and {item} fell to {name}. It is a fine weapon carried by a coward, and {name} has spent years trying to make the second thing untrue of {his} own hand.
+---
+{item} was a gift, pressed on {name} to seal a bargain between {clan} and men who are now either dead or estranged. The oath it marked has long since frayed, but the weapon holds its edge, and {name} finds a bitter use in carrying a promise no one else remembers making.
+---
+{name} took {item} in a raid across the marches near {settlement}, from a hall that no longer stands. {He} does not speak much of that night, but {he} kept the weapon, and among {clan} it is understood that some questions about it are not to be asked.
+---
+{item} was forged from an heirloom that broke — an older blade of {clan}, snapped in a fight {name} would rather forget. The smith at {settlement} folded what was left into new steel, so that what {name} carries now is both a failure and its remedy, which is more than most men can say of their weapons.
+---
+{item} once hung as an offering in a shrine near {settlement}, until lean years and a bolder conscience led {name} to take it down. {He} tells the tale as though the old powers would rather see it used than rusting on a wall, and so far nothing has come to argue the point.
+---
+A debtor in {settlement} had no coin, so {name} took {item} instead and called the account settled. It was worth rather more than the debt, a fact both men understood and neither mentioned, and {name} has carried the small guilt of that bargain about as lightly as the weapon itself.
+---
+{name} found {item} in the collapsed cellar of a ruin out past {settlement}, wrapped in rotted cloth that fell to dust in {his} hands. Who left it there, and why, is a question {clan} has turned over on long nights without ever settling on an answer that satisfies anyone.
+---
+{item} was smuggled across the border in a wagon of salt fish, part of a trade {name} would sooner not have the {culture} lords hear about. It arrived reeking and had to be scoured for a week, but the steel underneath proved worth every dishonest mile.
+---
+When {name} was ransomed back to {clan}, {item} came as part of the price — the captors' idea of an insult, handing over a fine weapon to a man they thought too soft to use it. {name} has spent the years since making sure the joke landed the wrong way round.
+---
+{name} swore an oath over {item} the night before the fighting at {settlement}, the kind of oath a younger {man} makes and an older one has to live with. The words are half-forgotten now, but the weapon remembers them for {him}, and {he} does not draw it lightly.
+---
+{item} was pulled from the wreck of a caravan {name} helped put to the sword near {settlement}. It had belonged to the guard captain, a {culture} man who fought well and died badly, and {name} carries it with a respect {he} would not have shown the man in life.
+---
+{name} traded a good horse for {item} at a fair outside {settlement}, and spent the ride home wondering if {he} had been cheated. Years of hard use have long since answered the question in the weapon's favour, though {name} still misses the horse.
+---
+{item} is the work of {name}'s own hands, hammered out over a winter in {settlement} when there was little else to do and much to be angry about. It is not the finest weapon in {clan}, but it is the only one {name} trusts entirely, having watched every fault beaten out of it.
+---
+A boy dredging for eels near {settlement} pulled {item} from the river mud and sold it to {name} for a handful of copper, never guessing what it was. The current had scoured it clean of any owner's mark, so {name} gave it a new one and asked the water no questions.
+---
+{name} was given {item} by a lord {he} had dragged wounded from a losing field near {settlement}, a debt of life repaid in steel. The lord is gone now, to age or ambition, but the weapon stays, and {name} keeps it sharp the way one keeps faith with the dead.
