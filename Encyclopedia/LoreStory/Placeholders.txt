@@ -1,0 +1,249 @@
+============================================================
+  EDITABLE ENCYCLOPEDIA — PLACEHOLDERS & FORMATTING GUIDE
+  Version 2.1
+============================================================
+
+Placeholders work in LoreStory .txt files, Descriptions (Ctrl+E),
+and all Lore fields (Backstory, Personality, Goals, etc.).
+They resolve to live game data when displayed.
+
+============================================================
+  HERO PLACEHOLDERS
+============================================================
+
+  ── Identity ──
+  {name}            Hero's display name          "Derthert"
+  {title}           Custom title or Lord/Lady     "Lord"
+  {age}             Current age                   "52"
+  {occupation}      Occupation type               "Lord"
+  {gender}          Gender string                 "male"
+
+  ── Affiliation ──
+  {clan}            Clan name                     "dey Meroc"
+  {kingdom}         Kingdom name                  "Vlandia"
+  {faction}         Kingdom or clan fallback      "Vlandia"
+  {culture}         Culture name                  "Vlandian"
+  {ruler}           Kingdom ruler's name          "Derthert"
+
+  ── Location ──
+  {settlement}      Home settlement               "Pravend"
+  {hometown}        Same as {settlement}          "Pravend"
+
+  ── Family ──
+  {spouse}          Spouse's name                 "Rhagaea"
+  {father}          Father's name                 "Aldric"
+  {mother}          Mother's name                 "Svana"
+  {children_count}  Number of children            "3"
+
+  ── Stats ──
+  {wealth}          Gold amount                   "12,500"
+  {troops}          Party size                    "87"
+  {renown}          Clan renown                   "450"
+  {influence}       Clan influence                "120"
+  {tier}            Clan tier                     "4"
+  {battle_count}    Battles in journal            "12"
+
+  ── Social ──
+  {companion}       Random companion name         "Bortan"
+  {enemy}           Random enemy leader           "Monchug"
+  {friend}          Random friendly lord           "Olek"
+
+  ── Gender-Aware ──
+  {he}  / {He}      he/she (capitalized)
+  {him}             him/her
+  {his} / {His}     his/her (capitalized)
+  {man}             man/woman
+  {lord} / {Lord}   lord/lady (capitalized)
+  {son}             son/daughter
+  {brother}         brother/sister
+
+  ── Time ──
+  {date}            Current in-game date
+
+============================================================
+  SETTLEMENT PLACEHOLDERS
+============================================================
+
+  For Economy, Landmarks, Legends lore fields:
+
+  {name}            Settlement name               "Epicrotea"
+  {settlement}      Same as {name}
+  {culture}         Settlement culture             "Imperial"
+  {clan}            Owning clan name               "Pethros"
+  {kingdom}         Owning kingdom                 "Northern Empire"
+  {faction}         Kingdom or clan fallback
+  {owner}           Owner lord's name              "Lucon"
+  {ruler}           Kingdom ruler's name           "Lucon"
+  {prosperity}      Prosperity value               "2,500"
+  {garrison}        Garrison troop count           "150"
+  {militia}         Militia count                  "80"
+  {date}            Current in-game date
+
+============================================================
+  KINGDOM PLACEHOLDERS
+============================================================
+
+  For History, Laws, Culture & Customs, Military lore fields:
+
+  {name}            Kingdom name                   "Northern Empire"
+  {kingdom}         Same as {name}
+  {culture}         Kingdom culture                "Imperial"
+  {clan}            Ruling clan name               "Pethros"
+  {ruler}           King/Queen name                "Lucon"
+  {settlement}      Capital settlement             "Epicrotea"
+  {faction}         Same as {name}
+  {clans_count}     Number of vassal clans         "8"
+  {towns_count}     Number of towns                "3"
+  {castles_count}   Number of castles              "5"
+  {villages_count}  Number of villages             "12"
+  {strength}        Total military strength        "2,500"
+  {date}            Current in-game date
+
+============================================================
+  CLAN PLACEHOLDERS
+============================================================
+
+  For Founding, Territory, Traditions, Rivals lore fields:
+
+  {name}            Clan name                      "dey Meroc"
+  {clan}            Same as {name}
+  {culture}         Clan culture                   "Vlandian"
+  {kingdom}         Kingdom name                   "Vlandia"
+  {settlement}      Home settlement                "Pravend"
+  {faction}         Kingdom or clan fallback
+  {leader}          Clan leader's name             "Derthert"
+  {ruler}           Kingdom ruler's name           "Derthert"
+  {tier}            Clan tier                      "5"
+  {renown}          Clan renown                    "1,200"
+  {influence}       Clan influence                 "350"
+  {wealth}          Clan gold                      "45,000"
+  {lords_count}     Number of lords                "4"
+  {strength}        Total military strength        "800"
+  {date}            Current in-game date
+
+============================================================
+  RICH TEXT FORMATTING
+============================================================
+
+  Works in both Descriptions (Ctrl+E) and Lore fields.
+
+  ── Text Styles ──
+  **bold text**       Bright parchment color
+  *italic text*       Warm muted tone
+  __underline__       Bright highlighted text
+  ~~strikethrough~~   Faded/dimmed text (redacted lore)
+  {small}text{/}      Smaller font, muted (footnotes, whispers)
+
+  ── References & Color ──
+  [[Cross Ref]]       Golden highlight (like stat labels)
+  {#RRGGBB}text{/}   Custom hex color
+  {red}text{/}        Named color preset (see below)
+
+  ── Structure ──
+  ---                 Paragraph break / spacer
+  # Heading Text      Larger bold heading
+  > Quote text        Indented quote (inscriptions, dialogue)
+
+  ── Named Colors ──
+  {red}text{/}        Blood red
+  {blood}text{/}      Dark crimson
+  {gold}text{/}       Royal gold
+  {amber}text{/}      Warm amber
+  {blue}text{/}       Steel blue
+  {green}text{/}      Forest green
+  {purple}text{/}     Noble purple
+  {silver}text{/}     Silver grey
+  {white}text{/}      Bright white
+  {orange}text{/}     Warm orange
+  {teal}text{/}       Sea teal
+  {brown}text{/}      Earth brown
+
+  ── Hex Colors ──
+  {#CC3333}text{/}    Custom red
+  {#D4AF37}text{/}    Custom gold
+  {#4A90D9}text{/}    Custom blue
+  {#2ECC71}text{/}    Custom green
+  {#8E44AD}text{/}    Custom purple
+
+  EXAMPLE:
+    # The Fall of Epicrotea
+    **The siege** was a *pivotal moment* in the history
+    of the realm. [[Lucon]] led his forces against the
+    fortress, and the battle claimed {red}two hundred
+    lives{/} in a single day.
+    > "We shall not yield this city." — {gold}Lucon{/}
+    ---
+    ~~The original treaty was voided.~~
+    {small}Footnote: Some historians dispute this account.{/}
+    The aftermath reshaped the political landscape forever.
+
+============================================================
+  CROSS-REFERENCE LINKS — [[Name]]
+============================================================
+
+  Wrap any name in double brackets for golden highlight.
+  Display-only (not clickable). Brackets are stripped.
+
+  EXAMPLES:
+    [[Derthert]] marched on [[Pravend]] at dawn.
+    The alliance between [[Vlandia]] and [[Sturgia]] held firm.
+    [[{name}]] fled from [[{settlement}]] after the siege.
+
+============================================================
+  HOW TO USE
+============================================================
+
+  1. Write entries in .txt files in the LoreStory/ folder
+  2. Separate entries with "---" on its own line
+  3. Use placeholders for dynamic content
+  4. Use formatting for visual emphasis
+
+  EXAMPLE (Backstory/Lord.txt):
+
+    Born in {settlement}, {name} was the eldest {son} of
+    {father}. {He} grew up among the {culture} people and
+    at age {age}, {he} commands {troops} soldiers in the
+    service of [[{ruler}]]. With {wealth} gold and {renown}
+    renown, {his} {clan} stands at tier {tier}.
+    ---
+
+  EXAMPLE (Edit Descriptions):
+  
+    **The Fall of Epicrotea** was a *pivotal moment* in the history of the realm. 
+    [[Lucon]] led his forces against the fortress, and the battle claimed 
+    {#CC3333}two hundred lives{/} in a single day.
+    ---
+    The aftermath reshaped the political landscape forever.
+
+
+
+  FILE STRUCTURE:
+    LoreStory/
+    ├── Backstory/General.txt       (all heroes)
+    ├── Backstory/Lord.txt          (lords only)
+    ├── Backstory/Merchant.txt      (merchants only)
+    ├── Personality/General.txt
+    ├── Goals/General.txt
+    ├── Relationships/General.txt
+    ├── RumorsAndSecrets/General.txt
+    ├── Founding/General.txt        (clans)
+    ├── Territory/General.txt       (clans)
+    ├── History/General.txt         (kingdoms)
+    ├── Economy/General.txt         (settlements)
+    └── Placeholders.txt            (this file)
+
+  PRIORITY: Occupation-specific → General → Template prompts
+
+============================================================
+  TIPS
+============================================================
+
+  • Use {he}/{his}/{him} for gender-neutral writing
+  • Keep entries 3-5 sentences for readability
+  • Use [[{name}]] to cross-reference the hero themselves
+  • Combine placeholders: "{name} of {clan}, tier {tier}"
+  • {enemy} and {friend} are random — different each time
+  • 50+ entries per file prevents duplicates in large campaigns
+  • Create themed lore packs by replacing all .txt files
+
+============================================================

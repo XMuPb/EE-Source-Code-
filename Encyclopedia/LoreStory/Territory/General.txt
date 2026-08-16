@@ -1,0 +1,19 @@
+The lands held by {clan} stretch outward from {settlement} in a rough crescent, anchored by the town itself and the surrounding farmland. The eastern border runs along a river that serves as both a natural defense and a source of endless dispute with neighboring clans. {name} has walked every mile of that border and knows which crossings are shallow enough for mounted raiders to exploit.
+---
+{clan} controls a narrow but strategically vital pass near {settlement} that any army marching through {kingdom} must use or spend weeks detouring around. Tolls from this pass fund much of the clan's operations, and {name} stations sentries there year-round. More than one ambitious lord has offered to buy the pass outright, but {clan} has refused every time.
+---
+The heartland of {clan}'s territory is a stretch of fertile lowland near {settlement}, where {culture} farmers have worked the soil for generations. It produces enough grain to feed the clan through harsh winters and still have surplus to trade. {name} considers the defense of these fields as important as the defense of any castle wall.
+---
+{settlement} sits at the center of {clan}'s holdings, but the true prize is the dense forest to the north. Its timber supplies the shipwrights and builders of {kingdom}, and its depths provide refuge when enemies come in force. {name} knows hidden paths through those woods that no outsider has ever found, and {he} intends to keep it that way.
+---
+The borders of {clan}'s territory have shifted three times in living memory, each time after a war that cost more than the land was worth. Currently, {name} holds a defensive line anchored on {settlement} that is shorter and easier to maintain than what {clan} once claimed. Some call it a retreat, but {name} calls it wisdom — better to hold less and hold it well.
+---
+{clan}'s territory includes a stretch of coastline south of {settlement} that provides access to fishing grounds and sea trade routes. Control of these waters has made {clan} wealthier than its modest landholdings would suggest. {name} maintains a small fleet of patrol boats to discourage pirates and to remind {kingdom}'s other lords that the sea belongs to those who guard it.
+---
+A ruined fortress on the western edge of {clan}'s lands has been contested for decades. Neither {clan} nor its neighbors have the resources to fully garrison it, but neither will abandon it. {name} stations a rotating watch there, more as a statement of intent than a true defense. The ruin overlooks the road to {settlement}, and whoever holds it controls who comes and goes.
+---
+The mining settlements in the hills above {settlement} are {clan}'s most valuable and most vulnerable holdings. Iron and copper flow down from those hills, feeding forges across {kingdom}, but the roads are long and exposed to raiders. {name} spends more coin protecting those supply lines than on any other aspect of territorial defense.
+---
+{clan} shares a long and poorly defined border with a rival faction to the south of {settlement}. There are no rivers, ridges, or walls to mark where one claim ends and another begins, only tradition and the memory of old agreements. {name} has tried to negotiate a formal boundary three times, but each attempt has collapsed into accusations of encroachment and bad faith.
+---
+The territory around {settlement} that {clan} calls home is not the richest or the largest in {kingdom}, but it is defensible. Ringed by hills on three sides and with only two main roads leading in, it is a place that rewards a patient defender. {name} has studied every siege in {culture} history that was fought on similar ground, and {he} is confident that no force could take {settlement} without paying a terrible price.

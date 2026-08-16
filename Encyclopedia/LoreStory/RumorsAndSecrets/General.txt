@@ -1,0 +1,39 @@
+They say {name} killed someone important before arriving in {settlement}. The details change with every telling — a noble in a duel, a merchant over a debt, a lover in a rage. {name} neither confirms nor denies any version, which only fuels the speculation.
+---
+Tavern gossip claims {name} has a fortune buried somewhere in the hills near {settlement}. Gold plundered during wartime, hidden away for a rainy day. Several treasure hunters have searched the area and found nothing, but the rumor persists.
+---
+An old woman in {settlement} claims {name} is not who they say they are. According to her, the real {name} died years ago, and this person assumed their identity. Most dismiss her as senile, but she speaks with unsettling certainty.
+---
+Soldiers who served with {name} whisper about a battle where they showed inhuman endurance — fighting for hours without rest, taking wounds that should have killed them, refusing to fall. Some credit {culture} battle trance; others suggest darker explanations.
+---
+A sealed document, kept in a leather case that {name} never lets out of their sight, is the subject of endless speculation. Some say it's a royal pardon, others a death warrant, and still others believe it's a love letter from someone who would shock the court.
+---
+{name} supposedly made a deal with someone powerful and dangerous during their time in {settlement}. The exact nature of the bargain varies by telling, but all versions agree: {name} got what they wanted, and the price hasn't been fully paid yet.
+---
+Local herbalists noticed that {name} buys unusual quantities of certain plants — ingredients known for either powerful medicines or subtle poisons. When asked, {name} claims they're for treating horse ailments. The horses seem perfectly healthy.
+---
+There's a room in every inn {name} stays at that they insist on checking before sleeping. They look behind tapestries, under beds, inside wardrobes. No one knows what they're looking for, and {name} never explains. Whatever it is, they haven't found it yet.
+---
+A traveling bard wrote a song about {name} that's banned in two kingdoms. The lyrics tell of a forbidden romance, a midnight escape, and a chase across the frozen river near {settlement}. {name} has been known to leave establishments where the song is played.
+---
+{name}'s followers believe they once saw a ghost in {settlement} — and that the ghost told them something. Since that night, {name}'s decision-making changed. More cautious, more strategic, as if they're playing a longer game than anyone around them realizes.
+---
+Money appears in {name}'s coffers from an unknown source. Regular payments, always in gold, delivered by different messengers each time. {name} accepts the money without question. Either they know who sends it, or they don't care — and neither possibility is comforting.
+---
+Three different people in three different cities claim to be {name}'s spouse. None of them are lying — {name} apparently married under different names before their current life began. If these spouses ever meet, the resulting scandal would be spectacular.
+---
+{name} can read and write in a language that no scholar in {settlement} has been able to identify. The script appears on notes they write to themselves, quickly hidden if anyone approaches. Some believe it's a code; others think it's the writing of a dead civilization.
+---
+A prominent {culture} elder once publicly denounced {name} as "a danger to everything we hold sacred" but refused to explain further. The elder died shortly after under mysterious circumstances. {name} attended the funeral with an expression no one could read.
+---
+{name} has been seen talking to ravens. Not the figurative kind — actual ravens. They perch near wherever {name} camps, and witnesses have heard them having full conversations with the birds. {name} claims they simply enjoy the company. The ravens seem to agree.
+---
+Persistent rumors connect {name} to the disappearance of a valuable artifact from a temple near {settlement}. The timing matches, the motive exists, but no evidence has ever surfaced. The temple priests watch {name} with cold suspicion whenever they visit.
+---
+{name} once walked away from a fortune. A chest of gold, offered freely, with no strings attached — and they refused it. The reason has never been satisfactorily explained, and those who witnessed it still argue about what it meant.
+---
+Soldiers report that {name} sometimes talks in their sleep — in a language they don't know, in a voice that doesn't sound like their own. By morning, {name} remembers nothing. The soldiers have learned not to camp too close.
+---
+A healer who treated {name}'s wounds reported unusual scarring — old wounds that seem to have healed in ways that shouldn't be possible. When pressed, the healer would only say, "That person has survived things that should have killed them many times over."
+---
+{name} keeps a small, worn figurine carved from bone. It depicts a person — or something like a person — with features too detailed to be casual whittling. No one knows who made it or what it represents, but {name} holds it before every battle like a prayer.
