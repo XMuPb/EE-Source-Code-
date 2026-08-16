@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- top-left composite: active quest tracker (food/gear vendor quests) over the
+         quick-action bar. same scoreboard banner backdrop and @-bound AlphaFactor +
+         MarginLeft slide-in as CampInfoPanel.xml. -->
+    <Widget WidthSizePolicy="StretchToParent"
+            HeightSizePolicy="StretchToParent"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top">
+      <Children>
+        <Widget WidthSizePolicy="Fixed"
+                HeightSizePolicy="Fixed"
+                SuggestedWidth="380"
+                SuggestedHeight="200"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                MarginLeft="@TopLeftLeftMargin"
+                MarginTop="20"
+                Sprite="SPGeneral\SPScoreboard\banner"
+                AlphaFactor="@TopLeftAlpha">
+          <Children>
+            <!-- Inset wrapper keeps content inside banner safe area -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    MarginTop="16" MarginBottom="16" MarginLeft="10" MarginRight="10">
+              <Children>
+
+                <!-- ========== SECTION A: ACTIVE QUESTS ========== -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="18" SuggestedHeight="18"
+                        MarginLeft="14" MarginTop="2"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Sprite="General\Icons\icon_issue_active_square" ColorFactor="1.4" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="20"
+                            MarginLeft="40" MarginRight="14" MarginTop="0"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Brush="MultiplayerLobby.LobbyPageHeader"
+                            Text="{=bp_pf_camptopleft_001}ACTIVE TASKS" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                        MarginLeft="12" MarginRight="12" MarginTop="26"
+                        Sprite="horizontal_gradient_divider_9" />
+
+                <!-- "No active quests" placeholder — visible when nothing accepted -->
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                            MarginLeft="14" MarginRight="14" MarginTop="42"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Brush="Conversation.ConversationHero.Name"
+                            Text="{=bp_pf_camptopleft_002}No active vendor quests"
+                            IsVisible="@HasNoQuestsActive" />
+
+                <!-- Food quest row — visible when food quest active -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="18" SuggestedHeight="18"
+                        MarginLeft="14" MarginTop="42"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Sprite="@FoodTierIcon"
+                        IsVisible="@IsFoodQuestActive" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                            MarginLeft="40" MarginRight="14" MarginTop="40"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Brush="Conversation.ConversationHero.Name"
+                            Text="@FoodQuestLine"
+                            IsVisible="@IsFoodQuestActive" />
+
+                <!-- Gear quest row — visible when gear quest active -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="18" SuggestedHeight="18"
+                        MarginLeft="14" MarginTop="68"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Sprite="@GearTierIcon"
+                        IsVisible="@IsGearQuestActive" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                            MarginLeft="40" MarginRight="14" MarginTop="66"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Brush="Conversation.ConversationHero.Name"
+                            Text="@GearQuestLine"
+                            IsVisible="@IsGearQuestActive" />
+
+                <!-- Section divider -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                        MarginLeft="12" MarginRight="12" MarginTop="100"
+                        Sprite="horizontal_gradient_divider_9" />
+
+                <!-- ========== SECTION B: QUICK ACTIONS ========== -->
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                            MarginLeft="14" MarginRight="14" MarginTop="108"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            Brush="MultiplayerLobby.LobbyPageHeader"
+                            Text="{=bp_pf_camptopleft_003}QUICK ACTIONS" />
+
+                <!-- 4 icon buttons in a row, 80x42 each, ~8px gap -->
+                <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                              SuggestedWidth="80" SuggestedHeight="42"
+                              MarginLeft="8" MarginTop="132"
+                              HorizontalAlignment="Left" VerticalAlignment="Top"
+                              UpdateChildrenStates="true"
+                              DoNotPassEventsToChildren="true"
+                              Command.Click="ExecuteTalkChief">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="38" SuggestedHeight="38"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="General\Icons\Morale@2x" />
+                  </Children>
+                </ButtonWidget>
+
+                <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                              SuggestedWidth="80" SuggestedHeight="42"
+                              MarginLeft="96" MarginTop="132"
+                              HorizontalAlignment="Left" VerticalAlignment="Top"
+                              UpdateChildrenStates="true"
+                              DoNotPassEventsToChildren="true"
+                              Command.Click="ExecuteFoodVendor">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="38" SuggestedHeight="38"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="General\Icons\Food@2x" />
+                  </Children>
+                </ButtonWidget>
+
+                <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                              SuggestedWidth="80" SuggestedHeight="42"
+                              MarginLeft="184" MarginTop="132"
+                              HorizontalAlignment="Left" VerticalAlignment="Top"
+                              UpdateChildrenStates="true"
+                              DoNotPassEventsToChildren="true"
+                              Command.Click="ExecuteGearVendor">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="38" SuggestedHeight="38"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="General\Icons\ShopIcons\smithy_small" />
+                  </Children>
+                </ButtonWidget>
+
+                <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                              SuggestedWidth="80" SuggestedHeight="42"
+                              MarginLeft="272" MarginTop="132"
+                              HorizontalAlignment="Left" VerticalAlignment="Top"
+                              UpdateChildrenStates="true"
+                              DoNotPassEventsToChildren="true"
+                              Command.Click="ExecuteLeave">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="38" SuggestedHeight="38"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="General\Icons\icon_quest_failed_mark" />
+                  </Children>
+                </ButtonWidget>
+
+              </Children>
+            </Widget>
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

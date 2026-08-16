@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- sneak-in SHADOW BAR, bottom-center, BandIt Plus house framing (07-03):
+         soft glow pool behind the panel (chief-card family), gold hairline
+         footer, BANDIT PLUS mark. amber = being noticed, red = SEEN with the
+         native grace timer draining, green flash = cleared.
+         driven by BpSneakShadowController. -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="360" SuggestedHeight="140"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="150"
+                IsVisible="@Show" AlphaFactor="@ContainerAlpha">
+          <Children>
+            <!-- soft pool so the panel sits IN the scene instead of on it -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    Sprite="General\CharacterDeveloper\add_focus_button_glow" Color="#050302EE"
+                    DoNotAcceptEvents="true" />
+
+            <!-- the panel -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="86"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Sprite="BlankWhiteSquare_9" Color="#0B0906F0">
+              <Children>
+                <!-- state-colored top accent -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                        VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="@Tint" />
+                <!-- house gold hairline, bottom -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                        VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#3A2C1EFF" />
+
+                <!-- EYE (small, subtle glow so the ring stays readable) -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="24" SuggestedHeight="24"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="12" MarginTop="9">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="GradientCircle" Color="@Tint" AlphaFactor="0.35" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="18" SuggestedHeight="18"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="BlankWhiteCircleOutlined" Color="@Tint" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="8" SuggestedHeight="8"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="BlankWhiteCircle" Color="@Tint" AlphaFactor="@EyeAlpha" />
+                  </Children>
+                </Widget>
+
+                <!-- STATE (beside the eye) -->
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="150" SuggestedHeight="20"
+                            HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="44" MarginTop="10"
+                            Brush="BandItPlus.FooterLeft" Color="@Tint" Text="@State" />
+
+                <!-- WATCHERS (right) -->
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="100" SuggestedHeight="16"
+                            HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="12" MarginTop="13"
+                            Brush="BandItPlus.Caption" Text="@WatchersText" />
+
+                <!-- SUSPICION / GRACE BAR -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="276" SuggestedHeight="8"
+                        HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="38"
+                        Sprite="BlankWhiteSquare_9" Color="#000000B4">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="@FillWidth"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                            Sprite="BlankWhiteSquare" Color="@Tint" />
+                  </Children>
+                </Widget>
+
+                <!-- HINT (bottom-left of the footer row) -->
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="200" SuggestedHeight="16"
+                            HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="12" MarginTop="56"
+                            Brush="BandItPlus.CaptionLeft" Text="@HintText" />
+
+                <!-- house mark, bottom-right -->
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="90" SuggestedHeight="14"
+                            HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="12" MarginTop="58"
+                            Brush="BandItPlus.Caption" Text="{=bp_pf_sneakshadowbar_001}BANDIT PLUS" />
+              </Children>
+            </Widget>
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

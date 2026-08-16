@@ -1,0 +1,490 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- camp info panel, dark RPG-HUD style. flat near-opaque dark backings
+         (BlankWhiteSquare_9), one thin gold edge-accent bar per block, faint gold
+         hairline dividers, restrained gold overall. @BackdropAlpha fade-in,
+         @SectionGlowFactor icon pulse. -->
+    <Widget WidthSizePolicy="StretchToParent"
+            HeightSizePolicy="StretchToParent"
+            HorizontalAlignment="Left"
+            VerticalAlignment="Top"
+            IsVisible="@IsPanelVisible">
+      <Children>
+        <!-- ============ BRANDING BADGE ============ -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                SuggestedWidth="320" SuggestedHeight="92"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                MarginLeft="40" MarginTop="40"
+                Sprite="BlankWhiteSquare_9" Color="#15120DF6"
+                AlphaFactor="@BackdropAlpha">
+          <Children>
+            <!-- sleek signature: thin gold left edge-accent -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                    SuggestedWidth="3" HorizontalAlignment="Left"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" />
+            <!-- heraldic glyph, gold-pulsing -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="40" SuggestedHeight="40"
+                    MarginLeft="22" MarginTop="26"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Mission\PersonalKillfeed\friendly_fire_icon"
+                    ColorFactor="@SectionGlowFactor" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32"
+                        MarginLeft="74" MarginRight="74" MarginTop="20"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.ChiefName"
+                        Text="{=bp_pf_campinfopanel_001}BandIt Plus" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                        MarginLeft="74" MarginRight="74" MarginTop="54"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.CultureName"
+                        Text="{=bp_pf_campinfopanel_002}by XMuPb · Hideout Visit Mod" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="56" SuggestedHeight="56"
+                    MarginRight="10" MarginTop="18"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    Sprite="General\Icons\bounty_icon_player"
+                    ColorFactor="@SectionGlowFactor" />
+          </Children>
+        </Widget>
+
+        <!-- ============ MAIN INFO PANEL ============ -->
+        <Widget WidthSizePolicy="Fixed"
+                HeightSizePolicy="Fixed"
+                SuggestedWidth="380"
+                SuggestedHeight="860"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Top"
+                MarginTop="150"
+                MarginLeft="@PanelLeftMargin"
+                Sprite="BlankWhiteSquare_9"
+                AlphaFactor="@BackdropAlpha"
+                Color="#13110CF6">
+          <Children>
+            <!-- sleek signature: thin gold left edge-accent, full height -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                    SuggestedWidth="4" HorizontalAlignment="Left"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" />
+
+            <!-- inset content frame. ML 14 clears the 4px gold edge bar; all
+                 inner MarginTop values are unchanged from the proven layout. -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    MarginTop="22" MarginBottom="22" MarginLeft="14" MarginRight="10">
+              <Children>
+
+            <!-- faint inner panels give each block card-like separation; subtle gold
+                 chips sit behind the header icons. declared first so they render
+                 behind all content. -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="118"
+                    MarginLeft="10" MarginRight="8" MarginTop="12"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF12" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="62"
+                    MarginLeft="10" MarginRight="8" MarginTop="138"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF12" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="126"
+                    MarginLeft="10" MarginRight="8" MarginTop="208"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF12" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="118"
+                    MarginLeft="10" MarginRight="8" MarginTop="342"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF12" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="94"
+                    MarginLeft="10" MarginRight="8" MarginTop="468"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF12" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="30"
+                    MarginLeft="14" MarginTop="139" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E33" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="30"
+                    MarginLeft="14" MarginTop="209" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E33" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="30"
+                    MarginLeft="14" MarginTop="343" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E33" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="30"
+                    MarginLeft="14" MarginTop="469" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E33" />
+            <!-- quick-actions block card -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="80"
+                    MarginLeft="10" MarginRight="8" MarginTop="628"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF12" />
+
+            <!-- chief face portrait (left) + player banner (right). the chief slot is
+                 an ImageIdentifierWidget bound to a CharacterImageIdentifierVM
+                 (DataSource). -->
+            <ImageIdentifierWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                   SuggestedWidth="70" SuggestedHeight="84"
+                                   HorizontalAlignment="Left" VerticalAlignment="Top"
+                                   MarginLeft="22" MarginTop="18"
+                                   IsVisible="@HasChiefPortrait"
+                                   DataSource="{ChiefPortrait}"
+                                   TextureProviderName="@TextureProviderName" ImageId="@Id" />
+            <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                          SuggestedWidth="70" SuggestedHeight="84"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          MarginLeft="22" MarginTop="18"
+                          DoNotPassEventsToChildren="true"
+                          Command.Click="ExecuteShowLore" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="2" SuggestedHeight="70"
+                    MarginLeft="96" MarginTop="25"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E66" />
+            <BannerTableauWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                 SuggestedWidth="70" SuggestedHeight="84"
+                                 HorizontalAlignment="Left" VerticalAlignment="Top"
+                                 MarginLeft="104" MarginTop="18"
+                                 BannerCodeText="@PlayerBannerCode" IsNineGrid="true" />
+            <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                          SuggestedWidth="70" SuggestedHeight="84"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          MarginLeft="104" MarginTop="18"
+                          DoNotPassEventsToChildren="true"
+                          Command.Click="ExecutePlayerLore" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="34"
+                        MarginLeft="184" MarginRight="12" MarginTop="20"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.ChiefName"
+                        Text="@ChiefName" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="28"
+                        MarginLeft="184" MarginRight="12" MarginTop="56"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.ChiefTitle"
+                        Text="@ChiefTitle" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="24"
+                        MarginLeft="184" MarginRight="12" MarginTop="86"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.CultureName"
+                        Text="@CultureName" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="12" MarginTop="114"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.Footer"
+                        Text="@CampMemoryLine" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="18" MarginTop="580"
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                        Brush="BandItPlus.Footer"
+                        Text="@TimeOfDayLine" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="18" MarginTop="600"
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                        Brush="BandItPlus.Footer"
+                        Text="@NextStepHint" />
+            <!-- faint gold hairline (sleek divider) -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                    MarginLeft="15" MarginRight="15" MarginTop="130"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E55" />
+
+            <!-- HEADER: CHIEF -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="22" SuggestedHeight="22"
+                    MarginLeft="18" MarginTop="143"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Icons\Influence@2x" ColorFactor="@SectionGlowFactor" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="20"
+                        MarginLeft="42" MarginRight="18" MarginTop="142"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionHeader"
+                        Text="{=bp_pf_campinfopanel_003}CHIEF" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                        MarginLeft="18" MarginRight="18" MarginTop="168"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@ChiefTrustLabel" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                    MarginLeft="15" MarginRight="15" MarginTop="200"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E55" />
+
+            <!-- HEADER: VENDORS -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="22" SuggestedHeight="22"
+                    MarginLeft="18" MarginTop="213"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Icons\Coin@2x" ColorFactor="@SectionGlowFactor" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="20"
+                        MarginLeft="42" MarginRight="18" MarginTop="212"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionHeader"
+                        Text="{=bp_pf_campinfopanel_004}VENDORS" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="20"
+                        MarginLeft="18" MarginRight="18" MarginTop="238"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@FoodVendorName" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="28" MarginRight="18" MarginTop="260"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@FoodVendorTrustLabel" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="20"
+                        MarginLeft="18" MarginRight="18" MarginTop="284"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@GearVendorName" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="28" MarginRight="18" MarginTop="306"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@GearVendorTrustLabel" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                    MarginLeft="15" MarginRight="15" MarginTop="334"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E55" />
+
+            <!-- HEADER: QUESTS -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="22" SuggestedHeight="22"
+                    MarginLeft="18" MarginTop="347"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Icons\icon_issue_available" ColorFactor="@SectionGlowFactor" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="20"
+                        MarginLeft="42" MarginRight="18" MarginTop="346"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionHeader"
+                        Text="{=bp_pf_campinfopanel_005}QUESTS" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="14" SuggestedHeight="14"
+                    MarginLeft="20" MarginTop="374"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Icons\icon_issue_active_square" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="40" MarginRight="18" MarginTop="372"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@ActiveFoodQuestText" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="14" SuggestedHeight="14"
+                    MarginLeft="20" MarginTop="394"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Icons\icon_issue_active_square" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="40" MarginRight="18" MarginTop="392"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@ActiveGearQuestText" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="14" SuggestedHeight="14"
+                    MarginLeft="20" MarginTop="414"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Icons\icon_story_quest_active_square" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="40" MarginRight="18" MarginTop="412"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@ActiveChiefQuestText" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="14" SuggestedHeight="14"
+                    MarginLeft="20" MarginTop="434"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Icons\issue_target_icon" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="40" MarginRight="18" MarginTop="432"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@CustomOrderStatus" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                    MarginLeft="15" MarginRight="15" MarginTop="460"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E55" />
+
+            <!-- HEADER: NETWORK -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="22" SuggestedHeight="22"
+                    MarginLeft="18" MarginTop="473"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Icons\Army" ColorFactor="@SectionGlowFactor" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="20"
+                        MarginLeft="42" MarginRight="18" MarginTop="472"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionHeader"
+                        Text="{=bp_pf_campinfopanel_006}NETWORK" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="18" MarginTop="498"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@FoodContactStatus" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="18" MarginTop="518"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@GearContactStatus" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="18" MarginTop="540"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@ServicesText" />
+
+            <!-- QUICK ACTIONS -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                    MarginLeft="15" MarginRight="15" MarginTop="626"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E55" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="18" MarginTop="634"
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionHeader"
+                        Text="{=bp_pf_campinfopanel_007}QUICK ACTIONS" />
+            <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                          SuggestedWidth="80" SuggestedHeight="42"
+                          MarginLeft="14" MarginTop="658"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          UpdateChildrenStates="true"
+                          DoNotPassEventsToChildren="true"
+                          Command.Click="ExecuteTalkChief">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="44" SuggestedHeight="44"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Sprite="General\Icons\Morale@2x" />
+                <HintWidget DataSource="{TalkChiefHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsEnabled="false" />
+              </Children>
+            </ButtonWidget>
+            <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                          SuggestedWidth="80" SuggestedHeight="42"
+                          MarginLeft="100" MarginTop="658"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          UpdateChildrenStates="true"
+                          DoNotPassEventsToChildren="true"
+                          Command.Click="ExecuteFoodVendor">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="44" SuggestedHeight="44"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Sprite="General\Icons\Food@2x" />
+                <HintWidget DataSource="{FoodVendorHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsEnabled="false" />
+              </Children>
+            </ButtonWidget>
+            <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                          SuggestedWidth="80" SuggestedHeight="42"
+                          MarginLeft="186" MarginTop="658"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          UpdateChildrenStates="true"
+                          DoNotPassEventsToChildren="true"
+                          Command.Click="ExecuteGearVendor">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="44" SuggestedHeight="44"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Sprite="General\Icons\ShopIcons\smithy_small" />
+                <HintWidget DataSource="{GearVendorHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsEnabled="false" />
+              </Children>
+            </ButtonWidget>
+            <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                          SuggestedWidth="80" SuggestedHeight="42"
+                          MarginLeft="272" MarginTop="658"
+                          HorizontalAlignment="Left" VerticalAlignment="Top"
+                          UpdateChildrenStates="true"
+                          DoNotPassEventsToChildren="true"
+                          Command.Click="ExecuteLeave">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="44" SuggestedHeight="44"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Sprite="General\Icons\icon_quest_failed_mark" />
+                <HintWidget DataSource="{LeaveHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsEnabled="false" />
+              </Children>
+            </ButtonWidget>
+
+            <!-- CAMP RECORD — appended section (panel is 860 tall for it; the sections
+                 above are not reflowed). derived relationship summary. -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="112"
+                    MarginLeft="10" MarginRight="8" MarginTop="712"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF12" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                    MarginLeft="15" MarginRight="15" MarginTop="712"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E55" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="30"
+                    MarginLeft="14" MarginTop="717" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24E33" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="22" SuggestedHeight="22"
+                    MarginLeft="18" MarginTop="721" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="General\Icons\icon_story_quest_active_square" ColorFactor="@SectionGlowFactor" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="20"
+                        MarginLeft="42" MarginRight="18" MarginTop="720"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionHeader"
+                        Text="{=bp_pf_campinfopanel_008}CAMP RECORD" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="18" MarginTop="746"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@CampRecordLine1" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="18" MarginTop="768"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@CampRecordLine2" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        MarginLeft="18" MarginRight="18" MarginTop="790"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        Brush="BandItPlus.SectionBody"
+                        Text="@CampRecordLine3" />
+
+            <!-- trust gold bars — dark track + gold fill whose SuggestedWidth is bound
+                 to the VM (tier 0..3 -> 0..150px) -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="150" SuggestedHeight="8"
+                    MarginLeft="150" MarginTop="174" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF26" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="@ChiefTrustFillWidth" SuggestedHeight="8"
+                    MarginLeft="150" MarginTop="174" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#E3B65AFF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="150" SuggestedHeight="8"
+                    MarginLeft="90" MarginTop="263" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF26" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="@FoodTrustFillWidth" SuggestedHeight="8"
+                    MarginLeft="90" MarginTop="263" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#E3B65AFF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="150" SuggestedHeight="8"
+                    MarginLeft="90" MarginTop="309" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF26" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="@GearTrustFillWidth" SuggestedHeight="8"
+                    MarginLeft="90" MarginTop="309" HorizontalAlignment="Left" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare_9" Color="#E3B65AFF" />
+
+            <!-- per-section hover tooltips: transparent ButtonWidget + HintWidget child.
+                 declared last so they sit on top and catch hover; no Command.Click —
+                 tooltip regions only. -->
+            <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="62"
+                          MarginLeft="10" MarginRight="8" MarginTop="138"
+                          HorizontalAlignment="Left" VerticalAlignment="Top">
+              <Children>
+                <HintWidget DataSource="{ChiefSectionHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsEnabled="false" />
+              </Children>
+            </ButtonWidget>
+            <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="126"
+                          MarginLeft="10" MarginRight="8" MarginTop="208"
+                          HorizontalAlignment="Left" VerticalAlignment="Top">
+              <Children>
+                <HintWidget DataSource="{VendorsSectionHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsEnabled="false" />
+              </Children>
+            </ButtonWidget>
+            <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="118"
+                          MarginLeft="10" MarginRight="8" MarginTop="342"
+                          HorizontalAlignment="Left" VerticalAlignment="Top">
+              <Children>
+                <HintWidget DataSource="{QuestsSectionHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsEnabled="false" />
+              </Children>
+            </ButtonWidget>
+            <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="94"
+                          MarginLeft="10" MarginRight="8" MarginTop="468"
+                          HorizontalAlignment="Left" VerticalAlignment="Top">
+              <Children>
+                <HintWidget DataSource="{NetworkSectionHint}" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint" IsEnabled="false" />
+              </Children>
+            </ButtonWidget>
+
+              </Children>
+            </Widget>
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

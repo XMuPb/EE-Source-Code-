@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- bottom-center "[F] Pick the lock" prompt. persistent layer, no input capture;
+         BpJailbreakMissionController toggles @Show by door proximity. -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <!-- gold frame -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="288" SuggestedHeight="54"
+                HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="150"
+                IsVisible="@Show" Sprite="BlankWhiteSquare_9" Color="#C8A24EFF">
+          <Children>
+            <!-- dark inner fill (2px gold border shows around) -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                    Sprite="BlankWhiteSquare_9" Color="#0C0907FA">
+              <Children>
+                <!-- soft gold top sheen -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="3"
+                        VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#E8C25A2E" />
+
+                <!-- F key glyph: gold-bordered dark box -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="34" SuggestedHeight="34"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="12"
+                        Sprite="BlankWhiteSquare_9" Color="#E8C25AFF">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                            Sprite="BlankWhiteSquare_9" Color="#15100AFF">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Brush="BandItPlus.Footer" Color="#FFE8A0FF" Text="{=bp_pf_lockpickprompt_001}F" />
+                      </Children>
+                    </Widget>
+                  </Children>
+                </Widget>
+
+                <!-- gold divider between key and label -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="1" SuggestedHeight="28"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="56"
+                        Sprite="BlankWhiteSquare" Color="#C8A24E66" />
+
+                <!-- label -->
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="208" SuggestedHeight="26"
+                            HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="68"
+                            Brush="BandItPlus.SectionBody" Color="#F0D27AFF" Text="@Label" />
+              </Children>
+            </Widget>
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

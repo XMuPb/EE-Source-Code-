@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <!-- jailbreak briefing menu. left = breakout art (bp_jail1) + torch flicker; right = weathered
+       briefing with forged perk-icon badges and stated-brush metal buttons (hover brightens, press
+       darkens). entrance: black curtain reveals the frame, then art -> header -> flavor -> rows ->
+       reward -> buttons ease in (@ArtAlpha/@HeaderAlpha/@FlavorAlpha/@RowsAlpha/@RewardAlpha/
+       @ButtonsAlpha). opened as a focus layer over the captivity menu by BpJailbreakBriefScreen.
+       fixed top-anchored layout. -->
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+
+        <!-- opaque scrim -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare" Color="#000000F2" />
+
+        <!-- ── framed panel ── -->
+        <Widget WidthSizePolicy="Fixed" SuggestedWidth="1180" HeightSizePolicy="Fixed" SuggestedHeight="800"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Children>
+
+            <!-- gold border + dark inner fill -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#13100AFF" />
+
+            <!-- corner bolts -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="9" HeightSizePolicy="Fixed" SuggestedHeight="9" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="10" MarginTop="10" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="9" HeightSizePolicy="Fixed" SuggestedHeight="9" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="10" MarginTop="10" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="9" HeightSizePolicy="Fixed" SuggestedHeight="9" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="10" MarginBottom="10" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="9" HeightSizePolicy="Fixed" SuggestedHeight="9" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="10" MarginBottom="10" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+
+            <!-- ── LEFT: breakout art (fades in via @ArtAlpha) ── -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="500" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" MarginLeft="2" MarginTop="2" MarginBottom="2" AlphaFactor="@ArtAlpha">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare" Color="#0A0705FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="bp_jail1" DoNotAcceptEvents="true" />
+                <!-- living torch flicker -->
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="260" HeightSizePolicy="Fixed" SuggestedHeight="260" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="120" Sprite="CharacterDeveloper\add_focus_button_glow" Color="@TorchHex" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="150" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#0A07058C" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" Sprite="BlankWhiteSquare" Color="#C8A24EFF" DoNotAcceptEvents="true" />
+              </Children>
+            </Widget>
+
+            <!-- ── RIGHT: weathered briefing (cascade-animated by group) ── -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="636" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" MarginRight="20" MarginTop="2" MarginBottom="2">
+              <Children>
+
+                <!-- torchlight pooling from the art side -->
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="620" HeightSizePolicy="Fixed" SuggestedHeight="420" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="-120" MarginTop="-80" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#7A3E1438" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+
+                <!-- header group -->
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="44" VerticalAlignment="Top" MarginTop="26" Brush="BandItPlus.Book.CardTitleC" Text="{=bp_pf_bpjailbreakbrief_001}THE JAILBREAK" AlphaFactor="@HeaderAlpha" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22" VerticalAlignment="Top" MarginTop="74" Brush="BandItPlus.Codex.BodyCenter" Text="@SublineText" AlphaFactor="@HeaderAlpha" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="540" HeightSizePolicy="Fixed" SuggestedHeight="10" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="104" Sprite="horizontal_gradient_divider_9" Color="#D8B05AD2" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="22" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="98" Brush="BandItPlus.Codex.BodyCenterGold" Text="◆" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+
+                <!-- flavor group -->
+                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="600" HeightSizePolicy="Fixed" SuggestedHeight="76" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="124" Brush="BandItPlus.Book.CardBody" Text="{=bp_pf_bpjailbreakbrief_002}The guard’s torch gutters against wet stone, and the reek of the pit clings to your throat. Somewhere far above — past the bars, past the long black stair — the night air is moving free." AlphaFactor="@FlavorAlpha" />
+                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="600" HeightSizePolicy="Fixed" SuggestedHeight="54" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="206" Brush="BandItPlus.Book.CardBody" Text="{=bp_pf_bpjailbreakbrief_003}Slip the lock while his back is turned. Keep to the shadows, count his rounds, and you may yet climb out of this hole." AlphaFactor="@FlavorAlpha" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="16" VerticalAlignment="Top" MarginTop="266" Brush="BandItPlus.Codex.BodyCenter" Text="{=bp_pf_bpjailbreakbrief_004}— WHAT WAITS BELOW —" AlphaFactor="@FlavorAlpha" />
+
+                <!-- intel rows group -->
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="612" HeightSizePolicy="Fixed" SuggestedHeight="52" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="294" AlphaFactor="@RowsAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="36" HeightSizePolicy="Fixed" SuggestedHeight="36" HorizontalAlignment="Left" VerticalAlignment="Top" Sprite="GradientCircle" Color="#E0584C77" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="28" HeightSizePolicy="Fixed" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="4" MarginTop="4" Sprite="GradientCircle" Color="#14100AF2" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="22" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="7" MarginTop="7" Sprite="SPPerks\PolearmGuards" Color="#E0584CFF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="558" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" MarginLeft="50" Brush="BandItPlus.Codex.Body" Text="@GuardsText" />
+                  </Children>
+                </Widget>
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="612" HeightSizePolicy="Fixed" SuggestedHeight="52" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="350" AlphaFactor="@RowsAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="36" HeightSizePolicy="Fixed" SuggestedHeight="36" HorizontalAlignment="Left" VerticalAlignment="Top" Sprite="GradientCircle" Color="#84C87877" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="28" HeightSizePolicy="Fixed" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="4" MarginTop="4" Sprite="GradientCircle" Color="#14100AF2" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="22" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="7" MarginTop="7" Sprite="SPPerks\RogueryManhunter" Color="#84C878FF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="558" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" MarginLeft="50" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_bpjailbreakbrief_005}Fellow captives share the cells. Cut them loose as you go for renown, goodwill, and more hands to scatter the guards." />
+                  </Children>
+                </Widget>
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="612" HeightSizePolicy="Fixed" SuggestedHeight="52" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="406" AlphaFactor="@RowsAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="36" HeightSizePolicy="Fixed" SuggestedHeight="36" HorizontalAlignment="Left" VerticalAlignment="Top" Sprite="GradientCircle" Color="#F0CC6877" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="28" HeightSizePolicy="Fixed" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="4" MarginTop="4" Sprite="GradientCircle" Color="#14100AF2" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="22" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="7" MarginTop="7" Sprite="SPPerks\RogueryEyeForLoot" Color="#F0CC68FF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="558" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" MarginLeft="50" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_bpjailbreakbrief_006}Locked chests hide coin and contraband in the dark — pick the locks one by one, or lift a guard’s key ring and open them all." />
+                  </Children>
+                </Widget>
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="612" HeightSizePolicy="Fixed" SuggestedHeight="52" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="462" AlphaFactor="@RowsAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="36" HeightSizePolicy="Fixed" SuggestedHeight="36" HorizontalAlignment="Left" VerticalAlignment="Top" Sprite="GradientCircle" Color="#B6A98177" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="28" HeightSizePolicy="Fixed" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="4" MarginTop="4" Sprite="GradientCircle" Color="#14100AF2" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="22" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="7" MarginTop="7" Sprite="SPPerks\RogueryEscapeArtist" Color="#C8BC97FF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="558" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" MarginLeft="50" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_bpjailbreakbrief_007}Your gear was stripped at the threshold. You’ll find your arms and armour again deeper in, not at the cell door." />
+                  </Children>
+                </Widget>
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="612" HeightSizePolicy="Fixed" SuggestedHeight="52" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="518" AlphaFactor="@RowsAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="36" HeightSizePolicy="Fixed" SuggestedHeight="36" HorizontalAlignment="Left" VerticalAlignment="Top" Sprite="GradientCircle" Color="#84C87877" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="28" HeightSizePolicy="Fixed" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="4" MarginTop="4" Sprite="GradientCircle" Color="#14100AF2" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="22" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="7" MarginTop="7" Sprite="SPPerks\RoguerySlipIntoShadows" Color="#84C878FF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="558" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" MarginLeft="50" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_bpjailbreakbrief_008}Your cellmate goes with you — get him to open air and he swears his blade to you, but if he falls down here, he is gone for good." />
+                  </Children>
+                </Widget>
+
+                <!-- reward + stakes group -->
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="612" HeightSizePolicy="Fixed" SuggestedHeight="56" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="578" AlphaFactor="@RewardAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#6E4F1FFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="1" MarginRight="1" MarginTop="1" MarginBottom="1" Sprite="BlankWhiteSquare_9" Color="#1A1308F4" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="4" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="32" HeightSizePolicy="Fixed" SuggestedHeight="32" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="14" Sprite="GradientCircle" Color="#F0CC6855" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="22" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="19" Sprite="SPPerks\TradeSpringOfGold" Color="#F0CC68FF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="538" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" MarginLeft="54" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_bpjailbreakbrief_009}The reward — your freedom, hard-won renown, and a sworn companion who will owe you his very life." />
+                  </Children>
+                </Widget>
+                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="600" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="644" Brush="BandItPlus.Codex.BodyCenterRed" Text="{=bp_pf_bpjailbreakbrief_010}Fail, and they drag you back into the pit — bloodied, stripped again, and watched twice as close." AlphaFactor="@RewardAlpha" />
+
+                <!-- ── forged-plate buttons (stated brush → hover brightens, press darkens; pop in last) ── -->
+                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="300" HeightSizePolicy="Fixed" SuggestedHeight="58" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="6" MarginBottom="24" DoNotPassEventsToChildren="true" UpdateChildrenStates="true" Brush="BandItPlus.JailButton.Go" Command.Click="ExecuteBegin" AlphaFactor="@ButtonsAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" Sprite="BlankWhiteSquare" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Book.ButtonTextLight" Text="{=bp_pf_bpjailbreakbrief_011}Begin the Jailbreak" DoNotAcceptEvents="true" />
+                  </Children>
+                </ButtonWidget>
+                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="300" HeightSizePolicy="Fixed" SuggestedHeight="58" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="6" MarginBottom="24" DoNotPassEventsToChildren="true" UpdateChildrenStates="true" Brush="BandItPlus.JailButton.Wait" Command.Click="ExecuteWait" AlphaFactor="@ButtonsAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#9A7B3AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#9A7B3AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#9A7B3AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" Sprite="BlankWhiteSquare" Color="#9A7B3AFF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Book.ButtonTextLight" Text="{=bp_pf_bpjailbreakbrief_012}Wait — not yet" DoNotAcceptEvents="true" />
+                  </Children>
+                </ButtonWidget>
+
+              </Children>
+            </Widget>
+
+          </Children>
+        </Widget>
+
+        <!-- open-fade curtain -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare" Color="@CurtainHex" DoNotAcceptEvents="true" />
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

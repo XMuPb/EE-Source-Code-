@@ -1,0 +1,51 @@
+<Prefab>
+  <!-- centered variant of the BANDIT PLUS toast — arrival notifications
+       (go-between's town reached). same staged layout, screen-center,
+       slightly above middle. -->
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" DoNotAcceptEvents="true">
+      <Children>
+
+        <Widget WidthSizePolicy="Fixed" SuggestedWidth="700" HeightSizePolicy="Fixed" SuggestedHeight="240"
+                HorizontalAlignment="Center" VerticalAlignment="Center" PositionYOffset="-120"
+                DoNotAcceptEvents="true">
+          <Children>
+
+            <!-- banner strip — width driven by the unfurl ramp -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="@StripWidth" HeightSizePolicy="Fixed" SuggestedHeight="150"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="120"
+                    Sprite="BlankWhiteSquare_9" Color="#050302EC" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="@StripWidth" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="120" PositionYOffset="-74"
+                    Sprite="BlankWhiteSquare" Color="#CCA76A60" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="@StripWidth" HeightSizePolicy="Fixed" SuggestedHeight="2"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="120" PositionYOffset="74"
+                    Sprite="BlankWhiteSquare" Color="#CCA76A60" />
+
+            <!-- the crest (logo1) — appears first, over the strip's left end -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="230" HeightSizePolicy="Fixed" SuggestedHeight="230"
+                    HorizontalAlignment="Left" VerticalAlignment="Center"
+                    AlphaFactor="@LogoAlpha"
+                    Sprite="logo1" />
+
+            <!-- title + divider + body — ink in after the unfurl -->
+            <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="400" HeightSizePolicy="Fixed" SuggestedHeight="32"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="258" PositionYOffset="-38"
+                        AlphaFactor="@TextAlpha"
+                        Brush="BandItPlus.Book.ToastTitle" Text="@TitleText" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="380" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="258" PositionYOffset="-18"
+                    AlphaFactor="@TextAlpha"
+                    Sprite="BlankWhiteSquare" Color="#9B1F1070" />
+            <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="400" HeightSizePolicy="CoverChildren"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="258" PositionYOffset="22"
+                        AlphaFactor="@TextAlpha"
+                        Brush="BandItPlus.Book.ToastBody" Text="@BodyText" />
+
+          </Children>
+        </Widget>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

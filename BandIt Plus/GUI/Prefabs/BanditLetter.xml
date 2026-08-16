@@ -1,0 +1,55 @@
+<Prefab>
+  <!-- the parchment letter. the ornate parchment sprite ("letter") IS the card;
+       the chief's camp invitation is laid over the cream writing area in book-ink,
+       and the wax seal is baked into the art. the parchment's black background
+       blends into the scrim. click anywhere to dismiss. -->
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+
+        <!-- light dim only — the scene shows through behind the letter. ~35% keeps
+             the parchment's black torn-edge corners reading as soft shadow rather
+             than a box. -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                Sprite="BlankWhiteSquare" Color="#00000059" />
+
+        <!-- the parchment card (portrait), LEFT-of-centre; it RISES into view via
+             PositionYOffset (LetterSlideY). The art carries the frame + seal. -->
+        <Widget WidthSizePolicy="Fixed" SuggestedWidth="640" HeightSizePolicy="Fixed" SuggestedHeight="960"
+                HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="140"
+                PositionXOffset="@LetterSwayX" PositionYOffset="@LetterSlideY"
+                Sprite="letter">
+          <Children>
+
+            <!-- heading, upper writing area (inset past the filigree border) -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="50"
+                        VerticalAlignment="Top" MarginTop="124"
+                        Brush="BandItPlus.Book.LetterTitle" Text="@TitleText" />
+
+            <!-- the letter body (book-ink; NameInk/PlaceInk spans for chief + culture) -->
+            <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="478" HeightSizePolicy="CoverChildren"
+                        HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="196"
+                        Brush="BandItPlus.Book.Body" Text="@VisibleBody" />
+
+            <!-- continue hint — flashes only after the letter finishes writing itself
+                 (IsVisible bound to ContinueVisible, blinked in the VM) -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="30"
+                        VerticalAlignment="Bottom" MarginBottom="158"
+                        IsVisible="@ContinueVisible"
+                        Brush="BandItPlus.Book.Continue" Text="@HintText" />
+
+          </Children>
+        </Widget>
+
+        <!-- open-fade curtain (Color-hex bound; AlphaFactor is not bindable) -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                Sprite="BlankWhiteSquare" Color="@CurtainHex" DoNotAcceptEvents="true" />
+
+        <!-- click anywhere to dismiss -->
+        <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                      Command.Click="ExecuteClose" />
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

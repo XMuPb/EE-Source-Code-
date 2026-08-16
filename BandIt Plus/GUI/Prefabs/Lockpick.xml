@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- Skyrim-style lockpick. stone plate (stone_texture_continuous + frame_9 border), 4 corner
+         BlankWhiteCircle bolts, a left zig-zag of rotated diamonds, a circular keyhole (concentric
+         BlankWhiteCircle/Outlined + GradientCircle glow), a rotating pick needle (Rotation="@PickAngle",
+         PivotX/Y=0.5 at the hub) and a tension wrench from below. bound by LockpickVM. sprites are
+         mission-safe (ui_group1/ui_textures); numeric bindings must be float. -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <!-- dim the scene -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                Sprite="BlankWhiteSquare" Color="#000000B4" />
+
+        <!-- ===== STONE PLATE ===== -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="452" SuggestedHeight="496"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Children>
+            <!-- stone fill -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    Sprite="stone_texture_continuous" Color="#6E665AFF" />
+            <!-- dark vignette over the stone -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    Sprite="BlankWhiteSquare_9" Color="#181208A0" />
+            <!-- ornamental gold frame -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    Sprite="frame_9" Color="#C8A24EFF" />
+
+            <!-- 4 corner bolts -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="22" SuggestedHeight="22" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="14" MarginTop="14" Sprite="BlankWhiteCircle" Color="#15110AFF"><Children><Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="14" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircle" Color="#7A7060FF" /></Children></Widget>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="22" SuggestedHeight="22" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="14" MarginTop="14" Sprite="BlankWhiteCircle" Color="#15110AFF"><Children><Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="14" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircle" Color="#7A7060FF" /></Children></Widget>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="22" SuggestedHeight="22" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="14" MarginBottom="14" Sprite="BlankWhiteCircle" Color="#15110AFF"><Children><Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="14" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircle" Color="#7A7060FF" /></Children></Widget>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="22" SuggestedHeight="22" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="14" MarginBottom="14" Sprite="BlankWhiteCircle" Color="#15110AFF"><Children><Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="14" SuggestedHeight="14" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircle" Color="#7A7060FF" /></Children></Widget>
+
+            <!-- left zig-zag border: stacked gold diamonds -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="26" MarginTop="-156" Rotation="45" Sprite="BlankWhiteSquare" Color="#C8A24ECC" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="26" MarginTop="-104" Rotation="45" Sprite="BlankWhiteSquare" Color="#C8A24ECC" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="26" MarginTop="-52" Rotation="45" Sprite="BlankWhiteSquare" Color="#C8A24ECC" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="26" MarginTop="0" Rotation="45" Sprite="BlankWhiteSquare" Color="#E8C25AFF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="26" MarginTop="52" Rotation="45" Sprite="BlankWhiteSquare" Color="#C8A24ECC" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="26" MarginTop="104" Rotation="45" Sprite="BlankWhiteSquare" Color="#C8A24ECC" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="26" MarginTop="156" Rotation="45" Sprite="BlankWhiteSquare" Color="#C8A24ECC" />
+
+            <!-- title -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32"
+                        HorizontalAlignment="Center" VerticalAlignment="Top" MarginLeft="40" MarginRight="24" MarginTop="20"
+                        Brush="BandItPlus.ChiefTitleCenter" Color="#F0D88AFF" Text="@Title" />
+
+            <!-- ===== KEYHOLE / DIAL (300x300 container, centered) ===== -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="300"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="64">
+              <Children>
+                <!-- soft glow (warmer/colder + tension) -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="260" SuggestedHeight="260"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Sprite="GradientCircle" Color="@GlowColor" AlphaFactor="@GlowAlpha" />
+                <!-- outer dial plate -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="208" SuggestedHeight="208"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircle" Color="#9A9082FF" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="208" SuggestedHeight="208"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircleOutlined" Color="#5A4A22FF" />
+                <!-- mid bevel -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="168" SuggestedHeight="168"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircle" Color="#3E382CFF" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="168" SuggestedHeight="168"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircleOutlined" Color="#C8A24EAA" />
+                <!-- inner well -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="118" SuggestedHeight="118"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircle" Color="#23200BFF" />
+
+                <!-- inner-well gold rim (depth) -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="118" SuggestedHeight="118"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircleOutlined" Color="#6A5A2EBB" />
+                <!-- keyhole: deeper round hole + tapered slot below -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="42" SuggestedHeight="42"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" MarginTop="-14" Sprite="BlankWhiteCircle" Color="#040302FF" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="22" SuggestedHeight="34"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" MarginTop="20" Sprite="BlankWhiteSquare" Color="#040302FF" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="46" SuggestedHeight="46"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" MarginTop="-14" Sprite="BlankWhiteCircleOutlined" Color="#1A1610FF" />
+
+                <!-- tension wrench (enters from bottom; tilts with the cylinder turn) -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="18" SuggestedHeight="150"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" MarginTop="74"
+                        Rotation="@WrenchAngle" PivotX="0.5" PivotY="0.0"
+                        Sprite="BlankWhiteSquare_9" Color="#2A251BFF">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4"
+                            HorizontalAlignment="Center" Sprite="BlankWhiteSquare" Color="#5A5040FF" />
+                    <!-- L-foot of the tension wrench -->
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="46" SuggestedHeight="15"
+                            HorizontalAlignment="Left" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare_9" Color="#221E16FF">
+                      <Children>
+                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="3"
+                                VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#5A5040FF" />
+                      </Children>
+                    </Widget>
+                  </Children>
+                </Widget>
+
+                <!-- PICK NEEDLE — real rotation about the hub -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="8" SuggestedHeight="230"
+                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                        Rotation="@PickAngle" PivotX="0.5" PivotY="0.5"
+                        Sprite="BlankWhiteSquare_9" Color="#0000000F">
+                  <Children>
+                    <!-- shaft (upper half = the working pick) -->
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="6" SuggestedHeight="104"
+                            HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="6" Sprite="BlankWhiteSquare_9" Color="#E6DECEFF" />
+                    <!-- pointed tip -->
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="9" SuggestedHeight="9"
+                            HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="2" Rotation="45" Sprite="BlankWhiteSquare" Color="#FFF6E2FF" />
+                    <!-- handle (lower half) -->
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="96"
+                            HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="6" Sprite="BlankWhiteSquare_9" Color="#8A7E66FF" />
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <!-- ===== bars ===== -->
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="120" SuggestedHeight="14"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="96" MarginTop="378"
+                        Brush="BandItPlus.Caption" Color="#C8B488FF" Text="{=bp_pf_lockpick_001}CYLINDER" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="260" SuggestedHeight="10"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="96" MarginTop="396" Sprite="BlankWhiteSquare" Color="#1C160CFF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="@TurnFill" SuggestedHeight="10"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="96" MarginTop="396" Sprite="BlankWhiteSquare" Color="#FFD86EFF" />
+
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="120" SuggestedHeight="14"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="96" MarginTop="414"
+                        Brush="BandItPlus.Caption" Color="#C8B488FF" Text="{=bp_pf_lockpick_002}PICK" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="260" SuggestedHeight="10"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="96" MarginTop="432" Sprite="BlankWhiteSquare" Color="#1C160CFF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="@HealthFill" SuggestedHeight="10"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="96" MarginTop="432" Sprite="BlankWhiteSquare" Color="@HealthColor" />
+
+            <!-- status + hint -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                        HorizontalAlignment="Center" VerticalAlignment="Top" MarginLeft="40" MarginRight="24" MarginTop="452"
+                        Brush="BandItPlus.Footer" Color="#FFD86EFF" Text="@Status" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginLeft="40" MarginRight="24" MarginBottom="16"
+                        Brush="BandItPlus.CaptionLeft" Color="#A88A4EFF" Text="@Hint" />
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

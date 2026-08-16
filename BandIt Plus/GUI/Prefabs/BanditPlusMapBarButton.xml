@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Window>
+    <!-- campaign-map-bar button, modeled on EE's ChronicleMapBarButton.xml — same
+         42x42, same native MapBar.Button brush so it looks native, same
+         DoNotPassEventsToChildren + Command.Click routing; ours just swaps the
+         identifier, sword sprite and click handler. BanditPlusMapBarInjector walks
+         the MapScreen widget tree and adds this as a child of the map-bar button
+         container. -->
+    <ButtonWidget Id="BanditPlus_ConsoleButton"
+                  DoNotPassEventsToChildren="true"
+                  WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                  SuggestedWidth="42" SuggestedHeight="42"
+                  VerticalAlignment="Center"
+                  MarginLeft="8"
+                  Command.Click="ExecuteOpenBanditPlusConsole"
+                  Brush="MapBar.Button">
+      <!-- Sword sprite — General\Icons\Army is mission-and-everywhere safe
+           per reference_bannerlord_sprite_catalog (AlwaysLoad: ui_group1). -->
+      <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+              SuggestedWidth="28" SuggestedHeight="28"
+              HorizontalAlignment="Center" VerticalAlignment="Center"
+              Sprite="General\Icons\Army" />
+    </ButtonWidget>
+  </Window>
+</Prefab>

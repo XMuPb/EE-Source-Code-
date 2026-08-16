@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- full-screen anchor; banner top-center. vanilla brushes for the parchment
+         background + title/subtitle, BannerTableauWidget on the left showing the
+         clan banner (pattern from vanilla BannerBuilderScreen.xml). -->
+    <Widget WidthSizePolicy="StretchToParent"
+            HeightSizePolicy="StretchToParent"
+            HorizontalAlignment="Center"
+            VerticalAlignment="Top">
+      <Children>
+        <Widget WidthSizePolicy="Fixed"
+                HeightSizePolicy="Fixed"
+                SuggestedWidth="900"
+                SuggestedHeight="160"
+                HorizontalAlignment="Center"
+                VerticalAlignment="Top"
+                MarginTop="40"
+                IsVisible="@IsVisible"
+                Sprite="BlankWhiteSquare_9"
+                Color="#000000B0">
+          <Children>
+            <!-- Banner sprite (left of text), drawn from serialized clan banner code -->
+            <BannerTableauWidget WidthSizePolicy="Fixed"
+                                 HeightSizePolicy="Fixed"
+                                 SuggestedWidth="110"
+                                 SuggestedHeight="130"
+                                 HorizontalAlignment="Left"
+                                 VerticalAlignment="Center"
+                                 MarginLeft="20"
+                                 BannerCodeText="@BannerCodeText"
+                                 IsNineGrid="true" />
+            <!-- no @CampName title here — the subtitle is vertically centered as the
+                 primary text -->
+            <TextWidget WidthSizePolicy="StretchToParent"
+                        HeightSizePolicy="Fixed"
+                        SuggestedHeight="50"
+                        MarginLeft="150"
+                        MarginRight="30"
+                        HorizontalAlignment="Center"
+                        VerticalAlignment="Center"
+                        Brush="MultiplayerLobby.LobbyPageHeader"
+                        Text="@SubtitleText" />
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

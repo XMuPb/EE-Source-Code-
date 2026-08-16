@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                SuggestedWidth="400" SuggestedHeight="92"
+                HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="96"
+                PositionXOffset="@PanelShiftX" PositionYOffset="@PanelShiftY"
+                AlphaFactor="@PanelAlpha">
+          <Children>
+            <!-- soft dark pool — edges melt into the scene, no hard box -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="470" SuggestedHeight="150"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Sprite="General\CharacterDeveloper\add_focus_button_glow" Color="#050302F0" />
+            <!-- translucent core band for legibility -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="352" SuggestedHeight="76"
+                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Sprite="BlankWhiteSquare_9" Color="#0B0906A0" />
+            <!-- one hairline, not a cage -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="352" SuggestedHeight="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="7"
+                    Sprite="BlankWhiteSquare" Color="#C8A24E77" />
+            <!-- small crest over a faint ember halo -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="54" SuggestedHeight="54"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="18"
+                    Sprite="General\CharacterDeveloper\add_focus_button_glow" Color="@GlowHex" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="34" SuggestedHeight="34"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="28"
+                    Sprite="logo1" />
+
+            <!-- PHASE 1: countdown -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@IsCounting">
+              <Children>
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="26"
+                            HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="14" MarginLeft="64" MarginRight="16"
+                            Brush="BandItPlus.ChiefTitleCenter" Color="#E8C25AFF" Text="{=bp_pf_banditreinforcement_001}REINFORCEMENTS INBOUND" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                            HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="42" MarginLeft="64" MarginRight="16"
+                            Brush="BandItPlus.Footer" Color="#EFD9A0FF" Text="@CountdownText" />
+                <!-- thin depleting line -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="3"
+                        HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="70"
+                        Sprite="BlankWhiteSquare_9" Color="#2C220E99">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="@BarFillWidth"
+                            HorizontalAlignment="Left" Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" />
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <!-- PHASE 2: arrival -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@IsArriving"
+                    AlphaFactor="@HeadlineAlpha">
+              <Children>
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="26"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="64" MarginRight="16" MarginBottom="18"
+                            Brush="BandItPlus.ChiefTitleCenter" Color="#E8C25AFF" Text="{=bp_pf_banditreinforcement_002}◆  THEY ANSWER THE CALL  ◆" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                            HorizontalAlignment="Center" VerticalAlignment="Center" MarginLeft="64" MarginRight="16" MarginTop="22"
+                            Brush="BandItPlus.Footer" Color="#F0C25AFF" Text="@ArrivalText" />
+              </Children>
+            </Widget>
+
+            <!-- flash overlay (core band only, fades on arrival) -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="352" SuggestedHeight="76"
+                    HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="@IsArriving"
+                    Sprite="BlankWhiteSquare_9" Color="@FlashHex" />
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

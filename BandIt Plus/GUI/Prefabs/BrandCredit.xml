@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- bottom-left credit watermark, real BandIt Plus logo (logo1 sprite). pulsing halo (@Glow) +
+         breathing gold accent (@AccentAlpha), gold frame + corner brackets. driven by the controller. -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="424" SuggestedHeight="86"
+                HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="30" MarginBottom="28"
+                Sprite="BlankWhiteSquare_9" Color="#080602F2">
+          <Children>
+            <!-- gold frame: 4 thin edges + pulsing left accent -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#C8A24EBB" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#C8A24EBB" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="2" HorizontalAlignment="Right" Sprite="BlankWhiteSquare" Color="#C8A24EBB" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#E8C25AFF" AlphaFactor="@AccentAlpha" />
+
+            <!-- corner brackets (top-left + bottom-right) -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="20" SuggestedHeight="3" HorizontalAlignment="Left" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#FFE6A0FF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="3" SuggestedHeight="20" HorizontalAlignment="Left" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#FFE6A0FF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="20" SuggestedHeight="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#FFE6A0FF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="3" SuggestedHeight="20" HorizontalAlignment="Right" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#FFE6A0FF" />
+
+            <!-- LOGO (real sprite) + pulsing halo -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="58" SuggestedHeight="58"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="16">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="82" SuggestedHeight="82"
+                        HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="GradientCircle" Color="#E8C25AFF" AlphaFactor="@Glow" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="logo1" />
+              </Children>
+            </Widget>
+
+            <!-- vertical divider -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="1" SuggestedHeight="48"
+                    HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="86" Sprite="BlankWhiteSquare" Color="#C8A24E66" />
+
+            <!-- title (LEFT-aligned, straight) -->
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="40"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="100" MarginTop="9"
+                        Brush="BandItPlus.Codex.ChapterTitle" Text="{=bp_pf_brandcredit_001}BANDIT PLUS" />
+            <!-- subtitle (same left-aligned brush family + same MarginLeft -> flush, straight) -->
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="312" SuggestedHeight="24"
+                        HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="100" MarginBottom="13"
+                        Brush="BandItPlus.Codex.Body" Text="{=bp_pf_brandcredit_002}Jailbreak  ·  Custom Scene  ·  by XMuPb" />
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

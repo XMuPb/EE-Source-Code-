@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <!-- 2026-07-01 (Bandit-King GUI, Task 2): the reusable premium EVENT panel.
+       Data-driven by BanditKingBriefVM — every text/sprite is bound, so all six
+       events (Mad King rises/offer/marches, rebellion start/victory/defeat) reuse
+       this one prefab. Layout mirrors BpJailbreakBrief.xml: opaque scrim, gold
+       frame + bolts, LEFT event art (@ArtSprite), RIGHT header (portrait + banner
+       + KName/KType), title, divider, flavor, a ListPanel of @Rows, stakes, and
+       1-2 forged-plate buttons (the 2nd gated on @HasSecondary). Cascade entrance
+       via @ArtAlpha/@HeaderAlpha/@FlavorAlpha/@RowsAlpha/@ButtonsAlpha, opened as
+       a focus layer by BanditKingBriefScreen. -->
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+
+        <!-- opaque scrim -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare" Color="#000000F2" />
+
+        <!-- ── framed panel ── -->
+        <Widget WidthSizePolicy="Fixed" SuggestedWidth="1180" HeightSizePolicy="Fixed" SuggestedHeight="880"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Children>
+
+            <!-- gold border + dark inner fill -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#13100AFF" />
+
+            <!-- corner bolts -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="9" HeightSizePolicy="Fixed" SuggestedHeight="9" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="10" MarginTop="10" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="9" HeightSizePolicy="Fixed" SuggestedHeight="9" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="10" MarginTop="10" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="9" HeightSizePolicy="Fixed" SuggestedHeight="9" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="10" MarginBottom="10" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="9" HeightSizePolicy="Fixed" SuggestedHeight="9" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="10" MarginBottom="10" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+
+            <!-- ── LEFT: event art (fades in via @ArtAlpha) ── -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="500" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" MarginLeft="2" MarginTop="2" MarginBottom="2" AlphaFactor="@ArtAlpha">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare" Color="#0A0705FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="@ArtSprite" DoNotAcceptEvents="true" />
+                <!-- warm torch pool low on the art, matching the jailbreak brief -->
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="320" HeightSizePolicy="Fixed" SuggestedHeight="320" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="60" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#7A3E1440" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="150" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#0A07058C" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" Sprite="BlankWhiteSquare" Color="#C8A24EFF" DoNotAcceptEvents="true" />
+              </Children>
+            </Widget>
+
+            <!-- ── RIGHT: briefing content (cascade-animated by group) ── -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="636" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" MarginRight="20" MarginTop="2" MarginBottom="2">
+              <Children>
+
+                <!-- torchlight pooling from the art side (matches jailbreak brief) -->
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="620" HeightSizePolicy="Fixed" SuggestedHeight="420" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="-120" MarginTop="-80" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#7A3E1432" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+
+                <!-- header: FRAMED portrait + banner + name/type (fades via @HeaderAlpha) -->
+                <!-- portrait framed in a gold plate: gold border → dark inset → face -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="78" SuggestedHeight="92"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="6" MarginTop="20"
+                        IsVisible="@HasPortrait" AlphaFactor="@HeaderAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#0A0705FF" DoNotAcceptEvents="true" />
+                    <ImageIdentifierWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="70" SuggestedHeight="84"
+                                           HorizontalAlignment="Center" VerticalAlignment="Center"
+                                           DataSource="{Portrait}"
+                                           TextureProviderName="@TextureProviderName" ImageId="@Id" />
+                  </Children>
+                </Widget>
+                <!-- banner framed to match -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="78" SuggestedHeight="92"
+                        HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="6" MarginTop="20"
+                        IsVisible="@HasBanner" AlphaFactor="@HeaderAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#0A0705FF" DoNotAcceptEvents="true" />
+                    <BannerTableauWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="66" SuggestedHeight="80"
+                                         HorizontalAlignment="Center" VerticalAlignment="Center"
+                                         BannerCodeText="@BannerCode" IsNineGrid="true" />
+                  </Children>
+                </Widget>
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="30" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="30" Brush="BandItPlus.Codex.BodyCenterGold" Text="@KName" AlphaFactor="@HeaderAlpha" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="20" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="62" Brush="BandItPlus.Codex.BodyCenter" Text="@KType" AlphaFactor="@HeaderAlpha" />
+
+                <!-- title + subline + divider -->
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="44" VerticalAlignment="Top" MarginTop="116" Brush="BandItPlus.Book.CardTitleC" Text="@Title" AlphaFactor="@HeaderAlpha" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22" VerticalAlignment="Top" MarginTop="162" Brush="BandItPlus.Codex.BodyCenter" Text="@Subline" AlphaFactor="@HeaderAlpha" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="540" HeightSizePolicy="Fixed" SuggestedHeight="10" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="192" Sprite="horizontal_gradient_divider_9" Color="#D8B05AD2" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="22" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="186" Brush="BandItPlus.Codex.BodyCenterGold" Text="◆" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+
+                <!-- flavor prose (fades via @FlavorAlpha) -->
+                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="600" HeightSizePolicy="Fixed" SuggestedHeight="52" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="208" Brush="BandItPlus.Book.CardBody" Text="@Flavor" AlphaFactor="@FlavorAlpha" />
+
+                <!-- ── MIDDLE: one scrollable column that PACKS the panel from the
+                     flavor down to the stakes. NATURAL TOP-DOWN reading order:
+                     the data-driven info ROWS first, then a labeled divider, then
+                     the authored STORY prose (@StoryText / @StorySectionLabel).
+                     The STORY IS the "why" — the old separate WHY box was dropped
+                     to end the overlap. Structure copied verbatim from the proven
+                     HideoutCinemaIntro ScrollablePanel: ScrollablePanel → ClipRect
+                     (ClipContents) → ListPanel (CoverChildren, TopToBottom) whose
+                     children auto-size; a long story scrolls, a short one leaves no
+                     gap. Fades in via @RowsAlpha. ── -->
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="620" HeightSizePolicy="Fixed" SuggestedHeight="476" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="266" AlphaFactor="@RowsAlpha">
+                  <Children>
+                    <ScrollablePanel Id="KBriefScroll"
+                                     WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                     AutoHideScrollBars="true"
+                                     ClipRect="KBriefClip" InnerPanel="KBriefClip\KBriefList"
+                                     VerticalScrollbar="..\KBriefScrollbar">
+                      <Children>
+                        <Widget Id="KBriefClip" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" ClipContents="true">
+                          <Children>
+                            <ListPanel Id="KBriefList" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                       HorizontalAlignment="Center" VerticalAlignment="Top" MarginRight="14"
+                                       StackLayout.LayoutMethod="VerticalTopToBottom">
+                              <Children>
+
+                                <!-- (1) info rows (data-driven ListPanel over @Rows; jailbreak-style
+                                     layered accent badge + real perk glyph + muted label + gold value) -->
+                                <ListPanel WidthSizePolicy="Fixed" SuggestedWidth="592" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top"
+                                           StackLayout.LayoutMethod="VerticalTopToBottom" DataSource="{Rows}">
+                                  <ItemTemplate>
+                                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="592" HeightSizePolicy="Fixed" SuggestedHeight="34">
+                                      <Children>
+                                        <!-- layered badge: outer accent halo, dark inner disc, accent glyph -->
+                                        <Widget WidthSizePolicy="Fixed" SuggestedWidth="30" HeightSizePolicy="Fixed" SuggestedHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="GradientCircle" Color="@BadgeHex" DoNotAcceptEvents="true" />
+                                        <Widget WidthSizePolicy="Fixed" SuggestedWidth="23" HeightSizePolicy="Fixed" SuggestedHeight="23" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="4" Sprite="GradientCircle" Color="#14100AF2" DoNotAcceptEvents="true" />
+                                        <Widget WidthSizePolicy="Fixed" SuggestedWidth="18" HeightSizePolicy="Fixed" SuggestedHeight="18" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="6" Sprite="@Icon" Color="@AccentHex" DoNotAcceptEvents="true" />
+                                        <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="230" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" MarginLeft="46" Brush="BandItPlus.Codex.Body" Text="@Label" />
+                                        <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="296" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" Brush="BandItPlus.Codex.BodyCenterGold" Text="@Value" />
+                                      </Children>
+                                    </Widget>
+                                  </ItemTemplate>
+                                </ListPanel>
+
+                                <!-- (2) labeled STORY divider (e.g. "— THE MADNESS —"); only when @HasStory -->
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="16" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="14" Brush="BandItPlus.Codex.BodyCenter" Text="@StorySectionLabel" IsVisible="@HasStory" DoNotAcceptEvents="true" />
+                                <Widget WidthSizePolicy="Fixed" SuggestedWidth="540" HeightSizePolicy="Fixed" SuggestedHeight="8" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="2" MarginBottom="6" Sprite="horizontal_gradient_divider_9" Color="#D8B05AB4" IsVisible="@HasStory" DoNotAcceptEvents="true" />
+
+                                <!-- (3) authored STORY prose — CoverChildren height, ClipContents=false,
+                                     exactly the HideoutCinemaIntro narration recipe so the full wrapped
+                                     text reports its height and scrolls instead of clipping/overlapping. -->
+                                <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="580" HeightSizePolicy="CoverChildren" HorizontalAlignment="Center" VerticalAlignment="Top" MarginBottom="16" Brush="BandItPlus.Codex.BodySmall" Text="@StoryText" IsVisible="@HasStory" ClipContents="false" DoNotAcceptEvents="true" />
+
+                              </Children>
+                            </ListPanel>
+                          </Children>
+                        </Widget>
+                      </Children>
+                    </ScrollablePanel>
+
+                    <!-- vertical scrollbar (auto-hidden when the stack already fits) -->
+                    <ScrollbarWidget Id="KBriefScrollbar" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                     SuggestedWidth="8" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                     MarginTop="8" MarginBottom="8" MarginRight="0"
+                                     AlignmentAxis="Vertical" Handle="KBriefScrollbarHandle"
+                                     MaxValue="100" MinValue="0">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4" HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9" AlphaFactor="0.25" Color="#5A4033FF" />
+                        <ImageWidget Id="KBriefScrollbarHandle" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="8" SuggestedHeight="10" HorizontalAlignment="Center" Brush="FaceGen.Scrollbar.Handle" />
+                      </Children>
+                    </ScrollbarWidget>
+                  </Children>
+                </Widget>
+
+                <!-- stakes (fades via @RowsAlpha) -->
+                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="600" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="758" Brush="BandItPlus.Codex.BodyCenterRed" Text="@Stakes" AlphaFactor="@RowsAlpha" />
+
+                <!-- ── forged-plate buttons (pop in last via @ButtonsAlpha) ── -->
+                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="300" HeightSizePolicy="Fixed" SuggestedHeight="58" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="6" MarginBottom="24" DoNotPassEventsToChildren="true" UpdateChildrenStates="true" Brush="BandItPlus.JailButton.Go" Command.Click="ExecutePrimary" AlphaFactor="@ButtonsAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" Sprite="BlankWhiteSquare" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Book.ButtonTextLight" Text="@PrimaryText" DoNotAcceptEvents="true" />
+                  </Children>
+                </ButtonWidget>
+                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="300" HeightSizePolicy="Fixed" SuggestedHeight="58" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="6" MarginBottom="24" IsVisible="@HasSecondary" DoNotPassEventsToChildren="true" UpdateChildrenStates="true" Brush="BandItPlus.JailButton.Wait" Command.Click="ExecuteSecondary" AlphaFactor="@ButtonsAlpha">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#9A7B3AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#9A7B3AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#9A7B3AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="2" HeightSizePolicy="StretchToParent" HorizontalAlignment="Right" Sprite="BlankWhiteSquare" Color="#9A7B3AFF" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Book.ButtonTextLight" Text="@SecondaryText" DoNotAcceptEvents="true" />
+                  </Children>
+                </ButtonWidget>
+
+              </Children>
+            </Widget>
+
+          </Children>
+        </Widget>
+
+        <!-- open-fade curtain -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare" Color="@CurtainHex" DoNotAcceptEvents="true" />
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

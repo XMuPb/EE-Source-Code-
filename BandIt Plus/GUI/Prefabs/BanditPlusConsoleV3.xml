@@ -1,0 +1,1668 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- settings codex. button-internal TextWidgets carry StretchToParent, row labels
+     get MarginLeft="16" so the roman numerals breathe, the drop-cap title-rest sits
+     at MarginTop 28 for baseline alignment, inner panel is 1300x660 so more of the
+     leather frame shows. -->
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                Sprite="BlankWhiteSquare" Color="#000000F0" />
+
+        <!-- warm candlelight halo behind the codex -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                SuggestedWidth="1760" SuggestedHeight="1140"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                AlphaFactor="@OpenProgress"
+                Sprite="CharacterDeveloper\add_focus_button_glow" Color="#7A3E14C8" DoNotAcceptEvents="true" />
+
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                SuggestedWidth="1280" SuggestedHeight="680"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                AlphaFactor="@OpenProgress">
+          <Children>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    Sprite="BlankWhiteSquare_9" Color="#2A180AFF" />
+
+            <!-- gold ornamental ring framing the pages -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    MarginLeft="11" MarginRight="11" MarginTop="11" MarginBottom="11"
+                    Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    MarginLeft="14" MarginRight="14" MarginTop="14" MarginBottom="14"
+                    Sprite="BlankWhiteSquare_9" Color="#2A180AFF" DoNotAcceptEvents="true" />
+            <!-- gold corner bosses -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="13" HeightSizePolicy="Fixed" SuggestedHeight="13" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="7" MarginTop="7" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="13" HeightSizePolicy="Fixed" SuggestedHeight="13" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="7" MarginTop="7" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="13" HeightSizePolicy="Fixed" SuggestedHeight="13" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="7" MarginBottom="7" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="13" HeightSizePolicy="Fixed" SuggestedHeight="13" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="7" MarginBottom="7" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" DoNotAcceptEvents="true" />
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="8" VerticalAlignment="Bottom"
+                    Sprite="BlankWhiteSquare" Color="#00000080" />
+
+            <ListPanel WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                       SuggestedWidth="1240" SuggestedHeight="640"
+                       HorizontalAlignment="Center" VerticalAlignment="Center"
+                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+              <Children>
+
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="600" SuggestedHeight="640"
+                        Id="LeftPage">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#221A12FF" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="20" VerticalAlignment="Top"
+                            Sprite="BlankWhiteSquare" Color="#3A2E1AFF" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="30" HorizontalAlignment="Right"
+                            Sprite="BlankWhiteSquare" Color="#0C0A06C0" />
+
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="36" VerticalAlignment="Top"
+                                MarginTop="40" MarginLeft="40" MarginRight="40"
+                                Brush="BandItPlus.Codex.PageHeading"
+                                Text="{=bp_pf_banditplusconsolev3_001}◆  CONTENTS  ◆" />
+
+                    <ListPanel WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren"
+                               SuggestedWidth="400"
+                               HorizontalAlignment="Center" VerticalAlignment="Top"
+                               MarginTop="80"
+                               StackLayout.LayoutMethod="VerticalTopToBottom">
+                      <Children>
+
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="400" SuggestedHeight="50"
+                                      MarginLeft="@Bookmark1Offset"
+                                      DoNotPassEventsToChildren="true"
+                                      Brush="BandItPlus.Codex.BookmarkButton"
+                                      Command.Click="ExecuteSelectCategoryPower">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                    SuggestedWidth="6" HorizontalAlignment="Left"
+                                    Sprite="BlankWhiteSquare_9" Color="#E8B24AFF"
+                                    AlphaFactor="@ActiveStripeAlpha"
+                                    IsVisible="@IsPowerSelected" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="40" MarginRight="40"
+                                        Brush="BandItPlus.Codex.BookmarkActive"
+                                        Text="{=bp_pf_banditplusconsolev3_002}I. Bandit Power" />
+                          </Children>
+                        </ButtonWidget>
+
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="400" SuggestedHeight="50" MarginTop="6"
+                                      MarginLeft="@Bookmark2Offset"
+                                      DoNotPassEventsToChildren="true"
+                                      Brush="BandItPlus.Codex.BookmarkButton"
+                                      Command.Click="ExecuteSelectCategoryHideouts">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                    SuggestedWidth="6" HorizontalAlignment="Left"
+                                    Sprite="BlankWhiteSquare_9" Color="#E8B24AFF"
+                                    AlphaFactor="@ActiveStripeAlpha"
+                                    IsVisible="@IsHideoutsSelected" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="40" MarginRight="40"
+                                        Brush="BandItPlus.Codex.BookmarkActive"
+                                        Text="{=bp_pf_banditplusconsolev3_003}II. Hideouts" />
+                          </Children>
+                        </ButtonWidget>
+
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="400" SuggestedHeight="50" MarginTop="6"
+                                      MarginLeft="@Bookmark3Offset"
+                                      DoNotPassEventsToChildren="true"
+                                      Brush="BandItPlus.Codex.BookmarkButton"
+                                      Command.Click="ExecuteSelectCategorySpoils">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                    SuggestedWidth="6" HorizontalAlignment="Left"
+                                    Sprite="BlankWhiteSquare_9" Color="#E8B24AFF"
+                                    AlphaFactor="@ActiveStripeAlpha"
+                                    IsVisible="@IsSpoilsSelected" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="40" MarginRight="40"
+                                        Brush="BandItPlus.Codex.BookmarkActive"
+                                        Text="{=bp_pf_banditplusconsolev3_004}III. Spoils of Battle" />
+                          </Children>
+                        </ButtonWidget>
+
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="400" SuggestedHeight="50" MarginTop="6"
+                                      MarginLeft="@Bookmark4Offset"
+                                      DoNotPassEventsToChildren="true"
+                                      Brush="BandItPlus.Codex.BookmarkButton"
+                                      Command.Click="ExecuteSelectCategoryRaids">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                    SuggestedWidth="6" HorizontalAlignment="Left"
+                                    Sprite="BlankWhiteSquare_9" Color="#E8B24AFF"
+                                    AlphaFactor="@ActiveStripeAlpha"
+                                    IsVisible="@IsRaidsSelected" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="40" MarginRight="40"
+                                        Brush="BandItPlus.Codex.BookmarkActive"
+                                        Text="{=bp_pf_banditplusconsolev3_005}IV. Raids" />
+                          </Children>
+                        </ButtonWidget>
+
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="400" SuggestedHeight="50" MarginTop="6"
+                                      MarginLeft="@Bookmark5Offset"
+                                      DoNotPassEventsToChildren="true"
+                                      Brush="BandItPlus.Codex.BookmarkButton"
+                                      Command.Click="ExecuteSelectCategoryHud">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                    SuggestedWidth="6" HorizontalAlignment="Left"
+                                    Sprite="BlankWhiteSquare_9" Color="#E8B24AFF"
+                                    AlphaFactor="@ActiveStripeAlpha"
+                                    IsVisible="@IsHudSelected" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="40" MarginRight="40"
+                                        Brush="BandItPlus.Codex.BookmarkActive"
+                                        Text="{=bp_pf_banditplusconsolev3_006}V. HUD" />
+                          </Children>
+                        </ButtonWidget>
+
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="400" SuggestedHeight="50" MarginTop="6"
+                                      MarginLeft="@Bookmark6Offset"
+                                      DoNotPassEventsToChildren="true"
+                                      Brush="BandItPlus.Codex.BookmarkButton"
+                                      Command.Click="ExecuteSelectCategoryDiagnostics">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                    SuggestedWidth="6" HorizontalAlignment="Left"
+                                    Sprite="BlankWhiteSquare_9" Color="#E8B24AFF"
+                                    AlphaFactor="@ActiveStripeAlpha"
+                                    IsVisible="@IsDiagnosticsSelected" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="40" MarginRight="40"
+                                        Brush="BandItPlus.Codex.BookmarkActive"
+                                        Text="{=bp_pf_banditplusconsolev3_007}VI. Live Status" />
+                          </Children>
+                        </ButtonWidget>
+
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="400" SuggestedHeight="50" MarginTop="6"
+                                      MarginLeft="@Bookmark7Offset"
+                                      DoNotPassEventsToChildren="true"
+                                      Brush="BandItPlus.Codex.BookmarkButton"
+                                      Command.Click="ExecuteSelectCategoryInfo">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                    SuggestedWidth="6" HorizontalAlignment="Left"
+                                    Sprite="BlankWhiteSquare_9" Color="#E8B24AFF"
+                                    AlphaFactor="@ActiveStripeAlpha"
+                                    IsVisible="@IsInfoSelected" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="40" MarginRight="40"
+                                        Brush="BandItPlus.Codex.BookmarkActive"
+                                        Text="{=bp_pf_banditplusconsolev3_008}VII. Info" />
+                          </Children>
+                        </ButtonWidget>
+
+                      </Children>
+                    </ListPanel>
+
+                    <!-- BANDIT PLUS thumbnail art in the bottom-left — gold frame + soft halo,
+                         3:2 to match the source art -->
+                    <Widget WidthSizePolicy="Fixed" SuggestedWidth="200" HeightSizePolicy="Fixed" SuggestedHeight="134"
+                            HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="14"
+                            DoNotAcceptEvents="true">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" SuggestedWidth="224" HeightSizePolicy="Fixed" SuggestedHeight="158"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Sprite="CharacterDeveloper\add_focus_button_glow" Color="#C8881E66" DoNotAcceptEvents="true" />
+                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" DoNotAcceptEvents="true" />
+                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                MarginLeft="3" MarginRight="3" MarginTop="3" MarginBottom="3"
+                                Sprite="BlankWhiteSquare_9" Color="#0E0A06FF" DoNotAcceptEvents="true" />
+                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                MarginLeft="5" MarginRight="5" MarginTop="5" MarginBottom="5"
+                                Sprite="thumbnail" DoNotAcceptEvents="true" />
+                      </Children>
+                    </Widget>
+
+
+                  </Children>
+                </Widget>
+
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="40" SuggestedHeight="640"
+                        Id="Spine">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#2A1A08FF" />
+                    <!-- glowing gold spine seam -->
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="24" HorizontalAlignment="Center"
+                            Sprite="CharacterDeveloper\add_focus_button_glow" Color="#C8881E55" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="6" HorizontalAlignment="Center"
+                            Sprite="BlankWhiteSquare" Color="#E0B24AFF" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="22" SuggestedHeight="2"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginTop="50" Sprite="BlankWhiteSquare" Color="#A88A5CFF" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="22" SuggestedHeight="2"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginTop="135" Sprite="BlankWhiteSquare" Color="#A88A5CFF" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="22" SuggestedHeight="2"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginTop="220" Sprite="BlankWhiteSquare" Color="#A88A5CFF" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="22" SuggestedHeight="2"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginTop="305" Sprite="BlankWhiteSquare" Color="#A88A5CFF" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="22" SuggestedHeight="2"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginTop="390" Sprite="BlankWhiteSquare" Color="#A88A5CFF" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="22" SuggestedHeight="2"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginTop="475" Sprite="BlankWhiteSquare" Color="#A88A5CFF" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="22" SuggestedHeight="2"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginTop="560" Sprite="BlankWhiteSquare" Color="#A88A5CFF" />
+
+                    <!-- no top crest — the bottom-left thumbnail plate is the console's
+                         brand mark -->
+                  </Children>
+                </Widget>
+
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="600" SuggestedHeight="640"
+                        Id="RightPage">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#221A12FF" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="20" VerticalAlignment="Top"
+                            Sprite="BlankWhiteSquare" Color="#3A2E1AFF" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="30" HorizontalAlignment="Left"
+                            Sprite="BlankWhiteSquare" Color="#0C0A06C0" />
+
+                    <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                  SuggestedWidth="36" SuggestedHeight="36"
+                                  HorizontalAlignment="Right" VerticalAlignment="Top"
+                                  MarginTop="20" MarginRight="20"
+                                  DoNotPassEventsToChildren="true"
+                                  Brush="BandItPlus.Codex.BookmarkButton" Command.Click="ExecuteClose">
+                      <Children>
+                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                Sprite="BlankWhiteSquare_9" Color="#4A1F08BB" />
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_009}X" />
+                      </Children>
+                    </ButtonWidget>
+
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="80" VerticalAlignment="Top"
+                            MarginTop="50" MarginLeft="60" MarginRight="60"
+                            AlphaFactor="@ChapterContentAlpha">
+                      <Children>
+                        <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                   HorizontalAlignment="Left" VerticalAlignment="Bottom"
+                                   StackLayout.LayoutMethod="HorizontalLeftToRight">
+                          <Children>
+                            <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed"
+                                        SuggestedHeight="72"
+                                        VerticalAlignment="Bottom"
+                                        AlphaFactor="@DropCapAlpha"
+                                        Brush="BandItPlus.Codex.DropCap"
+                                        Text="@ChapterDropCap" />
+                            <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed"
+                                        SuggestedHeight="40"
+                                        VerticalAlignment="Bottom" MarginBottom="6" MarginLeft="2"
+                                        Brush="BandItPlus.Codex.ChapterTitle"
+                                        Text="@ChapterTitleRest" />
+                          </Children>
+                        </ListPanel>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="80" SuggestedHeight="12"
+                                HorizontalAlignment="Right" VerticalAlignment="Bottom"
+                                MarginBottom="20"
+                                Sprite="StdAssets\Popup\divider" Color="#A88A5CCC" />
+                      </Children>
+                    </Widget>
+
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="460" SuggestedHeight="8"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginTop="128"
+                            AlphaFactor="@ChapterContentAlpha"
+                            Sprite="horizontal_gradient_divider_9" Color="#A88A5CFF" />
+
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="42" VerticalAlignment="Top"
+                                MarginTop="146" MarginLeft="80" MarginRight="80"
+                                AlphaFactor="@ChapterContentAlpha"
+                                Brush="BandItPlus.Codex.Epigraph"
+                                Text="@ChapterEpigraph" />
+
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="350"
+                            VerticalAlignment="Top"
+                            MarginTop="200" MarginLeft="@ChapterContentMarginLeft" MarginRight="60"
+                            AlphaFactor="@ChapterContentAlpha">
+                      <Children>
+
+                        <!-- per-chapter scroll — each chapter is its own ScrollablePanel so a tall
+                             chapter (e.g. HUD's rows) computes its own scroll extent, instead of one
+                             shared panel over stacked CoverChildren siblings (which scrambled rows). -->
+                        <ScrollablePanel Id="Scroll_Power" IsVisible="@IsCategoryPowerVisible"
+                                         WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                         AutoHideScrollBars="true"
+                                         ClipRect="Clip_Power" InnerPanel="Clip_Power\List_Power"
+                                         VerticalScrollbar="..\Scrollbar_Power">
+                          <Children>
+                            <Widget Id="Clip_Power" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    ClipContents="true">
+                              <Children>
+                        <ListPanel Id="List_Power" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginRight="22"
+                                   IsVisible="@IsCategoryPowerVisible"
+                                   StackLayout.LayoutMethod="VerticalTopToBottom">
+                          <Children>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_010}I." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_011}◆  Enable Bandit Power ramp&#xA;Bandits grow stronger each year until they reach full strength." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true"
+                                              Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleEnableBanditPower">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@EnableBanditPower" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@EnableBanditPowerOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_012}ON" IsVisible="@EnableBanditPower" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_013}OFF" IsVisible="@EnableBanditPowerOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_014}II." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_015}◆  Max party size&#xA;Largest bandit war-party that can spawn (30-120)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementMaxPartySize">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@BanditMaxPartySizeText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementMaxPartySize">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_016}III." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_017}◆  Power ramp years&#xA;Years from campaign start until bandits hit full power." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementRampYears">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@BanditPowerRampYearsText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementRampYears">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_018}IV." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_019}◆  Mount damage multiplier&#xA;Bandit cavalry hit damage scaling (1x-5x)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementMountDamage">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@BanditMountDamageMultiplierText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementMountDamage">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <!-- "Show map HUD" toggle lives in the HUD chapter; Bandit Backup rows
+                                 below (V enable, VI chance, VII max). -->
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_020}V." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_021}◆  Enable bandit backup&#xA;Bandits you fight call nearby war-parties to converge and hunt you." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true"
+                                              Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleEnableBanditBackup">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@EnableBanditBackup" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@EnableBanditBackupOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_022}ON" IsVisible="@EnableBanditBackup" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_023}OFF" IsVisible="@EnableBanditBackupOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_024}VI." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_025}◆  Backup chance&#xA;Chance each nearby bandit party answers the call (0-100%)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementBackupChance">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@BanditBackupChanceText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementBackupChance">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_026}VII." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_027}◆  Max backup parties&#xA;Most extra war-parties that can answer one call (0-5)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementBackupMax">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@BanditBackupMaxPartiesText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementBackupMax">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_028}VIII." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_029}◆  Reinforcement arrival delay&#xA;Seconds before answered war-parties arrive mid-battle (5-90)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementArrivalDelay">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@BanditBackupArrivalDelayText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementArrivalDelay">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_030}IX." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_031}◆  Bandit captivity&#xA;Lose to bandits and they march you to their hideout and jail you." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true"
+                                              Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleEnableBanditCaptivity">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@EnableBanditCaptivity" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@EnableBanditCaptivityOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_032}ON" IsVisible="@EnableBanditCaptivity" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_033}OFF" IsVisible="@EnableBanditCaptivityOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_034}X." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_035}◆  Escape difficulty&#xA;How hard it is to escape the hideout jail (1 easy - 5 hard)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementEscapeDifficulty">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@CaptivityEscapeDifficultyText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementEscapeDifficulty">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="56"
+                                    MarginTop="24">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        Sprite="BlankWhiteSquare_9" Color="#2A180A80" />
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                        SuggestedHeight="6" VerticalAlignment="Top"
+                                        Sprite="horizontal_gradient_divider_9" Color="#A88A5CFF" />
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                        SuggestedHeight="6" VerticalAlignment="Bottom"
+                                        Sprite="horizontal_gradient_divider_9" Color="#A88A5CFF" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Brush="BandItPlus.Codex.BodyCenter"
+                                            Text="@BanditPowerFactorText" />
+                              </Children>
+                            </Widget>
+
+                          </Children>
+                        </ListPanel>
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ScrollablePanel>
+
+                        <ScrollbarWidget Id="Scrollbar_Power" IsVisible="@IsCategoryPowerVisible" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                         SuggestedWidth="8" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                         MarginTop="8" MarginBottom="8" MarginRight="2"
+                                         AlignmentAxis="Vertical" Handle="Handle_Power"
+                                         MaxValue="100" MinValue="0">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4"
+                                    HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9"
+                                    AlphaFactor="0.25" Color="#5A4033FF" />
+                            <ImageWidget Id="Handle_Power" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                         SuggestedWidth="8" SuggestedHeight="10" HorizontalAlignment="Center"
+                                         Brush="FaceGen.Scrollbar.Handle" />
+                          </Children>
+                        </ScrollbarWidget>
+
+                        <ScrollablePanel Id="Scroll_Hideouts" IsVisible="@IsCategoryHideoutsVisible"
+                                         WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                         AutoHideScrollBars="true"
+                                         ClipRect="Clip_Hideouts" InnerPanel="Clip_Hideouts\List_Hideouts"
+                                         VerticalScrollbar="..\Scrollbar_Hideouts">
+                          <Children>
+                            <Widget Id="Clip_Hideouts" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    ClipContents="true">
+                              <Children>
+                        <ListPanel Id="List_Hideouts" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginRight="22"
+                                   IsVisible="@IsCategoryHideoutsVisible"
+                                   StackLayout.LayoutMethod="VerticalTopToBottom">
+                          <Children>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_036}I." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_037}◆  Hideouts per clan&#xA;How many hideouts each bandit clan can hold (1-5)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementHideoutCount">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@HideoutCountPerClanText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementHideoutCount">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_038}II." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_039}◆  Respect biomes&#xA;Bandit clans stay in their native biome (desert/forest/etc)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleRespectBiomes">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@RespectBiomes" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@RespectBiomesOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_040}ON" IsVisible="@RespectBiomes" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_041}OFF" IsVisible="@RespectBiomesOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_042}III." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_043}◆  Allow vanilla hideouts&#xA;Keep vanilla bandit hideouts alongside the clan-owned ones." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleAllowVanillaHideouts">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@AllowVanillaHideouts" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@AllowVanillaHideoutsOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_044}ON" IsVisible="@AllowVanillaHideouts" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_045}OFF" IsVisible="@AllowVanillaHideoutsOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_046}IV." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_047}◆  Hideout boss strength&#xA;Bandit boss combat strength scaling (1x-3x)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementBossStrength">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@HideoutBossStrengthText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementBossStrength">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                          </Children>
+                        </ListPanel>
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ScrollablePanel>
+
+                        <ScrollbarWidget Id="Scrollbar_Hideouts" IsVisible="@IsCategoryHideoutsVisible" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                         SuggestedWidth="8" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                         MarginTop="8" MarginBottom="8" MarginRight="2"
+                                         AlignmentAxis="Vertical" Handle="Handle_Hideouts"
+                                         MaxValue="100" MinValue="0">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4"
+                                    HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9"
+                                    AlphaFactor="0.25" Color="#5A4033FF" />
+                            <ImageWidget Id="Handle_Hideouts" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                         SuggestedWidth="8" SuggestedHeight="10" HorizontalAlignment="Center"
+                                         Brush="FaceGen.Scrollbar.Handle" />
+                          </Children>
+                        </ScrollbarWidget>
+
+                        <ScrollablePanel Id="Scroll_Spoils" IsVisible="@IsCategorySpoilsVisible"
+                                         WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                         AutoHideScrollBars="true"
+                                         ClipRect="Clip_Spoils" InnerPanel="Clip_Spoils\List_Spoils"
+                                         VerticalScrollbar="..\Scrollbar_Spoils">
+                          <Children>
+                            <Widget Id="Clip_Spoils" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    ClipContents="true">
+                              <Children>
+                        <ListPanel Id="List_Spoils" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginRight="22"
+                                   IsVisible="@IsCategorySpoilsVisible"
+                                   StackLayout.LayoutMethod="VerticalTopToBottom">
+                          <Children>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_048}I." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_049}◆  Coin drop multiplier&#xA;Coin loot multiplier per bandit slain (0.5x-3x)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementCoinDrop">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@CoinDropMultiplierText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementCoinDrop">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_050}II." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_051}◆  Drop keepsakes&#xA;Bandits drop themed keepsake trophies on defeat." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleDropKeepsakes">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@DropKeepsakes" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@DropKeepsakesOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_052}ON" IsVisible="@DropKeepsakes" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_053}OFF" IsVisible="@DropKeepsakesOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_054}III." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_055}◆  Use elite bonus&#xA;Elite bandit kills drop richer loot than common ones." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleUseEliteBonus">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@UseEliteBonus" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@UseEliteBonusOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_056}ON" IsVisible="@UseEliteBonus" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_057}OFF" IsVisible="@UseEliteBonusOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_058}IV." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_059}◆  Keepsake chance multiplier&#xA;Adjust keepsake drop frequency (0.5x-3x)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementKeepsakeChance">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@KeepsakeChanceMultiplierText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementKeepsakeChance">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_060}V." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_061}◆  Show keepsake notification&#xA;Pop-up notice when a keepsake drops." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleShowKeepsakeNotification">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@ShowKeepsakeNotification" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@ShowKeepsakeNotificationOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_062}ON" IsVisible="@ShowKeepsakeNotification" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_063}OFF" IsVisible="@ShowKeepsakeNotificationOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                          </Children>
+                        </ListPanel>
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ScrollablePanel>
+
+                        <ScrollbarWidget Id="Scrollbar_Spoils" IsVisible="@IsCategorySpoilsVisible" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                         SuggestedWidth="8" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                         MarginTop="8" MarginBottom="8" MarginRight="2"
+                                         AlignmentAxis="Vertical" Handle="Handle_Spoils"
+                                         MaxValue="100" MinValue="0">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4"
+                                    HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9"
+                                    AlphaFactor="0.25" Color="#5A4033FF" />
+                            <ImageWidget Id="Handle_Spoils" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                         SuggestedWidth="8" SuggestedHeight="10" HorizontalAlignment="Center"
+                                         Brush="FaceGen.Scrollbar.Handle" />
+                          </Children>
+                        </ScrollbarWidget>
+
+                        <ScrollablePanel Id="Scroll_Diagnostics" IsVisible="@IsCategoryDiagnosticsVisible"
+                                         WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                         AutoHideScrollBars="true"
+                                         ClipRect="Clip_Diagnostics" InnerPanel="Clip_Diagnostics\List_Diagnostics"
+                                         VerticalScrollbar="..\Scrollbar_Diagnostics">
+                          <Children>
+                            <Widget Id="Clip_Diagnostics" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    ClipContents="true">
+                              <Children>
+                        <ListPanel Id="List_Diagnostics" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginRight="22"
+                                   IsVisible="@IsCategoryDiagnosticsVisible"
+                                   StackLayout.LayoutMethod="VerticalTopToBottom">
+                          <Children>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="StretchToParent" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_064}◆  Chiefs" />
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="120" Brush="BandItPlus.Codex.Body" Text="@ChiefCountText" />
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32" MarginTop="4"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="StretchToParent" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_065}◆  Bandit parties" />
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="120" Brush="BandItPlus.Codex.Body" Text="@PartyCountText" />
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32" MarginTop="4"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="StretchToParent" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_066}◆  Hideouts" />
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="120" Brush="BandItPlus.Codex.Body" Text="@HideoutCountText" />
+                              </Children>
+                            </ListPanel>
+
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="28" MarginTop="12"
+                                        Brush="BandItPlus.Codex.BodySmall" Text="@CampaignInfo" />
+
+                            <!-- live RAID OPERATIONS board — sits with the Live Status counts;
+                                 auto-refreshes once per second while open. -->
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                    SuggestedWidth="320" SuggestedHeight="8"
+                                    HorizontalAlignment="Center" MarginTop="16"
+                                    Sprite="horizontal_gradient_divider_9" Color="#7A5C28FF" />
+
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="28" MarginTop="10"
+                                        Brush="BandItPlus.Codex.PageHeading" Text="{=bp_pf_banditplusconsolev3_067}◆  RAID OPERATIONS  ◆" />
+
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="24" MarginTop="4"
+                                        Brush="BandItPlus.Codex.BodySmall" Text="@RaidReadinessText" />
+
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="28" MarginTop="10"
+                                        Brush="BandItPlus.Codex.Body" Text="@RaidOp1Text" IsVisible="@RaidOp1Visible" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="28" MarginTop="2"
+                                        Brush="BandItPlus.Codex.Body" Text="@RaidOp2Text" IsVisible="@RaidOp2Visible" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="28" MarginTop="2"
+                                        Brush="BandItPlus.Codex.Body" Text="@RaidOp3Text" IsVisible="@RaidOp3Visible" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="28" MarginTop="2"
+                                        Brush="BandItPlus.Codex.Body" Text="@RaidOp4Text" IsVisible="@RaidOp4Visible" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="28" MarginTop="2"
+                                        Brush="BandItPlus.Codex.Body" Text="@RaidOp5Text" IsVisible="@RaidOp5Visible" />
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32" MarginTop="16"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="StretchToParent" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_068}◆  Villages looted" />
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="120" Brush="BandItPlus.Codex.Body" Text="@RaidLootedText" />
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32" MarginTop="4"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="StretchToParent" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_069}◆  Escalation" />
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="160" Brush="BandItPlus.Codex.Body" Text="@RaidEscalationText" />
+                              </Children>
+                            </ListPanel>
+
+
+                          </Children>
+                        </ListPanel>
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ScrollablePanel>
+
+                        <ScrollbarWidget Id="Scrollbar_Diagnostics" IsVisible="@IsCategoryDiagnosticsVisible" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                         SuggestedWidth="8" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                         MarginTop="8" MarginBottom="8" MarginRight="2"
+                                         AlignmentAxis="Vertical" Handle="Handle_Diagnostics"
+                                         MaxValue="100" MinValue="0">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4"
+                                    HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9"
+                                    AlphaFactor="0.25" Color="#5A4033FF" />
+                            <ImageWidget Id="Handle_Diagnostics" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                         SuggestedWidth="8" SuggestedHeight="10" HorizontalAlignment="Center"
+                                         Brush="FaceGen.Scrollbar.Handle" />
+                          </Children>
+                        </ScrollbarWidget>
+
+                        <ScrollablePanel Id="Scroll_Info" IsVisible="@IsCategoryInfoVisible"
+                                         WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                         AutoHideScrollBars="true"
+                                         ClipRect="Clip_Info" InnerPanel="Clip_Info\List_Info"
+                                         VerticalScrollbar="..\Scrollbar_Info">
+                          <Children>
+                            <Widget Id="Clip_Info" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    ClipContents="true">
+                              <Children>
+                        <ListPanel Id="List_Info" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginRight="22"
+                                   IsVisible="@IsCategoryInfoVisible"
+                                   StackLayout.LayoutMethod="VerticalTopToBottom">
+                          <Children>
+
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="56">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        Sprite="BlankWhiteSquare_9" Color="#2A180A40" />
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                        SuggestedHeight="4" VerticalAlignment="Top"
+                                        Sprite="horizontal_gradient_divider_9" Color="#A88A5CFF" />
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                        SuggestedHeight="4" VerticalAlignment="Bottom"
+                                        Sprite="horizontal_gradient_divider_9" Color="#A88A5CFF" />
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Left" MarginLeft="20"
+                                            Brush="BandItPlus.Codex.RomanNumeral" Text="◆" />
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="200" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Left" MarginLeft="64"
+                                            Brush="BandItPlus.Codex.RomanNumeral"
+                                            Text="{=bp_pf_banditplusconsolev3_070}Author of the chronicle" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            MarginLeft="270" MarginRight="24"
+                                            Brush="BandItPlus.Codex.ChapterTitle"
+                                            Text="{=bp_pf_banditplusconsolev3_071}XMuPb" />
+                              </Children>
+                            </Widget>
+
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                    SuggestedWidth="60" SuggestedHeight="14"
+                                    HorizontalAlignment="Center" MarginTop="8"
+                                    Sprite="StdAssets\Popup\divider" Color="#A88A5C99" />
+
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="56" MarginTop="8">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        Sprite="BlankWhiteSquare_9" Color="#2A180A40" />
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                        SuggestedHeight="4" VerticalAlignment="Top"
+                                        Sprite="horizontal_gradient_divider_9" Color="#A88A5CFF" />
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                        SuggestedHeight="4" VerticalAlignment="Bottom"
+                                        Sprite="horizontal_gradient_divider_9" Color="#A88A5CFF" />
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Left" MarginLeft="20"
+                                            Brush="BandItPlus.Codex.RomanNumeral" Text="◆" />
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="200" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Left" MarginLeft="64"
+                                            Brush="BandItPlus.Codex.RomanNumeral"
+                                            Text="{=bp_pf_banditplusconsolev3_072}Edition of the binding" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            MarginLeft="270" MarginRight="24"
+                                            Brush="BandItPlus.Codex.ChapterTitle"
+                                            Text="{=bp_pf_banditplusconsolev3_073}Prerelease Version" />
+                              </Children>
+                            </Widget>
+
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                    SuggestedWidth="320" SuggestedHeight="8"
+                                    HorizontalAlignment="Center" MarginTop="28"
+                                    Sprite="horizontal_gradient_divider_9" Color="#7A5C28FF" />
+
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="38"
+                                        MarginTop="14"
+                                        Brush="BandItPlus.Codex.ChapterTitleCenter"
+                                        Text="{=bp_pf_banditplusconsolev3_074}BandIt Plus" />
+
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                                        MarginTop="2"
+                                        Brush="BandItPlus.Codex.Epigraph"
+                                        Text="{=bp_pf_banditplusconsolev3_075}— Royal Codex Console —" />
+
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                                        MarginTop="8"
+                                        Brush="BandItPlus.Codex.Epigraph"
+                                        Text="{=bp_pf_banditplusconsolev3_076}Built rune by rune in conference with the Bannerlord engine." />
+
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                    SuggestedWidth="180" SuggestedHeight="6"
+                                    HorizontalAlignment="Center" MarginTop="14"
+                                    Sprite="horizontal_gradient_divider_9" Color="#7A5C2899" />
+
+                          </Children>
+                        </ListPanel>
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ScrollablePanel>
+
+                        <ScrollbarWidget Id="Scrollbar_Info" IsVisible="@IsCategoryInfoVisible" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                         SuggestedWidth="8" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                         MarginTop="8" MarginBottom="8" MarginRight="2"
+                                         AlignmentAxis="Vertical" Handle="Handle_Info"
+                                         MaxValue="100" MinValue="0">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4"
+                                    HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9"
+                                    AlphaFactor="0.25" Color="#5A4033FF" />
+                            <ImageWidget Id="Handle_Info" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                         SuggestedWidth="8" SuggestedHeight="10" HorizontalAlignment="Center"
+                                         Brush="FaceGen.Scrollbar.Handle" />
+                          </Children>
+                        </ScrollbarWidget>
+
+                        <ScrollablePanel Id="Scroll_Raids" IsVisible="@IsCategoryRaidsVisible"
+                                         WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                         AutoHideScrollBars="true"
+                                         ClipRect="Clip_Raids" InnerPanel="Clip_Raids\List_Raids"
+                                         VerticalScrollbar="..\Scrollbar_Raids">
+                          <Children>
+                            <Widget Id="Clip_Raids" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    ClipContents="true">
+                              <Children>
+                        <ListPanel Id="List_Raids" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginRight="22"
+                                   IsVisible="@IsCategoryRaidsVisible"
+                                   StackLayout.LayoutMethod="VerticalTopToBottom">
+                          <Children>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_077}I." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_078}◆  Raid chance per hour&#xA;Odds each hour that a culture musters a raid (1-20%)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementRaidChance">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@RaidChancePercentText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementRaidChance">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_079}II." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_080}◆  Days between raids&#xA;Per-culture rest after a raid; shrinks each year (1-60)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementRaidCooldown">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@RaidCooldownDaysText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementRaidCooldown">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_081}III." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_082}◆  Max concurrent raids&#xA;Raid operations allowed at the same time (1-10)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementMaxRaiders">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@MaxConcurrentRaidersText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementMaxRaiders">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_083}IV." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_084}◆  Max raid range&#xA;How far from its hideout a war band hunts (50-500)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementRaidRange">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@MaxRaidRangeText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementRaidRange">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_085}V." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_086}◆  Raid muster size&#xA;Troops a war band gathers before marching to raid (20-200)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementRaidMuster">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@RaidMusterBaseSizeText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementRaidMuster">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_087}VI." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_088}◆  Yearly raid escalation&#xA;Bandits grow stronger + raid more often each year (0-100%)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteDecrementRaidEscalation">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="-" />
+                                  </Children>
+                                </ButtonWidget>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="60" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                            Brush="BandItPlus.Codex.BodyCenter" Text="@RaidYearlyEscalationText" />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="40" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.StepButton" Command.Click="ExecuteIncrementRaidEscalation">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#00000000" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="+" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                          </Children>
+                        </ListPanel>
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ScrollablePanel>
+
+                        <ScrollbarWidget Id="Scrollbar_Raids" IsVisible="@IsCategoryRaidsVisible" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                         SuggestedWidth="8" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                         MarginTop="8" MarginBottom="8" MarginRight="2"
+                                         AlignmentAxis="Vertical" Handle="Handle_Raids"
+                                         MaxValue="100" MinValue="0">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4"
+                                    HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9"
+                                    AlphaFactor="0.25" Color="#5A4033FF" />
+                            <ImageWidget Id="Handle_Raids" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                         SuggestedWidth="8" SuggestedHeight="10" HorizontalAlignment="Center"
+                                         Brush="FaceGen.Scrollbar.Handle" />
+                          </Children>
+                        </ScrollbarWidget>
+
+                        <!-- HUD chapter (V) — all HUD-related settings live here -->
+                        <ScrollablePanel Id="Scroll_Hud" IsVisible="@IsCategoryHudVisible"
+                                         WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                         AutoHideScrollBars="true"
+                                         ClipRect="Clip_Hud" InnerPanel="Clip_Hud\List_Hud"
+                                         VerticalScrollbar="..\Scrollbar_Hud">
+                          <Children>
+                            <Widget Id="Clip_Hud" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    ClipContents="true">
+                              <Children>
+                        <ListPanel Id="List_Hud" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginRight="22"
+                                   IsVisible="@IsCategoryHudVisible"
+                                   StackLayout.LayoutMethod="VerticalTopToBottom">
+                          <Children>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_089}I." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_090}◆  Show map HUD&#xA;Roadside infamy bar (preview — full HUD next update)." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleShowMapHud">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@ShowMapHud" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@ShowMapHudOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_091}ON" IsVisible="@ShowMapHud" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_092}OFF" IsVisible="@ShowMapHudOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_093}II." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_094}◆  Rank-up notifications&#xA;Toast when your infamy rank rises." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleShowRankUpToast">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@ShowRankUpToast" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@ShowRankUpToastOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_095}ON" IsVisible="@ShowRankUpToast" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_096}OFF" IsVisible="@ShowRankUpToastOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_097}III." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_098}◆  HUD glow&#xA;Firelight halo behind the roadside bar." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleShowHudGlow">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@ShowHudGlow" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@ShowHudGlowOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_099}ON" IsVisible="@ShowHudGlow" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_100}OFF" IsVisible="@ShowHudGlowOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_101}IV." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_102}◆  Quest alert&#xA;Pulsing badge while a hunt pledge is active." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleShowQuestAlert">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@ShowQuestAlert" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@ShowQuestAlertOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_103}ON" IsVisible="@ShowQuestAlert" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_104}OFF" IsVisible="@ShowQuestAlertOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <!-- 07-10: every BP HUD toggleable from here (rows V-VIII) -->
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_105}V." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_106}◆  Hideout chief card&#xA;Reveal card shown when assaulting or sneaking into a hideout." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleShowChiefCard">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@ShowChiefCard" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@ShowChiefCardOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_107}ON" IsVisible="@ShowChiefCard" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_108}OFF" IsVisible="@ShowChiefCardOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_109}VI." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_110}◆  Sneak shadow bar&#xA;Stealth meter + spotted grace timer in hideout sneak-ins." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleSneakShadowHud">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@SneakShadowHud" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@SneakShadowHudOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_111}ON" IsVisible="@SneakShadowHud" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_112}OFF" IsVisible="@SneakShadowHudOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_113}VII." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_114}◆  Battle AI panel&#xA;BANDIT AI checklist at the start of bandit field battles." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleShowBattlePanel">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@ShowBattlePanel" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@ShowBattlePanelOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_115}ON" IsVisible="@ShowBattlePanel" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_116}OFF" IsVisible="@ShowBattlePanelOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_117}VIII." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_118}◆  Hideout alarm &amp; meter&#xA;Assault suspicion meter, camp alarm and reinforcement wave." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleHideoutAlarm">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@HideoutAlarm" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@HideoutAlarmOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_119}ON" IsVisible="@HideoutAlarm" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_120}OFF" IsVisible="@HideoutAlarmOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <!-- 07-10: Bandit King / rebellion notification family (rows IX-XI) -->
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_121}IX." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_122}◆  Bandit King panels&#xA;Mad King + rebellion events as premium panels. OFF = plain chat line." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleShowMadKingPanels">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@ShowMadKingPanels" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@ShowMadKingPanelsOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_123}ON" IsVisible="@ShowMadKingPanels" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_124}OFF" IsVisible="@ShowMadKingPanelsOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_125}X." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_126}◆  Rebellion as toasts&#xA;Rebellion events show as compact toasts instead of full panels." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleRebellionAsToasts">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@RebellionAsToasts" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@RebellionAsToastsOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_127}ON" IsVisible="@RebellionAsToasts" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_128}OFF" IsVisible="@RebellionAsToastsOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="84" ClipContents="true" MarginTop="6"
+                                       StackLayout.LayoutMethod="HorizontalLeftToRight">
+                              <Children>
+                                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="40" Brush="BandItPlus.Codex.RomanNumeral" Text="{=bp_pf_banditplusconsolev3_129}XI." />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="76" VerticalAlignment="Top" MarginTop="4" MarginBottom="4" MarginLeft="16" Brush="BandItPlus.Codex.Body" Text="{=bp_pf_banditplusconsolev3_130}◆  Rebellion panels: bandit-driven only&#xA;ON = only blockade-forced uprisings get the panel; OFF = every uprising." />
+                                <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="40" VerticalAlignment="Center"
+                                              DoNotPassEventsToChildren="true" Brush="BandItPlus.Codex.ToggleButton" Command.Click="ExecuteToggleRebellionBanditOnly">
+                                  <Children>
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#4A5028C0" IsVisible="@RebellionBanditOnly" />
+                                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#3A2614A0" IsVisible="@RebellionBanditOnlyOff" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_131}ON" IsVisible="@RebellionBanditOnly" />
+                                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_132}OFF" IsVisible="@RebellionBanditOnlyOff" />
+                                  </Children>
+                                </ButtonWidget>
+                              </Children>
+                            </ListPanel>
+
+                          </Children>
+                        </ListPanel>
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ScrollablePanel>
+
+                        <!-- Vertical scrollbar (auto-hidden when the chapter fits) -->
+                        <ScrollbarWidget Id="Scrollbar_Hud" IsVisible="@IsCategoryHudVisible" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                         SuggestedWidth="8" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                         MarginTop="8" MarginBottom="8" MarginRight="2"
+                                         AlignmentAxis="Vertical" Handle="Handle_Hud"
+                                         MaxValue="100" MinValue="0">
+                          <Children>
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4"
+                                    HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9"
+                                    AlphaFactor="0.25" Color="#5A4033FF" />
+                            <ImageWidget Id="Handle_Hud" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                         SuggestedWidth="8" SuggestedHeight="10" HorizontalAlignment="Center"
+                                         Brush="FaceGen.Scrollbar.Handle" />
+                          </Children>
+                        </ScrollbarWidget>
+
+                      </Children>
+                    </Widget>
+
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                               SuggestedHeight="60" VerticalAlignment="Bottom"
+                               MarginBottom="24" MarginLeft="60" MarginRight="60"
+                               AlphaFactor="@ChapterContentAlpha"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight">
+                      <Children>
+                        <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="220" HeightSizePolicy="Fixed" SuggestedHeight="44"
+                                      IsVisible="@IsRestoreVisible"
+                                      DoNotPassEventsToChildren="true"
+                                      Brush="BandItPlus.Codex.BookmarkButton" Command.Click="ExecuteResetTabDefaults">
+                          <Children>
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    Sprite="BlankWhiteSquare_9" Color="#6B3520BB"
+                                    ColorFactor="@RestoreColorFactor" />
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        Brush="BandItPlus.Codex.ButtonText" Text="{=bp_pf_banditplusconsolev3_133}Restore Verses" />
+                          </Children>
+                        </ButtonWidget>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="44"
+                                    MarginLeft="20"
+                                    Brush="BandItPlus.Codex.ChapterMark"
+                                    Text="@ChapterMarkText" />
+                      </Children>
+                    </ListPanel>
+
+                  </Children>
+                </Widget>
+
+              </Children>
+            </ListPanel>
+
+          </Children>
+        </Widget>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

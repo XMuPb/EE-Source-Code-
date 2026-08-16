@@ -1,0 +1,552 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- inside-camp panel. full screen width, ~206px tall, top-anchored, 3 rows:
+           row A (y=0..46):   gold edge + title sash + culture subline
+           row B (y=52..160): 5 cells (identity, rapport, activity, network, services)
+           row C (y=162..202): bottom flavor strip (party stats, lore, time-of-day) -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+            HorizontalAlignment="Center" VerticalAlignment="Top"
+            IsVisible="@IsPanelVisible">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                SuggestedWidth="1600" SuggestedHeight="222"
+                HorizontalAlignment="Center" VerticalAlignment="Top"
+                MarginTop="@PanelTopMargin"
+                Sprite="BlankWhiteSquare_9" Color="#0B0906FC"
+                AlphaFactor="@BackdropAlpha">
+          <Children>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="6" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare" Color="#C8A24EFF" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="1" VerticalAlignment="Top" MarginTop="6"
+                    Sprite="BlankWhiteSquare" Color="#F0CC6877" />
+
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="540" SuggestedHeight="34"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginTop="8"
+                    Sprite="BlankWhiteSquare_9" Color="#2A1A0EAA" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="540" SuggestedHeight="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="8"
+                    Sprite="BlankWhiteSquare" Color="#C8A24E66" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="540" SuggestedHeight="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="41"
+                    Sprite="BlankWhiteSquare" Color="#C8A24E66" />
+
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="28"
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                        MarginLeft="40" MarginRight="40" MarginTop="10"
+                        Brush="BandItPlus.Camp.TitleHero"
+                        Text="@CampName" />
+
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="14"
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                        MarginLeft="40" MarginRight="40" MarginTop="34"
+                        Brush="BandItPlus.Camp.SublineCenter"
+                        Text="@CultureName" />
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="40" MarginRight="40" MarginTop="50"
+                    Sprite="BlankWhiteSquare" Color="#C8A24E33" />
+
+            <!-- ◆ ACTIVITY ◆ header lives INSIDE the cell at MarginTop=4, matching the
+                 NETWORK and SERVICES cells -->
+
+            <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                       SuggestedHeight="130"
+                       HorizontalAlignment="Center" VerticalAlignment="Top"
+                       MarginLeft="24" MarginRight="24" MarginTop="52"
+                       LayoutImp.LayoutMethod="HorizontalLeftToRight">
+              <Children>
+
+                <!-- Cell A: IDENTITY (200 wide) -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="200" SuggestedHeight="130">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="58" SuggestedHeight="78"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="6" MarginTop="4"
+                            Sprite="BlankWhiteSquare" Color="#C8A24EFF" />
+                    <BannerTableauWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                         SuggestedWidth="54" SuggestedHeight="74"
+                                         HorizontalAlignment="Left" VerticalAlignment="Top"
+                                         MarginLeft="8" MarginTop="6"
+                                         BannerCodeText="@BannerCodeText" CurrentDisplayedSize="54" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="124" SuggestedHeight="20"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="72" MarginTop="4"
+                                Brush="BandItPlus.Camp.IdentityName"
+                                Text="@ChiefName" />
+                    <!-- chief mood star, top-right of the identity cell. tint bound to
+                         ChiefRapportDotColor (gray=stranger, red=wary, amber=known,
+                         green=trusted) -->
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="10" SuggestedHeight="10"
+                            HorizontalAlignment="Right" VerticalAlignment="Top"
+                            MarginRight="8" MarginTop="8"
+                            Sprite="BlankWhiteSquare" Color="@ChiefRapportDotColor" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="124" SuggestedHeight="16"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="72" MarginTop="26"
+                                Brush="BandItPlus.Camp.BodySerif"
+                                Text="@ChiefTitle" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="120" SuggestedHeight="14"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="72" MarginTop="48"
+                            Sprite="BlankWhiteSquare" Color="#6F8AAE33" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="2" SuggestedHeight="14"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="72" MarginTop="48"
+                            Sprite="BlankWhiteSquare" Color="#6F8AAEFF" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="114" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="78" MarginTop="48"
+                                Brush="BandItPlus.Camp.LabelBold"
+                                Text="@CultureName" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="124" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="72" MarginTop="68"
+                                Brush="BandItPlus.Codex.Flavor"
+                                Text="@LastVisitLine" />
+                  </Children>
+                </Widget>
+
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="1" SuggestedHeight="130"
+                        Sprite="BlankWhiteSquare" Color="#C8A24E55" />
+
+                <!-- cell B: RAPPORT (150 wide, 144 tall so the SLAVER row clears the divider) -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="150" SuggestedHeight="130">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="16"
+                                HorizontalAlignment="Center" VerticalAlignment="Top"
+                                MarginLeft="8" MarginRight="8" MarginTop="4"
+                                Brush="BandItPlus.Camp.SectionHeader"
+                                Text="{=bp_pf_banditcamppanel_001}&#9670; RAPPORT &#9670;" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="40" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="28"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_002}CHIEF" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="12" SuggestedHeight="12"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="54" MarginTop="31"
+                            Sprite="BlankWhiteSquare" Color="@ChiefRapportDotColor" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="68" MarginTop="28"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@ChiefRapportLabel" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="40" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="52"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_003}FOOD" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="12" SuggestedHeight="12"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="54" MarginTop="55"
+                            Sprite="BlankWhiteSquare" Color="@FoodVendorRapportDotColor" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="68" MarginTop="52"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@FoodVendorRapportLabel" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="40" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="76"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_004}GEAR" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="12" SuggestedHeight="12"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="54" MarginTop="79"
+                            Sprite="BlankWhiteSquare" Color="@GearVendorRapportDotColor" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="68" MarginTop="76"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@GearVendorRapportLabel" />
+                    <!-- SLAVER rapport row — slaver-vendor trust -->
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="40" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="100"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_005}SLAVER" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="12" SuggestedHeight="12"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="54" MarginTop="103"
+                            Sprite="BlankWhiteSquare" Color="@SlaverVendorRapportDotColor" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="68" MarginTop="100"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@SlaverVendorRapportLabel" />
+                  </Children>
+                </Widget>
+
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="1" SuggestedHeight="130"
+                        Sprite="BlankWhiteSquare" Color="#C8A24E55" />
+
+                <!-- cell C: ACTIVITY (center hero, stretch; 144 tall to match RAPPORT/NETWORK) -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="130">
+                  <Children>
+                    <!-- brighter hero-cell backdrop (#1A140EE6) so the activity cell separates
+                         from rapport/network -->
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            MarginLeft="6" MarginRight="6" MarginTop="2" MarginBottom="2"
+                            Sprite="BlankWhiteSquare_9" Color="#1A140EE6" />
+                    <!-- subtle gold inner glow strip at top of activity card -->
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="1" VerticalAlignment="Top"
+                            MarginLeft="6" MarginRight="6" MarginTop="2"
+                            Sprite="BlankWhiteSquare" Color="#C8A24E55" />
+                    <!-- ACTIVITY header INSIDE the cell, matching NETWORK/SERVICES pattern -->
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="16"
+                                HorizontalAlignment="Center" VerticalAlignment="Top"
+                                MarginLeft="8" MarginRight="8" MarginTop="4"
+                                Brush="BandItPlus.Camp.SectionHeader"
+                                Text="{=bp_pf_banditcamppanel_006}&#9670; ACTIVITY &#9670;" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="22"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginLeft="14" MarginRight="14" MarginTop="20"
+                            Sprite="BlankWhiteSquare_9" Color="#1A140888" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="2" SuggestedHeight="22"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="14" MarginTop="20"
+                            Sprite="BlankWhiteSquare" Color="#C8A24EFF" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="60" SuggestedHeight="20"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="22" MarginTop="22"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_007}CHIEF" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="20"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="86" MarginRight="22" MarginTop="22"
+                                Brush="BandItPlus.Camp.QuestTextBig"
+                                Text="@ChiefQuestText" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="22"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginLeft="14" MarginRight="14" MarginTop="46"
+                            Sprite="BlankWhiteSquare_9" Color="#1A140888" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="2" SuggestedHeight="22"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="14" MarginTop="46"
+                            Sprite="BlankWhiteSquare" Color="#C8A24EFF" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="60" SuggestedHeight="20"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="22" MarginTop="48"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_008}FOOD" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="20"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="86" MarginRight="22" MarginTop="48"
+                                Brush="BandItPlus.Camp.QuestTextBig"
+                                Text="@FoodQuestText" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="22"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginLeft="14" MarginRight="14" MarginTop="72"
+                            Sprite="BlankWhiteSquare_9" Color="#1A140888" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="2" SuggestedHeight="22"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="14" MarginTop="72"
+                            Sprite="BlankWhiteSquare" Color="#C8A24EFF" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="60" SuggestedHeight="20"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="22" MarginTop="74"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_009}GEAR" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="20"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="86" MarginRight="22" MarginTop="74"
+                                Brush="BandItPlus.Camp.QuestTextBig"
+                                Text="@GearQuestText" />
+                    <!-- 4th row: SLAVER (matches the RAPPORT/NETWORK 4th slot) -->
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="22"
+                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                            MarginLeft="14" MarginRight="14" MarginTop="98"
+                            Sprite="BlankWhiteSquare_9" Color="#1A140888" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="2" SuggestedHeight="22"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="14" MarginTop="98"
+                            Sprite="BlankWhiteSquare" Color="#C8A24EFF" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="60" SuggestedHeight="20"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="22" MarginTop="100"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_010}SLAVER" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="20"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="86" MarginRight="22" MarginTop="100"
+                                Brush="BandItPlus.Camp.QuestTextBig"
+                                Text="@SlaverActivityText" />
+                  </Children>
+                </Widget>
+
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="1" SuggestedHeight="130"
+                        Sprite="BlankWhiteSquare" Color="#C8A24E55" />
+
+                <!-- cell D: NETWORK (150 wide, 144 tall so the PRISONERS row clears the divider) -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="150" SuggestedHeight="130">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="16"
+                                HorizontalAlignment="Center" VerticalAlignment="Top"
+                                MarginLeft="8" MarginRight="8" MarginTop="4"
+                                Brush="BandItPlus.Camp.SectionHeader"
+                                Text="{=bp_pf_banditcamppanel_011}&#9670; NETWORK &#9670;" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="58" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="24"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_012}FOOD" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                MarginRight="10" MarginTop="24"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@FoodContactStatus" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="58" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="40"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_013}GEAR" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                MarginRight="10" MarginTop="40"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@GearContactStatus" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="58" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="56"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_014}ORDER" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                MarginRight="10" MarginTop="56"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@CustomOrderStatus" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="58" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="72"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_015}RUMORS" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                MarginRight="10" MarginTop="72"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@RumorsCount" />
+                    <!-- CONTACTS row — live data from the tier-3 vendor introductions.
+                         RUMORS above is still a placeholder. -->
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="58" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="88"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_016}CONTACTS" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                MarginRight="10" MarginTop="88"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@ContactsText" />
+                    <!-- PRISONERS row — slaver-camp indicator. "12 in chains" for slaver camps,
+                         "—" for everyone else -->
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="58" SuggestedHeight="14"
+                                HorizontalAlignment="Left" VerticalAlignment="Top"
+                                MarginLeft="10" MarginTop="104"
+                                Brush="BandItPlus.Camp.DenseLabel"
+                                Text="{=bp_pf_banditcamppanel_017}PRISONERS" />
+                    <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                SuggestedWidth="78" SuggestedHeight="14"
+                                HorizontalAlignment="Right" VerticalAlignment="Top"
+                                MarginRight="10" MarginTop="104"
+                                Brush="BandItPlus.Camp.NetworkValue"
+                                Text="@PrisonersText" />
+                  </Children>
+                </Widget>
+
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="1" SuggestedHeight="130"
+                        Sprite="BlankWhiteSquare" Color="#C8A24E55" />
+
+                <!-- Cell E: SERVICES (200 wide, 2x2 buttons — symmetric with Identity for panel-centered ACTIVITY) -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="200" SuggestedHeight="130">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                SuggestedHeight="16"
+                                HorizontalAlignment="Center" VerticalAlignment="Top"
+                                MarginLeft="8" MarginRight="8" MarginTop="4"
+                                Brush="BandItPlus.Camp.SectionHeader"
+                                Text="{=bp_pf_banditcamppanel_018}&#9670; SERVICES &#9670;" />
+                    <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                  SuggestedWidth="88" SuggestedHeight="36"
+                                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  MarginLeft="8" MarginTop="24"
+                                  Brush="BandItPlus.Codex.BookmarkButton" Command.Click="ExecuteAction1"
+                                  DoNotPassEventsToChildren="true">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    Brush="BandItPlus.Codex.ButtonText"
+                                    Text="@Action1Label" />
+                      </Children>
+                    </ButtonWidget>
+                    <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                  SuggestedWidth="88" SuggestedHeight="36"
+                                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  MarginLeft="104" MarginTop="24"
+                                  Brush="BandItPlus.Codex.BookmarkButton" Command.Click="ExecuteAction2"
+                                  DoNotPassEventsToChildren="true">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    Brush="BandItPlus.Codex.ButtonText"
+                                    Text="@Action2Label" />
+                      </Children>
+                    </ButtonWidget>
+                    <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                  SuggestedWidth="88" SuggestedHeight="36"
+                                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  MarginLeft="8" MarginTop="64"
+                                  Brush="BandItPlus.Codex.BookmarkButton" Command.Click="ExecuteAction3"
+                                  DoNotPassEventsToChildren="true">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    Brush="BandItPlus.Codex.ButtonText"
+                                    Text="@Action3Label" />
+                      </Children>
+                    </ButtonWidget>
+                    <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                  SuggestedWidth="88" SuggestedHeight="36"
+                                  HorizontalAlignment="Left" VerticalAlignment="Top"
+                                  MarginLeft="104" MarginTop="64"
+                                  Brush="BandItPlus.Codex.BookmarkButton" Command.Click="ExecuteAction4"
+                                  DoNotPassEventsToChildren="true">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    Brush="BandItPlus.Codex.ButtonText"
+                                    Text="@Action4Label" />
+                      </Children>
+                    </ButtonWidget>
+                  </Children>
+                </Widget>
+
+              </Children>
+            </ListPanel>
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="24" MarginRight="24" MarginTop="184"
+                    Sprite="BlankWhiteSquare" Color="#C8A24E33" />
+
+            <!-- party stats: gold widget 110 wide so 7-digit values fit, troops sized
+                 for "X/Y", food tucked in close to troops -->
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="110" SuggestedHeight="22"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        MarginLeft="32" MarginTop="190"
+                        Brush="BandItPlus.Camp.PartyStatNumber"
+                        Text="@PartyGoldText" />
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="50" SuggestedHeight="22"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        MarginLeft="146" MarginTop="190"
+                        Brush="BandItPlus.Camp.PartyStatNumber"
+                        Text="@PartyTroopsText" />
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="90" SuggestedHeight="22"
+                        HorizontalAlignment="Left" VerticalAlignment="Top"
+                        MarginLeft="200" MarginTop="190"
+                        Brush="BandItPlus.Camp.PartyStatNumber"
+                        Text="@PartyFoodText" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="22"
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                        MarginLeft="340" MarginRight="180" MarginTop="190"
+                        Brush="BandItPlus.Camp.SublineCenter"
+                        Text="@LoreLine" />
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="160" SuggestedHeight="22"
+                        HorizontalAlignment="Right" VerticalAlignment="Top"
+                        MarginRight="24" MarginTop="190"
+                        Brush="BandItPlus.Camp.SublineCenter"
+                        Text="@TimeOfDayLine" />
+
+            <!-- bottom gold rule + a 1px highlight line above for a double-rule emboss -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="1"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginTop="215"
+                    Sprite="BlankWhiteSquare" Color="#C8A24E55" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="4"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginTop="216"
+                    Sprite="BlankWhiteSquare" Color="#C8A24EAA" />
+
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

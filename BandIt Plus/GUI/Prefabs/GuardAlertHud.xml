@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- over-guard awareness markers. 6 free-positioned slots; BpGuardAlertMissionView sets each
+         MarginLeft/MarginTop (reference units) and toggles the "?" (suspicious) / "!" (spotted) glyph. -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="@M0X" MarginTop="@M0Y">
+          <Children>
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M0Q" Brush="BandItPlus.Alert.Question" Text="?" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M0A" Brush="BandItPlus.Alert.Alarm" Text="!" />
+          </Children>
+        </Widget>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="@M1X" MarginTop="@M1Y">
+          <Children>
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M1Q" Brush="BandItPlus.Alert.Question" Text="?" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M1A" Brush="BandItPlus.Alert.Alarm" Text="!" />
+          </Children>
+        </Widget>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="@M2X" MarginTop="@M2Y">
+          <Children>
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M2Q" Brush="BandItPlus.Alert.Question" Text="?" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M2A" Brush="BandItPlus.Alert.Alarm" Text="!" />
+          </Children>
+        </Widget>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="@M3X" MarginTop="@M3Y">
+          <Children>
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M3Q" Brush="BandItPlus.Alert.Question" Text="?" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M3A" Brush="BandItPlus.Alert.Alarm" Text="!" />
+          </Children>
+        </Widget>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="@M4X" MarginTop="@M4Y">
+          <Children>
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M4Q" Brush="BandItPlus.Alert.Question" Text="?" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M4A" Brush="BandItPlus.Alert.Alarm" Text="!" />
+          </Children>
+        </Widget>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="@M5X" MarginTop="@M5Y">
+          <Children>
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M5Q" Brush="BandItPlus.Alert.Question" Text="?" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@M5A" Brush="BandItPlus.Alert.Alarm" Text="!" />
+          </Children>
+        </Widget>
+        <!-- exit compass marker (the MissionView projects the escape door + clamps it to the screen edge) -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="80" SuggestedHeight="40" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="@ExitX" MarginTop="@ExitY" IsVisible="@ExitShow">
+          <Children>
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#0A0806DD" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="frame_9" Color="#C8A24EFF" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ChapterTitleCenter" Text="{=bp_pf_guardalerthud_001}EXIT" />
+          </Children>
+        </Widget>
+        <!-- follower companion beacon — gold glow + ring + core over the recruited cellmate's head -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="42" SuggestedHeight="42" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="@FollowerX" MarginTop="@FollowerY" IsVisible="@FollowerShow">
+          <Children>
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="GradientCircle" Color="#E8C25A88" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="26" SuggestedHeight="26" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircleOutlined" Color="#F2D24AFF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="12" SuggestedHeight="12" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="BlankWhiteCircle" Color="#F2D24AFF" />
+          </Children>
+        </Widget>
+        <!-- guard bark — "What's that noise?" floats over the guard investigating the noise -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="200" SuggestedHeight="30" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="@BarkX" MarginTop="@BarkY" IsVisible="@BarkShow">
+          <Children>
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#100806E0" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Camp.SubtitleSerif" Text="@BarkText" />
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

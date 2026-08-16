@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- right-center escape objective tracker, stone-plate style (matches the lockpick).
+         @Show gates it; controller drives marker @OnColor, active @OnGlow, active-row @OnBack, @Hint. -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <!-- spotted red vignette — full-screen tint + red edge frame, pulses with detection (behind the panel) -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@VignetteVisible" AlphaFactor="@VignetteAlpha" Sprite="BlankWhiteSquare" Color="#B0140E80" />
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@VignetteVisible" AlphaFactor="@VignetteAlpha" Sprite="frame_9" Color="#E83020FF" />
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="402" SuggestedHeight="520"
+                HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="34"
+                IsVisible="@Show" AlphaFactor="@PanelAlpha">
+          <Children>
+            <!-- stone plate + dark vignette + gold frame.
+                 Fills are inset 6px so they tuck INSIDE the frame_9 gold line (its border is inset from the
+                 widget edge) — otherwise the full-bleed brown stone shows as a halo outside the frame. -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="6" MarginRight="6" MarginTop="6" MarginBottom="6" Sprite="stone_texture_continuous" Color="#2B2114F4" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="6" MarginRight="6" MarginTop="6" MarginBottom="6" Sprite="BlankWhiteSquare_9" Color="#080602A2" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="frame_9" Color="#C8A24EFF" />
+            <!-- red "spotted" alert frame -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="frame_9" Color="#E83C28FF" AlphaFactor="@AlertAlpha" />
+            <!-- corner bolts -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="10" MarginTop="10" Sprite="BlankWhiteCircle" Color="#E8C25AFF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="10" MarginTop="10" Sprite="BlankWhiteCircle" Color="#E8C25AFF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="10" MarginBottom="10" Sprite="BlankWhiteCircle" Color="#E8C25AFF" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="10" SuggestedHeight="10" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="10" MarginBottom="10" Sprite="BlankWhiteCircle" Color="#E8C25AFF" />
+
+            <!-- header + subtitle -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="40"
+                        VerticalAlignment="Top" MarginTop="18" Brush="BandItPlus.Codex.ChapterTitleCenter" Text="{=bp_pf_escapehud_001}ESCAPE THE PIT" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                        VerticalAlignment="Top" MarginTop="60" Brush="BandItPlus.Codex.BodyCenter" Text="@HeaderInfo" />
+            <!-- two-tone divider -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="304" SuggestedHeight="2" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="92" Sprite="BlankWhiteSquare" Color="#9A7C3AAA" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="96" SuggestedHeight="3" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="91" Sprite="BlankWhiteSquare" Color="#FFE6A0FF" />
+
+
+            <!-- ROW 1 -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="368" SuggestedHeight="52"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="112">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" AlphaFactor="@O1Back" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="2" Sprite="GradientCircle" Color="#E8C25AFF" AlphaFactor="@O1Glow" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="12" Sprite="SPPerks\EngineeringPrisonArchitect" Color="@O1Color" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="32" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="56" Brush="BandItPlus.Codex.Objective" Text="@O1Text" />
+              </Children>
+            </Widget>
+            <!-- ROW 2 -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="368" SuggestedHeight="52"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="166">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" AlphaFactor="@O2Back" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="2" Sprite="GradientCircle" Color="#E8C25AFF" AlphaFactor="@O2Glow" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="12" Sprite="SPPerks\RoguerySlipIntoShadows" Color="@O2Color" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="32" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="56" Brush="BandItPlus.Codex.Objective" Text="@O2Text" />
+              </Children>
+            </Widget>
+            <!-- ROW 3 -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="368" SuggestedHeight="52"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="220">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#E8C25AFF" AlphaFactor="@O3Back" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="44" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="2" Sprite="GradientCircle" Color="#E8C25AFF" AlphaFactor="@O3Glow" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="30" SuggestedHeight="30" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="12" Sprite="SPPerks\RogueryEscapeArtist" Color="@O3Color" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="32" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="56" Brush="BandItPlus.Codex.Objective" Text="@O3Text" />
+              </Children>
+            </Widget>
+
+            <!-- status: refined INTEL block — icon-led rows (gold gem = placeholder, perk icons swap in) -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="316" SuggestedHeight="2" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="302" Sprite="BlankWhiteSquare" Color="#9A7C3AAA" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="78" SuggestedHeight="3" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="301" Sprite="BlankWhiteSquare" Color="#FFE6A0FF" />
+
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="316" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="314">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="GradientCircle" Color="#E0584C55" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="26" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="1" Sprite="SPPerks\PolearmGuards" Color="#E0584CFF" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="270" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="42" Brush="BandItPlus.Codex.Body" Text="@GuardsLine" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="316" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="346">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="GradientCircle" Color="#E8C25A55" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="26" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="1" Sprite="SPPerks\TradeSpringOfGold" Color="#F0CC68FF" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="270" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="42" Brush="BandItPlus.Codex.Body" Text="@RewardLine" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="150" SuggestedHeight="2" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="152" IsVisible="@RewardStruck" Sprite="BlankWhiteSquare" Color="#E0584CFF" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="316" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="378" IsVisible="@PrisonersVisible">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="GradientCircle" Color="#84C87855" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="26" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="1" Sprite="SPPerks\RogueryManhunter" Color="#84C878FF" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="270" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="42" Brush="BandItPlus.Codex.Body" Text="@PrisonersLine" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="316" SuggestedHeight="28" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="410" IsVisible="@ChestVisible">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="28" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Center" Sprite="GradientCircle" Color="#E8C25A55" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="26" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="1" Sprite="SPPerks\RogueryEyeForLoot" Color="#F0CC68FF" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="270" SuggestedHeight="26" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="42" Brush="BandItPlus.Codex.Body" Text="@ChestLine" />
+              </Children>
+            </Widget>
+
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="24"
+                        VerticalAlignment="Bottom" MarginBottom="48" IsVisible="@CellmateVisible"
+                        Brush="BandItPlus.Codex.BodyCenter" Text="{=bp_pf_escapehud_002}Your cellmate is at your side" />
+
+            <!-- live contextual hint -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="24"
+                        VerticalAlignment="Bottom" MarginBottom="20" Brush="BandItPlus.Codex.BodyCenter" Text="@Hint" />
+          </Children>
+        </Widget>
+
+        <!-- pick-snap warning — a tense red subtitle when the lockpick breaks -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="720" SuggestedHeight="48" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="234" IsVisible="@WarnVisible">
+          <Children>
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#16060496" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#E0584CCC" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.BodyCenterRed" Text="@WarnText" />
+          </Children>
+        </Widget>
+
+        <!-- cellmate banter — whispered lines on key beats (gold-hairlined whisper card, ◆ bookends) -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="564" SuggestedHeight="44" HorizontalAlignment="Center" VerticalAlignment="Bottom" MarginBottom="214" IsVisible="@BanterVisible">
+          <Children>
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#0A0806DD" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#C8A24E55" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#C8A24E55" />
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="22" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="16" Brush="BandItPlus.Codex.BodyCenterGold" Text="&#9670;" />
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="22" HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="16" Brush="BandItPlus.Codex.BodyCenterGold" Text="&#9670;" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="44" MarginRight="44" Brush="BandItPlus.Camp.SubtitleSerif" Text="@BanterText" />
+          </Children>
+        </Widget>
+
+        <!-- objective-complete toast — clean top-of-screen notification (not over the header) -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="440" SuggestedHeight="58"
+                HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="96" IsVisible="@ToastVisible" AlphaFactor="@ToastAlpha">
+          <Children>
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="300" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="GradientCircle" Color="#E8C25A44" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#0B0805EE" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#FFE6A0FF" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#FFE6A0FF" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Brush="BandItPlus.Codex.ChapterTitleCenter" Text="@ToastText" />
+          </Children>
+        </Widget>
+
+        <!-- ESCAPED flourish (center-screen, plays on a successful escape) — dark inset card for contrast. -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="600" SuggestedHeight="300"
+                HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="@FlourishVisible" AlphaFactor="@FlourishAlpha">
+          <Children>
+            <!-- gold halo + dark plate + gold frame (plate inset 6 so the frame line contains it) -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="660" SuggestedHeight="660" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="GradientCircle" Color="#E8C25A4D" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="6" MarginRight="6" MarginTop="6" MarginBottom="6" Sprite="BlankWhiteSquare_9" Color="#0C0907EC" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="frame_9" Color="#C8A24EDD" />
+            <!-- title framed by two gold rules -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="2" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="40" Sprite="BlankWhiteSquare" Color="#C8A24EBB" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="58" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="48" Brush="BandItPlus.Codex.ChapterTitleCenter" Text="{=bp_pf_escapehud_003}ESCAPED" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="300" SuggestedHeight="2" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="110" Sprite="BlankWhiteSquare" Color="#C8A24EBB" />
+            <!-- subtitle -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="26" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="124" Brush="BandItPlus.Codex.BodyCenter" Text="{=bp_pf_escapehud_004}You slip free into the night." />
+            <!-- stat divider + stats + reward -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed" SuggestedWidth="380" SuggestedHeight="1" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="162" Sprite="BlankWhiteSquare" Color="#C8A24E55" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="24" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="178" Brush="BandItPlus.Codex.BodyCenter" Text="@FlourishStats" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="40" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="214" Brush="BandItPlus.Codex.ChapterTitleCenter" Text="@FlourishReward" />
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

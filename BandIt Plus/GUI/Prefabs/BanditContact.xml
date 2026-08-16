@@ -1,0 +1,160 @@
+<Prefab>
+  <!-- go-between contact board — floating leather board over the live game, same
+       family as the parley board. soft dim + focused halo (no opaque black), wood
+       frame + seam + leather face + breathing lamplight (@CrestHaloHex) + bronze
+       nubs, gold header with twinkling gem (@JewelHex), the contact's words on the
+       leather, and two parchment strips (accent spine, perk-icon medallion, corner
+       tag, accent underline) that slide in from the left. bindings: @TitleText
+       @BodyText @AcceptText @LeaveText @CurtainHex @CrestHaloHex @JewelHex +
+       cascade (@HeaderAlpha @BodyAlpha @Strip1Alpha/@Strip1DriftX
+       @Strip2Alpha/@Strip2DriftX) + ExecuteAccept/ExecuteLeave. -->
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+
+        <!-- soft dim + focused halo (no art, no opaque black — parley parity) -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                Sprite="BlankWhiteSquare" Color="#00000066" />
+        <Widget WidthSizePolicy="Fixed" SuggestedWidth="900" HeightSizePolicy="Fixed" SuggestedHeight="760"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Sprite="CharacterDeveloper\add_focus_button_glow" Color="#000000B4" DoNotAcceptEvents="true" />
+
+        <!-- ── the board: 690x560 ── -->
+        <Widget WidthSizePolicy="Fixed" SuggestedWidth="690" HeightSizePolicy="Fixed" SuggestedHeight="560"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Children>
+
+            <!-- drop shadow -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    PositionXOffset="10" PositionYOffset="12"
+                    Sprite="BlankWhiteSquare_9" Color="#00000090" DoNotAcceptEvents="true" />
+            <!-- wood frame / seam / leather -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    Sprite="BlankWhiteSquare_9" Color="#3A2A18FF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    MarginLeft="8" MarginRight="8" MarginTop="8" MarginBottom="8"
+                    Sprite="BlankWhiteSquare_9" Color="#140C06FF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    MarginLeft="12" MarginRight="12" MarginTop="12" MarginBottom="12"
+                    Sprite="BlankWhiteSquare_9" Color="#2E1E0EF8" DoNotAcceptEvents="true" />
+            <!-- breathing lamplight on the face -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="240"
+                    VerticalAlignment="Top" MarginLeft="16" MarginRight="16" MarginTop="14"
+                    Sprite="CharacterDeveloper\add_focus_button_glow" Color="@CrestHaloHex" DoNotAcceptEvents="true" />
+
+            <!-- bronze corner nubs -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="14" HeightSizePolicy="Fixed" SuggestedHeight="14" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="6" MarginTop="6" Sprite="BlankWhiteSquare_9" Color="#8A6A34FF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="14" HeightSizePolicy="Fixed" SuggestedHeight="14" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="6" MarginTop="6" Sprite="BlankWhiteSquare_9" Color="#8A6A34FF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="14" HeightSizePolicy="Fixed" SuggestedHeight="14" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="6" MarginBottom="6" Sprite="BlankWhiteSquare_9" Color="#8A6A34FF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="14" HeightSizePolicy="Fixed" SuggestedHeight="14" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="6" MarginBottom="6" Sprite="BlankWhiteSquare_9" Color="#8A6A34FF" DoNotAcceptEvents="true" />
+
+            <!-- 100x pass: gold corner L-flourishes inside the leather -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="30" HeightSizePolicy="Fixed" SuggestedHeight="3" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="22" MarginTop="22" Sprite="BlankWhiteSquare" Color="#C8A24EB4" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="3" HeightSizePolicy="Fixed" SuggestedHeight="30" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="22" MarginTop="22" Sprite="BlankWhiteSquare" Color="#C8A24EB4" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="30" HeightSizePolicy="Fixed" SuggestedHeight="3" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="22" MarginTop="22" Sprite="BlankWhiteSquare" Color="#C8A24EB4" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="3" HeightSizePolicy="Fixed" SuggestedHeight="30" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="22" MarginTop="22" Sprite="BlankWhiteSquare" Color="#C8A24EB4" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="30" HeightSizePolicy="Fixed" SuggestedHeight="3" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="22" MarginBottom="22" Sprite="BlankWhiteSquare" Color="#C8A24EB4" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="3" HeightSizePolicy="Fixed" SuggestedHeight="30" HorizontalAlignment="Left" VerticalAlignment="Bottom" MarginLeft="22" MarginBottom="22" Sprite="BlankWhiteSquare" Color="#C8A24EB4" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="30" HeightSizePolicy="Fixed" SuggestedHeight="3" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="22" MarginBottom="22" Sprite="BlankWhiteSquare" Color="#C8A24EB4" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="3" HeightSizePolicy="Fixed" SuggestedHeight="30" HorizontalAlignment="Right" VerticalAlignment="Bottom" MarginRight="22" MarginBottom="22" Sprite="BlankWhiteSquare" Color="#C8A24EB4" DoNotAcceptEvents="true" />
+
+            <!-- 100x pass: the CREST SEAL breaking the top frame (breathing halo + logo) -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="150" HeightSizePolicy="Fixed" SuggestedHeight="150"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" PositionYOffset="-68"
+                    Sprite="CharacterDeveloper\add_focus_button_glow" Color="@CrestHaloHex" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="92" HeightSizePolicy="Fixed" SuggestedHeight="92"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" PositionYOffset="-46"
+                    Sprite="logo1" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+
+            <!-- header: contact name + gold rule + twinkling gem -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="26"
+                        VerticalAlignment="Top" MarginTop="52"
+                        Brush="BandItPlus.Codex.BodyCenterGold" Text="@TitleText" AlphaFactor="@HeaderAlpha" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="318" HeightSizePolicy="Fixed" SuggestedHeight="8"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="85"
+                    Sprite="horizontal_gradient_divider_9" Color="#D8B05AD2" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="26" HeightSizePolicy="Fixed" SuggestedHeight="26"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="76"
+                    Sprite="CharacterDeveloper\add_focus_button_glow" Color="@JewelHex" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+            <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="18" HeightSizePolicy="Fixed" SuggestedHeight="18"
+                        HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="80"
+                        Brush="BandItPlus.Codex.BodyCenterGold" Text="◆" DoNotAcceptEvents="true" AlphaFactor="@HeaderAlpha" />
+
+            <!-- the contact's words, with a quiet quote-bar at their left hand -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="3" HeightSizePolicy="Fixed" SuggestedHeight="140"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="40" MarginTop="122"
+                    Sprite="BlankWhiteSquare" Color="#8A6A3452" DoNotAcceptEvents="true" AlphaFactor="@BodyAlpha" />
+            <RichTextWidget WidthSizePolicy="Fixed" SuggestedWidth="566" HeightSizePolicy="CoverChildren"
+                            HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="118"
+                            Brush="BandItPlus.Book.CardBody" Text="@BodyText" DoNotAcceptEvents="true" AlphaFactor="@BodyAlpha" />
+
+            <!-- 100x pass: the go-between's creed fills the band above the strips -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="345" HeightSizePolicy="Fixed" SuggestedHeight="6"
+                    HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="290"
+                    Sprite="horizontal_gradient_divider_9" Color="#8A6A3480" DoNotAcceptEvents="true" AlphaFactor="@BodyAlpha" />
+            <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="540" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                        HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="302"
+                        Brush="BandItPlus.Codex.BodyCenter" Text="{=bp_pf_banditcontact_001}A name given in trust opens more doors than steel." DoNotAcceptEvents="true" AlphaFactor="@BodyAlpha" />
+
+            <!-- ══ STRIP 1: ACCEPT (amber PACT) ══ -->
+            <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="608" HeightSizePolicy="Fixed" SuggestedHeight="76"
+                          HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="344"
+                          DoNotPassEventsToChildren="true" UpdateChildrenStates="true"
+                          AlphaFactor="@Strip1Alpha" PositionXOffset="@Strip1DriftX"
+                          Brush="BandItPlus.Parley.Strip" Command.Click="ExecuteAccept">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#FFF4DC90" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#5A46308F" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="8" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#B9892EFF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="52" HeightSizePolicy="Fixed" SuggestedHeight="52" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="16" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#B9892E70" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="44" HeightSizePolicy="Fixed" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="20" Sprite="GradientCircle" Color="#B9892EFF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="36" HeightSizePolicy="Fixed" SuggestedHeight="36" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="24" Sprite="GradientCircle" Color="#14100AF2" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="28" HeightSizePolicy="Fixed" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="28" Sprite="SPPerks\CharmSelfPromoter" Color="#F2E6CCFF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="88" HeightSizePolicy="Fixed" SuggestedHeight="26" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="12" MarginTop="8" Sprite="BlankWhiteSquare_9" Color="#B9892EFF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="84" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="14" MarginTop="10" Sprite="BlankWhiteSquare_9" Color="#180F08F5" DoNotAcceptEvents="true" />
+                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="84" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="14" MarginTop="10" Brush="BandItPlus.Codex.BodyCenterGold" Text="{=bp_pf_banditcontact_002}PACT" DoNotAcceptEvents="true" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Brush="BandItPlus.Parley.StripTitle" Text="@AcceptText" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="200" HeightSizePolicy="Fixed" SuggestedHeight="6" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="54" Sprite="horizontal_gradient_divider_9" Color="#B9892EAA" DoNotAcceptEvents="true" />
+              </Children>
+            </ButtonWidget>
+
+            <!-- ══ STRIP 2: STEP AWAY (stone LEAVE) ══ -->
+            <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="608" HeightSizePolicy="Fixed" SuggestedHeight="76"
+                          HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="432"
+                          DoNotPassEventsToChildren="true" UpdateChildrenStates="true"
+                          AlphaFactor="@Strip2Alpha" PositionXOffset="@Strip2DriftX"
+                          Brush="BandItPlus.Parley.Strip" Command.Click="ExecuteLeave">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#FFF4DC90" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="2" VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#5A46308F" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="8" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#6E6455FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="52" HeightSizePolicy="Fixed" SuggestedHeight="52" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="16" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#6E645570" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="44" HeightSizePolicy="Fixed" SuggestedHeight="44" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="20" Sprite="GradientCircle" Color="#6E6455FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="36" HeightSizePolicy="Fixed" SuggestedHeight="36" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="24" Sprite="GradientCircle" Color="#14100AF2" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="28" HeightSizePolicy="Fixed" SuggestedHeight="28" HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="28" Sprite="SPPerks\ScoutingPathfinder" Color="#F2E6CCFF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="88" HeightSizePolicy="Fixed" SuggestedHeight="26" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="12" MarginTop="8" Sprite="BlankWhiteSquare_9" Color="#6E6455FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="84" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="14" MarginTop="10" Sprite="BlankWhiteSquare_9" Color="#180F08F5" DoNotAcceptEvents="true" />
+                <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="84" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="14" MarginTop="10" Brush="BandItPlus.Codex.BodyCenterGold" Text="{=bp_pf_banditcontact_003}LEAVE" DoNotAcceptEvents="true" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Brush="BandItPlus.Parley.StripTitle" Text="@LeaveText" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="200" HeightSizePolicy="Fixed" SuggestedHeight="6" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="54" Sprite="horizontal_gradient_divider_9" Color="#6E6455AA" DoNotAcceptEvents="true" />
+              </Children>
+            </ButtonWidget>
+
+            <!-- 100x pass: stakes line seals the board's foot -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                        VerticalAlignment="Bottom" MarginBottom="16"
+                        Brush="BandItPlus.Codex.BodyCenterRed" Text="{=bp_pf_banditcontact_004}Break their trust, and every door in the wilds closes." DoNotAcceptEvents="true" AlphaFactor="@Strip2Alpha" />
+
+          </Children>
+        </Widget>
+
+        <!-- open-fade curtain -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                Sprite="BlankWhiteSquare" Color="@CurtainHex" DoNotAcceptEvents="true" />
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- first-visit intro card. layers back to front: fullscreen dimmer,
+         esc_menu_frame_canvas_9 card surface, inner dark wash, gold Galahad header,
+         gold-tinted divider, canvas_gradient text panel, bottom divider, continue
+         button. the narration sits in a ScrollablePanel so long passages scroll
+         instead of clipping: ScrollablePanel -> ClipRect (ClipContents) ->
+         ListPanel (CoverChildren) -> RichTextWidget (CoverChildren height);
+         structure from vanilla CharacterCreationNarrativeStage.xml.
+         AutoHideScrollBars hides the bar when the passage fits. IsVisible is
+         bound so the VM hides the card on Continue; the MissionView then removes
+         the layer. -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+            HorizontalAlignment="Center" VerticalAlignment="Center"
+            IsVisible="@IsVisible" AlphaFactor="@CardAlpha">
+      <Children>
+        <!-- 1. Fullscreen dimmer -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                Sprite="BlankWhiteSquare_9" Color="#000000E4" />
+
+        <!-- 2. Card surface — vanilla escape-menu framed canvas (nine-slice). -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                SuggestedWidth="1140" SuggestedHeight="1050"
+                HorizontalAlignment="Center" VerticalAlignment="Center"
+                Sprite="esc_menu_frame_canvas_9">
+          <Children>
+            <!-- 3. Inner dark wash -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    MarginTop="30" MarginBottom="30" MarginLeft="34" MarginRight="34"
+                    Sprite="BlankWhiteSquare_9" Color="#140F0BD8" />
+
+            <!-- header — hideout name. AlphaFactor=@HeaderAlpha staggers it into the
+                 reveal; ColorFactor=@GoldShimmer gives it a slow glow. -->
+            <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="1000" SuggestedHeight="46"
+                        HorizontalAlignment="Center" VerticalAlignment="Top"
+                        MarginTop="34"
+                        Brush="BandItPlus.CinemaTitle"
+                        AlphaFactor="@HeaderAlpha"
+                        ColorFactor="@GoldShimmer"
+                        Text="@TitleText" />
+
+            <!-- divider above the narration — @RuleAlpha staggers it in, @GoldShimmer
+                 makes the gold gently glow -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="900" SuggestedHeight="14"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginTop="92"
+                    Sprite="StdAssets\Popup\divider" Color="#D8B978FF"
+                    AlphaFactor="@RuleAlpha" ColorFactor="@GoldShimmer" />
+
+            <!-- text panel — canvas_gradient backing + ScrollablePanel; the narration
+                 scrolls, never clips. @TextAlpha staggers the block in last. -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="1056" SuggestedHeight="800"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginTop="116"
+                    AlphaFactor="@TextAlpha"
+                    Sprite="StdAssets\Popup\canvas_gradient">
+              <Children>
+                <ScrollablePanel Id="CineScroll"
+                                 WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                 AutoHideScrollBars="true"
+                                 ClipRect="CineClip" InnerPanel="CineClip\CineList"
+                                 VerticalScrollbar="..\CineScrollbar">
+                  <Children>
+                    <Widget Id="CineClip" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            ClipContents="true">
+                      <Children>
+                        <ListPanel Id="CineList" WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                   HorizontalAlignment="Center" VerticalAlignment="Top"
+                                   StackLayout.LayoutMethod="VerticalBottomToTop">
+                          <Children>
+                            <RichTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                            MarginLeft="36" MarginRight="44"
+                                            MarginTop="26" MarginBottom="26"
+                                            HorizontalAlignment="Center" VerticalAlignment="Top"
+                                            Brush="BandItPlus.Cinema"
+                                            Text="@NarrationText" ClipContents="false" />
+                          </Children>
+                        </ListPanel>
+                      </Children>
+                    </Widget>
+                  </Children>
+                </ScrollablePanel>
+
+                <!-- Vertical scrollbar (auto-hidden when the passage fits) -->
+                <ScrollbarWidget Id="CineScrollbar" WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                 SuggestedWidth="8" HorizontalAlignment="Right" VerticalAlignment="Center"
+                                 MarginTop="16" MarginBottom="16" MarginRight="6"
+                                 AlignmentAxis="Vertical" Handle="CineScrollbarHandle"
+                                 MaxValue="100" MinValue="0">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="4"
+                            HorizontalAlignment="Center" Sprite="BlankWhiteSquare_9"
+                            AlphaFactor="0.25" Color="#5A4033FF" />
+                    <ImageWidget Id="CineScrollbarHandle" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                 SuggestedWidth="8" SuggestedHeight="10" HorizontalAlignment="Center"
+                                 Brush="FaceGen.Scrollbar.Handle" />
+                  </Children>
+                </ScrollbarWidget>
+              </Children>
+            </Widget>
+
+            <!-- divider closing the narration block — staggered + shimmer -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="900" SuggestedHeight="14"
+                    HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginTop="924"
+                    Sprite="StdAssets\Popup\divider" Color="#D8B978FF"
+                    AlphaFactor="@RuleAlpha" ColorFactor="@GoldShimmer" />
+
+            <!-- continue button. DoNotPassEventsToChildren is mandatory — the child brown
+                 fill stretches over the whole button and would eat the click. the
+                 ButtonWidget itself stays transparent (Sprite/Color directly on a
+                 ButtonWidget renders an untinted white box); the brown fill is a
+                 child plain Widget. -->
+            <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                          SuggestedWidth="480" SuggestedHeight="56"
+                          HorizontalAlignment="Center" VerticalAlignment="Bottom"
+                          MarginBottom="36"
+                          UpdateChildrenStates="true"
+                          DoNotPassEventsToChildren="true"
+                          Command.Click="ExecuteContinue">
+              <Children>
+                <!-- brown fill -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        Sprite="BlankWhiteSquare_9" Color="#3A2C1AFF" />
+                <!-- blinking gold accents: top + bottom bars' ColorFactor bound to
+                     @ButtonPulse (breathed ~0.4..1.8 by the MissionView). ColorFactor
+                     on a plain child widget is the pulse that works — AlphaFactor on
+                     the ButtonWidget itself doesn't animate, buttons paint via brush
+                     states. -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="4" VerticalAlignment="Top"
+                        Sprite="horizontal_gradient_divider_9"
+                        ColorFactor="@ButtonPulse" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="4" VerticalAlignment="Bottom"
+                        Sprite="horizontal_gradient_divider_9"
+                        ColorFactor="@ButtonPulse" />
+                <!-- Label stays at steady brightness — not pulsed, so it never
+                     dims below readable. -->
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Brush="BandItPlus.Footer"
+                            Text="{=bp_pf_hideoutcinemaintro_001}Press Left Click to Continue" />
+              </Children>
+            </ButtonWidget>
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

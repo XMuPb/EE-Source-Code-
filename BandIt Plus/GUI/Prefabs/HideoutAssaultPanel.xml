@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <!-- hideout assault panel — persistent crimson battle HUD, top-left. dark base +
+         crimson left edge; title + mode label + hideout name; boss spotlight
+         (clan-banner crest medallion + name + culture/trust); chief taunt; 2x2
+         intel grid (defenders / your forces / odds / 5-pip difficulty); 3 cards
+         with SpriteParts\Sve icons and live values; spoils line. text uses the
+         BandItPlus.Crimson* brushes; every icon medallion keeps a fallback diamond
+         behind the sprite. AlphaFactor binds @PanelAlpha (fade-in from the
+         MissionView). -->
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                SuggestedWidth="352" SuggestedHeight="478"
+                HorizontalAlignment="Left" VerticalAlignment="Top"
+                MarginLeft="26" MarginTop="84"
+                IsVisible="@IsVisible" AlphaFactor="@PanelAlpha"
+                Sprite="BlankWhiteSquare_9" Color="#0B0906FC">
+          <Children>
+
+            <!-- crimson left-edge accent -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                    SuggestedWidth="5" HorizontalAlignment="Left"
+                    Sprite="BlankWhiteSquare" Color="#A0202CFF" />
+
+            <!-- title -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="32" HorizontalAlignment="Center" VerticalAlignment="Top"
+                        MarginLeft="20" MarginRight="14" MarginTop="12"
+                        Brush="BandItPlus.CrimsonTitle" Text="{=bp_pf_hideoutassaultpanel_001}HIDEOUT ASSAULT" />
+            <!-- mode label -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="16" HorizontalAlignment="Center" VerticalAlignment="Top"
+                        MarginLeft="20" MarginRight="14" MarginTop="44"
+                        Brush="BandItPlus.CrimsonMode" Text="{=bp_pf_hideoutassaultpanel_002}— BANDIT PLUS MODE —" />
+            <!-- hideout name -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="22" HorizontalAlignment="Center" VerticalAlignment="Top"
+                        MarginLeft="20" MarginRight="14" MarginTop="62"
+                        Brush="BandItPlus.CrimsonValue" Text="@HideoutName" />
+            <!-- divider -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="2" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="20" MarginRight="14" MarginTop="88"
+                    Sprite="BlankWhiteSquare" Color="#A0202C99" />
+
+            <!-- boss row -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="44" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="16" MarginRight="14" MarginTop="96">
+              <Children>
+                <!-- crest medallion: diamond fallback, banner on top -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="42" SuggestedHeight="42"
+                        HorizontalAlignment="Left" VerticalAlignment="Center"
+                        Sprite="BlankWhiteSquare_9" Color="#140D0AFF">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Brush="BandItPlus.CrimsonTitle" Text="◆" />
+                    <BannerTableauWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                BannerCodeText="@BannerCode" IsVisible="@HasBanner"
+                                IsNineGrid="true" />
+                  </Children>
+                </Widget>
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="22" HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="54" MarginTop="1"
+                            Brush="BandItPlus.CrimsonName" Text="@BossName" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="16" HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="54" MarginTop="25"
+                            Brush="BandItPlus.CrimsonLabel" Text="@CultureTrustLine" />
+              </Children>
+            </Widget>
+
+            <!-- faint divider -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="1" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="22" MarginRight="16" MarginTop="146"
+                    Sprite="BlankWhiteSquare" Color="#A0202C55" />
+
+            <!-- taunt -->
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="34" HorizontalAlignment="Center" VerticalAlignment="Top"
+                        MarginLeft="20" MarginRight="14" MarginTop="152"
+                        Brush="BandItPlus.CrimsonTaunt" Text="@TauntText" />
+
+            <!-- faint divider -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="1" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="22" MarginRight="16" MarginTop="190"
+                    Sprite="BlankWhiteSquare" Color="#A0202C55" />
+
+            <!-- intel grid: Defenders (top-left) -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="156" SuggestedHeight="40"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    MarginLeft="18" MarginTop="198"
+                    Sprite="BlankWhiteSquare_9" Color="#16110CFF">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="16" SuggestedHeight="16"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="8"
+                        Sprite="General\Icons\Militia" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="60" SuggestedHeight="14"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="32" MarginTop="6"
+                            Brush="BandItPlus.CrimsonLabel" Text="{=bp_pf_hideoutassaultpanel_003}Defenders" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="80" SuggestedHeight="18"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="32" MarginTop="19"
+                            Brush="BandItPlus.CrimsonValue" Text="@DefenderCount" />
+              </Children>
+            </Widget>
+            <!-- intel grid: Your forces (top-right) -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="156" SuggestedHeight="40"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    MarginRight="14" MarginTop="198"
+                    Sprite="BlankWhiteSquare_9" Color="#16110CFF">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="16" SuggestedHeight="16"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="8"
+                        Sprite="General\Icons\Party@2x" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="70" SuggestedHeight="14"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="32" MarginTop="6"
+                            Brush="BandItPlus.CrimsonLabel" Text="{=bp_pf_hideoutassaultpanel_004}Your forces" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="80" SuggestedHeight="18"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="32" MarginTop="19"
+                            Brush="BandItPlus.CrimsonValue" Text="@YourForces" />
+              </Children>
+            </Widget>
+            <!-- intel grid: Odds (bottom-left) -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="156" SuggestedHeight="40"
+                    HorizontalAlignment="Left" VerticalAlignment="Top"
+                    MarginLeft="18" MarginTop="242"
+                    Sprite="BlankWhiteSquare_9" Color="#16110CFF">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="16" SuggestedHeight="16"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="8"
+                        Sprite="General\Icons\Morale@2x" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="60" SuggestedHeight="14"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="32" MarginTop="6"
+                            Brush="BandItPlus.CrimsonLabel" Text="{=bp_pf_hideoutassaultpanel_005}Odds" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="100" SuggestedHeight="18"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="32" MarginTop="19"
+                            Brush="BandItPlus.CrimsonValue" Text="@OddsText" />
+              </Children>
+            </Widget>
+            <!-- intel grid: Difficulty (bottom-right) — 5 pips -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                    SuggestedWidth="156" SuggestedHeight="40"
+                    HorizontalAlignment="Right" VerticalAlignment="Top"
+                    MarginRight="14" MarginTop="242"
+                    Sprite="BlankWhiteSquare_9" Color="#16110CFF">
+              <Children>
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="70" SuggestedHeight="14"
+                            HorizontalAlignment="Left" VerticalAlignment="Top"
+                            MarginLeft="10" MarginTop="6"
+                            Brush="BandItPlus.CrimsonLabel" Text="{=bp_pf_hideoutassaultpanel_006}Difficulty" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="14" SuggestedHeight="8"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="10" MarginTop="22"
+                        Sprite="BlankWhiteSquare" Color="#3A2C20FF">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#D8424CFF" IsVisible="@Pip1On" />
+                  </Children>
+                </Widget>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="14" SuggestedHeight="8"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="27" MarginTop="22"
+                        Sprite="BlankWhiteSquare" Color="#3A2C20FF">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#D8424CFF" IsVisible="@Pip2On" />
+                  </Children>
+                </Widget>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="14" SuggestedHeight="8"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="44" MarginTop="22"
+                        Sprite="BlankWhiteSquare" Color="#3A2C20FF">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#D8424CFF" IsVisible="@Pip3On" />
+                  </Children>
+                </Widget>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="14" SuggestedHeight="8"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="61" MarginTop="22"
+                        Sprite="BlankWhiteSquare" Color="#3A2C20FF">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#D8424CFF" IsVisible="@Pip4On" />
+                  </Children>
+                </Widget>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="14" SuggestedHeight="8"
+                        HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="78" MarginTop="22"
+                        Sprite="BlankWhiteSquare" Color="#3A2C20FF">
+                  <Children>
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#D8424CFF" IsVisible="@Pip5On" />
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <!-- faint divider -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="1" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="22" MarginRight="16" MarginTop="290"
+                    Sprite="BlankWhiteSquare" Color="#A0202C55" />
+
+            <!-- card 1: Reinforced Garrison -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="40" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="18" MarginRight="14" MarginTop="296"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF0C">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="28" SuggestedHeight="28"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="6"
+                        Sprite="BlankWhiteSquare_9" Color="#000000B0">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Brush="BandItPlus.CrimsonValue" Text="◆" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="20" SuggestedHeight="20"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="General\Icons\Garrison" />
+                  </Children>
+                </Widget>
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="180" HorizontalAlignment="Left" VerticalAlignment="Center"
+                            MarginLeft="44" Brush="BandItPlus.CrimsonBody" Text="{=bp_pf_hideoutassaultpanel_007}Reinforced Garrison" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="84" SuggestedHeight="26"
+                        HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="8"
+                        Sprite="BlankWhiteSquare_9" Color="#191510F4">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Brush="BandItPlus.CrimsonValue" Text="@GarrisonValue" />
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <!-- card 2: Hardened Defenders -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="40" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="18" MarginRight="14" MarginTop="340"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF0C">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="28" SuggestedHeight="28"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="6"
+                        Sprite="BlankWhiteSquare_9" Color="#000000B0">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Brush="BandItPlus.CrimsonValue" Text="◆" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="20" SuggestedHeight="20"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="General\Icons\Army" />
+                  </Children>
+                </Widget>
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="180" HorizontalAlignment="Left" VerticalAlignment="Center"
+                            MarginLeft="44" Brush="BandItPlus.CrimsonBody" Text="{=bp_pf_hideoutassaultpanel_008}Hardened Defenders" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="84" SuggestedHeight="26"
+                        HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="8"
+                        Sprite="BlankWhiteSquare_9" Color="#191510F4">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Brush="BandItPlus.CrimsonValue" Text="@DefenderTier" />
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <!-- card 3: Battle Tactics -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="40" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="18" MarginRight="14" MarginTop="384"
+                    Sprite="BlankWhiteSquare_9" Color="#FFFFFF0C">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="28" SuggestedHeight="28"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="6"
+                        Sprite="BlankWhiteSquare_9" Color="#000000B0">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Brush="BandItPlus.CrimsonValue" Text="◆" />
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="20" SuggestedHeight="20"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="General\Perks\PerkTactics" />
+                  </Children>
+                </Widget>
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="180" HorizontalAlignment="Left" VerticalAlignment="Center"
+                            MarginLeft="44" Brush="BandItPlus.CrimsonBody" Text="{=bp_pf_hideoutassaultpanel_009}Battle Tactics" />
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="84" SuggestedHeight="26"
+                        HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="8"
+                        Sprite="BlankWhiteSquare_9" Color="#191510F4">
+                  <Children>
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Center" VerticalAlignment="Center"
+                                Brush="BandItPlus.CrimsonValue" Text="@TacticsValue" />
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <!-- faint divider -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="1" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="22" MarginRight="16" MarginTop="428"
+                    Sprite="BlankWhiteSquare" Color="#A0202C55" />
+
+            <!-- spoils line -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="30" HorizontalAlignment="Center" VerticalAlignment="Top"
+                    MarginLeft="18" MarginRight="14" MarginTop="436"
+                    Sprite="BlankWhiteSquare_9" Color="#1C0D0DFF">
+              <Children>
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                        SuggestedWidth="18" SuggestedHeight="18"
+                        HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="8"
+                        Sprite="General\Icons\Coin@2x" />
+                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            HorizontalAlignment="Left" VerticalAlignment="Center"
+                            MarginLeft="34" Brush="BandItPlus.CrimsonBody" Text="@SpoilsText" />
+              </Children>
+            </Widget>
+
+          </Children>
+        </Widget>
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

@@ -1,0 +1,113 @@
+<Prefab>
+  <!-- campaign-map HUD — left-side vertical bar. firelight glow + gold ribbon
+       (HudRank/Tier/Gold) + infamy bar + bronze side-studs + warm slots. frame is
+       code-built, no main_hud image. everything DoNotAcceptEvents so the map stays
+       interactive. -->
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" DoNotAcceptEvents="true">
+      <Children>
+
+        <!-- breathing firelight halo behind the bar -->
+        <Widget WidthSizePolicy="Fixed" SuggestedWidth="340" HeightSizePolicy="Fixed" SuggestedHeight="860"
+                HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="-70" AlphaFactor="@BarAlpha"
+                IsVisible="@ShowHudGlow"
+                Sprite="CharacterDeveloper\add_focus_button_glow" Color="@GlowHex" DoNotAcceptEvents="true" />
+
+        <!-- ════ THE VERTICAL BAR ════ -->
+        <Widget WidthSizePolicy="Fixed" SuggestedWidth="98" HeightSizePolicy="Fixed" SuggestedHeight="664"
+                HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="16" AlphaFactor="@BarAlpha" DoNotAcceptEvents="true">
+          <Children>
+            <!-- frame: bronze border + dark stone fill + inner engrave -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare_9" Color="#7A5E2CFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#16110BF7" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="120" VerticalAlignment="Top" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#94601E40" DoNotAcceptEvents="true" />
+
+            <!-- bronze side studs -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="7" HeightSizePolicy="Fixed" SuggestedHeight="7" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="-3" MarginTop="128" Sprite="BlankWhiteSquare" Color="#CAA23AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="7" HeightSizePolicy="Fixed" SuggestedHeight="7" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="-3" MarginTop="290" Sprite="BlankWhiteSquare" Color="#CAA23AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="7" HeightSizePolicy="Fixed" SuggestedHeight="7" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="-3" MarginTop="452" Sprite="BlankWhiteSquare" Color="#CAA23AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="7" HeightSizePolicy="Fixed" SuggestedHeight="7" HorizontalAlignment="Left" VerticalAlignment="Top" MarginLeft="-3" MarginTop="614" Sprite="BlankWhiteSquare" Color="#CAA23AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="7" HeightSizePolicy="Fixed" SuggestedHeight="7" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="-3" MarginTop="128" Sprite="BlankWhiteSquare" Color="#CAA23AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="7" HeightSizePolicy="Fixed" SuggestedHeight="7" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="-3" MarginTop="290" Sprite="BlankWhiteSquare" Color="#CAA23AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="7" HeightSizePolicy="Fixed" SuggestedHeight="7" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="-3" MarginTop="452" Sprite="BlankWhiteSquare" Color="#CAA23AFF" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="7" HeightSizePolicy="Fixed" SuggestedHeight="7" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="-3" MarginTop="614" Sprite="BlankWhiteSquare" Color="#CAA23AFF" DoNotAcceptEvents="true" />
+
+            <!-- crest -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="86" HeightSizePolicy="Fixed" SuggestedHeight="86" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="6" Sprite="@CrestSprite" DoNotAcceptEvents="true" />
+
+            <!-- rank ribbon (gold) -->
+            <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="94" HeightSizePolicy="Fixed" SuggestedHeight="22" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="96" Brush="BandItPlus.Book.HudRank" Text="@RankName" DoNotAcceptEvents="true" />
+            <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="94" HeightSizePolicy="Fixed" SuggestedHeight="14" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="120" Brush="BandItPlus.Book.HudTier" Text="@TierText" DoNotAcceptEvents="true" />
+
+            <!-- infamy bar -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="76" HeightSizePolicy="Fixed" SuggestedHeight="6" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="140" DoNotAcceptEvents="true">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" Sprite="BlankWhiteSquare" Color="#241A0DFF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="@ProgressWidth" HeightSizePolicy="StretchToParent" HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#ECBC56FF" DoNotAcceptEvents="true" />
+              </Children>
+            </Widget>
+
+            <TextWidget WidthSizePolicy="Fixed" SuggestedWidth="94" HeightSizePolicy="Fixed" SuggestedHeight="16" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="150" Brush="BandItPlus.Book.HudGold" Text="@GoldText" DoNotAcceptEvents="true" />
+
+            <!-- divider -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="86" HeightSizePolicy="Fixed" SuggestedHeight="1" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="172" Sprite="BlankWhiteSquare" Color="#CAA23A99" DoNotAcceptEvents="true" />
+
+            <!-- 6 status slots (182 / 258 / 334 / 410 / 486 / 562), warm fill, icon at 66 -->
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="72" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="182" Sprite="BlankWhiteSquare_9" Color="#6A4F22FF" DoNotAcceptEvents="true">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#0E0A06FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="3" MarginRight="3" MarginTop="3" MarginBottom="3" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#9460201E" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="66" HeightSizePolicy="Fixed" SuggestedHeight="66" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="@Slot0Sprite" DoNotAcceptEvents="true" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="72" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="258" Sprite="BlankWhiteSquare_9" Color="#6A4F22FF" DoNotAcceptEvents="true">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#0E0A06FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="3" MarginRight="3" MarginTop="3" MarginBottom="3" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#9460201E" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="66" HeightSizePolicy="Fixed" SuggestedHeight="66" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="@Slot1Sprite" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="18" HeightSizePolicy="Fixed" SuggestedHeight="18" HorizontalAlignment="Right" VerticalAlignment="Top" MarginRight="-4" MarginTop="-4" IsVisible="@QuestAlert" Sprite="BlankWhiteSquare_9" Color="#E0492FFF" DoNotAcceptEvents="true" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="72" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="334" Sprite="BlankWhiteSquare_9" Color="#6A4F22FF" DoNotAcceptEvents="true">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#0E0A06FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="3" MarginRight="3" MarginTop="3" MarginBottom="3" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#9460201E" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="66" HeightSizePolicy="Fixed" SuggestedHeight="66" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="@Slot2Sprite" DoNotAcceptEvents="true" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="72" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="410" Sprite="BlankWhiteSquare_9" Color="#6A4F22FF" DoNotAcceptEvents="true">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#0E0A06FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="3" MarginRight="3" MarginTop="3" MarginBottom="3" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#9460201E" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="66" HeightSizePolicy="Fixed" SuggestedHeight="66" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="@Slot3Sprite" DoNotAcceptEvents="true" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="72" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="486" Sprite="BlankWhiteSquare_9" Color="#6A4F22FF" DoNotAcceptEvents="true">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#0E0A06FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="3" MarginRight="3" MarginTop="3" MarginBottom="3" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#9460201E" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="66" HeightSizePolicy="Fixed" SuggestedHeight="66" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="@Slot4Sprite" DoNotAcceptEvents="true" />
+              </Children>
+            </Widget>
+            <Widget WidthSizePolicy="Fixed" SuggestedWidth="72" HeightSizePolicy="Fixed" SuggestedHeight="72" HorizontalAlignment="Center" VerticalAlignment="Top" MarginTop="562" Sprite="BlankWhiteSquare_9" Color="#6A4F22FF" DoNotAcceptEvents="true">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2" Sprite="BlankWhiteSquare_9" Color="#0E0A06FF" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginLeft="3" MarginRight="3" MarginTop="3" MarginBottom="3" Sprite="CharacterDeveloper\add_focus_button_glow" Color="#9460201E" DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="Fixed" SuggestedWidth="66" HeightSizePolicy="Fixed" SuggestedHeight="66" HorizontalAlignment="Center" VerticalAlignment="Center" Sprite="@Slot5Sprite" DoNotAcceptEvents="true" />
+              </Children>
+            </Widget>
+
+            <!-- preview lock: the HUD ships next update, so a dim wash + a vertical
+                 "UNAVAILABLE" watermark mark it not-yet-live. gated on @PreviewMode
+                 (set false in BanditHudVM to go live). drawn last so it covers the
+                 crest/slots. the vertical column is just @PreviewLabel with newlines —
+                 gauntlet can't rotate text. -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" IsVisible="@PreviewMode" Sprite="BlankWhiteSquare_9" Color="#0A0705C0" DoNotAcceptEvents="true" />
+            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginTop="118" MarginBottom="8" HorizontalAlignment="Center" VerticalAlignment="Center" IsVisible="@PreviewMode" Brush="BandItPlus.Book.HudWatermark" Text="@PreviewLabel" DoNotAcceptEvents="true" />
+          </Children>
+        </Widget>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>
