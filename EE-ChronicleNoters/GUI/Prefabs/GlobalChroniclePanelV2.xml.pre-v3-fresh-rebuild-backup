@@ -1,0 +1,498 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Chronicle Panel V2 (2026-05-28 v3 rewrite — hybrid mockup-structure + Bannerlord-native details)
+  Spec: docs/superpowers/specs/2026-05-28-chronicle-panel-v2-rewrite-design.md
+  Patterns:
+    - Backgrounds: inline Sprite="BlankWhiteSquare"/_9 + Color on plain Widget (BandIt Plus pattern)
+    - Brushes: text styling + ButtonWidget state-driven rendering only
+    - Click safety: every ButtonWidget has DoNotPassEventsToChildren="true"
+    - Nested binding: 2-level scoping via outer Widget DataSource + inner ListPanel DataSource
+  DataSource: GlobalChroniclePanelVM (namespace EditableEncyclopedia)
+  Item VMs: ChronicleEntryVM, YearCellVM (namespace EditableEncyclopedia.ChronicleNoters)
+-->
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+
+        <!-- Full-screen dim backdrop -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                Sprite="BlankWhiteSquare" Color="#000000E0" />
+
+        <!-- Centered 720x830 panel -->
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                SuggestedWidth="720" SuggestedHeight="830"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Children>
+
+            <!-- Panel background fill -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    Sprite="BlankWhiteSquare_9" Color="#1C1410FF" />
+
+            <!-- 4px gold top accent strip -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="4" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare" Color="#C89858FF" />
+
+            <!-- ============ HEADER (y=4..52) ============ -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="48" VerticalAlignment="Top" MarginTop="4">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        Sprite="BlankWhiteSquare" Color="#231A14FF" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="1" VerticalAlignment="Bottom"
+                        Sprite="BlankWhiteSquare" Color="#6A4A30FF" />
+                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                           StackLayout.LayoutMethod="HorizontalLeftToRight"
+                           MarginLeft="24" MarginRight="18">
+                  <Children>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                VerticalAlignment="Center"
+                                Text="CHRONICLE" Brush="EEChronicleTitle" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                VerticalAlignment="Center" MarginLeft="14"
+                                Text="@HeaderMetaLabel" DefaultText="0 EVENTS"
+                                Brush="EEChronicleMuted" />
+                    <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                  SuggestedWidth="30" SuggestedHeight="30"
+                                  VerticalAlignment="Center" MarginRight="4"
+                                  DoNotPassEventsToChildren="true"
+                                  Command.Click="ExecuteResetLogs"
+                                  Brush="EEChronicleDangerButton">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Text="R" Brush="EEChronicleDangerIcon" />
+                      </Children>
+                    </ButtonWidget>
+                    <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                  SuggestedWidth="30" SuggestedHeight="30"
+                                  VerticalAlignment="Center"
+                                  DoNotPassEventsToChildren="true"
+                                  Command.Click="ExecuteClose"
+                                  Brush="EEChronicleButton">
+                      <Children>
+                        <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    HorizontalAlignment="Center" VerticalAlignment="Center"
+                                    Text="X" Brush="EEChronicleButtonIcon" />
+                      </Children>
+                    </ButtonWidget>
+                  </Children>
+                </ListPanel>
+              </Children>
+            </Widget>
+
+            <!-- ============ TOOLBAR (y=52..186, 4 rows) ============ -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="134" VerticalAlignment="Top" MarginTop="52">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        Sprite="BlankWhiteSquare" Color="#000000A0" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="1" VerticalAlignment="Bottom"
+                        Sprite="BlankWhiteSquare" Color="#6A4A3066" />
+                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                           StackLayout.LayoutMethod="VerticalBottomToTop"
+                           MarginLeft="24" MarginRight="24" MarginTop="8" MarginBottom="8">
+                  <Children>
+
+                    <!-- Row 1: Event chips -->
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                               SuggestedHeight="24"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight">
+                      <Children>
+                        <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="46"
+                                    VerticalAlignment="Center" Text="EVENT" Brush="EEChronicleFilterLabel" />
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleAllEvent"      Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="56" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@AllEventChipLabel" DefaultText="ALL" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventWar"      Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="62" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@WarChipLabel" DefaultText="WAR" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventCrime"    Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="70" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@CrimeChipLabel" DefaultText="CRIME" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventPolitics" Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="84" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@PoliticsChipLabel" DefaultText="POLITICS" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventFamily"   Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="74" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@FamilyChipLabel" DefaultText="FAMILY" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventOther"    Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="68" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@OtherEventChipLabel" DefaultText="OTHER" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                      </Children>
+                    </ListPanel>
+
+                    <!-- Row 2: STARRED on own row -->
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                               SuggestedHeight="24"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight">
+                      <Children>
+                        <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="46"
+                                    VerticalAlignment="Center" Text="" Brush="EEChronicleFilterLabel" />
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleStarredOnly"   Brush="EEChronicleChipStar" MarginLeft="4" SuggestedWidth="100" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@StarredChipLabel" DefaultText="STARRED" Brush="EEChronicleStarOn" /></Children>
+                        </ButtonWidget>
+                      </Children>
+                    </ListPanel>
+
+                    <!-- Row 3: Entity chips -->
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                               SuggestedHeight="24"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight">
+                      <Children>
+                        <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="46"
+                                    VerticalAlignment="Center" Text="ENTITY" Brush="EEChronicleFilterLabel" />
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleAllEntity"        Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="56" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@AllEntityChipLabel" DefaultText="ALL" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntityKingdom"    Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="86" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@KingdomChipLabel" DefaultText="KINGDOM" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntityClan"       Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="64" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@ClanChipLabel" DefaultText="CLAN" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntityHero"       Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="64" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@HeroChipLabel" DefaultText="HERO" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntitySettlement" Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="106" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@SettlementChipLabel" DefaultText="SETTLEMENT" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntityOther"      Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="68" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children><TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@OtherEntityChipLabel" DefaultText="OTHER" Brush="EEChronicleChipText" /></Children>
+                        </ButtonWidget>
+                      </Children>
+                    </ListPanel>
+
+                    <!-- Row 4: Search + Sort -->
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                               SuggestedHeight="30"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight">
+                      <Children>
+                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="28"
+                                MarginRight="8">
+                          <Children>
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    Sprite="BlankWhiteSquare_9" Color="#0A0806FF" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                    SuggestedHeight="1" VerticalAlignment="Bottom"
+                                    Sprite="BlankWhiteSquare" Color="#C89858AA" />
+                            <EditableTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                VerticalAlignment="Center" MarginLeft="10" MarginRight="10"
+                                                Text="@SearchQuery"
+                                                Brush="EEChronicleSearchInput" />
+                          </Children>
+                        </Widget>
+                        <ButtonWidget DoNotPassEventsToChildren="true"
+                                      Command.Click="ExecuteToggleSortDirection"
+                                      Brush="EEChronicleChip"
+                                      WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="80" SuggestedHeight="28">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Text="@SortLabel" DefaultText="DATE"
+                                        Brush="EEChronicleChipText" />
+                          </Children>
+                        </ButtonWidget>
+                      </Children>
+                    </ListPanel>
+
+                  </Children>
+                </ListPanel>
+              </Children>
+            </Widget>
+
+            <!-- ============ YEAR STRIP (y=186..214) ============ -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="28" VerticalAlignment="Top" MarginTop="186">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        Sprite="BlankWhiteSquare" Color="#0A0806CC" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="1" VerticalAlignment="Bottom"
+                        Sprite="BlankWhiteSquare" Color="#6A4A3066" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="44" VerticalAlignment="Center" MarginLeft="24"
+                            Text="YEAR" Brush="EEChronicleFilterLabel" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        MarginLeft="74" MarginRight="24"
+                        DataSource="{YearStrip}">
+                  <Children>
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight"
+                               DataSource="{Years}">
+                      <ItemTemplate>
+                        <ButtonWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                      VerticalAlignment="Center" MarginRight="2"
+                                      DoNotPassEventsToChildren="true"
+                                      Command.Click="ExecuteClick"
+                                      Brush="EEChronicleChip">
+                          <Children>
+                            <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="8" MarginRight="8"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Text="@YearLabel" Brush="EEChronicleYear" />
+                          </Children>
+                        </ButtonWidget>
+                      </ItemTemplate>
+                    </ListPanel>
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <!-- ============ SPLIT BODY (y=214..798) ============ -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="584" VerticalAlignment="Top" MarginTop="214">
+              <Children>
+
+                <!-- Left column (290px, clipped + scrollable) -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                        SuggestedWidth="290" HorizontalAlignment="Left"
+                        ClipContents="true">
+                  <Children>
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="1" HorizontalAlignment="Right"
+                            Sprite="BlankWhiteSquare" Color="#6A4A3066" />
+                    <ScrollablePanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                     AutoHideScrollBars="true"
+                                     ClipRect="LeftClip" InnerPanel="LeftInner">
+                      <Widget Id="LeftClip" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" ClipContents="true">
+                        <Children>
+                          <ListPanel Id="LeftInner"
+                                     WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                     MarginLeft="6" MarginRight="6" MarginTop="6"
+                                     StackLayout.LayoutMethod="VerticalBottomToTop"
+                                     DataSource="{VisibleEntries}">
+                            <ItemTemplate>
+                              <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                            SuggestedHeight="86"
+                                            DoNotPassEventsToChildren="true"
+                                            Command.Click="ExecuteSelectEntry"
+                                            Brush="EEChronicleEntryRow">
+                                <Children>
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                          SuggestedWidth="2" HorizontalAlignment="Left"
+                                          IsVisible="@IsSelected"
+                                          Sprite="BlankWhiteSquare" Color="#C89858FF" />
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                          SuggestedHeight="1" VerticalAlignment="Bottom"
+                                          Sprite="BlankWhiteSquare" Color="#6A4A3033" />
+                                  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                             SuggestedHeight="14" VerticalAlignment="Top"
+                                             StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                             MarginLeft="10" MarginRight="10" MarginTop="8">
+                                    <Children>
+                                      <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="14"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Text="@IconTextChar" DefaultText="*" Brush="EEChronicleTypeIcon" />
+                                      <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  MarginLeft="6" VerticalAlignment="Center"
+                                                  Text="@DateLabel" Brush="EEChronicleEntryDate" />
+                                    </Children>
+                                  </ListPanel>
+                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                              SuggestedHeight="40" VerticalAlignment="Top"
+                                              MarginLeft="10" MarginRight="10" MarginTop="24"
+                                              Text="@TitleText" Brush="EEChronicleEntryText" />
+                                  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                             SuggestedHeight="14" VerticalAlignment="Bottom"
+                                             StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                             MarginLeft="10" MarginRight="10" MarginBottom="6">
+                                    <Children>
+                                      <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="64" MarginRight="6">
+                                        <Children>
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  Sprite="BlankWhiteSquare_9" Color="#E8C17910" />
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Top"
+                                                  Sprite="BlankWhiteSquare" Color="#E8C17966" />
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Bottom"
+                                                  Sprite="BlankWhiteSquare" Color="#E8C17966" />
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                      HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                      Text="@PrimaryEventTagLabel" Brush="EEChronicleMiniTagEvent" />
+                                        </Children>
+                                      </Widget>
+                                      <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="68">
+                                        <Children>
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  Sprite="BlankWhiteSquare_9" Color="#A0856010" />
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Top"
+                                                  Sprite="BlankWhiteSquare" Color="#A0856066" />
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Bottom"
+                                                  Sprite="BlankWhiteSquare" Color="#A0856066" />
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                      HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                      Text="@PrimaryEntityTagLabel" Brush="EEChronicleMiniTagEntity" />
+                                        </Children>
+                                      </Widget>
+                                    </Children>
+                                  </ListPanel>
+                                </Children>
+                              </ButtonWidget>
+                            </ItemTemplate>
+                          </ListPanel>
+                        </Children>
+                      </Widget>
+                    </ScrollablePanel>
+                  </Children>
+                </Widget>
+
+                <!-- Right column (reading pane) -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        MarginLeft="290">
+                  <Children>
+                    <ScrollablePanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                     AutoHideScrollBars="true"
+                                     ClipRect="RightClip" InnerPanel="RightInner">
+                      <Widget Id="RightClip" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" ClipContents="true">
+                        <Children>
+                          <ListPanel Id="RightInner"
+                                     WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                     StackLayout.LayoutMethod="VerticalBottomToTop"
+                                     MarginLeft="24" MarginRight="24" MarginTop="14" MarginBottom="18"
+                                     DataSource="{SelectedEntry}">
+                            <Children>
+                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                         SuggestedHeight="28"
+                                         StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                         MarginBottom="14">
+                                <Children>
+                                  <ButtonWidget DoNotPassEventsToChildren="true"
+                                                Command.Click="ExecuteSelectPrev" Brush="EEChronicleChip"
+                                                WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                SuggestedWidth="70" SuggestedHeight="24">
+                                    <Children>
+                                      <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Text="PREV" Brush="EEChronicleChipText" />
+                                    </Children>
+                                  </ButtonWidget>
+                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              Text="@ReadingNavCounterLabel" DefaultText="ENTRY 0 OF 0"
+                                              Brush="EEChronicleNavCounter" />
+                                  <ButtonWidget DoNotPassEventsToChildren="true"
+                                                Command.Click="ExecuteSelectNext" Brush="EEChronicleChip"
+                                                WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                SuggestedWidth="70" SuggestedHeight="24">
+                                    <Children>
+                                      <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Text="NEXT" Brush="EEChronicleChipText" />
+                                    </Children>
+                                  </ButtonWidget>
+                                </Children>
+                              </ListPanel>
+                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                         SuggestedHeight="18"
+                                         StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                         MarginBottom="10">
+                                <Children>
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="72" MarginRight="6">
+                                    <Children>
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                              Sprite="BlankWhiteSquare_9" Color="#E8C17918" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Top"
+                                              Sprite="BlankWhiteSquare" Color="#E8C17988" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Bottom"
+                                              Sprite="BlankWhiteSquare" Color="#E8C17988" />
+                                      <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Text="@PrimaryEventTagLabel" Brush="EEChronicleMiniTagEvent" />
+                                    </Children>
+                                  </Widget>
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="76">
+                                    <Children>
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                              Sprite="BlankWhiteSquare_9" Color="#A0856018" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Top"
+                                              Sprite="BlankWhiteSquare" Color="#A0856088" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" VerticalAlignment="Bottom"
+                                              Sprite="BlankWhiteSquare" Color="#A0856088" />
+                                      <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Text="@PrimaryEntityTagLabel" Brush="EEChronicleMiniTagEntity" />
+                                    </Children>
+                                  </Widget>
+                                </Children>
+                              </ListPanel>
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          Text="@TitleText" Brush="EEChronicleReadingTitle" />
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          Text="@DateLabel" MarginBottom="8"
+                                          Brush="EEChronicleReadingDate" />
+                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1" MarginBottom="10"
+                                      Sprite="BlankWhiteSquare" Color="#6A4A3066" />
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          Text="@BodyText" Brush="EEChronicleReadingBody" />
+                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                      IsVisible="@HasNote" MarginTop="14">
+                                <Children>
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                          Sprite="BlankWhiteSquare_9" Color="#40201080" />
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                          SuggestedWidth="2" HorizontalAlignment="Left"
+                                          Sprite="BlankWhiteSquare" Color="#F0A050FF" />
+                                  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                             StackLayout.LayoutMethod="VerticalBottomToTop"
+                                             MarginLeft="14" MarginRight="12" MarginTop="8" MarginBottom="8">
+                                    <Children>
+                                      <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                  Text="YOUR NOTE" Brush="EEChronicleNoteLabel" />
+                                      <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                  Text="@NoteText" MarginTop="4"
+                                                  Brush="EEChronicleNoteBody" />
+                                    </Children>
+                                  </ListPanel>
+                                </Children>
+                              </Widget>
+                            </Children>
+                          </ListPanel>
+                        </Children>
+                      </Widget>
+                    </ScrollablePanel>
+                  </Children>
+                </Widget>
+
+              </Children>
+            </Widget>
+
+            <!-- ============ FOOTER (y=798..830) ============ -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="32" VerticalAlignment="Bottom">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        Sprite="BlankWhiteSquare" Color="#0A0806FF" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="1" VerticalAlignment="Top"
+                        Sprite="BlankWhiteSquare" Color="#6A4A30FF" />
+                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                           StackLayout.LayoutMethod="HorizontalLeftToRight"
+                           MarginLeft="24" MarginRight="24">
+                  <Children>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                VerticalAlignment="Center"
+                                Text="@FooterStatusLabel" DefaultText="SCROLL FOR MORE"
+                                Brush="EEChronicleMuted" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Text="@FooterCountLabel" DefaultText="SHOWING 0 OF 0"
+                                Brush="EEChronicleMuted" />
+                  </Children>
+                </ListPanel>
+              </Children>
+            </Widget>
+
+          </Children>
+        </Widget>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

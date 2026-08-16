@@ -1,0 +1,2062 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  Chronicle Panel V3 (2026-05-28 fresh rebuild — locked via visual brainstorm)
+  Spec: docs/superpowers/specs/2026-05-28-chronicle-panel-v3-fresh-rebuild-design.md
+  Decisions: Layout A · Warm Gold · Medium density · Search row · enhanced reading pane
+  Patterns:
+    - Backgrounds: inline Sprite="BlankWhiteSquare"/_9 + Color on plain Widget
+    - Brushes: text + ButtonWidget state-driven rendering only
+    - Click safety: every ButtonWidget has DoNotPassEventsToChildren="true"
+    - Nested binding: 2-level scoping via outer Widget DataSource + inner ListPanel DataSource
+-->
+<Prefab>
+  <Constants />
+  <VisualDefinitions />
+  <Window>
+    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+      <Children>
+
+        <!-- 2026-08-02 visual pass: screen dim E0 -> EC. The panel is a reading surface made
+             almost entirely of near-black; at E0 the campaign map still showed through
+             strongly enough that the panel's own dark surfaces competed with it. A deeper
+             scrim separates the window from the world and costs nothing in readability
+             (it only darkens what is BEHIND the panel). -->
+        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                Sprite="BlankWhiteSquare" Color="#000000EC" />
+
+        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                SuggestedWidth="900" SuggestedHeight="900"
+                HorizontalAlignment="Center" VerticalAlignment="Center">
+          <Children>
+
+            <!-- Panel body. Flat BlankWhiteSquare_9 #1C1410FF.
+                 DO NOT "upgrade" this to flat_panel_9 / popup_gradient_background_9 / frame_9.
+                 That was tried on 2026-08-02 and reverted the same day: those are nine-slice
+                 PICTURE FRAMES whose outer eight regions are baked decorative border art, so
+                 stretching one across a zone paints textured strips down every edge of that
+                 zone. The user saw exactly that and rejected it. Nine-slice sprites are only
+                 safe here when they are LINES or FADES (horizontal_gradient_divider_9,
+                 GradientDivider_9, scrollable_field_gradient_9, escape_menu_gradient_9 used as
+                 a narrow directional band) — never as an area fill or a full-panel overlay. -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                    Sprite="BlankWhiteSquare_9" Color="#1C1410FF" />
+
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="4" VerticalAlignment="Top"
+                    Sprite="BlankWhiteSquare" Color="#C89858FF" />
+
+            <!-- ============ HEADER (y=4..48) ============ -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="44" VerticalAlignment="Top" MarginTop="4">
+              <Children>
+                <!-- Header band. Flat #231A14FF — the lightest surface in the panel, which is
+                     what makes it read as the masthead. (See the panel-body note above for why
+                     this is NOT a nine-slice gradient/panel sprite.) -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        Sprite="BlankWhiteSquare" Color="#231A14FF" />
+                <!-- Height 1 -> 4 is required for a nine-slice divider to render its edges; this
+                     is an ABSOLUTELY-POSITIONED overlay child of a Fixed-44 header (not a stack
+                     member), so nothing moves. Usage copied from BanditPlusConsoleV3.xml:652-657
+                     (StretchToParent width + Fixed height + horizontal_gradient_divider_9). -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="4" VerticalAlignment="Bottom"
+                        Sprite="horizontal_gradient_divider_9" Color="#C89858CC"
+                        DoNotAcceptEvents="true" />
+                <!-- 2026-05-29 header 3-zone layout: plain overlapping Widget (NOT a stack).
+                     Header outer Widget is Fixed-height (44), so StretchToParent W+H is safe.
+                     Title pinned Left, meta pill Centered, R/X buttons pinned Right. -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+                  <Children>
+                    <!-- 2026-08-02 visual pass: masthead rule. A 3x24 gold bar immediately left
+                         of the title, on the panel's standard 24px gutter, with the title pushed
+                         to 38. Gives the word CHRONICLE a deliberate starting mark instead of
+                         floating at the edge, and echoes the 4px gold cap along the panel top.
+                         Absolutely-positioned sibling in the header's 3-zone overlay Widget (not
+                         a stack member), so it displaces nothing. -->
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                            SuggestedWidth="3" SuggestedHeight="24"
+                            HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="24"
+                            Sprite="BlankWhiteSquare" Color="#C89858FF"
+                            IsEnabled="false" DoNotAcceptEvents="true" />
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Left" VerticalAlignment="Center" MarginLeft="38"
+                                Text="CHRONICLE" Brush="EEChronicleTitle" />
+                    <!-- 2026-05-29 top-bar polish: @HeaderMetaLabel reframed as a pill.
+                         CARRIED RULE: never put a StretchToParent child on the same axis as a
+                         CoverChildren parent (the circular-measurement balloon, repeatedly fixed
+                         elsewhere in this file). The wrapper hugs its text on the WIDTH axis
+                         (CoverChildren) and paints the dark pill fill DIRECTLY on itself
+                         (Sprite+Color) — exactly the proven year-strip chip / reading-pane tag-pill
+                         pattern, which carries ZERO StretchToParent-width children. Header row is
+                         Fixed-height (44), so StretchToParent-HEIGHT here is safe. (Stretch-width
+                         1px top/bottom border lines were intentionally dropped: as direct children
+                         of a CoverChildren-width wrapper they would re-trigger the width balloon.
+                         The bg fill + 9-grid edge already reads as a framed pill.) -->
+                    <!-- 2026-05-29 overlap fix: pill is Fixed-height 22 (was StretchToParent, which
+                         filled the whole 44px header and read as a tall dark band overlapping the
+                         header chrome). Now a compact centered pill. Fixed-height parent keeps the
+                         StretchToParent-height inner text safe. -->
+                    <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                            Sprite="BlankWhiteSquare_9" Color="#0E0A07FF">
+                      <Children>
+                        <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                    VerticalAlignment="Center" MarginLeft="10" MarginRight="10"
+                                    Text="@HeaderMetaLabel" DefaultText="0 EVENTS"
+                                    Brush="EEChronicleMuted" />
+                      </Children>
+                    </Widget>
+                    <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight"
+                               HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="18">
+                      <Children>
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="30" SuggestedHeight="30"
+                                      VerticalAlignment="Center" MarginRight="4"
+                                      DoNotPassEventsToChildren="true"
+                                      Command.Click="ExecuteResetLogs"
+                                      Brush="EEChronicleDangerButton">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Text="R" Brush="EEChronicleDangerIcon" />
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="30" SuggestedHeight="30"
+                                      VerticalAlignment="Center"
+                                      DoNotPassEventsToChildren="true"
+                                      Command.Click="ExecuteClose"
+                                      Brush="EEChronicleButton">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Text="X" Brush="EEChronicleButtonIcon" />
+                          </Children>
+                        </ButtonWidget>
+                      </Children>
+                    </ListPanel>
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <!-- ============ TOOLBAR (y=48..162, 3 rows)
+                 2026-05-29 polish: was 144px for 4 rows; STARRED row removed, so reduced by 30
+                 (24px row + 6px inter-row gap) to 114px. EVENT + ENTITY + SEARCH rows only. -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="114" VerticalAlignment="Top" MarginTop="48">
+              <Children>
+                <!-- Toolbar band: black wash over the panel body, so the filter zone recesses
+                     below the header. (See the panel-body note for why this is not a nine-slice
+                     gradient sprite.) -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        Sprite="BlankWhiteSquare" Color="#000000A0" />
+                <!-- gold gradient accent at top of toolbar (was a 1px flat hairline).
+                     Overlay children of a Fixed-114 widget, so 1 -> 3 shifts nothing. -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="3" VerticalAlignment="Top"
+                        Sprite="horizontal_gradient_divider_9" Color="#C8985899"
+                        DoNotAcceptEvents="true" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="3" VerticalAlignment="Bottom"
+                        Sprite="horizontal_gradient_divider_9" Color="#8A6A40AA"
+                        DoNotAcceptEvents="true" />
+                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                           StackLayout.LayoutMethod="VerticalBottomToTop"
+                           MarginLeft="24" MarginRight="24" MarginTop="8" MarginBottom="8">
+                  <Children>
+
+                    <!-- Row 1: Event chips
+                         2026-08-02 visual pass: MarginBottom="7" added here and on the ENTITY row.
+                         The three toolbar rows previously touched with zero gap, so twelve chips
+                         and a search field read as one undifferentiated block of boxes. The
+                         toolbar's content box is 114 - 8 - 8 = 98px and the rows are 24 + 24 + 34
+                         = 82, so 7px gaps (24+7+24+7+34 = 96) fit inside it with 2px to spare —
+                         the spacing is taken from slack that was already there, so the toolbar's
+                         height and every zone offset below it are unchanged. -->
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                               SuggestedHeight="24" MarginBottom="7"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight">
+                      <Children>
+                        <!-- 2026-08-02 legibility pass #2 (user: "its still hard too see the
+                             tags"). Chip text went 11 to 13pt in EEChronicleBrushes.xml, so EVERY
+                             Fixed chip width here grew again. Gauntlet does NOT clip these cells
+                             (an overflowing label paints straight over its neighbour), so the
+                             widths below are the load-bearing half of the font change and must
+                             move together with it.
+
+                             ROW BUDGET: panel is Fixed-900 and the toolbar list carries
+                             MarginLeft/Right 24, so a row has 900 - 48 = 852px.
+                             The EVENT/ENTITY row labels stay at 54 because they use
+                             EEChronicleFilterLabel, which is NOT one of the chip brushes and is
+                             still 11pt.
+
+                               EVENT  before: 54 + (74+76+86+104+92+84 = 516) + 6 x 4 = 594
+                               EVENT  after : 54 + (90+92+108+136+118+108 = 652) + 24 = 730
+                                              (122px spare)
+                               ENTITY before: 54 + (74+106+80+80+130+84 = 554) + 24  = 632
+                               ENTITY after : 54 + (90+128+100+100+156+108 = 682) + 24 = 760
+                                              (92px spare)
+
+                             Both fit outright, so no inter-chip spacing had to be surrendered
+                             and 13pt did not have to be walked back to 12.
+                             SIZED AGAINST THE WORST CASE the VM can emit: the chip labels are
+                             "NAME " + a count (GlobalChroniclePanelVM.cs:190-203), so the widest
+                             possible label is "SETTLEMENT 1024" at 15 characters. Galahad caps
+                             measure about 0.72 x FontSize, i.e. ~9.4px/char at 13pt, so that
+                             label needs ~140px and sits in a 156px pill with 8px of padding each
+                             side. Every other pill was sized the same way and then floored at
+                             13/11 of its old width, so no chip lost padding relative to 11pt.
+
+                             Chip HEIGHT is untouched at 22 inside a 24px row: 13pt Galahad needs
+                             roughly 17px of line box, so the taller font forces no row-height
+                             change and the toolbar stays at 114 with all zone offsets intact. -->
+                        <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="54"
+                                    VerticalAlignment="Center" Text="EVENT" Brush="EEChronicleFilterLabel" />
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleAllEvent"      Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="90" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@AllEventChipLabel" DefaultText="ALL" Brush="EEChronicleChipText" />
+                            <!-- ============ PICKED CHIP, 2026-08-02 pass #2 ============
+                                 THE INVERSION IS GONE. Earlier today this overlay was a near
+                                 solid gold #C89858E6 fill carrying near black text, and the user
+                                 rejected it on sight: "ALl etc is blacked clicked etc". It was
+                                 also the only widget in a light-on-dark panel that flipped the
+                                 identity, and Galahad's small dark glyphs smear on gold whatever
+                                 the measured ratio says.
+                                 REPLACEMENT: a DARK pill with a GOLD FRAME and the brightest text
+                                 in the toolbar. The outer Widget is the frame (solid #C89858),
+                                 the inner Widget insets it by 2px on every side and paints the
+                                 lifted dark body #3A2A18, and EEChronicleChipTextPicked is now
+                                 #FFDCA8 rather than #1C1410. Three independent cues therefore say
+                                 "active" at a glance: the only 2px gold outline in the row, a
+                                 body two value steps above the #241B12 unselected chip, and the
+                                 palest label on screen. Measured ~10.5:1, up from ~6:1, and
+                                 nothing is inverted.
+                                 The frame/inset pair is the shipped icon-box recipe from further
+                                 down this file (the event icon: outer tinted square, inner square
+                                 inset by 1). The inner fill is opaque, so the unselected label
+                                 underneath cannot bleed through the way it could at E6 alpha.
+                                 Geometry is unchanged: both layers are StretchToParent inside a
+                                 Fixed-size ButtonWidget, so no measurement balloon is possible
+                                 and the chip occupies exactly the same box. -->
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@AllEventActive" Sprite="BlankWhiteSquare" Color="#C89858FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#3A2A18FF" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@AllEventChipLabel" Brush="EEChronicleChipTextPicked" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventWar"      Brush="EEChronicleChipWar" MarginLeft="4" SuggestedWidth="92" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@WarChipLabel" DefaultText="WAR" Brush="EEChronicleChipTextWar" />
+                            <!-- The five COLOUR-CODED overlays were never inverted (they already
+                                 carried light text on a mid-tone fill), so their fill alpha, their
+                                 text brush and their hue are all untouched. They gain ONLY the 2px
+                                 frame, in their own category colour at full alpha, so that all
+                                 twelve chips speak one selection language: framed = active. A
+                                 border can only add contrast, never remove it. -->
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@WarActive" Sprite="BlankWhiteSquare" Color="#A65A4EFF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#A65A4EAA" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@WarChipLabel" Brush="EEChronicleChipTextWar" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventCrime"    Brush="EEChronicleChipCrime" MarginLeft="4" SuggestedWidth="108" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@CrimeChipLabel" DefaultText="CRIME" Brush="EEChronicleChipTextCrime" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@CrimeActive" Sprite="BlankWhiteSquare" Color="#BC9050FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#BC9050AA" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@CrimeChipLabel" Brush="EEChronicleChipTextCrime" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventPolitics" Brush="EEChronicleChipPolitics" MarginLeft="4" SuggestedWidth="136" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@PoliticsChipLabel" DefaultText="POLITICS" Brush="EEChronicleChipTextPolitics" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@PoliticsActive" Sprite="BlankWhiteSquare" Color="#5A7A99FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#5A7A99AA" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@PoliticsChipLabel" Brush="EEChronicleChipTextPolitics" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventFamily"   Brush="EEChronicleChipFamily" MarginLeft="4" SuggestedWidth="118" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@FamilyChipLabel" DefaultText="FAMILY" Brush="EEChronicleChipTextFamily" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@FamilyActive" Sprite="BlankWhiteSquare" Color="#6E8C5AFF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#6E8C5AAA" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@FamilyChipLabel" Brush="EEChronicleChipTextFamily" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEventOther"    Brush="EEChronicleChipOther" MarginLeft="4" SuggestedWidth="108" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@OtherEventChipLabel" DefaultText="OTHER" Brush="EEChronicleChipTextOther" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@OtherEventActive" Sprite="BlankWhiteSquare" Color="#8A7A60FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#8A7A60AA" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@OtherEventChipLabel" Brush="EEChronicleChipTextOther" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                      </Children>
+                    </ListPanel>
+
+                    <!-- 2026-05-29: STARRED row removed per user request. -->
+
+                    <!-- Row 3: Entity chips (see the rhythm note on Row 1 for the 7px gap) -->
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                               SuggestedHeight="24" MarginBottom="7"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight">
+                      <Children>
+                        <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="54"
+                                    VerticalAlignment="Center" Text="ENTITY" Brush="EEChronicleFilterLabel" />
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleAllEntity"        Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="90" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@AllEntityChipLabel" DefaultText="ALL" Brush="EEChronicleChipText" />
+                            <!-- gold frame + dark body + bright label; see the full note on the
+                                 EVENT row's ALL chip for why the gold FILL was removed. -->
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@AllEntityActive" Sprite="BlankWhiteSquare" Color="#C89858FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#3A2A18FF" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@AllEntityChipLabel" Brush="EEChronicleChipTextPicked" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntityKingdom"    Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="128" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@KingdomChipLabel" DefaultText="KINGDOM" Brush="EEChronicleChipText" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@KingdomActive" Sprite="BlankWhiteSquare" Color="#C89858FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#3A2A18FF" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@KingdomChipLabel" Brush="EEChronicleChipTextPicked" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntityClan"       Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="100" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@ClanChipLabel" DefaultText="CLAN" Brush="EEChronicleChipText" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@ClanActive" Sprite="BlankWhiteSquare" Color="#C89858FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#3A2A18FF" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@ClanChipLabel" Brush="EEChronicleChipTextPicked" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntityHero"       Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="100" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@HeroChipLabel" DefaultText="HERO" Brush="EEChronicleChipText" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@HeroActive" Sprite="BlankWhiteSquare" Color="#C89858FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#3A2A18FF" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@HeroChipLabel" Brush="EEChronicleChipTextPicked" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <!-- WIDEST CHIP IN THE PANEL and the one the whole row budget is sized
+                             against: "SETTLEMENT 1024" is 15 characters, about 140px at 13pt, so
+                             156 leaves 8px of padding on each side. -->
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntitySettlement" Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="156" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@SettlementChipLabel" DefaultText="SETTLEMENT" Brush="EEChronicleChipText" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@SettlementActive" Sprite="BlankWhiteSquare" Color="#C89858FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#3A2A18FF" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@SettlementChipLabel" Brush="EEChronicleChipTextPicked" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                        <ButtonWidget DoNotPassEventsToChildren="true" Command.Click="ExecuteToggleEntityOther"      Brush="EEChronicleChip" MarginLeft="4" SuggestedWidth="108" SuggestedHeight="22" WidthSizePolicy="Fixed" HeightSizePolicy="Fixed">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" HorizontalAlignment="Center" VerticalAlignment="Center" Text="@OtherEntityChipLabel" DefaultText="OTHER" Brush="EEChronicleChipText" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@OtherEntityActive" Sprite="BlankWhiteSquare" Color="#C89858FF">
+                              <Children>
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare" Color="#3A2A18FF" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@OtherEntityChipLabel" Brush="EEChronicleChipTextPicked" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                      </Children>
+                    </ListPanel>
+
+                    <!-- Row 4: Search + Sort -->
+                    <!-- 2026-05-29 polish: search row taller (34px) with explicit borders on all 4 sides
+                         for a visible field; brighter gold accents; magnifier-icon prefix slot. -->
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                               SuggestedHeight="34"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight">
+                      <Children>
+                        <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="32"
+                                MarginRight="8">
+                          <Children>
+                            <!-- solid dark background (no 9-grid mush) -->
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    Sprite="BlankWhiteSquare" Color="#0A0806FF" />
+                            <!-- 1px gold border on all 4 sides for definition -->
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                    SuggestedHeight="1" VerticalAlignment="Top"
+                                    Sprite="BlankWhiteSquare" Color="#5A3F2899" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                    SuggestedHeight="1" VerticalAlignment="Bottom"
+                                    Sprite="BlankWhiteSquare" Color="#C89858CC" />
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                    SuggestedWidth="1" HorizontalAlignment="Left"
+                                    Sprite="BlankWhiteSquare" Color="#5A3F2899" />
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                    SuggestedWidth="1" HorizontalAlignment="Right"
+                                    Sprite="BlankWhiteSquare" Color="#5A3F2899" />
+                            <!-- 2026-05-29 top-bar polish: placeholder via DefaultSearchText
+                                 (the canonical EditableTextWidget hint attr — see vanilla/ROT-Core
+                                 SaveLoad search). Shown only while @SearchQuery is empty; the
+                                 @SearchQuery binding + text-input behaviour are unchanged. -->
+                            <EditableTextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                VerticalAlignment="Center" MarginLeft="12" MarginRight="34"
+                                                Text="@SearchQuery"
+                                                DefaultSearchText="Search chronicle..."
+                                                Brush="EEChronicleSearchInput" />
+                            <!-- 2026-08-02 visual pass: the magnifier the 2026-05-29 comment above
+                                 promised ("magnifier-icon prefix slot") but never actually added.
+                                 Placement, size and IsDisabled copied from the two shipped prefabs
+                                 that use this exact sprite — SandBox\GUI\Prefabs\Encyclopedia\
+                                 EncyclopediaBar.xml:84 and SandBoxCore\GUI\Prefabs\CustomBattle\
+                                 CustomBattleScreen.xml:264 — both of which put it RIGHT-aligned and
+                                 vertically centred at 25x24, not on the left. Kept at 18x17 for a
+                                 32px field. The EditableTextWidget's MarginRight went 12 -> 34 so a
+                                 long query can never run underneath it.
+                                 IsDisabled + DoNotAcceptEvents keep it from stealing the click that
+                                 focuses the text field beneath. -->
+                            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                    SuggestedWidth="18" SuggestedHeight="17"
+                                    HorizontalAlignment="Right" VerticalAlignment="Center" MarginRight="10"
+                                    Sprite="Encyclopedia\icon_search" Color="#8A7654FF"
+                                    IsDisabled="true" DoNotAcceptEvents="true" />
+                          </Children>
+                        </Widget>
+                        <!-- 2026-08-02 legibility pass #2: this button carries EEChronicleChipText,
+                             which went 11 to 13pt, so it widens with the chips: 108 to 132.
+                             Its live label is NOT the DefaultText "DATE" — GlobalChroniclePanelVM
+                             .SortLabel (GlobalChroniclePanelVM.cs:282) emits "DATE: NEWEST" or
+                             "DATE: OLDEST", 12 characters, which is what has to fit. At 13pt that
+                             is about 113px, so 132 leaves ~9px of padding each side.
+                             The search field beside it is StretchToParent, so it simply absorbs
+                             the extra 24px: 852 - 8 (gap) - 132 = 712px of field.
+                             Height stays 32 in the 34px search row, so the row and the toolbar
+                             band are unchanged. -->
+                        <ButtonWidget DoNotPassEventsToChildren="true"
+                                      Command.Click="ExecuteToggleSortDirection"
+                                      Brush="EEChronicleChip"
+                                      WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="132" SuggestedHeight="32">
+                          <Children>
+                            <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Text="@SortLabel" DefaultText="DATE"
+                                        Brush="EEChronicleChipText" />
+                          </Children>
+                        </ButtonWidget>
+                      </Children>
+                    </ListPanel>
+
+                  </Children>
+                </ListPanel>
+              </Children>
+            </Widget>
+
+            <!-- ============ YEAR STRIP (y=162..190) ============
+                 2026-05-29: MarginTop reduced 192->162 (-30) to follow the shortened toolbar. -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="28" VerticalAlignment="Top" MarginTop="162">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        Sprite="BlankWhiteSquare" Color="#0A0806CC" />
+                <!-- 2026-08-02 chrome pass: 1px hairline -> gradient divider. Overlay child of a
+                     Fixed-28 strip, so the 1 -> 3 height costs no layout. -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="3" VerticalAlignment="Bottom"
+                        Sprite="horizontal_gradient_divider_9" Color="#8A6A4088"
+                        DoNotAcceptEvents="true" />
+                <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="44" VerticalAlignment="Center" MarginLeft="24"
+                            Text="YEAR" Brush="EEChronicleFilterLabel" />
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        MarginLeft="74" MarginRight="24"
+                        DataSource="{YearStrip}">
+                  <Children>
+                    <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                               StackLayout.LayoutMethod="HorizontalLeftToRight"
+                               DataSource="{Years}">
+                      <ItemTemplate>
+                        <!-- 2026-08-02 visual pass: year cells were StretchToParent-height, so each
+                             one filled the full 28px band and the strip read as a solid wall of
+                             abutting boxes competing with the chip rows above it. Now Fixed-20
+                             centred pills with a 4px gutter (was 2): 4px of band breathes above and
+                             below every pill, so the year strip reads as a quiet ruler under the
+                             filters instead of a fourth equal band.
+                             Fixed on BOTH axes, so the StretchToParent overlay children below
+                             (@IsInRange tint, @IsActive fill) stay balloon-safe. -->
+                        <ButtonWidget WidthSizePolicy="Fixed" SuggestedWidth="52"
+                                      HeightSizePolicy="Fixed" SuggestedHeight="20"
+                                      VerticalAlignment="Center" MarginRight="4"
+                                      DoNotPassEventsToChildren="true"
+                                      Command.Click="ExecuteClick"
+                                      Brush="EEChronicleChip">
+                          <Children>
+                            <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="8" MarginRight="8"
+                                        HorizontalAlignment="Center" VerticalAlignment="Center"
+                                        Text="@YearLabel" DefaultText="0000" Brush="EEChronicleYear" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@IsInRange" Sprite="BlankWhiteSquare" Color="#C8985840" />
+                            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                    IsVisible="@IsActive" Sprite="BlankWhiteSquare_9" Color="#C89858FF">
+                              <Children>
+                                <!-- Tracks the toolbar chips exactly: gold frame, lifted dark body,
+                                     bright EEChronicleChipTextPicked label. This pill shares that
+                                     brush, so it HAD to move with it — leaving the gold fill here
+                                     while the brush turned gold would have recreated the 1.9:1
+                                     gold-on-gold that started this whole pass.
+                                     A 4-character year at 13pt is ~38px inside a Fixed-52 pill, and
+                                     the 2px inset leaves a 48x16 body, so nothing overflows and the
+                                     year strip keeps its 28px band and Fixed-20 pills. -->
+                                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                        MarginLeft="2" MarginRight="2" MarginTop="2" MarginBottom="2"
+                                        Sprite="BlankWhiteSquare_9" Color="#3A2A18FF" />
+                                <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                            HorizontalAlignment="Center" VerticalAlignment="Center"
+                                            Text="@YearLabel" Brush="EEChronicleChipTextPicked" />
+                              </Children>
+                            </Widget>
+                          </Children>
+                        </ButtonWidget>
+                      </ItemTemplate>
+                    </ListPanel>
+                  </Children>
+                </Widget>
+              </Children>
+            </Widget>
+
+            <!-- ============ SPLIT BODY (y=190..868) ============
+                 2026-05-29: MarginTop reduced 220->190 (-30) and SuggestedHeight raised 578->608
+                 (+30) so the body still reaches the footer after the toolbar shrank.
+                 2026-08-02: shell grew 830->900 for readability (player report: hard to read on
+                 an ultrawide), so the body grows 608->678 to match. Header/toolbar stays at 190
+                 and the footer keeps its 32px strip: 190 + 678 + 32 = 900. -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="678" VerticalAlignment="Top" MarginTop="190">
+              <Children>
+
+                <!-- 2026-05-29 (re-do): ScrollablePanel wired per Native SaveLoadScreen.xml canonical
+                     pattern. Critical rules:
+                       1. InnerPanel ListPanel MUST be HeightSizePolicy="CoverChildren" (so it grows
+                          taller than the viewport — gives the scrollbar something to scroll).
+                       2. ClipRect must ClipContents=true and StretchToParent W+H.
+                       3. ScrollbarWidget is a SIBLING of ScrollablePanel (not nested), referenced via
+                          ..\Id path in VerticalScrollbar.
+                       4. InnerPanel attribute uses backslash path: "ClipRect\InnerListPanel".
+                     Previous attempts failed because they nested the scrollbar inside ScrollablePanel
+                     and/or left the inner panel at StretchToParent (zero overflow = no scroll). -->
+                <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                        SuggestedWidth="330" HorizontalAlignment="Left">
+                  <Children>
+                    <!-- ============ 2026-08-02 chrome pass: LEFT COLUMN SURFACE ============
+                         The left column previously painted NOTHING, so it and the reading pane
+                         were literally the same rectangle of panel body — the "one undivided
+                         rectangle" problem. It now gets its own DARK, DENSE surface: the list is
+                         a scanning well, so it sits BELOW the reading pane in value.
+                         flat_panel_9 = the vanilla panel texture (Lobby.PlayerProfile.xml:15),
+                         a _9 nine-slice, so StretchToParent on both axes is the shipped usage.
+                         #150F0B is darker than the old #1C1410 body it replaces here, so every
+                         entry title / date in this column gains contrast rather than losing it.
+                         Declared FIRST so it paints beneath the seam, the rows and the scrollbar.
+                         Adding a first child does not reorder any existing child relative to
+                         another, and this parent is an absolute-overlay Widget (not a stack), so
+                         nothing moves — only z-order gains a layer at the bottom. -->
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#120C08FF" />
+                    <!-- Soft seam shadow falling from the divider back into the list. Copied
+                         VERBATIM in form from MultiplayerEscapeMenu.xml:14 — the right-edge
+                         variant: Fixed width + StretchToParent height + escape_menu_gradient_9 +
+                         HorizontalAlignment="Right" + HorizontalFlip="true", i.e. opaque at the
+                         right edge fading inward. Narrower (24 vs 382) and tinted black so it
+                         can only darken. _9 sprite, so the vertical stretch is legal. -->
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="24" HorizontalAlignment="Right"
+                            Sprite="escape_menu_gradient_9" Color="#00000088"
+                            HorizontalFlip="true" DoNotAcceptEvents="true" />
+                    <!-- crisp seam line, lifted from #6A4A3066 to a warmer gold so the boundary
+                         between the two now-distinct surfaces reads as a deliberate edge -->
+                    <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                            SuggestedWidth="1" HorizontalAlignment="Right"
+                            Sprite="BlankWhiteSquare" Color="#C8985866" />
+                    <ScrollablePanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                     AutoHideScrollBars="true"
+                                     ClipRect="EntryClipRect"
+                                     InnerPanel="EntryClipRect\EntryInnerList"
+                                     VerticalScrollbar="..\EntryScrollbar">
+                      <Children>
+                        <Widget Id="EntryClipRect" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                ClipContents="true" MarginRight="10">
+                          <Children>
+                          <!-- 2026-08-02 visual pass: MarginTop 6 -> 12 and MarginBottom 12 added.
+                               The first row previously started 6px under the year strip and the
+                               last row ended flush against the panel footer, so the list looked
+                               cropped at both ends. 12px top/bottom also gives the new scroll
+                               fade bands (siblings below, outside the ClipRect) something to
+                               dissolve INTO rather than slicing straight through row text.
+                               Id, size policies and DataSource are untouched — CoverChildren
+                               height is what keeps the scrollbar alive. -->
+                          <ListPanel Id="EntryInnerList"
+                                     WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                     MarginLeft="6" MarginRight="6" MarginTop="12" MarginBottom="12"
+                                     StackLayout.LayoutMethod="VerticalBottomToTop"
+                                     DataSource="{VisibleEntries}">
+                            <ItemTemplate>
+                              <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                            SuggestedHeight="70"
+                                            DoNotPassEventsToChildren="true"
+                                            Command.Click="ExecuteSelectEntry"
+                                            Brush="EEChronicleEntryRow">
+                                <Children>
+                                  <!-- 2026-08-02 visual pass: SELECTED-ROW GLOW. Declared FIRST so it
+                                       is the bottom-most layer of the row, under the accents, the
+                                       tint and the content. A GradientCircle stretched to 64x70 is an
+                                       ellipse that is opaque at its centre and falls off to nothing
+                                       at its bounds, anchored to the left edge — so it reads as warm
+                                       light bleeding inward from the gold accent rather than as a
+                                       circle. Alpha is deliberately low (#C8985822): its whole job is
+                                       to make the chosen row obvious in peripheral vision while a
+                                       long list is being scanned, not to decorate.
+                                       GradientCircle is a SHAPE, not a nine-slice frame, so
+                                       stretching it paints no border art. IsEnabled/DoNotAcceptEvents
+                                       keep it clear of the row's own Command.Click. -->
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                          SuggestedWidth="64" HorizontalAlignment="Left"
+                                          IsVisible="@IsSelected"
+                                          Sprite="GradientCircle" Color="#C8985822"
+                                          IsEnabled="false" DoNotAcceptEvents="true" />
+                                  <!-- 2026-08-02: category accent — a 2px event-coloured left edge on
+                                       EVERY row, so the list is scannable by colour without reading it.
+                                       Declared before the selected accent on purpose: that one is
+                                       wider and paints straight over this one, so a merely-tinted row
+                                       can never be mistaken for the chosen row. -->
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                          SuggestedWidth="2" HorizontalAlignment="Left"
+                                          Sprite="BlankWhiteSquare" Color="@EventColorHex" />
+                                  <!-- selected: gold left accent + faint tint.
+                                       2026-08-02 visual pass: accent 3 -> 4px and tint 14 -> 1C. The
+                                       selected row had to be findable at a glance against 2px coloured
+                                       accents on every OTHER row; a 1px difference was not enough. -->
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                          SuggestedWidth="4" HorizontalAlignment="Left"
+                                          IsVisible="@IsSelected"
+                                          Sprite="BlankWhiteSquare" Color="#C89858FF" />
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                          IsVisible="@IsSelected"
+                                          Sprite="BlankWhiteSquare" Color="#C898581C" />
+                                  <!-- bottom divider — gradient divider that fades at both ends, so a
+                                       long list reads as ruled entries instead of a ladder of hard
+                                       lines. Overlay child of a Fixed-70 ButtonWidget (not a stack),
+                                       so its height moves nothing inside the row.
+                                       2026-08-02 visual pass: INSET to MarginLeft 16 / MarginRight 12
+                                       so the rule starts where the row's text column starts instead of
+                                       running full-bleed across the coloured accent. That is the
+                                       difference between a ruled list and a stack of boxes. -->
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                          SuggestedHeight="3" VerticalAlignment="Bottom"
+                                          MarginLeft="16" MarginRight="12"
+                                          Sprite="horizontal_gradient_divider_9" Color="#8A6A4055"
+                                          DoNotAcceptEvents="true" />
+
+                                  <!-- icon gutter + body
+                                       2026-08-02 visual pass: MarginLeft 12 -> 16 so the icon clears
+                                       the 4px selected accent with real space rather than 8px, and
+                                       MarginRight 10 -> 12 to match the divider's inset. -->
+                                  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                             StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                             MarginLeft="16" MarginRight="12">
+                                    <Children>
+
+                                      <!-- event-colored icon box (frame + dim fill + neutral letter) -->
+                                      <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                              SuggestedWidth="26" SuggestedHeight="26"
+                                              VerticalAlignment="Center" MarginRight="10">
+                                        <Children>
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  Sprite="BlankWhiteSquare_9" Color="@EventColorHex" />
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  MarginLeft="1" MarginRight="1" MarginTop="1" MarginBottom="1"
+                                                  Sprite="BlankWhiteSquare_9" Color="@EventColorDimHex" />
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                      HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                      Text="@IconTextChar" DefaultText="*" Brush="EEChronicleTypeIcon" />
+                                        </Children>
+                                      </Widget>
+
+                                      <!-- body: title (top) + meta line (bottom), ALIGNMENT-positioned
+                                           (NOT a vertical stack) so it's immune to the 1.4 LayoutMethod
+                                           inversion and needs no runtime flip when rows are rebuilt. -->
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                              SuggestedHeight="57" VerticalAlignment="Center">
+                                        <Children>
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                                      SuggestedHeight="34" VerticalAlignment="Top"
+                                                      TextHorizontalAlignment="Left"
+                                                      Text="@TitleText" DefaultText="Title" Brush="EEChronicleEntryText" />
+                                          <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                                     SuggestedHeight="20" VerticalAlignment="Bottom"
+                                                     StackLayout.LayoutMethod="HorizontalLeftToRight">
+                                            <Children>
+                                              <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                                          VerticalAlignment="Center" MarginRight="8"
+                                                          Text="@ShortDateLabel" DefaultText="" Brush="EEChronicleEntryDate" />
+
+                                              <!-- 2026-08-02: entity image (hero portrait / clan banner) ahead of the
+                                                   name pill. Verified against 1.4.7 rather than the stale 2026-05-29
+                                                   note below: the ImageTypeCode ENUM no longer exists — the image type
+                                                   IS the ImageIdentifierVM subclass (CharacterImageIdentifierVM /
+                                                   BannerImageIdentifierVM), so this works declaratively. TaleWorlds
+                                                   ships 190 such usages and 0 uses of an ImageTypeCode attribute.
+                                                   IsVisible lives on the WRAPPER: DataSource re-scopes the binding
+                                                   context, so @HasHeroPortrait would resolve against the image VM.
+                                                   TextureProviderName + ImageId must both be bound or it renders blank
+                                                   (pattern copied from the shipped BanditKingBrief.xml). -->
+                                              <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                      SuggestedWidth="20" SuggestedHeight="20"
+                                                      VerticalAlignment="Center" MarginRight="6"
+                                                      IsVisible="@HasHeroPortrait">
+                                                <Children>
+                                                  <ImageIdentifierWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                                         DataSource="{HeroPortrait}"
+                                                                         TextureProviderName="@TextureProviderName" ImageId="@Id" />
+                                                </Children>
+                                              </Widget>
+
+                                              <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                      SuggestedWidth="20" SuggestedHeight="20"
+                                                      VerticalAlignment="Center" MarginRight="6"
+                                                      IsVisible="@HasClanBanner">
+                                                <Children>
+                                                  <ImageIdentifierWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                                         DataSource="{ClanBanner}"
+                                                                         TextureProviderName="@TextureProviderName" ImageId="@Id" />
+                                                </Children>
+                                              </Widget>
+                                              <!-- entity tag pill: bg painted ON the CoverChildren widget (no stretch child = no balloon) -->
+                                              <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed"
+                                                      SuggestedHeight="14" VerticalAlignment="Center"
+                                                      IsVisible="@HasEntityTag"
+                                                      Sprite="BlankWhiteSquare_9" Color="#A0856022">
+                                                <Children>
+                                                  <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                                              VerticalAlignment="Center" MarginLeft="7" MarginRight="7"
+                                                              Text="@EntityTagLabel" DefaultText="" Brush="EEChronicleMiniTagEntity" />
+                                                </Children>
+                                              </Widget>
+                                            </Children>
+                                          </ListPanel>
+                                        </Children>
+                                      </Widget>
+
+                                    </Children>
+                                  </ListPanel>
+                                </Children>
+                              </ButtonWidget>
+                            </ItemTemplate>
+                          </ListPanel>
+                          </Children>
+                        </Widget>
+                      </Children>
+                    </ScrollablePanel>
+
+                    <!-- ============ 2026-08-02 visual pass: SCROLL FADE MASKS ============
+                         The list previously hard-cut at the top and bottom of its viewport, so a
+                         row mid-scroll was sliced clean through its text — the single most
+                         "unfinished" thing about the panel.
+                         scrollable_field_gradient_9 is TaleWorlds' own scroll-fade sprite (it is
+                         literally named for this job). Recipe copied verbatim from the shipped
+                         NavalDLC\GUI\Prefabs\Port\PortShipList.xml lines 73 and 76, which fades
+                         the top and bottom of a scrolling ship list:
+                           top    -> VerticalAlignment="Top"    + VerticalFlip="true" + #00000055
+                           bottom -> VerticalAlignment="Bottom" + no flip             + #000000AA
+                         The sprite's natural gradient is opaque at the BOTTOM, which is why only
+                         the top band is flipped.
+                         This is a NARROW BAND (24/30 of a 678px viewport), never an area fill —
+                         and it is a fade, not a picture frame, so it paints no border art.
+                         PLACEMENT is deliberate: siblings of the ScrollablePanel, declared AFTER
+                         it so they paint over the rows, but BEFORE the scrollbar so the handle
+                         still reads at full strength. Being outside ClipRect they stay pinned to
+                         the viewport instead of scrolling away with the content.
+                         MarginRight="12" keeps them clear of the scrollbar gutter.
+                         CLICK SAFETY: these lie directly on top of the entry-row ButtonWidgets, so
+                         IsEnabled="false" + DoNotAcceptEvents="true" are mandatory, not optional. -->
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="24" VerticalAlignment="Top" MarginRight="12"
+                            Sprite="scrollable_field_gradient_9" Color="#00000055"
+                            VerticalFlip="true"
+                            IsEnabled="false" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="30" VerticalAlignment="Bottom" MarginRight="12"
+                            Sprite="scrollable_field_gradient_9" Color="#000000AA"
+                            IsEnabled="false" DoNotAcceptEvents="true" />
+
+                    <!-- Sibling scrollbar (referenced by ScrollablePanel.VerticalScrollbar="..\EntryScrollbar") -->
+                    <ScrollbarWidget Id="EntryScrollbar"
+                                     WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                     SuggestedWidth="6" HorizontalAlignment="Right"
+                                     VerticalAlignment="Top"
+                                     MarginTop="8" MarginBottom="8" MarginRight="2"
+                                     AlignmentAxis="Vertical"
+                                     Handle="EntryScrollbarHandle"
+                                     MaxValue="100" MinValue="0">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                SuggestedWidth="2" HorizontalAlignment="Center"
+                                Sprite="BlankWhiteSquare_9" Color="#C8985833" />
+                        <Widget Id="EntryScrollbarHandle"
+                                WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                MinHeight="24" SuggestedWidth="6"
+                                Sprite="BlankWhiteSquare_9" Color="#C89858FF" />
+                      </Children>
+                    </ScrollbarWidget>
+                      <!-- 2026-05-29: empty-state overlay. Visible only when no entries match
+                           (filtered) or the chronicle is empty. Parent (290 Fixed / StretchToParent)
+                           is not CoverChildren on either axis, so StretchToParent children are
+                           balloon-safe. Brushes only (no inline Brush.FontSize — that NREs at parse). -->
+                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                              IsVisible="@IsEmpty">
+                        <Children>
+                          <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                     HorizontalAlignment="Center" VerticalAlignment="Center"
+                                     MarginLeft="20" MarginRight="20"
+                                     StackLayout.LayoutMethod="VerticalBottomToTop">
+                            <Children>
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                          SuggestedHeight="28"
+                                          Text="@EmptyStateTitle" DefaultText="No events"
+                                          Brush="EEChronicleReadingTitle"
+                                          TextHorizontalAlignment="Center" />
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                          SuggestedHeight="22" MarginTop="6"
+                                          Text="@EmptyStateHint" DefaultText=""
+                                          Brush="EEChronicleMuted"
+                                          TextHorizontalAlignment="Center" />
+                            </Children>
+                          </ListPanel>
+                        </Children>
+                      </Widget>
+                  </Children>
+                </Widget>
+
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        MarginLeft="330">
+                  <Children>
+                    <!-- ============ READING SURFACE ============
+                         Counterpart to the left column's dark well (#120C08). This pane is where
+                         the prose is actually read, so it is the LIGHTER, calmer of the two at
+                         #1A120E — one clear value step above the list, one step below the panel
+                         body. That three-step ladder (list < page < body < header) is what makes
+                         the split body read as two designed surfaces instead of one rectangle.
+                         Declared FIRST so it paints beneath the ScrollablePanel and the scrollbar.
+                         (See the panel-body note at the top for why this is a flat fill and not a
+                         nine-slice gradient/panel sprite.) -->
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                            Sprite="BlankWhiteSquare" Color="#1A120EFF" />
+                    <!-- 2026-08-02: ScrollablePanel RESTORED (3rd attempt). The 2026-05-29 removal
+                         note it replaces said "a single chronicle entry's reading pane is short and
+                         never needs scrolling"; that premise is dead now the pane carries an identity
+                         header, a full INFO stat grid and two cross-reference lists.
+                         Wired by COPYING the left entry list above, obeying the same four rules:
+                           1. ReadingInnerList is HeightSizePolicy="CoverChildren", never
+                              StretchToParent. It therefore grows PAST the viewport (overflow =
+                              something to scroll) and still collapses to true content height for
+                              short entries. This is also what kills the old balloon the 2026-05-29
+                              note blamed on the viewport: with CoverChildren there is no leftover
+                              vertical space for VerticalBottomToTop to distribute between siblings,
+                              so the gold Story Card cannot seize it.
+                           2. ReadingClipRect has ClipContents="true" and StretchToParent on BOTH axes.
+                           3. ReadingScrollbar is a SIBLING of ScrollablePanel (see below), never
+                              nested inside it, referenced as "..\ReadingScrollbar".
+                           4. InnerPanel uses a BACKSLASH path: "ReadingClipRect\ReadingInnerList".
+                         The old Fixed/SuggestedWidth="500" inner width is gone: ReadingClipRect now
+                         bounds the content horizontally (MarginRight="10" reserves the scrollbar
+                         gutter, and the list keeps MarginRight="6" clear of the handle). -->
+                    <ScrollablePanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                     AutoHideScrollBars="true"
+                                     ClipRect="ReadingClipRect"
+                                     InnerPanel="ReadingClipRect\ReadingInnerList"
+                                     VerticalScrollbar="..\ReadingScrollbar">
+                      <Children>
+                        <Widget Id="ReadingClipRect" WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                ClipContents="true" MarginRight="10">
+                          <Children>
+                          <!-- 2026-08-02 visual pass: MarginTop 6 -> 16, MarginBottom 18 -> 28.
+                               The entry title started 6px below the year strip, which read as
+                               cramped for a page-level heading, and the last block ended close
+                               enough to the footer to look clipped. The extra room also lets the
+                               new top/bottom fade bands (siblings below, outside the ClipRect)
+                               dissolve content instead of slicing the title.
+                               MarginLeft/MarginRight are UNCHANGED at 24/6 on purpose: the INFO
+                               GridWidget's DefaultCellWidth="508" is derived from exactly these
+                               two numbers (see its note), and that grid must not be touched. -->
+                          <ListPanel Id="ReadingInnerList"
+                                     WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                     VerticalAlignment="Top"
+                                     StackLayout.LayoutMethod="VerticalBottomToTop"
+                                     MarginLeft="24" MarginRight="6" MarginTop="16" MarginBottom="28"
+                                     DataSource="{SelectedEntry}">
+                            <Children>
+                              <!-- 2026-05-29: PREV/NEXT row removed per request — entries are
+                                   selected via clicks on the left list, not via reading-pane buttons. -->
+                              <!-- 2026-05-29: tag chips REMOVED from the right reading pane per user
+                                   request. Tag info still shows in the DETAILS section below as
+                                   EVENT/SUBJECT definition rows. Left column entry rows still show the
+                                   primary tag mini-chips for at-a-glance scanning. -->
+
+                              <!-- ============ 2026-08-02 visual pass: READING-PANE RHYTHM ============
+                                   One spacing scale is now applied down the whole pane, replacing
+                                   margins that had accumulated ad hoc over many edits (4/6/9/10 mixed
+                                   arbitrarily). The scale is:
+                                     14  between major blocks
+                                      5  section header -> its event-coloured underline
+                                      8  underline -> the block's content
+                                     14  above and below an ornamented section break
+                                   Everything below follows it. The pane scrolls, so the extra height
+                                   costs nothing, and consistent spacing is what makes a long column of
+                                   mixed content read as designed rather than assembled. -->
+                              <!-- Title — left-aligned, breathing margins -->
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          MarginTop="4" MarginBottom="6"
+                                          TextHorizontalAlignment="Left"
+                                          Text="@TitleText" DefaultText="Title" Brush="EEChronicleReadingTitle" />
+                              <!-- Date left-aligned, muted -->
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          Text="@DateLabel" DefaultText="DATE" MarginBottom="10"
+                                          TextHorizontalAlignment="Left"
+                                          Brush="EEChronicleReadingDate" />
+                              <!-- Title rule — bound to the event colour, so the open entry is
+                                   colour-identified the same way its row in the left list is, and a
+                                   gradient divider so the colour bleeds out at both ends instead of
+                                   stopping dead. This is the pane's MINOR rule; the two major breaks
+                                   further down use the ornamented divider_mid instead. -->
+                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="3" MarginBottom="14"
+                                      Sprite="horizontal_gradient_divider_9" Color="@EventColorHex"
+                                      DoNotAcceptEvents="true" />
+
+                              <!-- ============ DAY / SEASON / YEAR stat row ============ -->
+                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                         SuggestedHeight="52"
+                                         StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                         IsVisible="@HasEntryYear" MarginBottom="14">
+                                <Children>
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="6">
+                                    <Children>
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                              Sprite="BlankWhiteSquare_9" Color="#0A0604FF" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                      <!-- 2026-05-29 polish #8: value + label STACKED in a centered vertical
+                                           ListPanel so they can never overlap (the prior two StretchToParent-
+                                           height TextWidgets both centered in the full cell = collision). -->
+                                      <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                 VerticalAlignment="Center"
+                                                 StackLayout.LayoutMethod="VerticalBottomToTop">
+                                        <Children>
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center"
+                                                      Text="@DayValue" DefaultText="-" Brush="EEChronicleStatValue" />
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center" MarginTop="3"
+                                                      Text="DAY" Brush="EEChronicleFilterLabel" />
+                                        </Children>
+                                      </ListPanel>
+                                    </Children>
+                                  </Widget>
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="6">
+                                    <Children>
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                              Sprite="BlankWhiteSquare_9" Color="#0A0604FF" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                      <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                 VerticalAlignment="Center"
+                                                 StackLayout.LayoutMethod="VerticalBottomToTop">
+                                        <Children>
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center"
+                                                      Text="@SeasonValue" DefaultText="-" Brush="EEChronicleStatValue" />
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center" MarginTop="3"
+                                                      Text="SEASON" Brush="EEChronicleFilterLabel" />
+                                        </Children>
+                                      </ListPanel>
+                                    </Children>
+                                  </Widget>
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent">
+                                    <Children>
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                              Sprite="BlankWhiteSquare_9" Color="#0A0604FF" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                      <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                 VerticalAlignment="Center"
+                                                 StackLayout.LayoutMethod="VerticalBottomToTop">
+                                        <Children>
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center"
+                                                      Text="@EntryYearLabel" DefaultText="-" Brush="EEChronicleStatValue" />
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center" MarginTop="3"
+                                                      Text="YEAR" Brush="EEChronicleFilterLabel" />
+                                        </Children>
+                                      </ListPanel>
+                                    </Children>
+                                  </Widget>
+                                </Children>
+                              </ListPanel>
+
+                              <!-- ============ Event icon + tag text line ============ -->
+                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                         SuggestedHeight="36"
+                                         StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                         MarginBottom="14">
+                                <Children>
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                          SuggestedWidth="36" SuggestedHeight="36" MarginRight="10">
+                                    <Children>
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                              Brush="EEChronicleIconGlow" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="@EventColorHex" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="@EventColorHex" />
+                                      <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="1"
+                                              HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="@EventColorHex" />
+                                      <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="1"
+                                              HorizontalAlignment="Right" Sprite="BlankWhiteSquare" Color="@EventColorHex" />
+                                      <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                  Text="@IconTextChar" DefaultText="*" Brush="EEChronicleReadingTitle" />
+                                    </Children>
+                                  </Widget>
+                                  <!-- 2026-05-29 polish #6: tag PILLS (CRIME / WAR / HERO) — separate
+                                       outlined chips per the target image. Mirrors the proven YearStrip
+                                       MBBindingList+ItemTemplate pattern: pill ListPanel DataSource="{TagPills}"
+                                       re-scopes to SelectedEntry.TagPills; each chip binds @Label. -->
+                                  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                             VerticalAlignment="Center"
+                                             StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                             DataSource="{TagPills}">
+                                    <!-- 2026-05-29 polish #7: pill rendered as a WIDE BAR because the
+                                         CoverChildren-WIDTH wrapper held StretchToParent-WIDTH bg + border
+                                         children (the same circular-measurement bug, width axis). Fixed by
+                                         painting the chip bg directly on the CoverChildren wrapper and
+                                         keeping ONLY the text child — so the chip hugs its label, exactly
+                                         like the proven year-strip chip. -->
+                                    <ItemTemplate>
+                                      <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="Fixed" SuggestedHeight="22"
+                                              VerticalAlignment="Center" MarginRight="6"
+                                              Sprite="BlankWhiteSquare_9" Color="@ColorHex">
+                                        <Children>
+                                          <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                                      MarginLeft="10" MarginRight="10"
+                                                      HorizontalAlignment="Center" VerticalAlignment="Center"
+                                                      Text="@Label" DefaultText="" Brush="EEChronicleFilterLabel" />
+                                        </Children>
+                                      </Widget>
+                                    </ItemTemplate>
+                                  </ListPanel>
+                                </Children>
+                              </ListPanel>
+
+                              <!-- ============ STORY CARD (body in a gold-bordered frame) ============
+                                   2026-05-29 fresh build: body wrapped in a framed card per the
+                                   "Story card" layout selection. Gold top + bottom borders + a thick
+                                   gold left accent strip, with subtle dark background — the prose
+                                   reads as a recorded chronicle entry rather than a flat paragraph. -->
+                              <!-- 2026-08-02 visual pass: promoted to EEChronicleSectionLabel and given
+                                   the same 28x2 event-coloured underline that INFO / MORE FROM / SAME
+                                   YEAR already carried. CHRONICLE TEXT introduces the single most
+                                   important block in the pane but was styled as a stat-cell caption,
+                                   so the pane's most-read section had the weakest header. Every
+                                   section header in this pane now uses the identical
+                                   label + 28x2 underline pair. -->
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          MarginBottom="5"
+                                          TextHorizontalAlignment="Left"
+                                          Text="CHRONICLE TEXT" Brush="EEChronicleSectionLabel" />
+                              <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="28" SuggestedHeight="2"
+                                      HorizontalAlignment="Left" MarginBottom="8"
+                                      Sprite="BlankWhiteSquare" Color="@EventColorHex"
+                                      DoNotAcceptEvents="true" />
+                              <!-- 2026-05-29 polish #7: ROOT-CAUSE fix for the ballooning Story Card.
+                                   OLD structure was a CoverChildren-HEIGHT Widget containing
+                                   StretchToParent-HEIGHT bg + left-accent children. That is a circular
+                                   measurement (parent sizes to children; those children size to parent),
+                                   which lets the stretch children seize the whole column height -> balloon.
+                                   The LEFT column never balloons because it paints row backgrounds with a
+                                   brush ON THE WIDGET ITSELF, with zero stretch children. Same rule here:
+                                   bg painted directly on the outer CoverChildren Widget (Sprite+Color);
+                                   top/bottom borders stay Fixed-HEIGHT (determinate, safe); the
+                                   StretchToParent-HEIGHT left accent is removed. Card now collapses to
+                                   true text height. -->
+                              <!-- 2026-08-02 visual pass: card padding 16/14/8/8 -> 20/18/14/14 and the
+                                   fill deepened #0C080588 -> #06040399. This is the one block a player
+                                   actually READS at length, so it gets the most generous internal
+                                   padding in the pane and the darkest surface behind it — more
+                                   contrast for #D8C9A0 body text, not less. Padding stays on the inner
+                                   TextWidget (a Fixed/CoverChildren-safe child); the card itself keeps
+                                   its bg painted directly on the CoverChildren wrapper with no
+                                   StretchToParent-height child, which is the documented cure for the
+                                   ballooning Story Card. -->
+                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren" MarginBottom="14"
+                                      Sprite="BlankWhiteSquare_9" Color="#06040399">
+                                <Children>
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                          VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="@EventColorHex" />
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                          VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="@EventColorHex" />
+                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                              MarginLeft="20" MarginRight="18" MarginTop="14" MarginBottom="14"
+                                              TextHorizontalAlignment="Left"
+                                              Text="@BodyText" DefaultText="Body" Brush="EEChronicleReadingBody" />
+                                </Children>
+                              </Widget>
+
+                              <!-- Timeline context line -->
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          IsVisible="@HasTimelineContext" MarginBottom="14"
+                                          TextHorizontalAlignment="Center"
+                                          Text="@TimelineContextLabel" DefaultText="" Brush="EEChronicleMuted" />
+                              <!-- Faint MINOR divider (plain gradient rule). Kept plain on purpose:
+                                   the two MAJOR breaks below use the ornamented divider_mid, and that
+                                   contrast is what gives the pane a break hierarchy. -->
+                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="3" MarginBottom="14"
+                                      Sprite="horizontal_gradient_divider_9" Color="#8A6A4066"
+                                      DoNotAcceptEvents="true" />
+
+                              <!-- ============ RELATED ENTITY section ============
+                                   2026-05-29 (2nd revert) — SUPERSEDED 2026-08-02. The old note concluded the
+                                   banner "can only be added via a runtime widget-injection path". That was an
+                                   over-generalisation from a real symptom. Verified against 1.4.7: the
+                                   ImageTypeCode ENUM no longer exists anywhere in the engine — the image type
+                                   IS the ImageIdentifierVM subclass (CharacterImageIdentifierVM,
+                                   BannerImageIdentifierVM). Bind DataSource="{someImageIdentifierVM}" together
+                                   with TextureProviderName="@TextureProviderName" and ImageId="@Id", and keep
+                                   IsVisible on a wrapper (DataSource re-scopes the binding context). It then
+                                   renders declaratively — see the entry-row template above. -->
+                              <!-- 2026-05-29 polish #7: same ROOT-CAUSE fix as the Story Card — bg painted
+                                   directly on this CoverChildren Widget (Sprite+Color); the two
+                                   StretchToParent-HEIGHT children (bg + gold left accent) that caused the
+                                   circular-measurement balloon are removed. -->
+                              <!-- 2026-08-02 visual pass: card MarginBottom 10 -> 14 and inner VERTICAL
+                                   padding 6/6 -> 12/12. This card holds a 72px portrait, a name, a
+                                   whole INFO grid and a stat row, and it was the tightest-padded block
+                                   in the pane.
+                                   The HORIZONTAL padding is deliberately left at 12/10: the INFO
+                                   GridWidget's DefaultCellWidth="508" is derived from exactly those
+                                   two numbers (see its note below), so widening them would silently
+                                   invalidate that figure. Vertical padding is free of that constraint.
+                                   Padding lives on the inner ListPanel, which is CoverChildren over
+                                   determinate children — no StretchToParent-height child is
+                                   introduced, so the documented balloon cannot return. -->
+                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                      IsVisible="@HasSourceEntity"
+                                      MarginBottom="14"
+                                      Sprite="BlankWhiteSquare_9" Color="#1A100888">
+                                <Children>
+                                  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                             StackLayout.LayoutMethod="VerticalBottomToTop"
+                                             MarginLeft="12" MarginRight="10" MarginTop="12" MarginBottom="12">
+                                    <Children>
+                                      <!-- ============ IDENTITY HEADER: image + kind + name ============
+                                           2026-08-02: the entity IMAGE is folded INTO this existing block
+                                           rather than added as a second identity header — SourceKindLabel /
+                                           SourceEntityName already live here, so a separate portrait block
+                                           would have printed the entity name twice.
+                                           Rendering rules (same as the 20px version in the left entry rows):
+                                             - IsVisible lives on the WRAPPER, never on ImageIdentifierWidget:
+                                               DataSource re-scopes the binding context, so @HasHeroPortrait
+                                               there would resolve against the image VM and silently fail.
+                                             - TextureProviderName AND ImageId must BOTH be bound or the
+                                               widget renders as a blank square.
+                                             - No ImageTypeCode attribute: that enum is gone in 1.4.7; the
+                                               image type IS the ImageIdentifierVM subclass.
+                                           Balloon safety: this horizontal row is StretchToParent-WIDTH (its
+                                           parent is too, so the stretch-width text column is safe) and
+                                           CoverChildren-HEIGHT with only determinate children (Fixed 72 image
+                                           wrappers + a CoverChildren text column) — no stretch-height child,
+                                           so no circular measurement. A hero with a clan shows portrait AND
+                                           banner; both wrappers collapse out of the stack when not visible. -->
+                                      <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                 StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                                 MarginBottom="12">
+                                        <Children>
+                                          <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                  SuggestedWidth="72" SuggestedHeight="72"
+                                                  VerticalAlignment="Top" MarginRight="12"
+                                                  IsVisible="@HasHeroPortrait">
+                                            <Children>
+                                              <ImageIdentifierWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                                     DataSource="{HeroPortrait}"
+                                                                     TextureProviderName="@TextureProviderName" ImageId="@Id" />
+                                            </Children>
+                                          </Widget>
+                                          <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                  SuggestedWidth="72" SuggestedHeight="72"
+                                                  VerticalAlignment="Top" MarginRight="12"
+                                                  IsVisible="@HasClanBanner">
+                                            <Children>
+                                              <ImageIdentifierWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                                     DataSource="{ClanBanner}"
+                                                                     TextureProviderName="@TextureProviderName" ImageId="@Id" />
+                                            </Children>
+                                          </Widget>
+                                          <!-- 2026-08-02: text column was StretchToParent, so it claimed ALL the
+                                               remaining width and the kind/name ended up floating far to the right
+                                               of the banner with a dead gap between. TextHorizontalAlignment did
+                                               not help: it aligns text INSIDE the widget, and the widget itself was
+                                               the full width. CoverChildren + explicit HorizontalAlignment="Left"
+                                               on both the column and its labels leaves no slack to drift into, so
+                                               the text sits hard against the banner. VerticalAlignment="Center"
+                                               keeps it centred against the 72px images. -->
+                                          <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                                     VerticalAlignment="Center" HorizontalAlignment="Left"
+                                                     StackLayout.LayoutMethod="VerticalBottomToTop">
+                                            <Children>
+                                              <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                                          MarginBottom="2" HorizontalAlignment="Left"
+                                                          TextHorizontalAlignment="Left"
+                                                          Text="@SourceKindLabel" DefaultText="" Brush="EEChronicleFilterLabel" />
+                                              <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                                          HorizontalAlignment="Left"
+                                                          TextHorizontalAlignment="Left"
+                                                          Text="@SourceEntityName" DefaultText="" Brush="EEChronicleReadingTitle" />
+                                            </Children>
+                                          </ListPanel>
+                                        </Children>
+                                      </ListPanel>
+
+                                      <!-- ============ INFO grid (auto-derived entity stats) ============
+                                           2026-08-02: this REPLACES the old CLAN / KINGDOM / CULTURE stat-cell
+                                           row that stood here. It is not an addition on top of it — the INFO
+                                           payload is a strict superset of that row for every entity kind, so
+                                           keeping both would have painted Culture (all 4 kinds), Kingdom
+                                           (hero/clan/settlement) and the owning clan (hero "Faction",
+                                           settlement "Clan", clan "Leader") twice in the same card:
+                                             GetHeroInfoStatsOrdered      -> Culture, Occupation, Kingdom, Faction, ...
+                                             GetClanInfoStatsOrdered      -> Kingdom, Leader, Culture, Renown, ...
+                                             GetKingdomInfoStatsOrdered   -> Ruler, Culture, Clans, ...
+                                             GetSettlementInfoStatsOrdered-> Owner, Clan, Kingdom, Culture, ...
+                                           The INFO rows are also the correct source: EditableEncyclopediaApi
+                                           owns the fog-of-war mask, so unmet heroes read "???" here, whereas
+                                           the removed cells bound raw hero.Clan.Name / .Kingdom / .Culture
+                                           unmasked. Values reading "???" are the mask, not a bug.
+                                           Visibility is not lost by nesting this inside the @HasSourceEntity
+                                           card: BuildInfoRows only runs on a branch that has already set
+                                           SourceEntityName, so HasInfoRows implies HasSourceEntity.
+                                           SINGLE COLUMN, and it must stay that way. A 2-column grid at
+                                           DefaultCellWidth=240 overlapped: Gauntlet grid cells do NOT clip, so
+                                           any row wider than its cell paints straight over the neighbouring
+                                           column instead of wrapping. Real INFO values blow past 240 routinely
+                                           — Location "Prisoner of Lord Xyz", Companions "3 in Party / 5 in
+                                           Clan", a multi-faction At War. This is the same defect a player
+                                           reported on the encyclopedia page ("At War overlaps the Wealth
+                                           column"), so two columns would reintroduce a bug already fixed there.
+                                           Do NOT "fix" this by adding ClipContents and keeping 2 columns: that
+                                           trades overlap for silently truncated values, and these are exactly
+                                           the values a player wants to read in full. The pane scrolls now, so
+                                           vertical space is cheap and horizontal space is not.
+                                           DefaultCellWidth=508 = the grid's full usable inner width:
+                                             900 shell
+                                             - 330 left column                     = 570 right pane
+                                             - 10  ReadingClipRect MarginRight     = 560
+                                             - 24 + 6 ReadingInnerList L/R margins = 530
+                                             - 12 + 10 card inner ListPanel L/R    = 508
+                                           Every widget in that chain is StretchToParent on width, so 508 is
+                                           the real measured width, not an estimate. -->
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                              IsVisible="@HasInfoRows" MarginBottom="14">
+                                        <Children>
+                                          <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                     StackLayout.LayoutMethod="VerticalBottomToTop">
+                                            <Children>
+                                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                          TextHorizontalAlignment="Left" MarginBottom="5"
+                                                          Text="INFO" Brush="EEChronicleSectionLabel" />
+                                              <!-- 2026-08-02: short event-coloured underline. Sibling
+                                                   directly below the label inside the same vertical
+                                                   stack — nothing is re-parented and the GridWidget
+                                                   below is untouched. -->
+                                              <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                      SuggestedWidth="28" SuggestedHeight="2"
+                                                      HorizontalAlignment="Left" MarginBottom="8"
+                                                      Sprite="BlankWhiteSquare" Color="@EventColorHex"
+                                                      DoNotAcceptEvents="true" />
+                                              <GridWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                          DataSource="{InfoRows}" ColumnCount="1"
+                                                          DefaultCellWidth="508" DefaultCellHeight="22">
+                                                <ItemTemplate>
+                                                  <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                                             StackLayout.LayoutMethod="HorizontalLeftToRight">
+                                                    <Children>
+                                                      <!-- 2026-08-02: small icon ahead of the label, only on rows whose
+                                                           label maps to a sprite that REALLY ships (see the verified
+                                                           table in ChronicleInfoRowVM.cs). IsVisible sits on this
+                                                           wrapper, never on the sprite widget, so the whole cell
+                                                           including its MarginRight disappears together.
+
+                                                           No-gap fallback is guaranteed, not hoped for:
+                                                           TaleWorlds.GauntletUI.Layout.StackLayout `continue`s past
+                                                           any child where !child.IsVisible in BOTH its measure pass
+                                                           and its arrange pass, so a hidden child contributes zero
+                                                           width AND zero margin to a HorizontalLeftToRight panel.
+                                                           Rows with HasIcon=false therefore collapse to exactly
+                                                           label + value, byte-identical to the pre-icon layout.
+
+                                                           Sizing/colour copied from the shipped
+                                                           SandBox\GUI\Prefabs\Clan\Finance\ClanIncomeTuple.xml line 42,
+                                                           which is the same shape of thing (inline icon beside a
+                                                           label/value row): Fixed/Fixed square, VerticalAlignment
+                                                           Center, DoNotAcceptEvents, and NO Color tint. Vanilla
+                                                           leaves these icons untinted, so this one is untinted too.
+                                                           25px there is a full finance row; 16px suits this 22px
+                                                           DefaultCellHeight. -->
+                                                      <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                                              VerticalAlignment="Center" MarginRight="5"
+                                                              IsVisible="@HasIcon" DoNotAcceptEvents="true">
+                                                        <Children>
+                                                          <ImageWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                                       SuggestedWidth="16" SuggestedHeight="16"
+                                                                       VerticalAlignment="Center"
+                                                                       Sprite="@IconSprite" DoNotAcceptEvents="true" />
+                                                        </Children>
+                                                      </Widget>
+                                                      <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                                                  MarginRight="6"
+                                                                  Text="@Label" DefaultText="" Brush="EEChronicleFilterLabel" />
+                                                      <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                                                  Text="@Value" DefaultText="" Brush="EEChronicleStatValue" />
+                                                    </Children>
+                                                  </ListPanel>
+                                                </ItemTemplate>
+                                              </GridWidget>
+                                            </Children>
+                                          </ListPanel>
+                                        </Children>
+                                      </Widget>
+                                      <!-- 2026-08-02: the CLAN / KINGDOM / CULTURE stat-cell grid that used to
+                                           sit here was REMOVED — see the INFO-grid note above. The ExtraStat
+                                           row below is kept because it carries values INFO does not derive
+                                           (hero AGE / clan TIER / settlement TYPE). -->
+                                      <!-- ============ Extra entity-stat grid (2nd row) ============
+                                           2026-05-29: type-specific stats (Hero AGE/RENOWN/TIER,
+                                           Clan TIER/RENOWN/FIEFS, Settlement TYPE/PROSPERITY/OWNER,
+                                           Kingdom CLANS/FIEFS/STRENGTH). Labels are DYNAMIC so the
+                                           label TextWidget binds @ExtraStatNLabel (not a literal).
+                                           Each cell hides via IsVisible="@HasExtraStatN". Same proven
+                                           cell pattern as CLAN/KINGDOM/CULTURE above — balloon-safe. -->
+                                      <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                                 SuggestedHeight="46" MarginTop="10"
+                                                 StackLayout.LayoutMethod="HorizontalLeftToRight">
+                                        <Children>
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="6"
+                                                  IsVisible="@HasExtraStat1"
+                                                  Sprite="BlankWhiteSquare_9" Color="#0A0604FF">
+                                            <Children>
+                                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                                      VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                                      VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                         VerticalAlignment="Center"
+                                                         StackLayout.LayoutMethod="VerticalBottomToTop">
+                                                <Children>
+                                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                              TextHorizontalAlignment="Center"
+                                                              Text="@ExtraStat1Value" DefaultText="-" Brush="EEChronicleNavCounter" />
+                                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                              TextHorizontalAlignment="Center" MarginTop="3"
+                                                              Text="@ExtraStat1Label" DefaultText="" Brush="EEChronicleFilterLabel" />
+                                                </Children>
+                                              </ListPanel>
+                                            </Children>
+                                          </Widget>
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="6"
+                                                  IsVisible="@HasExtraStat2"
+                                                  Sprite="BlankWhiteSquare_9" Color="#0A0604FF">
+                                            <Children>
+                                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                                      VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                                      VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                         VerticalAlignment="Center"
+                                                         StackLayout.LayoutMethod="VerticalBottomToTop">
+                                                <Children>
+                                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                              TextHorizontalAlignment="Center"
+                                                              Text="@ExtraStat2Value" DefaultText="-" Brush="EEChronicleNavCounter" />
+                                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                              TextHorizontalAlignment="Center" MarginTop="3"
+                                                              Text="@ExtraStat2Label" DefaultText="" Brush="EEChronicleFilterLabel" />
+                                                </Children>
+                                              </ListPanel>
+                                            </Children>
+                                          </Widget>
+                                          <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                  IsVisible="@HasExtraStat3"
+                                                  Sprite="BlankWhiteSquare_9" Color="#0A0604FF">
+                                            <Children>
+                                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                                      VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                                      VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                         VerticalAlignment="Center"
+                                                         StackLayout.LayoutMethod="VerticalBottomToTop">
+                                                <Children>
+                                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                              TextHorizontalAlignment="Center"
+                                                              Text="@ExtraStat3Value" DefaultText="-" Brush="EEChronicleNavCounter" />
+                                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                              TextHorizontalAlignment="Center" MarginTop="3"
+                                                              Text="@ExtraStat3Label" DefaultText="" Brush="EEChronicleFilterLabel" />
+                                                </Children>
+                                              </ListPanel>
+                                            </Children>
+                                          </Widget>
+                                        </Children>
+                                      </ListPanel>
+                                    </Children>
+                                  </ListPanel>
+                                </Children>
+                              </Widget>
+
+                              <!-- ============ DETAILS section (definition rows) ============ -->
+                              <!-- 2026-08-02 visual pass: promoted to EEChronicleSectionLabel and given
+                                   the same 28x2 event-coloured underline as every other section
+                                   header, so DETAILS no longer looks like a stray stat caption. -->
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          MarginBottom="5"
+                                          TextHorizontalAlignment="Left"
+                                          Text="DETAILS" Brush="EEChronicleSectionLabel" />
+                              <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                      SuggestedWidth="28" SuggestedHeight="2"
+                                      HorizontalAlignment="Left" MarginBottom="8"
+                                      Sprite="BlankWhiteSquare" Color="@EventColorHex"
+                                      DoNotAcceptEvents="true" />
+                              <!-- ============ D1 stat-cell grid: EVENT / SUBJECT ============
+                                   2026-05-29: replaced the three label:value rows with the proven
+                                   stat-cell pattern. EVENT cell's top+bottom borders are event-colored
+                                   (@EventColorHex); the other two use the standard gold border. -->
+                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                         SuggestedHeight="46" StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                         MarginBottom="6">
+                                <Children>
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent" MarginRight="6"
+                                          Sprite="BlankWhiteSquare_9" Color="#0A0604FF">
+                                    <Children>
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="@EventColorHex" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="@EventColorHex" />
+                                      <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                 VerticalAlignment="Center"
+                                                 StackLayout.LayoutMethod="VerticalBottomToTop">
+                                        <Children>
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center"
+                                                      Text="@EventTagsLabel" DefaultText="-" Brush="EEChronicleNavCounter" />
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center" MarginTop="3"
+                                                      Text="EVENT" Brush="EEChronicleFilterLabel" />
+                                        </Children>
+                                      </ListPanel>
+                                    </Children>
+                                  </Widget>
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                          Sprite="BlankWhiteSquare_9" Color="#0A0604FF">
+                                    <Children>
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                      <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                              VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#6A4A30AA" />
+                                      <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                 VerticalAlignment="Center"
+                                                 StackLayout.LayoutMethod="VerticalBottomToTop">
+                                        <Children>
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center"
+                                                      Text="@EntityTagsLabel" DefaultText="-" Brush="EEChronicleNavCounter" />
+                                          <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                      TextHorizontalAlignment="Center" MarginTop="3"
+                                                      Text="SUBJECT" Brush="EEChronicleFilterLabel" />
+                                        </Children>
+                                      </ListPanel>
+                                    </Children>
+                                  </Widget>
+                                </Children>
+                              </ListPanel>
+                              <!-- ORIGIN caption: the raw chronicle source EntityId (original engine
+                                   reference). Full-width centered caption BELOW the grid — long text, not a
+                                   narrow cell. Hidden when no source entity is known. -->
+                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          IsVisible="@HasSourceEntityId" MarginTop="8"
+                                          TextHorizontalAlignment="Center"
+                                          Text="@SourceEntityId" DefaultText="" Brush="EEChronicleMuted" />
+
+                              <!-- ============ SPOILS (gold + looted items) ============
+                                   2026-08-02: renders the battle/raid/conquest loot the sibling
+                                   EditableEncyclopedia module captures and saves per chronicle
+                                   entry. Nothing else in this pane shows gold or items, so this
+                                   is new content, not a duplicate of INFO (which describes the
+                                   ENTITY: wealth, renown, fiefs) or of DETAILS (which describes
+                                   the entry's tags).
+
+                                   PLACEMENT: after the INFO grid and before the cross-reference
+                                   blocks, i.e. still inside the "describes THIS entry" run that
+                                   the CROSS-REFERENCES note below draws the line at. It is a
+                                   TOP-LEVEL sibling in ReadingInnerList and deliberately NOT
+                                   nested inside the @HasSourceEntity card: spoils are a property
+                                   of the entry, not of the entity, so an entry whose EntityId
+                                   never resolved must still show its loot.
+
+                                   STYLING mirrors INFO and MORE FROM exactly: the same
+                                   EEChronicleFilterLabel header, the same 28x2 event coloured
+                                   underline beneath it, and the same
+                                   horizontal_gradient_divider_9 lead in that separates the
+                                   MORE FROM block. No new brush is introduced.
+
+                                   IMAGE RULES (identical to the identity header above):
+                                     * IsVisible lives on the WRAPPER, never on
+                                       ImageIdentifierWidget. DataSource re scopes the binding
+                                       context, so @HasItemImage there would resolve against the
+                                       item image VM and silently fail.
+                                     * TextureProviderName AND ImageId must BOTH be bound or the
+                                       widget paints a blank square.
+                                     * No ImageTypeCode attribute: that enum is gone in 1.4.7.
+                                     * The same rule is why @HasSpoilItems sits on a wrapper
+                                       Widget around the GridWidget rather than on the grid
+                                       itself, which carries DataSource="{SpoilsItems}".
+
+                                   BALLOON SAFETY: every stack in this block is CoverChildren
+                                   height over determinate children. The 6 column grid cell is a
+                                   CoverChildren list of a Fixed 40x40 icon wrapper, a Fixed
+                                   80x40 name fallback wrapper and a Fixed width CoverChildren
+                                   height caption; no stretch height child anywhere, so no
+                                   circular measurement.
+
+                                   WIDTH: 6 columns x 86 = 516, inside the 530 usable here:
+                                     900 shell
+                                     minus 330 left column                     = 570 right pane
+                                     minus 10  ReadingClipRect MarginRight     = 560
+                                     minus 24 plus 6 ReadingInnerList margins  = 530
+                                   12 stacks therefore wrap to exactly two rows, and the reading
+                                   pane already scrolls, so the extra row costs nothing. -->
+                              <!-- ============ 2026-08-02 visual pass: MAJOR SECTION BREAK ============
+                                   divider_mid is an ORNAMENTED rule (a centre motif that tapers to
+                                   nothing at both ends), not a plain gradient line. Using it for the
+                                   two structural breaks in this pane — "stop describing the entry,
+                                   start listing loot" here, and "stop describing this entry, start
+                                   navigating away" before the cross-references — while the plain
+                                   horizontal_gradient_divider_9 stays on minor rules, gives the pane
+                                   a real two-level break hierarchy instead of six identical lines.
+                                   Verified shipped: Native\GUI\Prefabs\Credits\CreditsScreen.xml
+                                   lines 21 and 22, both at SuggestedHeight="3". It is a LINE sprite,
+                                   not a nine-slice panel/frame, so it paints no border art.
+                                   Margins 9/9 -> 14/14 to match the pane's block rhythm. -->
+                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="3"
+                                      IsVisible="@HasSpoils" MarginTop="14" MarginBottom="14"
+                                      Sprite="divider_mid" Color="#C8985899"
+                                      IsEnabled="false" DoNotAcceptEvents="true" />
+                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                         StackLayout.LayoutMethod="VerticalBottomToTop"
+                                         IsVisible="@HasSpoils" MarginBottom="14">
+                                <Children>
+                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                              TextHorizontalAlignment="Left" MarginBottom="5"
+                                              Text="SPOILS" Brush="EEChronicleSectionLabel" />
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                          SuggestedWidth="28" SuggestedHeight="2"
+                                          HorizontalAlignment="Left" MarginBottom="8"
+                                          Sprite="BlankWhiteSquare" Color="@EventColorHex"
+                                          DoNotAcceptEvents="true" />
+
+                                  <!-- Gold line. Coin@2x is one of the sprites verified to really
+                                       ship (42 uses across shipped prefabs, see the table in
+                                       ChronicleInfoRowVM.cs); "@2x" is part of the NAME. Same
+                                       icon plus label shape as an INFO row. -->
+                                  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                             StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                             IsVisible="@HasSpoilsGold" MarginBottom="6">
+                                    <Children>
+                                      <Widget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                              VerticalAlignment="Center" MarginRight="5"
+                                              DoNotAcceptEvents="true">
+                                        <Children>
+                                          <ImageWidget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                       SuggestedWidth="16" SuggestedHeight="16"
+                                                       VerticalAlignment="Center"
+                                                       Sprite="General\Icons\Coin@2x" DoNotAcceptEvents="true" />
+                                        </Children>
+                                      </Widget>
+                                      <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                                  VerticalAlignment="Center"
+                                                  Text="@SpoilsGoldLabel" DefaultText="" Brush="EEChronicleStatValue" />
+                                    </Children>
+                                  </ListPanel>
+
+                                  <!-- Item strip. Wrapper carries the visibility gate because the
+                                       GridWidget below re scopes its binding context. -->
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                          IsVisible="@HasSpoilItems">
+                                    <Children>
+                                      <GridWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                                  DataSource="{SpoilsItems}" ColumnCount="6"
+                                                  DefaultCellWidth="86" DefaultCellHeight="64">
+                                        <ItemTemplate>
+                                          <!-- HOVER TOOLTIP lives HERE, on the ItemTemplate ROOT.
+                                               This ListPanel is the widget whose data context IS
+                                               the ChronicleSpoilItemVM (the grid hands each item
+                                               VM to its template root), so ExecuteBeginHint /
+                                               ExecuteEndHint resolve. They must NOT go on the
+                                               ImageIdentifierWidget below, which carries its own
+                                               DataSource="{ItemImage}" and would re scope them to
+                                               the image VM, where they silently never fire.
+                                               Rooting them here also means the whole cell — icon,
+                                               name fallback AND the "x12" caption — is one hover
+                                               target, and the fallback tile gets a tooltip too.
+
+                                               DoNotPassEventsToChildren="true" is what stops the
+                                               ImageIdentifierWidget swallowing the hover: without
+                                               it the image is the hit test winner and the parent's
+                                               HoverBegin never fires. This is the SHIPPED idiom,
+                                               not a guess — every one of the 11 non button Widget
+                                               nodes across Native/SandBox/SandBoxCore/StoryMode
+                                               that carries Command.HoverBegin over an image child
+                                               uses DoNotPassEventsToChildren on the PARENT and
+                                               leaves the child's attributes alone. Verbatim
+                                               example, SandBox\GUI\Prefabs\KingdomManagement
+                                               \Decision\DeclareWarDecisionPanel.xml line 57: a
+                                               plain Widget with DataSource="{Hint}",
+                                               DoNotPassEventsToChildren="true" and both Hover
+                                               commands, whose single child is a
+                                               MaskedTextureWidget carrying its own re scoping
+                                               DataSource and NO DoNotAcceptEvents.
+                                               So NO DoNotAcceptEvents is added to the image; the
+                                               shipped pattern never puts one there. The 40x40
+                                               wrapper below keeps its existing
+                                               DoNotAcceptEvents="true" — harmless now, since this
+                                               root no longer forwards events downward at all.
+
+                                               The old HintWidget with DataSource="{ItemHint}" is
+                                               gone: the VM now calls the engine's own item card
+                                               (InformationManager.ShowTooltip(typeof(ItemObject),
+                                               boxed EquipmentElement)) directly. -->
+                                          <ListPanel WidthSizePolicy="CoverChildren" HeightSizePolicy="CoverChildren"
+                                                     StackLayout.LayoutMethod="VerticalBottomToTop"
+                                                     DoNotPassEventsToChildren="true"
+                                                     Command.HoverBegin="ExecuteBeginHint" Command.HoverEnd="ExecuteEndHint">
+                                            <Children>
+                                              <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                      SuggestedWidth="40" SuggestedHeight="40"
+                                                      HorizontalAlignment="Center" MarginBottom="2"
+                                                      IsVisible="@HasItemImage" DoNotAcceptEvents="true">
+                                                <Children>
+                                                  <ImageIdentifierWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                                         DataSource="{ItemImage}"
+                                                                         TextureProviderName="@TextureProviderName" ImageId="@Id" />
+                                                </Children>
+                                              </Widget>
+                                              <!-- Text fallback: only ever visible when the icon
+                                                   could not be built. Items whose StringId does
+                                                   not resolve are skipped by the populator and
+                                                   never reach the list at all. -->
+                                              <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                                      SuggestedWidth="80" SuggestedHeight="40"
+                                                      HorizontalAlignment="Center" MarginBottom="2"
+                                                      IsVisible="@HasNameFallback" DoNotAcceptEvents="true">
+                                                <Children>
+                                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                              VerticalAlignment="Center" TextHorizontalAlignment="Center"
+                                                              Text="@NameFallbackLabel" DefaultText="" Brush="EEChronicleMuted" />
+                                                </Children>
+                                              </Widget>
+                                              <TextWidget WidthSizePolicy="Fixed" HeightSizePolicy="CoverChildren"
+                                                          SuggestedWidth="80" HorizontalAlignment="Center"
+                                                          TextHorizontalAlignment="Center"
+                                                          Text="@CountLabel" DefaultText="" Brush="EEChronicleEntryDate" />
+                                            </Children>
+                                          </ListPanel>
+                                        </ItemTemplate>
+                                      </GridWidget>
+                                    </Children>
+                                  </Widget>
+
+                                  <!-- Truncation remainder, e.g. "+7 more stacks". -->
+                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                              IsVisible="@HasSpoilsMore" MarginTop="4"
+                                              TextHorizontalAlignment="Left"
+                                              Text="@SpoilsMoreLabel" DefaultText="" Brush="EEChronicleMuted" />
+                                </Children>
+                              </ListPanel>
+
+                              <!-- ============ CROSS-REFERENCES ============
+                                   2026-08-02: two auto-derived jump lists — other entries about the SAME
+                                   entity, and other entries from the SAME year. Nothing else in this pane
+                                   lists other entries, so both blocks are new content, not a duplicate of
+                                   the RELATED ENTITY card (which describes the entity, not the entries).
+                                   Placed last inside ReadingInnerList, after DETAILS + ORIGIN, because
+                                   they navigate AWAY from the entry being read — everything that describes
+                                   THIS entry comes first. The VIEW IN ENCYCLOPEDIA button stays below them
+                                   as the pane's final call to action.
+                                   Row buttons carry DoNotPassEventsToChildren="true" per the click-safety
+                                   rule in the file header. Each row is Fixed-height inside a CoverChildren
+                                   list, so the stretch-height text children are balloon-safe. -->
+                              <!-- MAJOR SECTION BREAK — ornamented divider_mid, the second of two.
+                                   See the note on the SPOILS break above for verification and the
+                                   major/minor rule hierarchy. This one marks the pane's biggest
+                                   structural shift: everything above describes THIS entry, everything
+                                   below navigates AWAY from it. -->
+                              <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="3"
+                                      IsVisible="@HasRelatedEntries" MarginTop="14" MarginBottom="14"
+                                      Sprite="divider_mid" Color="#C8985899"
+                                      IsEnabled="false" DoNotAcceptEvents="true" />
+                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                         StackLayout.LayoutMethod="VerticalBottomToTop"
+                                         IsVisible="@HasRelatedEntries" MarginBottom="14">
+                                <Children>
+                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                              TextHorizontalAlignment="Left" MarginBottom="5"
+                                              Text="@RelatedHeaderLabel" DefaultText="" Brush="EEChronicleSectionLabel" />
+                                  <!-- 2026-08-02: event-coloured underline, same treatment as INFO. -->
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                          SuggestedWidth="28" SuggestedHeight="2"
+                                          HorizontalAlignment="Left" MarginBottom="8"
+                                          Sprite="BlankWhiteSquare" Color="@EventColorHex"
+                                          DoNotAcceptEvents="true" />
+                                  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                             StackLayout.LayoutMethod="VerticalBottomToTop"
+                                             DataSource="{RelatedEntries}">
+                                    <ItemTemplate>
+                                      <!-- 2026-08-02 visual pass: 20 -> 26px rows with a 6px inner
+                                           left inset. At 20px a 13pt body line filled the row edge to
+                                           edge, so the jump lists read as a solid paragraph rather
+                                           than clickable rows, and the (now perceptible) hover tint
+                                           had almost no area to show in. Still Fixed-height inside a
+                                           CoverChildren list, so the StretchToParent-height text
+                                           children stay balloon-safe, and DoNotPassEventsToChildren
+                                           is untouched. -->
+                                      <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                                    SuggestedHeight="26" DoNotPassEventsToChildren="true"
+                                                    Command.Click="ExecuteSelect" Brush="EEChronicleEntryRow">
+                                        <Children>
+                                          <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                     StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                                     MarginLeft="6" MarginRight="4">
+                                            <Children>
+                                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                          VerticalAlignment="Center" TextHorizontalAlignment="Left"
+                                                          Text="@Text" DefaultText="" Brush="EEChronicleReadingBody" />
+                                              <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                                          VerticalAlignment="Center" MarginLeft="8"
+                                                          Text="@YearLabel" DefaultText="" Brush="EEChronicleEntryDate" />
+                                            </Children>
+                                          </ListPanel>
+                                        </Children>
+                                      </ButtonWidget>
+                                    </ItemTemplate>
+                                  </ListPanel>
+                                </Children>
+                              </ListPanel>
+
+                              <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                         StackLayout.LayoutMethod="VerticalBottomToTop"
+                                         IsVisible="@HasSameYearEntries" MarginBottom="14">
+                                <Children>
+                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                              TextHorizontalAlignment="Left" MarginBottom="5"
+                                              Text="@SameYearHeaderLabel" DefaultText="" Brush="EEChronicleSectionLabel" />
+                                  <!-- 2026-08-02: event-coloured underline, same treatment as INFO. -->
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="Fixed"
+                                          SuggestedWidth="28" SuggestedHeight="2"
+                                          HorizontalAlignment="Left" MarginBottom="8"
+                                          Sprite="BlankWhiteSquare" Color="@EventColorHex"
+                                          DoNotAcceptEvents="true" />
+                                  <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="CoverChildren"
+                                             StackLayout.LayoutMethod="VerticalBottomToTop"
+                                             DataSource="{SameYearEntries}">
+                                    <ItemTemplate>
+                                      <!-- 2026-08-02 visual pass: 20 -> 26px rows with a 6px inner
+                                           left inset. At 20px a 13pt body line filled the row edge to
+                                           edge, so the jump lists read as a solid paragraph rather
+                                           than clickable rows, and the (now perceptible) hover tint
+                                           had almost no area to show in. Still Fixed-height inside a
+                                           CoverChildren list, so the StretchToParent-height text
+                                           children stay balloon-safe, and DoNotPassEventsToChildren
+                                           is untouched. -->
+                                      <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                                    SuggestedHeight="26" DoNotPassEventsToChildren="true"
+                                                    Command.Click="ExecuteSelect" Brush="EEChronicleEntryRow">
+                                        <Children>
+                                          <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                     StackLayout.LayoutMethod="HorizontalLeftToRight"
+                                                     MarginLeft="6" MarginRight="4">
+                                            <Children>
+                                              <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                                          VerticalAlignment="Center" TextHorizontalAlignment="Left"
+                                                          Text="@Text" DefaultText="" Brush="EEChronicleReadingBody" />
+                                              <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                                          VerticalAlignment="Center" MarginLeft="8"
+                                                          Text="@YearLabel" DefaultText="" Brush="EEChronicleEntryDate" />
+                                            </Children>
+                                          </ListPanel>
+                                        </Children>
+                                      </ButtonWidget>
+                                    </ItemTemplate>
+                                  </ListPanel>
+                                </Children>
+                              </ListPanel>
+
+                              <!-- ============ VIEW IN ENCYCLOPEDIA button ============
+                                   2026-05-29: full-width Fixed-height button (no balloon risk).
+                                   Hidden unless the entity resolved an EncyclopediaLink. Click calls
+                                   ExecuteOpenEncyclopedia -> EncyclopediaManager.GoToLink (1.4.5-safe). -->
+                              <!-- 2026-08-02 visual pass: 30 -> 36px and MarginTop 10 -> 16. This is
+                                   the pane's final call to action and it was the same height as a
+                                   toolbar chip; it now reads as a destination. -->
+                              <ButtonWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                            SuggestedHeight="36" MarginTop="16"
+                                            IsVisible="@CanOpenEncyclopedia"
+                                            DoNotPassEventsToChildren="true"
+                                            Command.Click="ExecuteOpenEncyclopedia"
+                                            Brush="EEChronicleChip">
+                                <Children>
+                                  <!-- 2026-05-29 polish: gold 1px call-to-action frame. Top/bottom borders
+                                       are StretchToParent-WIDTH + Fixed-height 1; left/right are Fixed-width 1
+                                       + StretchToParent-HEIGHT (SAFE: parent ButtonWidget is Fixed height 30). -->
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                          VerticalAlignment="Top" Sprite="BlankWhiteSquare" Color="#C89858FF" />
+                                  <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                                          VerticalAlignment="Bottom" Sprite="BlankWhiteSquare" Color="#C89858FF" />
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="1"
+                                          HorizontalAlignment="Left" Sprite="BlankWhiteSquare" Color="#C89858FF" />
+                                  <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="1"
+                                          HorizontalAlignment="Right" Sprite="BlankWhiteSquare" Color="#C89858FF" />
+                                  <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                              HorizontalAlignment="Center" VerticalAlignment="Center"
+                                              Text="VIEW IN ENCYCLOPEDIA  ›" Brush="EEChronicleChipText" />
+                                </Children>
+                              </ButtonWidget>
+
+                              <!-- 2026-05-29: MY NOTE section REMOVED per user request — still gone.
+                                   The rest of that note is SUPERSEDED 2026-08-02: the portrait and clan
+                                   banner now render inside the RELATED ENTITY card (see the identity-header
+                                   note above), and the pane continues past DETAILS + ORIGIN with the
+                                   cross-reference lists. The encyclopedia button remains last. -->
+                            </Children>
+                          </ListPanel>
+                          </Children>
+                        </Widget>
+                      </Children>
+                    </ScrollablePanel>
+
+                    <!-- ============ 2026-08-02 visual pass: SCROLL FADE MASKS ============
+                         Same treatment as the entry list — see the full note on the left column's
+                         pair. Recipe from the shipped NavalDLC\GUI\Prefabs\Port\PortShipList.xml
+                         lines 73/76: scrollable_field_gradient_9, top band flipped, bottom band
+                         not. Narrow bands (26/32 against a 678px viewport), never an area fill.
+                         Declared after the ScrollablePanel so they paint over the prose, before
+                         the scrollbar so the handle stays crisp, and outside ClipRect so they
+                         stay pinned to the viewport rather than scrolling with the content.
+                         CLICK SAFETY: the reading pane carries the MORE FROM / SAME YEAR jump
+                         rows and the VIEW IN ENCYCLOPEDIA button, all ButtonWidgets, so
+                         IsEnabled="false" + DoNotAcceptEvents="true" are mandatory here. -->
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="26" VerticalAlignment="Top" MarginRight="12"
+                            Sprite="scrollable_field_gradient_9" Color="#00000055"
+                            VerticalFlip="true"
+                            IsEnabled="false" DoNotAcceptEvents="true" />
+                    <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                            SuggestedHeight="32" VerticalAlignment="Bottom" MarginRight="12"
+                            Sprite="scrollable_field_gradient_9" Color="#000000AA"
+                            IsEnabled="false" DoNotAcceptEvents="true" />
+
+                    <!-- Sibling scrollbar (referenced by ScrollablePanel.VerticalScrollbar="..\ReadingScrollbar").
+                         Markup copied verbatim from EntryScrollbar above; only the Id and its Handle
+                         Id are renamed so the two scrollbars address their own handles. -->
+                    <ScrollbarWidget Id="ReadingScrollbar"
+                                     WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                     SuggestedWidth="6" HorizontalAlignment="Right"
+                                     VerticalAlignment="Top"
+                                     MarginTop="8" MarginBottom="8" MarginRight="2"
+                                     AlignmentAxis="Vertical"
+                                     Handle="ReadingScrollbarHandle"
+                                     MaxValue="100" MinValue="0">
+                      <Children>
+                        <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent"
+                                SuggestedWidth="2" HorizontalAlignment="Center"
+                                Sprite="BlankWhiteSquare_9" Color="#C8985833" />
+                        <Widget Id="ReadingScrollbarHandle"
+                                WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                                MinHeight="24" SuggestedWidth="6"
+                                Sprite="BlankWhiteSquare_9" Color="#C89858FF" />
+                      </Children>
+                    </ScrollbarWidget>
+                  </Children>
+                </Widget>
+
+              </Children>
+            </Widget>
+
+            <!-- ============ FOOTER (y=798..830) ============ -->
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                    SuggestedHeight="32" VerticalAlignment="Bottom">
+              <Children>
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                        Sprite="BlankWhiteSquare" Color="#0A0806FF" />
+                <!-- 2026-08-02 chrome pass: 1px hairline -> gold gradient divider, mirroring the
+                     header's bottom edge so the panel is capped top AND bottom by the same
+                     treatment. Overlay child of a Fixed-32 footer, so 1 -> 3 shifts nothing. -->
+                <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed"
+                        SuggestedHeight="3" VerticalAlignment="Top"
+                        Sprite="horizontal_gradient_divider_9" Color="#C8985899"
+                        DoNotAcceptEvents="true" />
+                <ListPanel WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                           StackLayout.LayoutMethod="HorizontalLeftToRight"
+                           MarginLeft="24" MarginRight="24">
+                  <Children>
+                    <TextWidget WidthSizePolicy="CoverChildren" HeightSizePolicy="StretchToParent"
+                                VerticalAlignment="Center"
+                                Text="@FooterStatusLabel" DefaultText="SCROLL FOR MORE"
+                                Brush="EEChronicleMuted" />
+                    <TextWidget WidthSizePolicy="StretchToParent" HeightSizePolicy="StretchToParent"
+                                HorizontalAlignment="Right" VerticalAlignment="Center"
+                                Text="@FooterCountLabel" DefaultText="SHOWING 0 OF 0"
+                                Brush="EEChronicleMuted" />
+                  </Children>
+                </ListPanel>
+              </Children>
+            </Widget>
+
+            <!-- ============ PANEL EDGE ============
+                 HISTORY, so this is not re-attempted: a frame_9 overlay was added here on
+                 2026-08-02 and reverted the same day. frame_9 is a nine-slice BORDER sprite —
+                 its outer eight regions are baked decorative art — so stretching it over the
+                 panel painted a textured strip down the left and right edges regardless of
+                 Extend*. Nine-slice panel/frame sprites are for standalone windows, never as
+                 an overlay on an existing panel.
+                 2026-08-02 visual pass: the goal that attempt was reaching for — the panel
+                 reading as a real window rather than a rectangle of colour — is met instead
+                 with three 1px BlankWhiteSquare hairlines. A plain 1px line carries no baked
+                 art, so it cannot reproduce the failure. Together with the existing 4px gold
+                 cap along the top, the panel is now closed on all four sides.
+                 Declared LAST so the edges sit above every zone fill.
+                 CLICK SAFETY: these are 1px slivers at the extreme bounds, but they still lie
+                 over the toolbar and the split body, so IsEnabled="false" +
+                 DoNotAcceptEvents="true" are applied exactly as the shipped prefabs do for
+                 decorative overlays. -->
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="1"
+                    HorizontalAlignment="Left"
+                    Sprite="BlankWhiteSquare" Color="#C8985844"
+                    IsEnabled="false" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="Fixed" HeightSizePolicy="StretchToParent" SuggestedWidth="1"
+                    HorizontalAlignment="Right"
+                    Sprite="BlankWhiteSquare" Color="#C8985844"
+                    IsEnabled="false" DoNotAcceptEvents="true" />
+            <Widget WidthSizePolicy="StretchToParent" HeightSizePolicy="Fixed" SuggestedHeight="1"
+                    VerticalAlignment="Bottom"
+                    Sprite="BlankWhiteSquare" Color="#C8985866"
+                    IsEnabled="false" DoNotAcceptEvents="true" />
+
+
+          </Children>
+        </Widget>
+
+      </Children>
+    </Widget>
+  </Window>
+</Prefab>

@@ -1,0 +1,606 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  EE-ChronicleNoters brush styles (2026-05-28, rewritten v2 with CORRECT Bannerlord schema)
+
+  Schema reference: Modules/Native/GUI/Brushes/Font.xml + Popup.xml
+    - Root element is <Brushes> (NOT <BrushDefinitions>)
+    - Color format is #RRGGBBAA (NOT 0xAARRGGBB)
+    - Text brushes: Font on <Brush>, FontColor/FontSize on <Style Name="Default">
+    - Background brushes: need a <BrushLayer Sprite="..."> reference; pure Color alone paints nothing
+  Solid fills use the vanilla 'BlankWhiteSquare' sprite tinted via BrushLayer.Color in the Style.
+-->
+<Brushes>
+
+  <!-- ============ BACKGROUNDS / FILLS ============ -->
+
+  <Brush Name="EEChroniclePanelBg">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#1C1410FF" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleHeaderBg">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#231A14FF" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleToolbarBg">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#000000CC" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleYearStripBg">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#0A0806CC" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleFooterBg">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#0A0806FF" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <!-- 2026-08-02 legibility pass #2 (user: "its still hard too see the tags"):
+       chip FILL lifted #14100BFF -> #241B12FF on this brush AND on the five colour-coded
+       clones below. The toolbar band composites to roughly #0A0806, so a #14100B pill was
+       ~1-2 value steps off its own background: the chips had no visible body and the label
+       colours had almost nothing to sit against. #241B12 is still unmistakably dark (it is
+       darker than the #2A2018 header buttons) but the pill now reads as a pill.
+       Contrast cost is negligible: #EBB367 on #14100B measured ~10.1:1, on #241B12 ~9.0:1. -->
+  <Brush Name="EEChronicleChip">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#241B12FF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Color="#4A3520FF" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" Color="#1A1208FF" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <!-- ============ COLOR-CODED EVENT CHIP BACKGROUNDS (clone of EEChronicleChip) ============
+       2026-05-29 top-bar polish: per-event tinted ButtonWidget bg brushes.
+       Muted heraldic palette: War #A65A4E · Crime #BC9050 · Politics #5A7A99 · Family #6E8C5A · Other #8A7A60.
+       Default ~2E alpha (dim), Hovered ~55 (brighter), Pressed ~22. -->
+  <Brush Name="EEChronicleChipWar">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#241B12FF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Color="#A65A4E77" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" Color="#A65A4E22" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleChipCrime">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#241B12FF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Color="#BC905077" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" Color="#BC905022" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleChipPolitics">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#241B12FF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Color="#5A7A9977" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" Color="#5A7A9922" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleChipFamily">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#241B12FF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Color="#6E8C5A77" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" Color="#6E8C5A22" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleChipOther">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#241B12FF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Color="#8A7A6077" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" Color="#8A7A6022" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleChipStar">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#332515FF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Color="#4A331CFF" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleYearCell">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#00000000" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Color="#3A2A1C80" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <!-- 2026-08-02 visual pass: hover lifted #C8985810 -> #C8985824 and a Pressed state added.
+       At 16/255 alpha over a #120C08 list the hover was ~1 value step and effectively
+       invisible, so rows gave no feedback before the click. 36/255 is still a whisper of
+       gold (the SELECTED row sits at #C898581C plus a 4px solid gold accent plus a glow, so
+       hover can never be mistaken for selection) but it is now actually perceptible.
+       Adding states to a ButtonWidget brush changes no geometry — Gauntlet swaps the layer
+       colour only. -->
+  <Brush Name="EEChronicleEntryRow">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#00000000" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Color="#C8985824" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" Color="#C8985838" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <!--
+    Looping alpha pulse for the reading-pane event-icon ring fill.
+    Mirrors Native TutorialHighlightBrush (Modules/Native/GUI/Brushes/Tutorial.xml:132-159):
+    a Default-state style with AnimationToPlayOnBegin auto-starts a Loop="true"
+    animation that keyframes ONLY AlphaFactor. No code, no tick, no size change.
+    Warm gold tint (#C89858) matches the ring's static fill colour.
+  -->
+  <Brush Name="EEChronicleIconGlow">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" AnimationToPlayOnBegin="IconGlowPulse">
+        <BrushLayer Name="Default" Color="#C89858FF" AlphaFactor="0.13" />
+      </Style>
+    </Styles>
+    <Animations>
+      <Animation Name="IconGlowPulse" Duration="2.4" Loop="true">
+        <AnimationProperty PropertyName="AlphaFactor" LayerName="Default">
+          <KeyFrame Time="0.0" Value="0.13" />
+          <KeyFrame Time="1.2" Value="0.30" />
+          <KeyFrame Time="2.4" Value="0.13" />
+        </AnimationProperty>
+      </Animation>
+    </Animations>
+  </Brush>
+
+  <Brush Name="EEChronicleNoteBlockBg">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Color="#40201080" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleButton">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C89858FF" FontSize="16">
+        <BrushLayer Name="Default" Color="#2A2018FF" />
+      </Style>
+      <Style Name="Hovered" FontColor="#FFFFFFFF" FontSize="16">
+        <BrushLayer Name="Default" Color="#3A2A1CFF" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleDangerButton">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B06848FF" FontSize="16">
+        <BrushLayer Name="Default" Color="#301818FF" />
+      </Style>
+      <Style Name="Hovered" FontColor="#F0A080FF" FontSize="16">
+        <BrushLayer Name="Default" Color="#4A2020FF" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <!-- ============ TEXT-ONLY BRUSHES (Font.xml pattern) ============ -->
+
+  <!-- 2026-08-02 visual pass: 22 -> 26. The panel title carried the same weight as the
+       reading-pane entry title (21), so the top zone read as four equal bands with no
+       obvious entry point. This brush has exactly ONE consumer in the whole module (the
+       CHRONICLE masthead), so nothing else in the panel changes size, and the header is a
+       Fixed-44 band with the text vertically centred — 26pt fits with room to spare. -->
+  <Brush Name="EEChronicleTitle" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F2E4C8FF" FontSize="26" />
+    </Styles>
+  </Brush>
+
+  <!-- 2026-08-02 visual pass: section headers in the READING PANE only (CHRONICLE TEXT,
+       INFO, DETAILS, SPOILS, MORE FROM, SAME YEAR). Those previously shared
+       EEChronicleFilterLabel with the toolbar's EVENT/ENTITY/YEAR labels AND with every
+       stat-cell caption, so a major section break looked identical to a cell caption and
+       the pane had no visible hierarchy.
+       Brighter (#C8A878 vs #8A7654) and one point larger, so contrast against the black
+       surfaces goes UP, never down — this change cannot cost readability.
+       Deliberately NOT applied to the stat-cell captions: keeping those muted is exactly
+       what makes the section headers read as headers. -->
+  <Brush Name="EEChronicleSectionLabel" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C8A878FF" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleMuted" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#8A7654FF" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleFilterLabel" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#8A7654FF" FontSize="11" />
+    </Styles>
+  </Brush>
+
+  <!-- ============ CHIP TEXT ============
+       2026-08-02 legibility pass #2 (user report: "its still hard too see the tags").
+       FontSize 11 -> 13 on EVERY chip-text brush below. Every Fixed chip pill in
+       GlobalChroniclePanelV2.xml was re-measured and widened in the SAME edit — see the
+       arithmetic comment on the EVENT row there. The two rows now total 730px and 760px
+       against an 852px budget, so both fit outright and no inter-chip spacing was
+       surrendered. Colours are unchanged from pass #1 apart from ChipTextPicked (below).
+
+       PASS #1 NOTES, STILL TRUE:
+       FontSize 9 to 11 on EVERY chip-text brush below, and every colour lifted.
+
+       WHY 9 EXISTED: the chip pills in GlobalChroniclePanelV2.xml are Fixed-width and were
+       sized for 9pt. Gauntlet grid/stack cells here do NOT clip, so text that outgrows its
+       pill paints straight over the neighbouring chip. Every pill was therefore widened by
+       ~22% in the same commit — see the arithmetic comment on the EVENT row in the prefab.
+       DO NOT raise these sizes again without re-widening the pills.
+
+       THE COLOUR LIFT is a pure HSV VALUE lift: hue and saturation are held and only V is
+       raised to ~0.92-0.94, so the category encoding (War red / Crime amber / Politics blue /
+       Family green / Other stone) is untouched — every hue moved by less than 1 degree.
+         #C89858 -> #EBB367   H 34.3 -> 34.5
+         #CF9D92 -> #EBB2A6   H 10.8 -> 10.4
+         #D8B884 -> #F0CC93   H 37.1 -> 36.8
+         #A3BCD4 -> #B9D5F0   H 209.4 -> 209.4
+         #AEC79A -> #D0EEB8   H 93.3 -> 93.3
+         #C4B393 -> #EED9B3   H 39.2 -> 38.6
+       On the #14100B chip that takes the unselected text from ~7.2:1 to ~10:1 contrast.
+
+       EEChronicleChipText has three other consumers and all three GAIN from 11: the active
+       year pill (whose INACTIVE twin already renders at 12 via EEChronicleYear, so 9 was the
+       odd one out), and the 36px-tall VIEW IN ENCYCLOPEDIA call to action. Both are
+       CoverChildren/StretchToParent-width, so neither can overflow. -->
+  <Brush Name="EEChronicleChipText" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#EBB367FF" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <!-- REPURPOSED 2026-08-02 (legibility pass #2). Name kept, meaning inverted.
+       History: written in May as a DARK label for a SOLID GOLD picked pill, wired up earlier
+       today, and rejected on sight — "ALl etc is blacked clicked etc". Near-black glyphs in
+       Galahad at small sizes read as a smudge no matter what the contrast ratio says, and it
+       was the only place in the panel that flipped the light-on-dark identity.
+       NOW: the BRIGHT gold label for a DARK picked pill. The prefab's picked overlays no
+       longer paint a gold fill at all; each one is a 2px gold frame around a lifted dark
+       #3A2A18 body, and this brush is the text inside it.
+       Measured on that body: #FFDCA8 on #3A2A18 is about 10.5:1, versus about 9.0:1 for the
+       unselected #EBB367 on #241B12 — so the picked chip is the BRIGHTEST text in the
+       toolbar as well as the only framed one, and nothing is inverted. -->
+  <Brush Name="EEChronicleChipTextPicked" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFDCA8FF" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <!-- ============ COLOR-CODED EVENT CHIP TEXT (clone of EEChronicleChipText) ============
+       2026-05-29 top-bar polish: light tints of each event color for the chip labels. -->
+  <Brush Name="EEChronicleChipTextWar" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#EBB2A6FF" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleChipTextCrime" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0CC93FF" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleChipTextPolitics" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B9D5F0FF" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleChipTextFamily" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D0EEB8FF" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleChipTextOther" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#EED9B3FF" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleStarOn" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0C060FF" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleStarOff" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#6A5238FF" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleSearchInput" Font="Galahad">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare" />
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C89858FF" FontSize="13">
+        <BrushLayer Name="Default" Color="#0A0806FF" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleYear" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#8A7654FF" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleEntryDate" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#8A7654FF" FontSize="11" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleEntryText" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D8C9A0FF" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleTypeIcon" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C89858FF" FontSize="9" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleMiniTagEvent" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8C179FF" FontSize="8" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleMiniTagEntity" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#A08560FF" FontSize="8" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleReadingTitle" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F2E4C8FF" FontSize="21" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleStatValue" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F2E4C8FF" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleReadingDate" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#8A7654FF" FontSize="11" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleReadingBody" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D8C9A0FF" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleNavCounter" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C8B188FF" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleNoteDot" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0A050FF" FontSize="14" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleNoteLabel" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0A050FF" FontSize="11" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleNoteBody" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D8C9A0FF" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleButtonIcon" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C89858FF" FontSize="16" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="EEChronicleDangerIcon" Font="Galahad">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B06848FF" FontSize="16" />
+    </Styles>
+  </Brush>
+
+</Brushes>

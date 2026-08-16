@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Module>
+  <Name value="EE-ChronicleNoters" />
+  <Id value="EE-ChronicleNoters" />
+  <Version value="v1.1.0" />
+  <SingleplayerModule value="true" />
+  <MultiplayerModule value="false" />
+  <Official value="false" />
+
+  <DependedModules>
+    <DependedModule Id="EE-Core" DependentVersion="v2.6.1" Optional="false" />
+    <DependedModule Id="EditableEncyclopedia" Optional="false" />
+    <DependedModule Id="Native" DependentVersion="e1.0.0" Optional="false" />
+    <DependedModule Id="SandBoxCore" DependentVersion="e1.0.0" Optional="false" />
+    <DependedModule Id="Sandbox" DependentVersion="e1.0.0" Optional="false" />
+    <DependedModule Id="StoryMode" DependentVersion="e1.0.0" Optional="false" />
+    <DependedModule Id="Bannerlord.Harmony" DependentVersion="v2.4.2.225" Optional="false" />
+    <DependedModule Id="Bannerlord.ButterLib" Optional="false" />
+    <DependedModule Id="Bannerlord.UIExtenderEx" Optional="false" />
+    <DependedModule Id="Bannerlord.MBOptionScreen" DependentVersion="v5.0.0" Optional="false" />
+  </DependedModules>
+
+  <SubModules>
+    <SubModule>
+      <Name value="EE-ChronicleNoters" />
+      <DLLName value="EE-ChronicleNoters.dll" />
+      <SubModuleClassType value="EditableEncyclopedia.ChronicleNoters.SubModule_ChronicleNoters" />
+      <Tags>
+        <Tag key="DedicatedServerType" value="none" />
+        <Tag key="IsNoRenderModeElement" value="false" />
+      </Tags>
+    </SubModule>
+  </SubModules>
+</Module>
