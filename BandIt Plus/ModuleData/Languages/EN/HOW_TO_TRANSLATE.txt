@@ -1,0 +1,103 @@
+BandIt Plus - translating the mod
+=================================
+
+Everything the player reads in BandIt Plus lives in this folder, in
+bp_module_strings.xml. If you want the mod in another language you don't touch the
+DLL or any code - you copy this folder, translate the text, and drop it back in.
+The game does the rest.
+
+Here's the whole job.
+
+
+What's in here
+--------------
+
+language_data.xml      - tells the game which strings files to load, and for which
+                         language.
+bp_module_strings.xml  - every line the mod shows: dialog, quests, the origin book,
+                         HUDs, menus, settings. Around 3,700 entries.
+std_global_strings.xml - the clan / troop / item names (older set, same idea).
+
+Each entry looks like this:
+
+    <string id="bp_dialogmanager_001" text="Halt. State your business." />
+
+You translate the words inside text="...". You do NOT change the id. The id is how
+the game finds the line. Change it and the line goes missing.
+
+
+Adding a language
+-----------------
+
+Say you want Russian.
+
+1. Copy this whole EN folder and rename the copy to RU, sitting right next to EN.
+
+2. Open RU\language_data.xml and change two things - the language id, and the
+   folder in each path:
+
+       <LanguageData id="Русский">
+           <LanguageFile xml_path="RU/std_global_strings.xml" />
+           <LanguageFile xml_path="RU/bp_module_strings.xml" />
+       </LanguageData>
+
+3. Open RU\bp_module_strings.xml and translate every text="..." value. Leave the
+   id alone. Do the same in std_global_strings.xml if you want the clan and troop
+   names translated too.
+
+That's it. Launch the game and set the language under Options -> Game -> Language
+(the base-game options, from the main menu or Esc in a campaign - NOT the mod's own
+settings; language is an engine setting). Pick Russian, let it restart when it asks,
+and the mod comes up in Russian.
+
+
+Get the language id exactly right
+---------------------------------
+
+The id in language_data.xml has to match a language the game already ships, letter
+for letter, accents and all. Invent an id the game doesn't know and it won't show up
+in the options menu - nothing loads.
+
+The safe way to get it: open the matching folder under
+
+    ...\Modules\Native\ModuleData\Languages\<XX>\language_data.xml
+
+and copy the id="..." string straight out of it. The common ones:
+
+    English   Deutsch   Français   Italiano   Polski   Türkçe
+    Русский   Español (LA)   Português (BR)   日本語   한국어   (and Chinese)
+
+Copy-paste it. One wrong accent and it's dead.
+
+
+A few things that'll save you time
+----------------------------------
+
+- You don't have to translate everything at once. Any line you leave out just shows
+  up in English - the mod keeps its English baked in as a fallback. So a half-done
+  translation still runs fine, it's just part English.
+
+- Keep the markup. Some lines carry tags like <span style="PlaceInk">Calradia</span>
+  or placeholders like {CHIEF} and {REWARD}. Translate the words, leave the tags and
+  the {THINGS_IN_BRACES} exactly where they sit. The braces get filled in with names
+  and numbers while you play - delete one and that line comes out blank or wrong.
+
+- The long book pages use &#10; for their paragraph breaks. Leave those be.
+
+- The file is UTF-8. Save it as UTF-8. If your editor saves it as anything else the
+  accented letters turn to garbage in game. Notepad++ or VS Code both handle this;
+  set the encoding to UTF-8 before you save.
+
+
+Testing it
+----------
+
+Set the game to your language under Options -> Game -> Language (restart when it
+asks), start a campaign, and walk the parts you translated -
+talk to a chief, open the settings book, read the origin story on your character's
+encyclopedia page. A line still in English means you missed that id or renamed it. A
+blank line means a tag or a {placeholder} got broken.
+
+That's the whole thing. If something won't load, send me the file and I'll look.
+
+- XMuPb

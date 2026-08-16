@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" type="string">
+  <tags><tag language="English" /></tags>
+  <strings>
+    <string id="bp_mod_loaded" text="BandIt Plus loaded - 8 new bandit clans active." />
+    <string id="bp_clan_highwaymen" text="Highwaymen" />
+    <string id="bp_clan_marsh_stalkers" text="Marsh Stalkers" />
+    <string id="bp_clan_slaver_caravans" text="Slaver Caravans" />
+    <string id="bp_clan_fallen_legionaries" text="Fallen Legionaries" />
+    <string id="bp_clan_steppe_wolves" text="Steppe Wolves" />
+    <string id="bp_clan_pagan_cult" text="Pagan Cult of the Old Gods" />
+    <string id="bp_clan_sky_raiders" text="Sky Raiders" />
+    <string id="bp_clan_frost_reavers" text="Frost Reavers" />
+    <string id="bp_troop_frost_recruit" text="Frost Reaver Recruit" />
+    <string id="bp_troop_frost_trained" text="Trained Reaver" />
+    <string id="bp_troop_frost_veteran" text="Veteran Reaver" />
+    <string id="bp_troop_frost_skirmisher" text="Reaver Skirmisher" />
+    <string id="bp_troop_frost_hunter" text="Reaver Hunter" />
+    <string id="bp_troop_frost_berserker" text="Frost Berserker" />
+    <string id="bp_troop_frost_huscarl" text="Frost Huscarl" />
+    <string id="bp_troop_frost_marauder" text="Frost Marauder" />
+    <string id="bp_troop_frost_stalker" text="Frost Stalker" />
+    <string id="bp_troop_marsh_recruit" text="Marsh Recruit" />
+    <string id="bp_troop_marsh_trained" text="Trained Marshman" />
+    <string id="bp_troop_marsh_spearman" text="Marsh Spearman" />
+    <string id="bp_troop_marsh_archer" text="Marsh Archer" />
+    <string id="bp_troop_marsh_skirmisher" text="Marsh Skirmisher" />
+    <string id="bp_troop_marsh_chieftain" text="Marsh Chieftain" />
+    <string id="bp_troop_marsh_champion" text="Marsh Champion" />
+    <string id="bp_troop_marsh_hunter" text="Marsh Hunter" />
+    <string id="bp_troop_marsh_slayer" text="Marsh Slayer" />
+    <string id="bp_troop_footpad" text="Footpad" />
+    <string id="bp_troop_highwayman_trained" text="Trained Highwayman" />
+    <string id="bp_troop_road_bowman" text="Road Crossbowman" />
+    <string id="bp_troop_road_bandit" text="Road Bandit" />
+    <string id="bp_troop_road_rider" text="Road Rider" />
+    <string id="bp_troop_highway_marksman" text="Highway Marksman" />
+    <string id="bp_troop_road_warden" text="Road Warden" />
+    <string id="bp_troop_highway_captain" text="Highway Captain" />
+    <string id="bp_troop_slaver_whip" text="Slaver Whip" />
+    <string id="bp_troop_slaver_trained" text="Trained Slaver" />
+    <string id="bp_troop_slaver_swordsman" text="Slaver Swordsman" />
+    <string id="bp_troop_slaver_outrider" text="Slaver Outrider" />
+    <string id="bp_troop_slaver_bowman" text="Slaver Bowman" />
+    <string id="bp_troop_slaver_overseer" text="Slaver Overseer" />
+    <string id="bp_troop_slaver_lord" text="Slaver Lord" />
+    <string id="bp_troop_slaver_captain" text="Slaver Captain" />
+    <string id="bp_troop_imperial_deserter" text="Imperial Deserter" />
+    <string id="bp_troop_fallen_trained" text="Trained Legionary" />
+    <string id="bp_troop_fallen_legionary" text="Fallen Legionary" />
+    <string id="bp_troop_fallen_pilum" text="Fallen Pilum-Bearer" />
+    <string id="bp_troop_fallen_crossbow" text="Fallen Crossbowman" />
+    <string id="bp_troop_fallen_centurion" text="Fallen Centurion" />
+    <string id="bp_troop_fallen_optio" text="Fallen Optio" />
+    <string id="bp_troop_fallen_marksman" text="Fallen Marksman" />
+    <string id="bp_troop_sky_slinger" text="Sky Slinger" />
+    <string id="bp_troop_sky_trained" text="Trained Sky Raider" />
+    <string id="bp_troop_sky_archer" text="Sky Archer" />
+    <string id="bp_troop_sky_skirmisher" text="Sky Skirmisher" />
+    <string id="bp_troop_sky_rider" text="Sky Rider" />
+    <string id="bp_troop_sky_marksman" text="Sky Marksman" />
+    <string id="bp_troop_cliff_warrior" text="Cliff Warrior" />
+    <string id="bp_troop_falconer_captain" text="Falconer Captain" />
+    <string id="bp_troop_wolf_whelp" text="Wolf Whelp" />
+    <string id="bp_troop_wolf_trained" text="Trained Wolf" />
+    <string id="bp_troop_steppe_wolf" text="Steppe Wolf" />
+    <string id="bp_troop_steppe_spearman" text="Steppe Spearman" />
+    <string id="bp_troop_wolf_lancer" text="Wolf Lancer" />
+    <string id="bp_troop_pack_leader" text="Pack Leader" />
+    <string id="bp_troop_steppe_chieftain" text="Steppe Chieftain" />
+    <string id="bp_troop_lone_wolf" text="Lone Wolf" />
+    <string id="bp_troop_cult_acolyte" text="Cult Acolyte" />
+    <string id="bp_troop_cult_trained" text="Trained Cultist" />
+    <string id="bp_troop_cult_spearman" text="Cult Spearman" />
+    <string id="bp_troop_cult_hunter" text="Cult Hunter" />
+    <string id="bp_troop_cult_zealot" text="Cult Zealot" />
+    <string id="bp_troop_druid_champion" text="Druid Champion" />
+    <string id="bp_troop_high_druid" text="High Druid" />
+    <string id="bp_troop_witch_priest" text="Witch Priest" />
+    <string id="bp_troop_cult_slayer" text="Cult Slayer" />
+    <string id="bp_item_frost_touched_talisman" text="Frost-Touched Talisman" />
+    <string id="bp_item_bog_witch_charm" text="Bog-Witch Charm" />
+    <string id="bp_item_stolen_signet_ring" text="Stolen Signet Ring" />
+    <string id="bp_item_slavers_iron_key" text="Slaver Iron Key" />
+    <string id="bp_item_tarnished_imperial_sigil" text="Tarnished Imperial Sigil" />
+    <string id="bp_item_falconers_gauntlet" text="Falconer Gauntlet" />
+    <string id="bp_item_wolf_tooth_necklace" text="Wolf-Tooth Necklace" />
+    <string id="bp_item_druids_bone_idol" text="Druid Bone Idol" />
+    <string id="bp_blurb_frost_reavers" text="We come from the frozen north — our axes never thaw." />
+    <string id="bp_blurb_marsh_stalkers" text="The bog hides us. We strike from where you cannot see." />
+    <string id="bp_blurb_highwaymen" text="Every road has a price. Pay or fight." />
+    <string id="bp_blurb_slaver_caravans" text="We move flesh across the desert. Best hope you're not the cargo." />
+    <string id="bp_blurb_fallen_legionaries" text="Once we served the Empire. Now we serve only ourselves." />
+    <string id="bp_blurb_sky_raiders" text="From cliff and crag we descend with bow drawn." />
+    <string id="bp_blurb_steppe_wolves" text="We hunt in packs across the open steppe." />
+    <string id="bp_blurb_pagan_cult" text="The old gods still watch the deep groves. We are their hands." />
+    <string id="bp_dialog_hail" text="Halt. State your business." />
+    <string id="bp_dialog_pass" text="Pass freely." />
+    <string id="bp_dialog_combat" text="Then die." />
+    <string id="bp_dialog_farewell" text="Good." />
+  </strings>
+</base>

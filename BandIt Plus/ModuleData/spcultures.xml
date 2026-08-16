@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  BandIt Plus custom bandit cultures.
+
+  2026-07-26 — notable_templates added to every culture.
+
+  WHY: BanditChiefRegistry.GetOrCreateChiefClan sets IsMinorFaction = true on each
+  bp_chief_clan_* clan (see that file, "Mark as non-bandit minor faction"). That flag
+  routes these clans into vanilla's minor-faction hero-spawn path on the daily tick:
+
+      CampaignEvents.DailyTickClan
+        -> HeroSpawnCampaignBehavior.DailyTickClan
+          -> HeroSpawnCampaignBehavior.TrySpawnHeroesAndParties
+            -> HeroSpawnCampaignBehavior.SpawnMinorFactionHeroes(clan, firstTime)
+
+  That path assumes a fully-populated culture, because in vanilla every minor faction
+  (jawwal, ghilman, embers_of_flame, ...) uses one of the SIX MAIN cultures, all of
+  which declare notable_templates. Vanilla BANDIT cultures (looters, sea_raiders,
+  forest_bandits) declare none — but they are bandit factions, never minor factions,
+  so they never reach this code.
+
+  Our cultures were in the worst of both worlds: bandit culture data, minor-faction
+  clan flag. A user running Realm of Thrones crashed on new-game character creation
+  ("outlaw blood") with:
+
+      Value cannot be null. Parameter name: source
+        at System.Linq.Enumerable.Any[TSource](IEnumerable`1 source, Func`2 predicate)
+        at ROT.HarmonyPatches.CustomCompanions.HeroSpawnCampaignBehaviorPatches.Prefix(Clan, Boolean)
+        at HeroSpawnCampaignBehavior.SpawnMinorFactionHeroes_Patch1(Clan, Boolean)
+        at HeroSpawnCampaignBehavior.TrySpawnHeroesAndParties(Clan, Boolean)
+
+  The throwing frame belongs to another mod, but the null collection is ours: a
+  culture reached by minor-faction hero spawning with no templates to enumerate.
+  Vanilla tolerates the empty case; other mods LINQ over it and get null.
+
+  Templates below are vanilla NPCCharacters from SandBoxCore (a hard dependency of
+  this module, so they always resolve), mapped to the nearest vanilla culture by
+  theme. This is deliberately additive: it completes the data without changing the
+  IsMinorFaction/IsBanditFaction semantics the rest of the mod depends on. It also
+  covers can_have_settlement="true" — a bandit-culture settlement seized by the
+  Bandit King needs notable templates for the same reason.
+
+  If a future pass wants the deeper fix, it is IsMinorFaction=false in
+  BanditChiefRegistry — but note that flag interacts with encyclopedia display and
+  diplomacy suppression (SiegeKingdomDiplomacySuppressPatch), and this codebase has
+  already had to revert a related change (chief.IsMinorFactionHero, see the v27 note
+  in BanditChiefRegistry) after it crashed the daily tick. Playtest before changing it.
+-->
+<SPCultures>
+  <Culture id="bp_highwaymen" name="{=bp_clan_highwaymen}Highwaymen" bandit_chief="NPCCharacter.bp_road_warden" bandit_raider="NPCCharacter.bp_highwayman_trained" bandit_bandit="NPCCharacter.bp_footpad" bandit_boss="NPCCharacter.bp_road_warden" elite_basic_troop="NPCCharacter.bp_highwayman_trained" basic_troop="NPCCharacter.bp_footpad" is_bandit="true" can_have_settlement="true" encounter_background_mesh="encounter_forest_bandit" bandit_boss_party_template="PartyTemplate.bp_highwaymen_template">
+    <!-- vlandia: roadside gangs -->
+    <notable_templates>
+      <template name="NPCCharacter.spc_vlandia_gangleader_1" />
+      <template name="NPCCharacter.spc_vlandia_gangleader_2" />
+      <template name="NPCCharacter.spc_vlandia_gangleader_3" />
+      <template name="NPCCharacter.spc_notable_vlandia_rural_1" />
+      <template name="NPCCharacter.spc_notable_vlandia_rural_2" />
+      <template name="NPCCharacter.spc_vlandia_headman_1" />
+      <template name="NPCCharacter.spc_vlandia_headman_2" />
+      <template name="NPCCharacter.spc_vlandia_headman_3" />
+    </notable_templates>
+  </Culture>
+  <Culture id="bp_marsh_stalkers" name="{=bp_clan_marsh_stalkers}Marsh Stalkers" bandit_chief="NPCCharacter.bp_marsh_champion" bandit_raider="NPCCharacter.bp_marsh_trained" bandit_bandit="NPCCharacter.bp_marsh_recruit" bandit_boss="NPCCharacter.bp_marsh_champion" elite_basic_troop="NPCCharacter.bp_marsh_trained" basic_troop="NPCCharacter.bp_marsh_recruit" is_bandit="true" can_have_settlement="true" encounter_background_mesh="encounter_forest_bandit" bandit_boss_party_template="PartyTemplate.bp_marsh_stalkers_template">
+    <!-- battania: woodland / wetland kin -->
+    <notable_templates>
+      <template name="NPCCharacter.spc_notable_battania_1" />
+      <template name="NPCCharacter.spc_notable_battania_2" />
+      <template name="NPCCharacter.spc_notable_battania_3" />
+      <template name="NPCCharacter.spc_notable_rural_notable_1" />
+      <template name="NPCCharacter.spc_battania_rural_notable_2" />
+      <template name="NPCCharacter.spc_battania_headman_1" />
+      <template name="NPCCharacter.spc_battania_headman_2" />
+      <template name="NPCCharacter.spc_battania_headman_3" />
+    </notable_templates>
+  </Culture>
+  <Culture id="bp_slaver_caravans" name="{=bp_clan_slaver_caravans}Slaver Caravans" bandit_chief="NPCCharacter.bp_slaver_lord" bandit_raider="NPCCharacter.bp_slaver_trained" bandit_bandit="NPCCharacter.bp_slaver_whip" bandit_boss="NPCCharacter.bp_slaver_lord" elite_basic_troop="NPCCharacter.bp_slaver_trained" basic_troop="NPCCharacter.bp_slaver_whip" is_bandit="true" can_have_settlement="true" encounter_background_mesh="encounter_desert_bandit" bandit_boss_party_template="PartyTemplate.bp_slaver_caravans_template">
+    <!-- aserai: desert caravan trade -->
+    <notable_templates>
+      <template name="NPCCharacter.spc_notable_aserai_1" />
+      <template name="NPCCharacter.spc_notable_aserai_2" />
+      <template name="NPCCharacter.spc_notable_aserai_3" />
+      <template name="NPCCharacter.spc_notable_aserai_4" />
+      <template name="NPCCharacter.spc_notable_aserai_5" />
+      <template name="NPCCharacter.spc_aserai_headman_1" />
+      <template name="NPCCharacter.spc_aserai_headman_2" />
+      <template name="NPCCharacter.spc_aserai_headman_3" />
+    </notable_templates>
+  </Culture>
+  <Culture id="bp_fallen_legionaries" name="{=bp_clan_fallen_legionaries}Fallen Legionaries" bandit_chief="NPCCharacter.bp_fallen_centurion" bandit_raider="NPCCharacter.bp_fallen_trained" bandit_bandit="NPCCharacter.bp_imperial_deserter" bandit_boss="NPCCharacter.bp_fallen_centurion" elite_basic_troop="NPCCharacter.bp_fallen_trained" basic_troop="NPCCharacter.bp_imperial_deserter" is_bandit="true" can_have_settlement="true" encounter_background_mesh="encounter_forest_bandit" bandit_boss_party_template="PartyTemplate.bp_fallen_legionaries_template">
+    <!-- empire: imperial deserters -->
+    <notable_templates>
+      <template name="NPCCharacter.spc_notable_empire_1" />
+      <template name="NPCCharacter.spc_notable_empire_2" />
+      <template name="NPCCharacter.spc_notable_empire_3" />
+      <template name="NPCCharacter.spc_notable_empire_4" />
+      <template name="NPCCharacter.spc_notable_empire_5" />
+      <template name="NPCCharacter.spc_empire_headman_1" />
+      <template name="NPCCharacter.spc_empire_headman_2" />
+      <template name="NPCCharacter.spc_empire_headman_3" />
+    </notable_templates>
+  </Culture>
+  <Culture id="bp_steppe_wolves" name="{=bp_clan_steppe_wolves}Steppe Wolves" bandit_chief="NPCCharacter.bp_pack_leader" bandit_raider="NPCCharacter.bp_wolf_trained" bandit_bandit="NPCCharacter.bp_wolf_whelp" bandit_boss="NPCCharacter.bp_pack_leader" elite_basic_troop="NPCCharacter.bp_wolf_trained" basic_troop="NPCCharacter.bp_wolf_whelp" is_bandit="true" can_have_settlement="true" encounter_background_mesh="encounter_steppe_bandit" bandit_boss_party_template="PartyTemplate.bp_steppe_wolves_template">
+    <!-- khuzait: steppe riders -->
+    <notable_templates>
+      <template name="NPCCharacter.spc_khuzait_gangleader_1" />
+      <template name="NPCCharacter.spc_khuzait_gangleader_2" />
+      <template name="NPCCharacter.spc_khuzait_gangleader_3" />
+      <template name="NPCCharacter.spc_khuzait_rural_notable_1" />
+      <template name="NPCCharacter.spc_khuzait_rural_notable_2" />
+      <template name="NPCCharacter.spc_khuzait_headman_1" />
+      <template name="NPCCharacter.spc_khuzait_headman_2" />
+      <template name="NPCCharacter.spc_khuzait_headman_3" />
+    </notable_templates>
+  </Culture>
+  <Culture id="bp_pagan_cult" name="{=bp_clan_pagan_cult}Pagan Cult of the Old Gods" bandit_chief="NPCCharacter.bp_high_druid" bandit_raider="NPCCharacter.bp_cult_trained" bandit_bandit="NPCCharacter.bp_cult_acolyte" bandit_boss="NPCCharacter.bp_high_druid" elite_basic_troop="NPCCharacter.bp_cult_trained" basic_troop="NPCCharacter.bp_cult_acolyte" is_bandit="true" can_have_settlement="true" encounter_background_mesh="encounter_forest_bandit" bandit_boss_party_template="PartyTemplate.bp_pagan_cult_template">
+    <!-- battania: old-gods highland cult -->
+    <notable_templates>
+      <template name="NPCCharacter.spc_notable_battania_0b" />
+      <template name="NPCCharacter.spc_notable_battania_0c" />
+      <template name="NPCCharacter.spc_notable_battania_4" />
+      <template name="NPCCharacter.spc_notable_battania_5" />
+      <template name="NPCCharacter.spc_battania_artisan_1" />
+      <template name="NPCCharacter.spc_battania_headman_1" />
+      <template name="NPCCharacter.spc_battania_headman_2" />
+      <template name="NPCCharacter.spc_battania_headman_3" />
+    </notable_templates>
+  </Culture>
+  <Culture id="bp_sky_raiders" name="{=bp_clan_sky_raiders}Sky Raiders" bandit_chief="NPCCharacter.bp_falconer_captain" bandit_raider="NPCCharacter.bp_sky_trained" bandit_bandit="NPCCharacter.bp_sky_slinger" bandit_boss="NPCCharacter.bp_falconer_captain" elite_basic_troop="NPCCharacter.bp_sky_trained" basic_troop="NPCCharacter.bp_sky_slinger" is_bandit="true" can_have_settlement="true" encounter_background_mesh="encounter_mountain_bandit" bandit_boss_party_template="PartyTemplate.bp_sky_raiders_template">
+    <!-- khuzait: highland / mountain falconers -->
+    <notable_templates>
+      <template name="NPCCharacter.spc_notable_khuzait_1" />
+      <template name="NPCCharacter.spc_notable_khuzait_2" />
+      <template name="NPCCharacter.spc_notable_khuzait_3" />
+      <template name="NPCCharacter.spc_notable_khuzait_4" />
+      <template name="NPCCharacter.spc_khuzait_artisan_1" />
+      <template name="NPCCharacter.spc_khuzait_headman_1" />
+      <template name="NPCCharacter.spc_khuzait_headman_2" />
+      <template name="NPCCharacter.spc_khuzait_headman_3" />
+    </notable_templates>
+  </Culture>
+  <Culture id="bp_frost_reavers" name="{=bp_clan_frost_reavers}Frost Reavers" bandit_chief="NPCCharacter.bp_frost_berserker" bandit_raider="NPCCharacter.bp_frost_trained" bandit_bandit="NPCCharacter.bp_frost_recruit" bandit_boss="NPCCharacter.bp_frost_berserker" elite_basic_troop="NPCCharacter.bp_frost_trained" basic_troop="NPCCharacter.bp_frost_recruit" is_bandit="true" can_have_settlement="true" encounter_background_mesh="encounter_forest_bandit" bandit_boss_party_template="PartyTemplate.bp_frost_reavers_template">
+    <!-- sturgia: northern reavers -->
+    <notable_templates>
+      <template name="NPCCharacter.spc_notable_sturgia_1" />
+      <template name="NPCCharacter.spc_notable_sturgia_2" />
+      <template name="NPCCharacter.spc_notable_sturgia_3" />
+      <template name="NPCCharacter.spc_notable_sturgia_4" />
+      <template name="NPCCharacter.spc_notable_sturgia_5" />
+      <template name="NPCCharacter.spc_sturgia_headman_1" />
+      <template name="NPCCharacter.spc_sturgia_headman_2" />
+      <template name="NPCCharacter.spc_sturgia_headman_3" />
+    </notable_templates>
+  </Culture>
+</SPCultures>

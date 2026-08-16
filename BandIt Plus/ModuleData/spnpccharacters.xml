@@ -1,0 +1,2186 @@
+<?xml version="1.0" encoding="utf-8"?>
+<NPCCharacters>
+  <NPCCharacter id="bp_frost_recruit" name="{=bp_troop_frost_recruit}Frost Reaver Recruit" culture="Culture.bp_frost_reavers" default_group="Infantry" level="8" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_sturgia" /></face>
+    <skills>
+      <skill id="OneHanded" value="62" />
+      <skill id="TwoHanded" value="57" />
+      <skill id="Polearm" value="57" />
+      <skill id="Bow" value="60" />
+      <skill id="Crossbow" value="60" />
+      <skill id="Throwing" value="57" />
+      <skill id="Riding" value="60" />
+      <skill id="Athletics" value="59" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_frost_trained" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.sturgia_axe_2_t2" />
+        <equipment slot="Body" id="Item.nordic_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.sturgia_axe_2_t2" />
+        <equipment slot="Body" id="Item.nordic_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_frost_trained" name="{=bp_troop_frost_trained}Trained Reaver" culture="Culture.bp_frost_reavers" default_group="Infantry" level="14" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_sturgia" /></face>
+    <skills>
+      <skill id="OneHanded" value="86" />
+      <skill id="TwoHanded" value="81" />
+      <skill id="Polearm" value="81" />
+      <skill id="Bow" value="90" />
+      <skill id="Crossbow" value="90" />
+      <skill id="Throwing" value="81" />
+      <skill id="Riding" value="90" />
+      <skill id="Athletics" value="77" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_frost_veteran" />
+      <upgrade_target id="NPCCharacter.bp_frost_skirmisher" />
+      <upgrade_target id="NPCCharacter.bp_frost_hunter" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.sturgia_axe_2_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.nordic_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.nordic_fur_cap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.sturgia_axe_2_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.nordic_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.nordic_fur_cap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_frost_veteran" name="{=bp_troop_frost_veteran}Veteran Reaver" culture="Culture.bp_frost_reavers" default_group="Infantry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_sturgia" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_frost_berserker" />
+      <upgrade_target id="NPCCharacter.bp_frost_huscarl" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.sturgia_axe_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.sturgia_axe_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_frost_skirmisher" name="{=bp_troop_frost_skirmisher}Reaver Skirmisher" culture="Culture.bp_frost_reavers" default_group="Infantry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_sturgia" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_frost_marauder" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.sturgia_axe_2_t2" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.sturgia_axe_2_t2" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_frost_hunter" name="{=bp_troop_frost_hunter}Reaver Hunter" culture="Culture.bp_frost_reavers" default_group="Archer" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_sturgia" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_frost_stalker" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nordic_fur_cap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nordic_fur_cap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_frost_berserker" name="{=bp_troop_frost_berserker}Frost Berserker" culture="Culture.bp_frost_reavers" default_group="Infantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_sturgia" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.sturgia_2haxe_1_t4" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.roughscale_helmet" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.sturgia_2haxe_1_t4" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.roughscale_helmet" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_frost_huscarl" name="{=bp_troop_frost_huscarl}Frost Huscarl" culture="Culture.bp_frost_reavers" default_group="HeavyInfantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_sturgia" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.sturgia_axe_4_t4" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.sturgia_axe_4_t4" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_frost_marauder" name="{=bp_troop_frost_marauder}Frost Marauder" culture="Culture.bp_frost_reavers" default_group="Infantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_sturgia" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.sturgia_axe_3_t3" />
+        <equipment slot="Item2" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.roughscale_helmet" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.sturgia_axe_3_t3" />
+        <equipment slot="Item2" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.roughscale_helmet" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_frost_stalker" name="{=bp_troop_frost_stalker}Frost Stalker" culture="Culture.bp_frost_reavers" default_group="Archer" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_sturgia" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.roughscale_helmet" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.roughscale_helmet" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_marsh_recruit" name="{=bp_troop_marsh_recruit}Marsh Recruit" culture="Culture.bp_marsh_stalkers" default_group="Infantry" level="8" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="62" />
+      <skill id="TwoHanded" value="57" />
+      <skill id="Polearm" value="57" />
+      <skill id="Bow" value="60" />
+      <skill id="Crossbow" value="60" />
+      <skill id="Throwing" value="57" />
+      <skill id="Riding" value="60" />
+      <skill id="Athletics" value="59" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_marsh_trained" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_marsh_trained" name="{=bp_troop_marsh_trained}Trained Marshman" culture="Culture.bp_marsh_stalkers" default_group="Infantry" level="14" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="86" />
+      <skill id="TwoHanded" value="81" />
+      <skill id="Polearm" value="81" />
+      <skill id="Bow" value="90" />
+      <skill id="Crossbow" value="90" />
+      <skill id="Throwing" value="81" />
+      <skill id="Riding" value="90" />
+      <skill id="Athletics" value="77" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_marsh_spearman" />
+      <upgrade_target id="NPCCharacter.bp_marsh_archer" />
+      <upgrade_target id="NPCCharacter.bp_marsh_skirmisher" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.layered_leather_tunic" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.padded_cap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.layered_leather_tunic" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.padded_cap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_marsh_spearman" name="{=bp_troop_marsh_spearman}Marsh Spearman" culture="Culture.bp_marsh_stalkers" default_group="Infantry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_marsh_chieftain" />
+      <upgrade_target id="NPCCharacter.bp_marsh_champion" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_marsh_archer" name="{=bp_troop_marsh_archer}Marsh Archer" culture="Culture.bp_marsh_stalkers" default_group="Archer" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_marsh_hunter" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_marsh_skirmisher" name="{=bp_troop_marsh_skirmisher}Marsh Skirmisher" culture="Culture.bp_marsh_stalkers" default_group="Skirmisher" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_marsh_slayer" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_marsh_chieftain" name="{=bp_troop_marsh_chieftain}Marsh Chieftain" culture="Culture.bp_marsh_stalkers" default_group="HeavyInfantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_d_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_d_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_marsh_champion" name="{=bp_troop_marsh_champion}Marsh Champion" culture="Culture.bp_marsh_stalkers" default_group="Infantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_d_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_d_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_marsh_hunter" name="{=bp_troop_marsh_hunter}Marsh Hunter" culture="Culture.bp_marsh_stalkers" default_group="Archer" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_marsh_slayer" name="{=bp_troop_marsh_slayer}Marsh Slayer" culture="Culture.bp_marsh_stalkers" default_group="Skirmisher" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_footpad" name="{=bp_troop_footpad}Footpad" culture="Culture.bp_highwaymen" default_group="Infantry" level="8" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_vlandia" /></face>
+    <skills>
+      <skill id="OneHanded" value="62" />
+      <skill id="TwoHanded" value="57" />
+      <skill id="Polearm" value="57" />
+      <skill id="Bow" value="60" />
+      <skill id="Crossbow" value="60" />
+      <skill id="Throwing" value="57" />
+      <skill id="Riding" value="60" />
+      <skill id="Athletics" value="59" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_highwayman_trained" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.peasant_pickaxe_1_t1" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.peasant_pickaxe_1_t1" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_highwayman_trained" name="{=bp_troop_highwayman_trained}Trained Highwayman" culture="Culture.bp_highwaymen" default_group="Infantry" level="14" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_vlandia" /></face>
+    <skills>
+      <skill id="OneHanded" value="86" />
+      <skill id="TwoHanded" value="81" />
+      <skill id="Polearm" value="81" />
+      <skill id="Bow" value="90" />
+      <skill id="Crossbow" value="90" />
+      <skill id="Throwing" value="81" />
+      <skill id="Riding" value="90" />
+      <skill id="Athletics" value="77" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_road_bowman" />
+      <upgrade_target id="NPCCharacter.bp_road_bandit" />
+      <upgrade_target id="NPCCharacter.bp_road_rider" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.fur_trimmed_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.padded_cap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.fur_trimmed_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.padded_cap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_road_bowman" name="{=bp_troop_road_bowman}Road Crossbowman" culture="Culture.bp_highwaymen" default_group="Archer" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_vlandia" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_highway_marksman" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.crossbow_a" />
+        <equipment slot="Item1" id="Item.bolt_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.crossbow_a" />
+        <equipment slot="Item1" id="Item.bolt_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_road_bandit" name="{=bp_troop_road_bandit}Road Bandit" culture="Culture.bp_highwaymen" default_group="Infantry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_vlandia" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_road_warden" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_road_rider" name="{=bp_troop_road_rider}Road Rider" culture="Culture.bp_highwaymen" default_group="LightCavalry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_vlandia" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_highway_captain" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_highway_marksman" name="{=bp_troop_highway_marksman}Highway Marksman" culture="Culture.bp_highwaymen" default_group="Archer" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_vlandia" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.crossbow_c" />
+        <equipment slot="Item1" id="Item.bolt_b" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.crossbow_c" />
+        <equipment slot="Item1" id="Item.bolt_b" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_road_warden" name="{=bp_troop_road_warden}Road Warden" culture="Culture.bp_highwaymen" default_group="HeavyInfantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_vlandia" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.vlandia_sword_3_t4" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet_with_facemask" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.vlandia_sword_3_t4" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet_with_facemask" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_highway_captain" name="{=bp_troop_highway_captain}Highway Captain" culture="Culture.bp_highwaymen" default_group="HeavyCavalry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_vlandia" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.empire_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.empire_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_slaver_whip" name="{=bp_troop_slaver_whip}Slaver Whip" culture="Culture.bp_slaver_caravans" default_group="Infantry" level="8" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="62" />
+      <skill id="TwoHanded" value="57" />
+      <skill id="Polearm" value="57" />
+      <skill id="Bow" value="60" />
+      <skill id="Crossbow" value="60" />
+      <skill id="Throwing" value="57" />
+      <skill id="Riding" value="60" />
+      <skill id="Athletics" value="59" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_slaver_trained" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_slaver_trained" name="{=bp_troop_slaver_trained}Trained Slaver" culture="Culture.bp_slaver_caravans" default_group="Infantry" level="14" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="86" />
+      <skill id="TwoHanded" value="81" />
+      <skill id="Polearm" value="81" />
+      <skill id="Bow" value="90" />
+      <skill id="Crossbow" value="90" />
+      <skill id="Throwing" value="81" />
+      <skill id="Riding" value="90" />
+      <skill id="Athletics" value="77" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_slaver_swordsman" />
+      <upgrade_target id="NPCCharacter.bp_slaver_outrider" />
+      <upgrade_target id="NPCCharacter.bp_slaver_bowman" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.desert_robe" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.desert_robe" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_slaver_swordsman" name="{=bp_troop_slaver_swordsman}Slaver Swordsman" culture="Culture.bp_slaver_caravans" default_group="Infantry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_slaver_overseer" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_slaver_outrider" name="{=bp_troop_slaver_outrider}Slaver Outrider" culture="Culture.bp_slaver_caravans" default_group="LightCavalry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_slaver_lord" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_slaver_bowman" name="{=bp_troop_slaver_bowman}Slaver Bowman" culture="Culture.bp_slaver_caravans" default_group="Archer" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_slaver_captain" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_slaver_overseer" name="{=bp_troop_slaver_overseer}Slaver Overseer" culture="Culture.bp_slaver_caravans" default_group="HeavyInfantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet_with_facemask" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet_with_facemask" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_slaver_lord" name="{=bp_troop_slaver_lord}Slaver Lord" culture="Culture.bp_slaver_caravans" default_group="HeavyCavalry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.empire_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.empire_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_slaver_captain" name="{=bp_troop_slaver_captain}Slaver Captain" culture="Culture.bp_slaver_caravans" default_group="HorseArcher" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_imperial_deserter" name="{=bp_troop_imperial_deserter}Imperial Deserter" culture="Culture.bp_fallen_legionaries" default_group="Infantry" level="8" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_empire" /></face>
+    <skills>
+      <skill id="OneHanded" value="62" />
+      <skill id="TwoHanded" value="57" />
+      <skill id="Polearm" value="57" />
+      <skill id="Bow" value="60" />
+      <skill id="Crossbow" value="60" />
+      <skill id="Throwing" value="57" />
+      <skill id="Riding" value="60" />
+      <skill id="Athletics" value="59" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_fallen_trained" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_fallen_trained" name="{=bp_troop_fallen_trained}Trained Legionary" culture="Culture.bp_fallen_legionaries" default_group="Infantry" level="14" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_empire" /></face>
+    <skills>
+      <skill id="OneHanded" value="86" />
+      <skill id="TwoHanded" value="81" />
+      <skill id="Polearm" value="81" />
+      <skill id="Bow" value="90" />
+      <skill id="Crossbow" value="90" />
+      <skill id="Throwing" value="81" />
+      <skill id="Riding" value="90" />
+      <skill id="Athletics" value="77" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_fallen_legionary" />
+      <upgrade_target id="NPCCharacter.bp_fallen_pilum" />
+      <upgrade_target id="NPCCharacter.bp_fallen_crossbow" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.fur_trimmed_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.padded_cap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.fur_trimmed_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.padded_cap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_fallen_legionary" name="{=bp_troop_fallen_legionary}Fallen Legionary" culture="Culture.bp_fallen_legionaries" default_group="Infantry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_empire" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_fallen_centurion" />
+      <upgrade_target id="NPCCharacter.bp_fallen_optio" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.imperial_robes" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.imperial_robes" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_fallen_pilum" name="{=bp_troop_fallen_pilum}Fallen Pilum-Bearer" culture="Culture.bp_fallen_legionaries" default_group="Skirmisher" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_empire" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_fallen_optio" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.imperial_robes" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.imperial_robes" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_fallen_crossbow" name="{=bp_troop_fallen_crossbow}Fallen Crossbowman" culture="Culture.bp_fallen_legionaries" default_group="Archer" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_empire" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_fallen_marksman" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.crossbow_a" />
+        <equipment slot="Item1" id="Item.bolt_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.imperial_robes" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.crossbow_a" />
+        <equipment slot="Item1" id="Item.bolt_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.imperial_robes" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_fallen_centurion" name="{=bp_troop_fallen_centurion}Fallen Centurion" culture="Culture.bp_fallen_legionaries" default_group="HeavyInfantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_empire" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet_with_facemask" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet_with_facemask" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_fallen_optio" name="{=bp_troop_fallen_optio}Fallen Optio" culture="Culture.bp_fallen_legionaries" default_group="Infantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_empire" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.battered_kite_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_fallen_marksman" name="{=bp_troop_fallen_marksman}Fallen Marksman" culture="Culture.bp_fallen_legionaries" default_group="Archer" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_empire" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.crossbow_c" />
+        <equipment slot="Item1" id="Item.bolt_b" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.crossbow_c" />
+        <equipment slot="Item1" id="Item.bolt_b" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.legionary_mail" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_sky_slinger" name="{=bp_troop_sky_slinger}Sky Slinger" culture="Culture.bp_sky_raiders" default_group="Skirmisher" level="8" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="62" />
+      <skill id="TwoHanded" value="57" />
+      <skill id="Polearm" value="57" />
+      <skill id="Bow" value="60" />
+      <skill id="Crossbow" value="60" />
+      <skill id="Throwing" value="57" />
+      <skill id="Riding" value="60" />
+      <skill id="Athletics" value="59" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_sky_trained" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.sling_braided" />
+        <equipment slot="Item1" id="Item.throwing_stone" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.sling_braided" />
+        <equipment slot="Item1" id="Item.throwing_stone" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_sky_trained" name="{=bp_troop_sky_trained}Trained Sky Raider" culture="Culture.bp_sky_raiders" default_group="Archer" level="14" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="86" />
+      <skill id="TwoHanded" value="81" />
+      <skill id="Polearm" value="81" />
+      <skill id="Bow" value="90" />
+      <skill id="Crossbow" value="90" />
+      <skill id="Throwing" value="81" />
+      <skill id="Riding" value="90" />
+      <skill id="Athletics" value="77" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_sky_archer" />
+      <upgrade_target id="NPCCharacter.bp_sky_skirmisher" />
+      <upgrade_target id="NPCCharacter.bp_sky_rider" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.hunting_bow" />
+        <equipment slot="Item1" id="Item.bodkin_arrows_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.desert_robe" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.hunting_bow" />
+        <equipment slot="Item1" id="Item.bodkin_arrows_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.desert_robe" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_sky_archer" name="{=bp_troop_sky_archer}Sky Archer" culture="Culture.bp_sky_raiders" default_group="Archer" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_sky_marksman" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_sky_skirmisher" name="{=bp_troop_sky_skirmisher}Sky Skirmisher" culture="Culture.bp_sky_raiders" default_group="Skirmisher" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_cliff_warrior" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_sky_rider" name="{=bp_troop_sky_rider}Sky Rider" culture="Culture.bp_sky_raiders" default_group="LightCavalry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_falconer_captain" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_sky_marksman" name="{=bp_troop_sky_marksman}Sky Marksman" culture="Culture.bp_sky_raiders" default_group="Archer" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_cliff_warrior" name="{=bp_troop_cliff_warrior}Cliff Warrior" culture="Culture.bp_sky_raiders" default_group="Infantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Item2" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Item2" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.eastern_leather_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_falconer_captain" name="{=bp_troop_falconer_captain}Falconer Captain" culture="Culture.bp_sky_raiders" default_group="HorseArcher" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_aserai" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.decorated_imperial_boots" />
+        <equipment slot="Head" id="Item.head_wrapping" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_wolf_whelp" name="{=bp_troop_wolf_whelp}Wolf Whelp" culture="Culture.bp_steppe_wolves" default_group="HorseArcher" level="8" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_khuzait" /></face>
+    <skills>
+      <skill id="OneHanded" value="62" />
+      <skill id="TwoHanded" value="57" />
+      <skill id="Polearm" value="57" />
+      <skill id="Bow" value="60" />
+      <skill id="Crossbow" value="60" />
+      <skill id="Throwing" value="57" />
+      <skill id="Riding" value="60" />
+      <skill id="Athletics" value="59" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_wolf_trained" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.hunting_bow" />
+        <equipment slot="Item1" id="Item.bodkin_arrows_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.fur_trimmed_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Horse" id="Item.saddle_horse" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.hunting_bow" />
+        <equipment slot="Item1" id="Item.bodkin_arrows_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.fur_trimmed_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Horse" id="Item.saddle_horse" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_wolf_trained" name="{=bp_troop_wolf_trained}Trained Wolf" culture="Culture.bp_steppe_wolves" default_group="HorseArcher" level="14" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_khuzait" /></face>
+    <skills>
+      <skill id="OneHanded" value="86" />
+      <skill id="TwoHanded" value="81" />
+      <skill id="Polearm" value="81" />
+      <skill id="Bow" value="90" />
+      <skill id="Crossbow" value="90" />
+      <skill id="Throwing" value="81" />
+      <skill id="Riding" value="90" />
+      <skill id="Athletics" value="77" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_steppe_wolf" />
+      <upgrade_target id="NPCCharacter.bp_steppe_spearman" />
+      <upgrade_target id="NPCCharacter.bp_wolf_lancer" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.hunting_bow" />
+        <equipment slot="Item1" id="Item.bodkin_arrows_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.fur_trimmed_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Horse" id="Item.saddle_horse" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.hunting_bow" />
+        <equipment slot="Item1" id="Item.bodkin_arrows_a" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.fur_trimmed_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+        <equipment slot="Horse" id="Item.saddle_horse" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_steppe_wolf" name="{=bp_troop_steppe_wolf}Steppe Wolf" culture="Culture.bp_steppe_wolves" default_group="HorseArcher" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_khuzait" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_pack_leader" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_steppe_spearman" name="{=bp_troop_steppe_spearman}Steppe Spearman" culture="Culture.bp_steppe_wolves" default_group="Infantry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_khuzait" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_steppe_chieftain" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_wolf_lancer" name="{=bp_troop_wolf_lancer}Wolf Lancer" culture="Culture.bp_steppe_wolves" default_group="LightCavalry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_khuzait" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_lone_wolf" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.belted_leather_boots" />
+        <equipment slot="Head" id="Item.nasal_helmet_over_cloth_headwrap" />
+        <equipment slot="Horse" id="Item.aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.aserai_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_pack_leader" name="{=bp_troop_pack_leader}Pack Leader" culture="Culture.bp_steppe_wolves" default_group="HorseArcher" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_khuzait" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.empire_lance_1_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.empire_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.empire_lance_1_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.empire_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_steppe_chieftain" name="{=bp_troop_steppe_chieftain}Steppe Chieftain" culture="Culture.bp_steppe_wolves" default_group="HeavyInfantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_khuzait" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_lone_wolf" name="{=bp_troop_lone_wolf}Lone Wolf" culture="Culture.bp_steppe_wolves" default_group="HeavyCavalry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_khuzait" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet_with_facemask" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.empire_horseman_armor" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.empire_lance_1_t3" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.spiked_helmet_with_facemask" />
+        <equipment slot="Horse" id="Item.t3_aserai_horse" />
+        <equipment slot="HorseHarness" id="Item.empire_horseman_armor" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_cult_acolyte" name="{=bp_troop_cult_acolyte}Cult Acolyte" culture="Culture.bp_pagan_cult" default_group="Infantry" level="8" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="62" />
+      <skill id="TwoHanded" value="57" />
+      <skill id="Polearm" value="57" />
+      <skill id="Bow" value="60" />
+      <skill id="Crossbow" value="60" />
+      <skill id="Throwing" value="57" />
+      <skill id="Riding" value="60" />
+      <skill id="Athletics" value="59" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_cult_trained" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.peasant_pickaxe_1_t1" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.peasant_pickaxe_1_t1" />
+        <equipment slot="Body" id="Item.cloth_tunic" />
+        <equipment slot="Leg" id="Item.leather_boots" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_cult_trained" name="{=bp_troop_cult_trained}Trained Cultist" culture="Culture.bp_pagan_cult" default_group="Infantry" level="14" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="86" />
+      <skill id="TwoHanded" value="81" />
+      <skill id="Polearm" value="81" />
+      <skill id="Bow" value="90" />
+      <skill id="Crossbow" value="90" />
+      <skill id="Throwing" value="81" />
+      <skill id="Riding" value="90" />
+      <skill id="Athletics" value="77" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_cult_spearman" />
+      <upgrade_target id="NPCCharacter.bp_cult_hunter" />
+      <upgrade_target id="NPCCharacter.bp_cult_zealot" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.layered_leather_tunic" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.padded_cap" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.layered_leather_tunic" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.padded_cap" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_cult_spearman" name="{=bp_troop_cult_spearman}Cult Spearman" culture="Culture.bp_pagan_cult" default_group="Infantry" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_druid_champion" />
+      <upgrade_target id="NPCCharacter.bp_high_druid" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_spear_1_t2" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.banded_leather_over_mail" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_cult_hunter" name="{=bp_troop_cult_hunter}Cult Hunter" culture="Culture.bp_pagan_cult" default_group="Archer" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_witch_priest" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.barbed_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_cult_zealot" name="{=bp_troop_cult_zealot}Cult Zealot" culture="Culture.bp_pagan_cult" default_group="Skirmisher" level="20" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="110" />
+      <skill id="TwoHanded" value="105" />
+      <skill id="Polearm" value="105" />
+      <skill id="Bow" value="120" />
+      <skill id="Crossbow" value="120" />
+      <skill id="Throwing" value="105" />
+      <skill id="Riding" value="120" />
+      <skill id="Athletics" value="95" />
+    </skills>
+    <upgrade_targets>
+      <upgrade_target id="NPCCharacter.bp_cult_slayer" />
+    </upgrade_targets>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_1_t2" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_robe_c_chain" />
+        <equipment slot="Leg" id="Item.battania_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_druid_champion" name="{=bp_troop_druid_champion}Druid Champion" culture="Culture.bp_pagan_cult" default_group="Infantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_d_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_d_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_high_druid" name="{=bp_troop_high_druid}High Druid" culture="Culture.bp_pagan_cult" default_group="HeavyInfantry" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_d_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.aserai_2haxe_1_t3" />
+        <equipment slot="Item1" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_d_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_witch_priest" name="{=bp_troop_witch_priest}Witch Priest" culture="Culture.bp_pagan_cult" default_group="Archer" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.composite_bow" />
+        <equipment slot="Item1" id="Item.piercing_arrows" />
+        <equipment slot="Item2" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <NPCCharacter id="bp_cult_slayer" name="{=bp_troop_cult_slayer}Cult Slayer" culture="Culture.bp_pagan_cult" default_group="Skirmisher" level="27" is_basic_troop="true" occupation="Bandit">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="138" />
+      <skill id="TwoHanded" value="133" />
+      <skill id="Polearm" value="133" />
+      <skill id="Bow" value="155" />
+      <skill id="Crossbow" value="155" />
+      <skill id="Throwing" value="133" />
+      <skill id="Riding" value="155" />
+      <skill id="Athletics" value="116" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+      <EquipmentRoster>
+        <equipment slot="Item0" id="Item.eastern_javelin_1_t2" />
+        <equipment slot="Item1" id="Item.aserai_sword_3_t3" />
+        <equipment slot="Item2" id="Item.curved_round_shield" />
+        <equipment slot="Body" id="Item.aserai_full_scale_armor_on_chain" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_b_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+  <!-- hero template for the bandit chiefs. is_hero="true" is what puts the spawned
+       hero in the encyclopedia Heroes tab instead of Troops. name/culture get
+       overridden at runtime so this one template covers every bandit culture. -->
+  <NPCCharacter id="bp_chief_hero_template" name="{=bp_chief_hero_template}Bandit Chief"
+                culture="Culture.empire" default_group="HeavyInfantry"
+                is_hero="true" occupation="GangLeader"
+                skill_template="SkillSet.infantry_heavyinfantry_level1_template_skills">
+    <face><face_key_template value="BodyProperty.fighter_battania" /></face>
+    <skills>
+      <skill id="OneHanded" value="120" />
+      <skill id="TwoHanded" value="120" />
+      <skill id="Polearm" value="100" />
+      <skill id="Bow" value="80" />
+      <skill id="Athletics" value="100" />
+      <skill id="Riding" value="100" />
+      <skill id="Charm" value="80" />
+      <skill id="Leadership" value="120" />
+      <skill id="Roguery" value="160" />
+    </skills>
+    <Equipments>
+      <EquipmentRoster civilian="true">
+        <equipment slot="Item0" id="Item.bastard_sword_t3" />
+        <equipment slot="Body" id="Item.battania_full_scale_armor" />
+        <equipment slot="Leg" id="Item.strapped_leather_boots" />
+        <equipment slot="Head" id="Item.battania_earmuff_helmet_d_brnz" />
+      </EquipmentRoster>
+    </Equipments>
+  </NPCCharacter>
+</NPCCharacters>

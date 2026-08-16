@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<base xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" type="module_sound">
+  <module_sounds>
+    <!-- intro score. swap the ogg in ModuleSounds to change the track.
+         careful: the clip is ~13s and the ui category caps at 4s, and one bad
+         entry silently kills every sound in this file. keep it on a persistent
+         bed category (no length cap for 2d playback). -->
+    <module_sound name="bp/cinematic_theme" is_2d="true" sound_category="mission_ambient_bed" path="bp_cinematic_theme.ogg" />
+    <!-- book-open sfx (cover thud + leather creak + page flutter).
+         short sfx stay .wav 16-bit pcm, ogg is for music only. -->
+    <module_sound name="bp/book_open" is_2d="true" sound_category="ui" path="bp_book_open.wav" />
+  </module_sounds>
+</base>

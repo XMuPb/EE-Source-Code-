@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Items>
+
+  <Item id="bp_frost_touched_talisman" name="{=bp_item_frost_touched_talisman}Frost-Touched Talisman"
+        mesh="coins_pile" Type="Goods" value="200"
+        is_merchandise="true" weight="0.1" />
+
+  <Item id="bp_bog_witch_charm" name="{=bp_item_bog_witch_charm}Bog-Witch Charm"
+        mesh="coins_pile" Type="Goods" value="180"
+        is_merchandise="true" weight="0.1" />
+
+  <Item id="bp_stolen_signet_ring" name="{=bp_item_stolen_signet_ring}Stolen Signet Ring"
+        mesh="coins_pile" Type="Goods" value="150"
+        is_merchandise="true" weight="0.05" />
+
+  <Item id="bp_slavers_iron_key" name="{=bp_item_slavers_iron_key}Slaver's Iron Key"
+        mesh="coins_pile" Type="Goods" value="220"
+        is_merchandise="true" weight="0.2" />
+
+  <Item id="bp_tarnished_imperial_sigil" name="{=bp_item_tarnished_imperial_sigil}Tarnished Imperial Sigil"
+        mesh="coins_pile" Type="Goods" value="300"
+        is_merchandise="true" weight="0.15" />
+
+  <Item id="bp_falconers_gauntlet" name="{=bp_item_falconers_gauntlet}Falconer's Gauntlet"
+        mesh="coins_pile" Type="Goods" value="170"
+        is_merchandise="true" weight="0.3" />
+
+  <Item id="bp_wolf_tooth_necklace" name="{=bp_item_wolf_tooth_necklace}Wolf-Tooth Necklace"
+        mesh="coins_pile" Type="Goods" value="190"
+        is_merchandise="true" weight="0.1" />
+
+  <Item id="bp_druids_bone_idol" name="{=bp_item_druids_bone_idol}Druid's Bone Idol"
+        mesh="coins_pile" Type="Goods" value="250"
+        is_merchandise="true" weight="0.4" />
+
+  <Item id="bp_keepsake_looters" name="{=bp_item_keepsake_looters}Looter's Lucky Coin"
+        mesh="coins_pile" Type="Goods" value="90"
+        is_merchandise="true" weight="0.05" />
+
+  <Item id="bp_keepsake_forest_bandits" name="{=bp_item_keepsake_forest}Carved Oak Token"
+        mesh="coins_pile" Type="Goods" value="110"
+        is_merchandise="true" weight="0.1" />
+
+  <Item id="bp_keepsake_mountain_bandits" name="{=bp_item_keepsake_mountain}Mountaineer's Flint Charm"
+        mesh="coins_pile" Type="Goods" value="120"
+        is_merchandise="true" weight="0.1" />
+
+  <Item id="bp_keepsake_steppe_bandits" name="{=bp_item_keepsake_steppe}Steppe Horsehair Charm"
+        mesh="coins_pile" Type="Goods" value="120"
+        is_merchandise="true" weight="0.05" />
+
+  <Item id="bp_keepsake_desert_bandits" name="{=bp_item_keepsake_desert}Sun-Bleached Amulet"
+        mesh="coins_pile" Type="Goods" value="130"
+        is_merchandise="true" weight="0.1" />
+
+  <Item id="bp_keepsake_sea_raiders" name="{=bp_item_keepsake_sea}Sea Raider's Walrus Tooth"
+        mesh="coins_pile" Type="Goods" value="140"
+        is_merchandise="true" weight="0.15" />
+
+</Items>

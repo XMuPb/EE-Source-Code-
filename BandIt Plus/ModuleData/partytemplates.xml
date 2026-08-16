@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 07-11 schema fix (player report): root partyTemplates + MBPartyTemplate
+     children + <stacks> wrapper, matching XmlSchemas/partyTemplates.xsd and the
+     vanilla SandBox file. The old MBPartyTemplates/PartyTemplate shape loaded
+     through the lenient parser but failed validation on every launch. -->
+<partyTemplates>
+  <MBPartyTemplate id="bp_highwaymen_template">
+    <stacks>
+      <PartyTemplateStack troop="NPCCharacter.bp_footpad" min_value="4" max_value="8" />
+      <PartyTemplateStack troop="NPCCharacter.bp_highwayman_trained" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_road_bowman" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_road_bandit" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_road_rider" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_highway_marksman" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_road_warden" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_highway_captain" min_value="0" max_value="2" />
+    </stacks>
+  </MBPartyTemplate>
+  <MBPartyTemplate id="bp_marsh_stalkers_template">
+    <stacks>
+      <PartyTemplateStack troop="NPCCharacter.bp_marsh_recruit" min_value="4" max_value="8" />
+      <PartyTemplateStack troop="NPCCharacter.bp_marsh_trained" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_marsh_spearman" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_marsh_archer" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_marsh_skirmisher" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_marsh_chieftain" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_marsh_champion" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_marsh_hunter" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_marsh_slayer" min_value="0" max_value="2" />
+    </stacks>
+  </MBPartyTemplate>
+  <MBPartyTemplate id="bp_slaver_caravans_template">
+    <stacks>
+      <PartyTemplateStack troop="NPCCharacter.bp_slaver_whip" min_value="4" max_value="8" />
+      <PartyTemplateStack troop="NPCCharacter.bp_slaver_trained" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_slaver_swordsman" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_slaver_outrider" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_slaver_bowman" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_slaver_overseer" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_slaver_lord" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_slaver_captain" min_value="0" max_value="2" />
+    </stacks>
+  </MBPartyTemplate>
+  <MBPartyTemplate id="bp_fallen_legionaries_template">
+    <stacks>
+      <PartyTemplateStack troop="NPCCharacter.bp_imperial_deserter" min_value="4" max_value="8" />
+      <PartyTemplateStack troop="NPCCharacter.bp_fallen_trained" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_fallen_legionary" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_fallen_pilum" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_fallen_crossbow" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_fallen_centurion" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_fallen_optio" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_fallen_marksman" min_value="0" max_value="2" />
+    </stacks>
+  </MBPartyTemplate>
+  <MBPartyTemplate id="bp_steppe_wolves_template">
+    <stacks>
+      <PartyTemplateStack troop="NPCCharacter.bp_wolf_whelp" min_value="4" max_value="8" />
+      <PartyTemplateStack troop="NPCCharacter.bp_wolf_trained" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_steppe_wolf" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_steppe_spearman" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_wolf_lancer" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_pack_leader" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_steppe_chieftain" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_lone_wolf" min_value="0" max_value="2" />
+    </stacks>
+  </MBPartyTemplate>
+  <MBPartyTemplate id="bp_pagan_cult_template">
+    <stacks>
+      <PartyTemplateStack troop="NPCCharacter.bp_cult_acolyte" min_value="4" max_value="8" />
+      <PartyTemplateStack troop="NPCCharacter.bp_cult_trained" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_cult_spearman" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_cult_hunter" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_cult_zealot" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_druid_champion" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_high_druid" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_witch_priest" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_cult_slayer" min_value="0" max_value="2" />
+    </stacks>
+  </MBPartyTemplate>
+  <MBPartyTemplate id="bp_sky_raiders_template">
+    <stacks>
+      <PartyTemplateStack troop="NPCCharacter.bp_sky_slinger" min_value="4" max_value="8" />
+      <PartyTemplateStack troop="NPCCharacter.bp_sky_trained" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_sky_archer" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_sky_skirmisher" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_sky_rider" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_sky_marksman" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_cliff_warrior" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_falconer_captain" min_value="0" max_value="2" />
+    </stacks>
+  </MBPartyTemplate>
+  <MBPartyTemplate id="bp_frost_reavers_template">
+    <stacks>
+      <PartyTemplateStack troop="NPCCharacter.bp_frost_recruit" min_value="4" max_value="8" />
+      <PartyTemplateStack troop="NPCCharacter.bp_frost_trained" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_frost_veteran" min_value="2" max_value="5" />
+      <PartyTemplateStack troop="NPCCharacter.bp_frost_skirmisher" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_frost_hunter" min_value="1" max_value="3" />
+      <PartyTemplateStack troop="NPCCharacter.bp_frost_berserker" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_frost_huscarl" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_frost_marauder" min_value="0" max_value="2" />
+      <PartyTemplateStack troop="NPCCharacter.bp_frost_stalker" min_value="0" max_value="2" />
+    </stacks>
+  </MBPartyTemplate>
+</partyTemplates>

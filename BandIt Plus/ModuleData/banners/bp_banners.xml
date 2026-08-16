@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<base type="string">
+  <BannerIconData>
+    <BannerColors>
+      <Color id="200" hex="0xFFCBCBCB" player_can_choose_for_background="false" player_can_choose_for_sigil="false" />
+      <Color id="201" hex="0xFF4A5D23" player_can_choose_for_background="false" player_can_choose_for_sigil="false" />
+      <Color id="202" hex="0xFFA84B2A" player_can_choose_for_background="false" player_can_choose_for_sigil="false" />
+      <Color id="203" hex="0xFFE8D27A" player_can_choose_for_background="false" player_can_choose_for_sigil="false" />
+      <Color id="204" hex="0xFF6B4A8C" player_can_choose_for_background="false" player_can_choose_for_sigil="false" />
+      <Color id="205" hex="0xFF6BAFD3" player_can_choose_for_background="false" player_can_choose_for_sigil="false" />
+      <Color id="206" hex="0xFF7A7A7A" player_can_choose_for_background="false" player_can_choose_for_sigil="false" />
+      <Color id="207" hex="0xFF8B0000" player_can_choose_for_background="false" player_can_choose_for_sigil="false" />
+    </BannerColors>
+  </BannerIconData>
+</base>
