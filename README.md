@@ -10,7 +10,7 @@ The repository contains the **full source code** of the project.
 
 ## Why Is This Being Open Sourced?
 
-I have been away from development for around a year and currently do not have the time or availability to continue actively maintaining the project.
+Im gonna be gone for a year and currently do not have the time or availability to continue actively maintaining the project.
 
 Instead of allowing the project to remain abandoned, I decided that making the source code publicly available would be the best way to give it a future.
 
