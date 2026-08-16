@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- crimson font brushes for the Hideout Assault panel. dedicated brushes because
+     a TextWidget's text colour comes from its brush's FontColor — a widget
+     Color="..." attribute tints sprites only. BandItPlusFonts.xml bakes gold;
+     these bake crimson / ivory / gold per role. auto-loaded from GUI/Brushes/. -->
+<Brushes>
+
+  <!-- panel title "HIDEOUT ASSAULT" — large, crimson, centered -->
+  <Brush Name="BandItPlus.CrimsonTitle" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers></Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D8424CFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="26" />
+    </Styles>
+  </Brush>
+
+  <!-- "— BANDIT PLUS MODE —" sub-label — tiny, crimson, centered -->
+  <Brush Name="BandItPlus.CrimsonMode" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers></Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#A0202CFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <!-- crimson twin of FooterLeft for inline mode tags (the chief-reveal subline) -->
+  <Brush Name="BandItPlus.CrimsonSubline" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers></Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B62432FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.15" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <!-- chief name — medium, ivory, left -->
+  <Brush Name="BandItPlus.CrimsonName" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers></Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0E2C2FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.1" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+
+  <!-- card names + hideout name — small, ivory, left -->
+  <Brush Name="BandItPlus.CrimsonBody" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers></Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8D8B4FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="17" />
+    </Styles>
+  </Brush>
+
+  <!-- stat numbers + card value badges — small, gold, centered -->
+  <Brush Name="BandItPlus.CrimsonValue" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers></Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8C878FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="16" />
+    </Styles>
+  </Brush>
+
+  <!-- stat-tile labels + culture/trust line — tiny, muted, left -->
+  <Brush Name="BandItPlus.CrimsonLabel" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers></Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#9A8F78FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <!-- chief's taunt line — small, muted, centered -->
+  <Brush Name="BandItPlus.CrimsonTaunt" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers></Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B9A886FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.1" TextGlowRadius="0" FontSize="15" />
+    </Styles>
+  </Brush>
+
+</Brushes>

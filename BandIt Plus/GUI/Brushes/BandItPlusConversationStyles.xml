@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- brush override on Conversation.ConversedPartyLine.Text so the slaver's inline
+     backstory prose can use the BandItPlus.* named color styles (Name / Coin /
+     Place / Blood) via <span style="BandItPlus.X">. same trick as
+     BandItPlusPopupStyles.xml does for popups — vanilla only ships a Default style
+     here, so span markup parses but has nothing to reference. Default is duplicated
+     from vanilla ConversationBrush.xml verbatim so every other NPC conversation
+     renders pixel-identical. -->
+<Brushes>
+
+  <Brush Name="Conversation.ConversedPartyLine.Text" TextVerticalAlignment="Center" TextHorizontalAlignment="Justify" BaseBrush="Info.Text">
+    <Styles>
+      <!-- Default: matches vanilla ConversationBrush.xml verbatim so all non-slaver NPC dialog is unchanged. -->
+      <Style Name="Default" FontColor="#FFFFFFFF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="26" />
+
+      <!-- BandItPlus.Name: gold for slaver/lord names (Halgar, Lord Caladog, Boyar Urkhun, etc.) -->
+      <Style Name="BandItPlus.Name" FontColor="#E8C878FF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="26" />
+
+      <!-- BandItPlus.Coin: muted bronze for currency mentions (denars, dinars). -->
+      <Style Name="BandItPlus.Coin" FontColor="#D4A55AFF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="26" />
+
+      <!-- BandItPlus.Blood: muted red for kill/death/wound phrases. -->
+      <Style Name="BandItPlus.Blood" FontColor="#B05050FF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="26" />
+
+      <!-- BandItPlus.Place: cool steel for town/place names (Quyaz, Pen Cannoc, etc.) -->
+      <Style Name="BandItPlus.Place" FontColor="#A8C0DCFF" TextGlowColor="#000000FF" TextOutlineColor="#FFFFFF00" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="26" />
+    </Styles>
+  </Brush>
+
+</Brushes>

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  V3 Codex bookmark button brush.
+  Schema matches Native\GUI\Brushes\MPLobby.xml MPLobby.Cosmetic.Obtain.Button
+  (Gauntlet new schema — capitalized elements, StdAssets\ sprite prefix).
+-->
+<Brushes>
+
+  <Brush Name="BandItPlus.Codex.BookmarkButton">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="StdAssets\button_wide_flat" />
+    </Layers>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Default" Sprite="StdAssets\button_wide_flat" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Default" Sprite="StdAssets\button_wide_hover_flat" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Default" Sprite="StdAssets\button_wide_hover_flat" ColorFactor="0.6" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Default" Sprite="StdAssets\button_wide_flat" SaturationFactor="-50" ValueFactor="-50" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <!-- stepper (+/-) — themed red; hover brightens, press darkens -->
+  <Brush Name="BandItPlus.Codex.StepButton">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#6B3520FF" /></Style>
+      <Style Name="Hovered"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#9A5230FF" /></Style>
+      <Style Name="Pressed"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#3E1C0CFF" /></Style>
+    </Styles>
+  </Brush>
+
+  <!-- ON/OFF toggle — gold hover glaze + press darken behind the data-driven
+       (semi-transparent) green/dark state fill -->
+  <Brush Name="BandItPlus.Codex.ToggleButton">
+    <Layers>
+      <BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" />
+    </Layers>
+    <Styles>
+      <Style Name="Default"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#14100AFF" /></Style>
+      <Style Name="Hovered"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#C8A24EFF" /></Style>
+      <Style Name="Pressed"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#0A0806FF" /></Style>
+    </Styles>
+  </Brush>
+
+  <!-- jailbreak briefing — primary "Begin" plate (warm forged gold); hover brightens, press darkens -->
+  <Brush Name="BandItPlus.JailButton.Go">
+    <Layers><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" /></Layers>
+    <Styles>
+      <Style Name="Default"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#3A2A12FF" /></Style>
+      <Style Name="Hovered"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#5E4520FF" /></Style>
+      <Style Name="Pressed"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#281C0CFF" /></Style>
+    </Styles>
+  </Brush>
+
+  <!-- jailbreak briefing — secondary "Wait" plate (dark forged); hover warms, press darkens -->
+  <Brush Name="BandItPlus.JailButton.Wait">
+    <Layers><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" /></Layers>
+    <Styles>
+      <Style Name="Default"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#181109FF" /></Style>
+      <Style Name="Hovered"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#322614FF" /></Style>
+      <Style Name="Pressed"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#120D07FF" /></Style>
+    </Styles>
+  </Brush>
+
+  <!-- light parchment option strip on the dark leather board — hover brightens,
+       press dims, disabled desaturates to dust -->
+  <Brush Name="BandItPlus.Parley.Strip">
+    <Layers><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" /></Layers>
+    <Styles>
+      <Style Name="Default"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#E2D4B2F2" /></Style>
+      <Style Name="Hovered"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#F4E8CCFF" /></Style>
+      <Style Name="Pressed"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#C6B48EFF" /></Style>
+      <Style Name="Disabled"><BrushLayer Name="Default" Sprite="BlankWhiteSquare_9" Color="#7E7460A0" /></Style>
+    </Styles>
+  </Brush>
+
+  <!-- parley strip TITLE: big dark serif on parchment (Galahad, like the reference board) -->
+  <Brush Name="BandItPlus.Parley.StripTitle" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#2A1A0CFF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="30" />
+      <Style Name="Hovered" FontColor="#140A02FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="30" />
+      <Style Name="Pressed" FontColor="#000000FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="30" />
+      <Style Name="Disabled" FontColor="#463A2A96" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="30" />
+    </Styles>
+  </Brush>
+
+  <!-- parley strip HINT: small dark-brown caption under the title, on parchment -->
+  <Brush Name="BandItPlus.Parley.StripHint" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#543E24E0" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="17" />
+      <Style Name="Hovered" FontColor="#3E2C16F0" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="17" />
+      <Style Name="Pressed" FontColor="#2E2010F0" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="17" />
+      <Style Name="Disabled" FontColor="#4A3E2E80" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="17" />
+    </Styles>
+  </Brush>
+
+</Brushes>

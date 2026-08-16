@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- muted russets to match the aged-cream parchment. brush schema matches
+     BandItPlusFonts.xml: <Brushes> root with nested <Styles><Style Name="Default"/> -->
+<Brushes>
+
+  <Brush Name="BandItPlus.Codex.PageHeading" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8C25AFF" TextGlowColor="#00000000" TextOutlineColor="#3A2614FF" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="22" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.DropCap" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Bottom">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#EAC76EFF" TextGlowColor="#00000000" TextOutlineColor="#3A2614FF" TextOutlineAmount="0.18" TextGlowRadius="0" FontSize="64" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.ChapterTitle" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8C25AFF" TextGlowColor="#00000000" TextOutlineColor="#3A2614FF" TextOutlineAmount="0.14" TextGlowRadius="0" FontSize="32" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.ChapterTitleCenter" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8C25AFF" TextGlowColor="#00000000" TextOutlineColor="#3A2614FF" TextOutlineAmount="0.14" TextGlowRadius="0" FontSize="32" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.RomanNumeral" Font="Galahad" TextHorizontalAlignment="Right" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#EAC76EFF" TextGlowColor="#00000000" TextOutlineColor="#3A2614FF" TextOutlineAmount="0.1" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.Body" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E2D2B0FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.Objective" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#EBDAB2FF" TextGlowColor="#00000000" TextOutlineColor="#241809FF" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="27" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.BodyCenter" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E2D2B0FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.BodySmall" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E2D2B0FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.05" TextGlowRadius="0" FontSize="14" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.BookmarkActive" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F4DCB8FF" TextGlowColor="#00000000" TextOutlineColor="#2A1A08FF" TextOutlineAmount="0.16" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.BookmarkInactive" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D8BC94FF" TextGlowColor="#00000000" TextOutlineColor="#2A1A08FF" TextOutlineAmount="0.14" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.ButtonText" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F4DCB8FF" TextGlowColor="#00000000" TextOutlineColor="#2A1A08FF" TextOutlineAmount="0.16" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.Epigraph" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#CBA97ADD" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.05" TextGlowRadius="0" FontSize="14" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.ChapterMark" Font="Galahad" TextHorizontalAlignment="Right" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#7A5C28FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.05" TextGlowRadius="0" FontSize="14" />
+    </Styles>
+  </Brush>
+
+  <!-- decorative-serif flavor brush for the camp panel. warm beige + Galahad —
+       the letterforms read as flavor without needing an italic variant. used for
+       chief names, titles, quoted quest text, lore lines, time-of-day footer. -->
+  <Brush Name="BandItPlus.Codex.Flavor" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B8966EFF" TextGlowColor="#00000000" TextOutlineColor="#2A1A08FF" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="14" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.FlavorCenter" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B8966EFF" TextGlowColor="#00000000" TextOutlineColor="#2A1A08FF" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="14" />
+    </Styles>
+  </Brush>
+
+  <!-- camp panel high-contrast brushes. dark 3D scene backgrounds eat
+       low-contrast text, so these bake bright FontColor + dark high-alpha outline
+       + soft glow. Color= on the consuming TextWidget is a no-op for glyphs. -->
+
+  <Brush Name="BandItPlus.Camp.Title" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0CC68FF" TextGlowColor="#1A0F06AA" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.22" TextGlowRadius="8" FontSize="26" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.SubtitleSerif" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8D8B8FF" TextGlowColor="#00000000" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="16" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.BodySerif" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F4E2BAFF" TextGlowColor="#00000000" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="17" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.IdentityName" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0CC68FF" TextGlowColor="#1A0F0699" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.16" TextGlowRadius="4" FontSize="22" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.LabelBold" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0CC68FF" TextGlowColor="#1A0F0688" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.16" TextGlowRadius="3" FontSize="14" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.LabelBoldRight" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Right" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0CC68FF" TextGlowColor="#1A0F0688" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.16" TextGlowRadius="3" FontSize="14" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.SectionHeader" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F4DCB8FF" TextGlowColor="#C8A24E55" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.20" TextGlowRadius="6" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <!-- camp panel typography (horizontal top panel) -->
+
+  <Brush Name="BandItPlus.Camp.TitleHero" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0CC68FF" TextGlowColor="#1A0F06AA" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.22" TextGlowRadius="8" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.SublineCenter" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8D8B8FF" TextGlowColor="#00000000" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="14" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.DenseLabel" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0CC68FF" TextGlowColor="#1A0F0666" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.16" TextGlowRadius="2" FontSize="12" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.QuestTextBig" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#FFE8B8FF" TextGlowColor="#1A0F0644" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.14" TextGlowRadius="2" FontSize="15" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.PartyStatNumber" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0CC68FF" TextGlowColor="#00000000" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="15" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Camp.NetworkValue" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Right" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F4DCB8FF" TextGlowColor="#00000000" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.14" TextGlowRadius="0" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <!-- escape-HUD status-line color variants (text color is baked into the brush; Color= on the
+       TextWidget is a no-op for glyphs). guards = alarm red, freed prisoners = ally green, reward = gold. -->
+  <Brush Name="BandItPlus.Codex.BodyCenterRed" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E0584CFF" TextGlowColor="#00000000" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.BodyCenterGreen" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#84C878FF" TextGlowColor="#00000000" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Codex.BodyCenterGold" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0CC68FF" TextGlowColor="#00000000" TextOutlineColor="#1A0F06FF" TextOutlineAmount="0.14" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <!-- over-guard awareness glyphs — read over the live scene, so heavy dark outline + glow.
+       "?" = suspicious (amber), "!" = spotted (red). -->
+  <Brush Name="BandItPlus.Alert.Question" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F2D24AFF" TextGlowColor="#000000CC" TextOutlineColor="#000000FF" TextOutlineAmount="0.30" TextGlowRadius="5" FontSize="36" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Alert.Alarm" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#EE4530FF" TextGlowColor="#000000DD" TextOutlineColor="#000000FF" TextOutlineAmount="0.34" TextGlowRadius="6" FontSize="40" />
+    </Styles>
+  </Brush>
+
+</Brushes>

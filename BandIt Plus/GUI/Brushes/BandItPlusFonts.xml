@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- custom font brushes for the CampInfoPanel chief identity area. vanilla brushes
+     bake font size in, and Brush.FontSize= at the widget level NREs at parse — so
+     we define our own sizes here and keep the rest of the panel on vanilla brushes. -->
+<Brushes>
+
+  <!-- Chief name: large display weight, warm gold like Bannerlord nameplates -->
+  <Brush Name="BandItPlus.ChiefName" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F4E1C4FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.1" TextGlowRadius="0" FontSize="30" />
+    </Styles>
+  </Brush>
+
+  <!-- chief title at FontSize=26 — smooth step down from the name (30) -->
+  <Brush Name="BandItPlus.ChiefTitle" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D4BC92FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="26" />
+    </Styles>
+  </Brush>
+
+  <!-- chief-reveal card name: Galahad display face, bright sharp gold with a
+       heavy dark outline + faint glow so it pops over any scene. -->
+  <Brush Name="BandItPlus.ChiefName" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8C25AFF" TextGlowColor="#000000E6" TextOutlineColor="#000000FF" TextOutlineAmount="0.55" TextGlowRadius="1" FontSize="30" />
+    </Styles>
+  </Brush>
+
+  <!-- centered twin of ChiefTitle for the gold BANDIT AI panel title — ChiefTitle
+       bakes Left alignment. only TextHorizontalAlignment differs. -->
+  <Brush Name="BandItPlus.ChiefTitleCenter" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D4BC92FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="26" />
+    </Styles>
+  </Brush>
+
+  <!-- Culture: FontSize=22 for one more step down from title (26) — proper hierarchy -->
+  <Brush Name="BandItPlus.CultureName" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C6AC8DFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="22" />
+    </Styles>
+  </Brush>
+
+  <!-- panel typography hierarchy:
+       L2 SectionHeader (CHIEF/VENDORS/QUESTS/NETWORK/QUICK ACTIONS) — 24, gold
+       L3 SectionBody (trust label, vendor names, quest rows, contact status) — 20
+       L4 Footer (day/time line, camp memory) — 16 -->
+  <Brush Name="BandItPlus.SectionHeader" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F4D08AFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.1" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+
+  <!-- centered twin of SectionHeader — fixes the ⚔ crest glyph rendering
+       left-stuck in the BANDIT AI signature block. same variant pattern as
+       ChiefTitle ↔ ChiefTitleCenter; only TextHorizontalAlignment differs. -->
+  <Brush Name="BandItPlus.SectionHeaderCenter" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F4D08AFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.1" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.SectionBody" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8D8B4FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.07" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+
+  <Brush Name="BandItPlus.Footer" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <!-- #DCCAA4 — the old tan camouflaged against the brown parchment. stays
+           below SectionBody (20) so the hierarchy holds. -->
+      <Style Name="Default" FontColor="#DCCAA4FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.15" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <!-- left-aligned twin of Footer — the BANDIT AI panel's per-card value lines
+       flow flush-left under the card name (Footer bakes Center for the subtitle).
+       only TextHorizontalAlignment differs. -->
+  <Brush Name="BandItPlus.FooterLeft" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#DCCAA4FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.15" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <!-- caption-tier brush — FontSize=13, muted gold. stat captions and meter
+       labels read as small/secondary against the values they label; slightly
+       stronger outline keeps them legible. center baked. -->
+  <Brush Name="BandItPlus.Caption" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B8966EFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.18" TextGlowRadius="0" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <!-- left-aligned twin of Caption -->
+  <Brush Name="BandItPlus.CaptionLeft" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B8966EFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.18" TextGlowRadius="0" FontSize="13" />
+    </Styles>
+  </Brush>
+
+  <!-- first-visit narration body. Galahad at 20 for a chronicle feel, warm
+       ivory-gold, stronger outline + faint glow for a soft drop-shadow. held at
+       20 so the longest ~440-word passages still fit the panel without clipping. -->
+  <Brush Name="BandItPlus.Cinema" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Top">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#EFE6D0FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.16" TextGlowRadius="1" FontSize="20" />
+    </Styles>
+  </Brush>
+
+  <!-- cinematic card header — Galahad display face, large, warm gold, centered.
+       distinct from the ivory body (BandItPlus.Cinema) so the card has some
+       typographic variety. -->
+  <Brush Name="BandItPlus.CinemaTitle" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E3B65AFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0.2" TextGlowRadius="2" FontSize="34" />
+    </Styles>
+  </Brush>
+
+</Brushes>

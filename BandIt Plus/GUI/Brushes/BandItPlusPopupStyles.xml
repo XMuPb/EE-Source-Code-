@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- brush override on Popup.Description.Text adding named color styles for the
+     slaver-story popups. Default matches vanilla (cream #F1E9DAFF, FontSize=20)
+     so every other popup renders unchanged; the BandItPlus.* styles only apply
+     where the slaver text references them via <span style="BandItPlus.Name">.
+     the whole brush is overridden because brush XMLs are full replacements at
+     parse time — duplicating Default exactly is what preserves the rest. -->
+<Brushes>
+
+  <Brush Name="Popup.Description.Text" Font="FiraSansExtraCondensed-Regular" TextHorizontalAlignment="Left">
+    <Styles>
+      <!-- Default: matches vanilla Popup.xml line 191 verbatim so all other inquiries are pixel-identical. -->
+      <Style Name="Default" FontColor="#F1E9DAFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+
+      <!-- BandItPlus.Name: gold/amber for slaver names (Halgar, Skreg, Volk, etc.)
+           Picked to pop against the cream default without competing for attention. -->
+      <Style Name="BandItPlus.Name" FontColor="#E8C878FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+
+      <!-- BandItPlus.Coin: muted bronze for denars/dinars/silver mentions. -->
+      <Style Name="BandItPlus.Coin" FontColor="#D4A55AFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+
+      <!-- BandItPlus.Blood: muted red for death/kill/blood/wound phrases. -->
+      <Style Name="BandItPlus.Blood" FontColor="#B05050FF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+
+      <!-- BandItPlus.Place: cool steel for town and place names. -->
+      <Style Name="BandItPlus.Place" FontColor="#A8C0DCFF" TextGlowColor="#000000FF" TextOutlineColor="#000000FF" TextOutlineAmount="0" TextGlowRadius="0" TextBlur="0" FontSize="20" />
+    </Styles>
+  </Brush>
+
+</Brushes>

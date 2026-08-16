@@ -1,0 +1,444 @@
+<Brushes>
+  <!-- intro book typography. Galahad (the medieval serif) throughout, warm
+       iron-gall ink colors on the parchment art, sizes tuned to fill the spread —
+       14pt left the pages looking empty. -->
+
+  <!-- Chapter title: large, deep sepia ink with a soft outline — left-aligned
+       like a true chapter heading on the left page -->
+  <Brush Name="BandItPlus.Book.Title" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#6B2E12FF" TextGlowColor="#00000000" TextOutlineColor="#3A1C0AFF" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="44" />
+    </Styles>
+  </Brush>
+
+  <!-- Letter heading: the same chapter-title ink, but CENTERED — for the camp
+       invitation letter. Cloned so Book.Title's left-aligned chapter headings
+       stay untouched. -->
+  <Brush Name="BandItPlus.Book.LetterTitle" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#6B2E12FF" TextGlowColor="#00000000" TextOutlineColor="#3A1C0AFF" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="44" />
+    </Styles>
+  </Brush>
+
+  <!-- reading body: storybook serif at a true reading size, iron-gall ink.
+       the named styles are referenced from inline rich text — the engine parses
+       <span style="NameInk">…</span>. names = rubric red, places = slate blue,
+       numbers = grey. -->
+  <Brush Name="BandItPlus.Book.Body" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Top">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#42250FFF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.04" TextGlowRadius="0" FontSize="22" />
+      <Style Name="NameInk" FontColor="#9B1F10FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.04" TextGlowRadius="0" FontSize="22" />
+      <Style Name="PlaceInk" FontColor="#3D6E8FFF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.04" TextGlowRadius="0" FontSize="22" />
+      <Style Name="NumInk" FontColor="#6E635AFF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.04" TextGlowRadius="0" FontSize="22" />
+      <Style Name="GoldInk" FontColor="#8A6418FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.04" TextGlowRadius="0" FontSize="22" />
+    </Styles>
+  </Brush>
+
+  <!-- Page mark (— 1 / 4 —): faded scribe's note -->
+  <Brush Name="BandItPlus.Book.PageMark" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#5A2A12AA" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+
+  <!-- "Press to Continue": muted grey prompt, centered — flashed on/off via
+       IsVisible once the page settles. -->
+  <Brush Name="BandItPlus.Book.Continue" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#6E6E6EFF" TextGlowColor="#00000000" TextOutlineColor="#1A1A1A60" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="22" />
+    </Styles>
+  </Brush>
+
+  <!-- card-picker brushes -->
+
+  <!-- Card BODY: dark leather panel with a subtle ornate rim; states lighten
+       on hover, sink on press. Same sounds as the book buttons. -->
+  <Brush Name="BandItPlus.Book.Card">
+    <Layers>
+      <BrushLayer Name="Fill" Sprite="BlankWhiteSquare_9" Color="#241708F8" />
+      <BrushLayer Name="Rim" Sprite="button_frame_9" Color="#5A3A1A70" />
+    </Layers>
+    <SoundProperties>
+      <EventSounds>
+        <EventSound EventName="Click" Audio="panels/next" />
+        <EventSound EventName="HoverBegin" Audio="tab" />
+      </EventSounds>
+    </SoundProperties>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Fill" Color="#00000000" />
+        <BrushLayer Name="Rim" Color="#5A3A1A70" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Fill" Color="#1C110850" />
+        <BrushLayer Name="Rim" Color="#CCA76AB0" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Fill" Color="#0C070270" />
+        <BrushLayer Name="Rim" Color="#E8B43AC0" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Fill" Color="#00000000" />
+        <BrushLayer Name="Rim" Color="#5A3A1A40" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <!-- Card title: rubric red, CENTERED, brightens with the card -->
+  <Brush Name="BandItPlus.Book.CardTitleC" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#9B1F10FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="26" />
+      <Style Name="Hovered" FontColor="#C03018FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="26" />
+      <Style Name="Pressed" FontColor="#F0E0C0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="26" />
+    </Styles>
+  </Brush>
+
+  <!-- Card effect line: light parchment, CENTERED, with bright span inks -->
+  <Brush Name="BandItPlus.Book.CardBodyC" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Top">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#DCC094FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="20" />
+      <Style Name="Hovered" FontColor="#F0DCAEFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="20" />
+      <Style Name="Pressed" FontColor="#F0E0C0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="20" />
+      <Style Name="GoldInk" FontColor="#E8B43AFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="20" />
+      <Style Name="NameInk" FontColor="#E06048FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="20" />
+      <Style Name="PlaceInk" FontColor="#7AB0D0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="20" />
+    </Styles>
+  </Brush>
+
+  <!-- Card lore line: muted scribe's note, CENTERED, ignites on hover -->
+  <Brush Name="BandItPlus.Book.CardLoreC" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Top">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#8A7252FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0680" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="16" />
+      <Style Name="Hovered" FontColor="#E0C896FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06A0" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="16" />
+      <Style Name="Pressed" FontColor="#F0E0C0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06A0" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="16" />
+      <Style Name="Disabled" FontColor="#5E4E3A80" TextGlowColor="#00000000" TextOutlineColor="#1A0E0640" TextOutlineAmount="0.05" TextGlowRadius="0" FontSize="16" />
+    </Styles>
+  </Brush>
+
+  <!-- Campaign-start cinematic title cards -->
+  <Brush Name="BandItPlus.Book.CinematicTitle" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8B43AFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06E0" TextOutlineAmount="0.14" TextGlowRadius="0" FontSize="58" />
+    </Styles>
+  </Brush>
+  <Brush Name="BandItPlus.Book.CinematicSub" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B89868FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06A0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="22" />
+    </Styles>
+  </Brush>
+
+  <!-- BANDIT PLUS toast (left-center crest notification) -->
+  <Brush Name="BandItPlus.Book.ToastTitle" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8B43AFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="24" />
+    </Styles>
+  </Brush>
+  <Brush Name="BandItPlus.Book.ToastBody" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Top">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#DCC094FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06A0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="19" />
+    </Styles>
+  </Brush>
+
+  <!-- Difficulty tags on the origin cards: moss green / gold / ember red -->
+  <Brush Name="BandItPlus.Book.TagEasy" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#7FA050FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="16" />
+      <Style Name="Hovered" FontColor="#9CC468FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="16" />
+      <Style Name="Pressed" FontColor="#B8E080FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="16" />
+    </Styles>
+  </Brush>
+  <Brush Name="BandItPlus.Book.TagMedium" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#D9A33CFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="16" />
+      <Style Name="Hovered" FontColor="#F0C45CFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="16" />
+      <Style Name="Pressed" FontColor="#FFD878FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="16" />
+    </Styles>
+  </Brush>
+  <Brush Name="BandItPlus.Book.TagHard" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C04028FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="16" />
+      <Style Name="Hovered" FontColor="#E05838FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="16" />
+      <Style Name="Pressed" FontColor="#FF7048FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="16" />
+    </Styles>
+  </Brush>
+
+  <!-- Light button label for stamps sitting on DARK panels (contact panel) -->
+  <Brush Name="BandItPlus.Book.ButtonTextLight" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#DCC094FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="22" />
+      <Style Name="Hovered" FontColor="#F0DCAEFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="22" />
+      <Style Name="Pressed" FontColor="#FFF0D0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="22" />
+      <Style Name="Disabled" FontColor="#6E5A4290" TextGlowColor="#00000000" TextOutlineColor="#1A0E0660" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="22" />
+    </Styles>
+  </Brush>
+
+  <!-- ✦ CHOSEN ✦ seal on the selected card -->
+  <Brush Name="BandItPlus.Book.ChosenMark" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8B43AFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="18" />
+    </Styles>
+  </Brush>
+
+  <!-- Origin card title: rubric red, chapter-heading weight -->
+  <Brush Name="BandItPlus.Book.CardTitle" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#9B1F10FF" TextGlowColor="#00000000" TextOutlineColor="#3A1C0AFF" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="30" />
+      <Style Name="Hovered" FontColor="#B82A16FF" TextGlowColor="#00000000" TextOutlineColor="#3A1C0AFF" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="30" />
+      <Style Name="Pressed" FontColor="#F0E0C0FF" TextGlowColor="#00000000" TextOutlineColor="#3A1C0AFF" TextOutlineAmount="0.10" TextGlowRadius="0" FontSize="30" />
+    </Styles>
+  </Brush>
+
+  <!-- Origin card BODY text: light parchment on the dark frame inner, with
+       bright variants of the ink spans (the page inks are too dark here).
+       Style names match the rich text spans (GoldInk etc). -->
+  <Brush Name="BandItPlus.Book.CardBody" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Top">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#DCC094FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="21" />
+      <Style Name="Hovered" FontColor="#F0DCAEFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="21" />
+      <Style Name="Pressed" FontColor="#F0E0C0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="21" />
+      <Style Name="GoldInk" FontColor="#E8B43AFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="21" />
+      <Style Name="NameInk" FontColor="#E06048FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="21" />
+      <Style Name="PlaceInk" FontColor="#7AB0D0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06C0" TextOutlineAmount="0.08" TextGlowRadius="0" FontSize="21" />
+    </Styles>
+  </Brush>
+
+  <!-- lore line: muted scribe's note by default, ignites on the card's Hovered
+       state (UpdateChildrenStates). gauntlet ignores FontColor alpha, so the
+       muted→bright shift carries the reveal instead of a fade-from-0. -->
+  <Brush Name="BandItPlus.Book.CardHover" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Top">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#8A7252FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0680" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="17" />
+      <Style Name="Hovered" FontColor="#E0C896FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06A0" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="17" />
+      <Style Name="Pressed" FontColor="#F0E0C0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06A0" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="17" />
+    </Styles>
+  </Brush>
+
+  <!-- Button BODY: parchment-stamp fill with hover/press state colors.
+       Lives on the ButtonWidget itself (brush layers render under children,
+       and engine drives Default/Hovered/Pressed automatically). -->
+  <Brush Name="BandItPlus.Book.Button">
+    <Layers>
+      <BrushLayer Name="Frame" Sprite="button_frame_9" Color="#B08A50FF" />
+    </Layers>
+    <SoundProperties>
+      <EventSounds>
+        <EventSound EventName="Click" Audio="panels/next" />
+        <EventSound EventName="HoverBegin" Audio="tab" />
+      </EventSounds>
+    </SoundProperties>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Frame" Color="#B08A50FF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Frame" Color="#E0BC7CFF" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Frame" Color="#6B4A22FF" />
+      </Style>
+      <Style Name="Disabled">
+        <BrushLayer Name="Frame" Color="#B08A5070" />
+      </Style>
+    </Styles>
+  </Brush>
+
+  <!-- Button label: ink that deepens on hover, flips to parchment-light on press.
+       Responds to the parent ButtonWidget's UpdateChildrenStates. -->
+  <Brush Name="BandItPlus.Book.ButtonText" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#3A2010FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="22" />
+      <Style Name="Hovered" FontColor="#1F0E04FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="22" />
+      <Style Name="Pressed" FontColor="#F0E0C0FF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="22" />
+      <Style Name="Disabled" FontColor="#3A201080" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="22" />
+    </Styles>
+  </Brush>
+
+  <!-- origin-select brushes -->
+  <!-- Screen title, gold -->
+  <Brush Name="BandItPlus.Book.OriginTitle" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E8B43AFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E06E0" TextOutlineAmount="0.12" TextGlowRadius="0" FontSize="26" />
+    </Styles>
+  </Brush>
+  <!-- Detail-panel origin name, large gold, LEFT -->
+  <Brush Name="BandItPlus.Book.OriginName" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0C050FF" TextGlowColor="#E89A2E70" TextOutlineColor="#3A1C0AFF" TextOutlineAmount="0.12" TextGlowRadius="0.18" FontSize="34" />
+    </Styles>
+  </Brush>
+  <!-- List row name, parchment, brightens on hover/press/select -->
+  <Brush Name="BandItPlus.Book.OriginListName" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E2CAA0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0680" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="19" />
+      <Style Name="Hovered" FontColor="#F4D488FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0680" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="19" />
+      <Style Name="Pressed" FontColor="#F4D488FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0680" TextOutlineAmount="0.06" TextGlowRadius="0" FontSize="19" />
+    </Styles>
+  </Brush>
+  <!-- Epithet / quote, muted -->
+  <Brush Name="BandItPlus.Book.OriginEpithet" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#C8A86EFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0660" TextOutlineAmount="0.05" TextGlowRadius="0" FontSize="16" />
+    </Styles>
+  </Brush>
+  <!-- Perk line, parchment with GoldInk span -->
+  <Brush Name="BandItPlus.Book.OriginPerk" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#E6CFA0FF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0680" TextOutlineAmount="0.05" TextGlowRadius="0" FontSize="17" />
+      <Style Name="GoldInk" FontColor="#E8B43AFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0680" TextOutlineAmount="0.05" TextGlowRadius="0" FontSize="17" />
+    </Styles>
+  </Brush>
+  <!-- Stat label, small caps -->
+  <Brush Name="BandItPlus.Book.OriginStat" Font="Galahad" TextHorizontalAlignment="Left" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B89A6CFF" TextGlowColor="#00000000" TextOutlineColor="#00000000" TextOutlineAmount="0" TextGlowRadius="0" FontSize="13" />
+    </Styles>
+  </Brush>
+  <!-- Eyebrow over the title, muted gold, CENTERED -->
+  <Brush Name="BandItPlus.Book.OriginEyebrow" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#9A7A4AFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0660" TextOutlineAmount="0.04" TextGlowRadius="0" FontSize="13" />
+    </Styles>
+  </Brush>
+  <!-- BEGIN button: solid gold fill that brightens on hover, sinks on press (state-driven). -->
+  <Brush Name="BandItPlus.Book.BeginButton">
+    <Layers>
+      <BrushLayer Name="Fill" Sprite="BlankWhiteSquare_9" Color="#C49030FF" />
+    </Layers>
+    <SoundProperties>
+      <EventSounds>
+        <EventSound EventName="Click" Audio="panels/next" />
+        <EventSound EventName="HoverBegin" Audio="tab" />
+      </EventSounds>
+    </SoundProperties>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Fill" Color="#C49030FF" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Fill" Color="#ECBC56FF" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Fill" Color="#986C22FF" />
+      </Style>
+    </Styles>
+  </Brush>
+  <!-- Origin list row: flat leather box (NO ornate button_frame_9), lightens on
+       hover, brighter on press. The colored left stripe + selected tint are widgets. -->
+  <Brush Name="BandItPlus.Book.OriginRow">
+    <Layers>
+      <BrushLayer Name="Fill" Sprite="BlankWhiteSquare_9" Color="#2C1E0EEC" />
+    </Layers>
+    <SoundProperties>
+      <EventSounds>
+        <EventSound EventName="Click" Audio="panels/next" />
+        <EventSound EventName="HoverBegin" Audio="tab" />
+      </EventSounds>
+    </SoundProperties>
+    <Styles>
+      <Style Name="Default">
+        <BrushLayer Name="Fill" Color="#2C1E0EEC" />
+      </Style>
+      <Style Name="Hovered">
+        <BrushLayer Name="Fill" Color="#46321AF4" />
+      </Style>
+      <Style Name="Pressed">
+        <BrushLayer Name="Fill" Color="#564018F8" />
+      </Style>
+    </Styles>
+  </Brush>
+  <!-- Hint / footer line, readable muted tan, CENTERED (replaces too-dark PageMark) -->
+  <Brush Name="BandItPlus.Book.OriginHint" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#AE906AFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0660" TextOutlineAmount="0.05" TextGlowRadius="0" FontSize="14" />
+    </Styles>
+  </Brush>
+  <!-- ════ Campaign-map HUD ribbon (gold, to match the web build) ════ -->
+  <Brush Name="BandItPlus.Book.HudRank" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F0C862FF" TextGlowColor="#E89A2E70" TextOutlineColor="#1A0E06B0" TextOutlineAmount="0.06" TextGlowRadius="0.16" FontSize="18" />
+    </Styles>
+  </Brush>
+  <Brush Name="BandItPlus.Book.HudTier" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#B8966EFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0666" TextOutlineAmount="0.04" TextGlowRadius="0" FontSize="12" />
+    </Styles>
+  </Brush>
+  <Brush Name="BandItPlus.Book.HudGold" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#EAC76EFF" TextGlowColor="#00000000" TextOutlineColor="#1A0E0688" TextOutlineAmount="0.05" TextGlowRadius="0" FontSize="14" />
+    </Styles>
+  </Brush>
+  <!-- vertical "UNAVAILABLE" preview watermark — big near-white with a dark
+       outline for legibility over the slot icons. one letter per line. -->
+  <Brush Name="BandItPlus.Book.HudWatermark" Font="Galahad" TextHorizontalAlignment="Center" TextVerticalAlignment="Center">
+    <Layers>
+    </Layers>
+    <Styles>
+      <Style Name="Default" FontColor="#F4EEDCF2" TextGlowColor="#00000000" TextOutlineColor="#0A0705FF" TextOutlineAmount="0.11" TextGlowRadius="0" FontSize="40" />
+    </Styles>
+  </Brush>
+</Brushes>

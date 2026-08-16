@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  override of the vanilla GameMenu.QuestMarker brush. the ActiveStoryQuest layer
+  gets color_factor="1.5" so the boss's nameplate marker reads as a steady gold
+  glow instead of a flat sprite; all other layers keep their vanilla look. same
+  brush name as vanilla on purpose — later-loaded modules override same-named
+  brushes, and BandItPlus depends on Native.
+-->
+<base type="brush">
+  <brushes>
+    <brush name="GameMenu.QuestMarker">
+      <layers>
+        <brush_layer name="None" sprite="" is_hidden="true" />
+        <brush_layer name="ActiveIssue" sprite="General\Icons\icon_issue_active" is_hidden="true" />
+        <brush_layer name="AvailableIssue" sprite="General\Icons\icon_issue_available" is_hidden="true" />
+        <brush_layer name="ActiveStoryQuest" sprite="General\Icons\icon_story_quest_active" value_factor="10" is_hidden="true" />
+        <brush_layer name="TrackedIssue" sprite="General\Icons\issue_target_icon" is_hidden="true" />
+        <brush_layer name="TrackedStoryQuest" sprite="General\Icons\quest_target_icon" value_factor="10" is_hidden="true" />
+      </layers>
+      <styles>
+        <style name="None">
+          <brush_layer name="None" is_hidden="true" />
+        </style>
+        <style name="ActiveIssue">
+          <brush_layer name="ActiveIssue" is_hidden="false" />
+        </style>
+        <style name="AvailableIssue">
+          <brush_layer name="AvailableIssue" is_hidden="false" />
+        </style>
+        <style name="ActiveStoryQuest">
+          <!-- color_factor 1.5 = 50% brighter gold for chief markers -->
+          <brush_layer name="ActiveStoryQuest" is_hidden="false" color_factor="1.5" />
+        </style>
+        <style name="TrackedIssue">
+          <brush_layer name="TrackedIssue" is_hidden="false" />
+        </style>
+        <style name="TrackedStoryQuest">
+          <brush_layer name="TrackedStoryQuest" is_hidden="false" />
+        </style>
+      </styles>
+    </brush>
+  </brushes>
+</base>
