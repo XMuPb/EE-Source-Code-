@@ -1,0 +1,39 @@
+Born in {settlement}, {name} grew up in the shadow of the great walls. As a child of {culture} heritage, they learned the old customs from their grandmother while their father served as a soldier in the local garrison. A raid by bandits that killed their uncle shaped their early resolve to become strong enough to protect their family.
+---
+{name} was orphaned at a young age in {settlement} when plague swept through the district. Taken in by a traveling {culture} merchant, they spent years on the road learning the ways of trade and survival. Eventually they returned home to find nothing left, and swore to build something new.
+---
+The youngest of seven children in {settlement}, {name} had to fight for every scrap of attention and food. Their {culture} upbringing taught them resilience, and they left home at sixteen to seek fortune with {clan}, never looking back.
+---
+{name} was born to a respected family in {settlement}. Their father was a blacksmith who forged weapons for {clan}, and their mother was a healer known throughout the region. From an early age, {name} showed aptitude for both crafts — destruction and healing.
+---
+Raised in the outskirts of {settlement}, {name} spent their youth herding goats and dreaming of glory. When a wandering knight stopped at their village and told tales of distant battles, {name} stole a horse that night and never returned. Their {culture} roots still call to them in quiet moments.
+---
+{name} was the child of a disgraced noble family in {settlement}. After their parents lost everything in a failed political gambit, {name} grew up among commoners, learning the harsh lessons of poverty that no amount of {culture} tradition could soften.
+---
+Born during a terrible storm that destroyed half of {settlement}, the elders said {name} was marked by fate. Whether blessed or cursed, they grew up different from other children — quieter, more watchful, with an uncanny ability to predict danger.
+---
+{name} remembers little of their early years in {settlement}. A head wound from a childhood accident took those memories. What they know of their {culture} heritage comes from what others have told them, and they sometimes wonder if any of it is true.
+---
+The streets of {settlement} were {name}'s first classroom. Running with gangs of children, stealing bread from market stalls, learning to read the intentions of strangers — these were the skills that kept a {culture} orphan alive when no one else cared.
+---
+{name}'s parents were diplomats who traveled between kingdoms. Born in {settlement} but raised in half a dozen cities, {name} speaks three languages and feels at home nowhere. Their loyalty to {clan} is the first roots they've ever put down.
+---
+A former slave freed during a raid on {settlement}, {name} has scars both visible and hidden. The {culture} people who took them in taught them that freedom must be earned and defended daily. Every morning, {name} trains before dawn — never again will they be helpless.
+---
+{name} grew up in {settlement}'s temple district, raised by priests who found them abandoned as an infant. Religious education gave them discipline and literacy, but also a deep skepticism of faith that the priests would not approve of.
+---
+Born to a {culture} farming family in the fertile lands near {settlement}, {name} learned the value of patience and hard work. When drought destroyed three consecutive harvests, they joined {clan} to fight for a future their farm could no longer provide.
+---
+{name} was born aboard a ship during a storm off the coast near {settlement}. Their mother was a trader, their father a sailor, and they learned to walk on a rocking deck before solid ground. The sea still calls to them, even now that they march on land.
+---
+The twin sibling of a child who died at birth, {name} was always seen as living for two in {settlement}. This weight of expectation shaped everything — their relentless ambition, their refusal to waste a single day, their terror of leaving nothing behind.
+---
+{name} served as a squire in {settlement} from age twelve, polishing armor, carrying messages, and absorbing every lesson about warfare and politics. When their knight fell in battle, {name} picked up the sword and finished the fight. No one questioned their right to it afterward.
+---
+A childhood illness left {name} bedridden for two years in {settlement}. During that time, they read every book they could find, learning history, strategy, and the weaknesses of every kingdom on the continent. When they finally rose from bed, their body was weak but their mind was a weapon.
+---
+{name} was raised by wolves. At least, that's the story they tell in the taverns of {settlement}. The truth is less dramatic — abandoned by their parents and found by a hermit who lived in the forests near the {culture} borderlands. But the wolf story gets better reactions.
+---
+Born into the warrior tradition of the {culture} people, {name} had a sword in their hand before they could read. In {settlement}, strength was respected above all else, and {name} earned respect early by defeating opponents twice their size in the training yard.
+---
+{name} was a scholar in {settlement}'s academy before circumstances forced them onto a different path. They still carry books in their saddlebag and quote ancient philosophers before charging into battle, much to the amusement of their companions.
